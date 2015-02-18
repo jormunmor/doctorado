@@ -1,0 +1,240 @@
+(defdomain quadrotor (
+		
+		;;;;;;;;;;;;;;;;;;;;;
+		;;;;;;OPERATORS;;;;;;
+		;;;;;;;;;;;;;;;;;;;;;
+
+		(:operator (!takeoff ?a ?start ?duration) ; to command a quadrotor 'a' to takeoff, reduces battery by 10
+			
+			;precondition		
+			( 
+				(quadrotor ?a) (landed ?a) (battery ?a ?r) (read-time battery ?a ?t0) 
+				(write-time battery ?a ?t1) (assign ?end (call + ?start ?duration)) (call >= (call - ?r ?duration) 0) 
+			)
+				 			
+			;delete list 
+			( (landed ?a) (battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1) )
+			
+			;add list
+			( (hovering ?a) (battery ?a (call - ?r ?duration)) (read-time battery ?a ?end) (write-time battery ?a ?end) )
+		
+		)
+			
+		(:operator (!land ?a ?start ?duration) ; to command a quadrotor 'a' to land, reduces battery by 5
+			
+			;precondition
+			( (quadrotor ?a) (hovering ?a) (battery ?a ?r) (read-time battery ?a ?t0)
+				(write-time battery ?a ?t1) (assign ?end (call + ?start ?duration)) (call >= (call - ?r ?duration) 0) ) 
+			
+			;delete list
+			( (hovering ?a) (battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1) )
+			
+			;add list
+			( (landed ?a) (battery ?a (call - ?r ?duration)) (read-time battery ?a ?end) (write-time battery ?a ?end) )
+		
+		)
+
+		(:operator (!traceroute ?a ?source ?destination ?vertexList ?start ?duration) ;each temporal unit decreases battery by 2 
+			
+			;precondition
+			( (quadrotor ?a) (hovering ?a) (forall (?z) (call Member ?z (?vertexList)) (location ?z) )
+				(location ?source) (location ?destination)
+				(battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1) 
+				(read-time at ?a ?t2) (write-time at ?a ?t3) (assign ?end (call + ?start ?duration))
+				(call >= (call - ?r ?duration) 0)
+			) 
+			
+			;delete list
+			( (at ?a ?source) (battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1) 
+				(read-time at ?a ?t2) (write-time at ?a ?t3) )
+			
+			;add list
+			( (at ?a ?destination) (battery ?a (call - ?r ?duration)) (read-time battery ?a ?end) 
+				(write-time battery ?a ?end) (read-time at ?a ?end) (write-time at ?a ?end) )
+		
+		)
+
+		(:operator (!doSurveillance ?a ?x ?start ?duration) ; to command a quadrotor 'a' to do a surveillance mission
+			
+			;precondition
+			( 
+				(quadrotor ?a) (hovering ?a) (location ?x) (at ?a ?x) (battery ?a ?r) (read-time battery ?a ?t0)
+				(write-time battery ?a ?t1) (assign ?end (call + ?start ?duration)) (call >= (call - ?r ?duration) 0) 
+				(assign ?polygonRouteResult (call PolygonRoute ?x)) (call = ?polygonRouteResult 0)
+			) 
+			
+			;delete list
+			( (battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1) )
+			
+			;add list
+			( (battery ?a (call - ?r ?duration)) (read-time battery ?a ?end) (write-time battery ?a ?end) )
+		
+		)
+
+		(:operator (!doMapGeneration ?a ?x ?start ?duration) ; to command a quadrotor 'a' to do a surveillance mission
+			
+			;precondition
+			( 
+				(quadrotor ?a) (hovering ?a) (location ?x) (at ?a ?x) (battery ?a ?r) (read-time battery ?a ?t0)
+				(write-time battery ?a ?t1) (assign ?end (call + ?start ?duration)) (call >= (call - ?r ?duration) 0)
+				(assign ?polygonRouteResult (call PolygonRoute ?x)) (call = ?polygonRouteResult 0)
+			) 
+			
+			;delete list
+			( (battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1) )
+			
+			;add list
+			( (battery ?a (call - ?r ?duration)) (read-time battery ?a ?end) (write-time battery ?a ?end) )
+		
+		)
+	
+		;;;;;;;;;;;;;;;;;;;;;
+		;;;;;;;METHODS;;;;;;;
+		;;;;;;;;;;;;;;;;;;;;;
+
+		(:method (surveillance ?a ?x ?percentage) ; to command a quadrotor 'a' to do a surveillance mission in location 'x'
+			
+			;precondition 
+			( 
+					(quadrotor ?a) (location ?x) (not (at ?a ?x)) (quadrotor ?b) (not (at ?b ?x)) (unused ?b) (call != ?a ?b) 
+					(assign ?uavList (?a ?b)) (quadrotor ?c) (call Member ?c ?uavList)
+			)
+
+			;subtasks
+			( (go ?c ?x) (surveillanceMission ?c ?x ?percentage) )
+
+			;precondition 
+			( 
+				(quadrotor ?a) (location ?x) (at ?a ?x) (quadrotor ?b) (at ?b ?x) (call != ?a ?b) 
+				(assign ?uavList (?a ?b)) (quadrotor ?c) (call Member ?c ?uavList) 
+			)
+
+			;subtasks
+			( (surveillanceMission ?c ?x ?percentage) )
+
+		)
+
+		(:method (surveillanceMission ?a ?x ?percentage)  
+			
+			;precondition 
+			( 
+				(quadrotor ?a) (location ?x) (at ?a ?x) 
+				(battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1) 
+				(read-time at ?a ?t2) (write-time at ?a ?t3)  
+				(assign ?duration (call * 200 ?percentage)) (assign ?start (call Max ?t0 ?t1 ?t2 ?t3))
+				(call >= (call - ?r ?duration) 0)
+			)
+
+			;subtasks
+			( (!doSurveillance ?a ?x ?start ?duration) )
+
+		)
+
+		(:method (mapGeneration ?a ?x ?percentage) ; to command a quadrotor 'a' to do a 3D map generation mission in location 'x'
+			
+			;precondition 
+			( 
+				(quadrotor ?a) (location ?x) (not (at ?a ?x)) (quadrotor ?b) (not (at ?b ?x)) (unused ?b) (call != ?a ?b) 
+				(assign ?uavList (?a ?b)) (quadrotor ?c) (call Member ?c ?uavList) 
+			)
+
+			;subtasks
+			( (go ?c ?x) (mapGenerationMission ?c ?x ?percentage) )
+
+			;precondition (case where the quad is hovering->traverse directly)
+			( 
+				(quadrotor ?a) (location ?x) (at ?a ?x) (quadrotor ?b) (at ?b ?x) (call != ?a ?b) 
+				(assign ?uavList (?a ?b)) (quadrotor ?c) (call Member ?c ?uavList)
+			)
+
+			;subtasks
+			( (mapGenerationMission ?c ?x ?percentage) )
+
+		)
+
+		(:method (mapGenerationMission ?a ?x ?percentage) ; to command a quadrotor 'a' to do 3D map generation mission in location 'x'
+			
+			;precondition 
+			( 
+				(quadrotor ?a) (location ?x) (at ?a ?x) 
+				(battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1) 
+				(read-time at ?a ?t2) (write-time at ?a ?t3)  
+				(assign ?duration (call * 200 ?percentage)) (assign ?start (call Max ?t0 ?t1 ?t2 ?t3))
+				(call >= (call - ?r ?duration) 0)
+			)
+
+			;subtasks
+			( (!doMapGeneration ?a ?x ?start ?duration) )
+
+		)
+
+		(:method (go ?a ?x) ; to command a quadrotor 'a' to go to a location 'x' => {takeoff, fly, land}
+			
+			;precondition 
+			( 
+				(quadrotor ?a) (landed ?a) (location ?y) (at ?a ?y) (location ?x) (not (at ?a ?x)) (path ?p ?l1 ?l2 ?c) 
+			)
+			; the path predicate is not necessary, but including it allows to accessing the paths in the DijkstraShortestPath.java
+
+			;subtasks
+			((takeoff ?a) (traverse ?a ?x))
+
+			;precondition 
+			( 
+				(quadrotor ?a) (hovering ?a) (location ?y) (at ?a ?y) (location ?x) (not (at ?a ?x)) (path ?p ?l1 ?l2 ?c) 
+			)
+			; the path predicate is not necessary, but including it allows to accessing the paths in the DijkstraShortestPath.java
+
+			;subtasks
+			((traverse ?a ?x))
+
+		)
+
+		(:method (traverse ?a ?x) ; to command a quadrotor 'a' to traverse to a location 'x' by flying between adjacent nodes
+			
+			;precondition 
+			( 
+				(quadrotor ?a) (hovering ?a) (location ?y) (at ?a ?y) (location ?x) (not (at ?a ?x)) 
+				(assign ?vertexList (call Path ?y ?x)) 
+				(battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1) 
+				(read-time at ?a ?t2) (write-time at ?a ?t3)  
+				(assign ?duration (call RouteDuration ?vertexList)) (assign ?start (call Max ?t0 ?t1 ?t2 ?t3))
+				(call >= (call - ?r ?duration) 0)
+			)
+			
+			;subtasks
+			( (!traceroute ?a ?y ?x ?vertexList ?start ?duration) )
+			
+		)
+
+		(:method (takeoff ?a) ; analog to operator takeoff
+			
+			;precondition		
+			( 
+				(quadrotor ?a) (landed ?a) (battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1)
+				(assign ?duration 15) (assign ?start (call Max ?t0 ?t1)) (call >= (call - ?r ?duration) 0) 
+			)
+
+			;subtasks
+			( (!takeoff ?a ?start ?duration) )
+		
+		)
+
+		(:method (land ?a)
+			
+			;precondition
+			( 
+				(quadrotor ?a) (hovering ?a) (battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1)
+				(assign ?duration 15) (assign ?start (call Max ?t0 ?t1)) (call >= (call - ?r ?duration) 0) 
+			) 
+			
+			;subtasks
+			( (!land ?a ?start ?duration) )
+		
+		)
+
+	)
+)
+
+
+

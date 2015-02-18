@@ -14,3 +14,10 @@ The path on which the file is created can by modified in the source JSHOP2GUI.ja
 on the folder of the example, but this implies that external apps that want that plan file will need
 to know the name of the specific example folder, so for simplicity it is created on HOME. As disadvantage, 
 it is overwritten any time JSHOP2 finds a new plan.
+
+For the moment, two domains are present in the planning engine:
+
+1. The Arcas domain. It can be run with the problem present in the example.
+
+2. The Surveillance domain. It requires to have a VREP server running in background to accept the incoming requests done
+	in the preconditions of the domain, so the VREP server must be started.

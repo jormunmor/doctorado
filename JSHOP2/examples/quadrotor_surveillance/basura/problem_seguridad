@@ -1,0 +1,126 @@
+(defproblem problem quadrotor
+
+	; FACTS
+	(
+		; UAV defs
+		(quadrotor uav0)
+		(quadrotor uav1)
+		(quadrotor uav2)
+		(quadrotor uav3)
+		(quadrotor uav4)
+
+		; location defs
+		(location 0)
+		(location 1)
+		(location 2)
+		(location 3)
+		(location 4)
+		(location 5)
+		(location 6)
+		(location 7)
+		(location 8)
+		(location 9)
+		(location 10)
+		(location 11)
+
+		; path defs
+		(path p0 0 1 100)
+		(path p1 1 2 100)
+		(path p2 2 3 100)
+		(path p3 3 4 100)
+		(path p5 4 5 100)
+		(path p6 5 6 100)
+		(path p7 6 7 100)
+		(path p8 7 8 100)
+		(path p9 8 9 100)
+		(path p10 9 10 100)
+		(path p11 10 11 100)
+		(path p13 0 4 1)
+		(path p14 3 7 1)
+		(path p15 4 8 1)
+		(path p16 7 11 1)
+
+		; UAV0 state defs
+		(battery uav0 1000)
+		(at uav0 0)
+		(landed uav0)
+
+		; UAV1 state defs
+		(battery uav1 1000)
+		(at uav1 0)
+		(landed uav1)
+		(unused uav1)
+
+		; UAV2 state defs
+		(battery uav2 1000)
+		(at uav2 0)
+		(landed uav2)
+
+		; UAV3 state defs
+		(battery uav3 1000)
+		(at uav3 0)
+		(landed uav3)
+		(unused uav3)
+
+		; UAV4 state defs
+		(battery uav4 1000)
+		(at uav4 0)
+		(landed uav4)
+		(unused uav4)
+
+
+		; read/write times UAV0 
+		(write-time at uav0 0)
+		(read-time at uav0 0)
+
+		(write-time battery uav0 0)
+		(read-time battery uav0 0)
+
+		; read/write times UAV1 
+		(write-time at uav1 0)
+		(read-time at uav1 0)
+
+		(write-time battery uav1 0)
+		(read-time battery uav1 0)
+
+		; read/write times UAV2 
+		(write-time at uav2 0)
+		(read-time at uav2 0)
+
+		(write-time battery uav2 0)
+		(read-time battery uav2 0)
+
+		; read/write times UAV3 
+		(write-time at uav3 0)
+		(read-time at uav3 0)
+
+		(write-time battery uav3 0)
+		(read-time battery uav3 0)
+
+		; read/write times UAV4 
+		(write-time at uav4 0)
+		(read-time at uav4 0)
+
+		(write-time battery uav4 0)
+		(read-time battery uav4 0)
+
+
+	)
+
+	; GOALS
+	(
+
+		(surveillance uav0 1)
+		(surveillance uav0 6)
+		(mapGeneration uav0 7)
+		(mapGeneration uav0 2)
+		(mapGeneration uav0 3)
+		(mapGeneration uav0 4)
+		(surveillance uav0 5)
+		(mapGeneration uav2 11)
+		(surveillance uav2 8)
+		(mapGeneration uav2 9)
+		(surveillance uav2 10)
+
+	)
+)

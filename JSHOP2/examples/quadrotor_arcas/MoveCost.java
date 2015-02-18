@@ -4,10 +4,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
-// This function calculates the length of the path existing between the two given locations. It invokes the client developed
-// to communicate with V-REP, wich has a built-in function for that. For the moment, the UAV that has to do the operation
-// is irrelevant, we only want to know if there is a path between the two points. For that reason, the name of the UAV
-// is hardcoded. It is necessary that a UAV with this name and two locations with these names are present in the V-REP simulation.
+// This function calculates the length of the path existing between the two given locations. For simplicity, the locations
+// are hardcoded and represent the x,y,z values for the Blender reference system on which the environment was designed.
 public class MoveCost implements Calculate {
   public Term call(List l)
   {
@@ -32,43 +30,10 @@ public class MoveCost implements Calculate {
 	int fromLocation = (int) fromLoc.getNumber();
 	int toLocation = (int) toLoc.getNumber();
 	int result = fromLocation - toLocation;
-
 	double xDifference = x[fromLocation] - x[toLocation];
-        double yDifference = y[fromLocation] - y[toLocation];
-        double zDifference = z[fromLocation] - z[toLocation];
-        double distance = Math.sqrt((xDifference * xDifference) + (yDifference * yDifference) + (zDifference * zDifference));
-
-
-	//System.out.println("from: " + fromLocation);
-	//System.out.println("to: " + toLocation);
-	//System.out.println("result: " + result);
-	
-	
-	/*
-	String uavName = "uav#0"; /// TODO: change hardcoded values and use real object names from V-REP
-	String fromLocationName = "loc" + fromLocation;
-	String toLocationName = "loc" + toLocation;
-
-	try{
-
-		Runtime rt = Runtime.getRuntime();
-		String command = "/home/jorge/Escritorio/SystemPlanner/bin/vrep_client/VRepClient pathplanning " + uavName + " " + fromLocationName + " " + toLocationName;
-		//System.out.println("Comando: " + command);
-		Process ps = rt.exec(command);
-		ps.waitFor();
-		int res = ps.exitValue();
-		result = new TermNumber((double) res);
-
-	} catch(IOException exception) {
-		exception.printStackTrace();
-	
-	} catch(InterruptedException exception) {
-		exception.printStackTrace();
-	
-	}
-	*/
-
-	//System.out.println("Resultado: " + result.getNumber());
+  double yDifference = y[fromLocation] - y[toLocation];
+  double zDifference = z[fromLocation] - z[toLocation];
+  double distance = Math.sqrt((xDifference * xDifference) + (yDifference * yDifference) + (zDifference * zDifference));
 	
 	return new TermNumber(distance);
 

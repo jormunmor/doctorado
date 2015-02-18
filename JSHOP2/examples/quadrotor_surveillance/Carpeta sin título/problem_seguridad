@@ -1,0 +1,153 @@
+(defproblem problem quadrotor
+
+	; FACTS
+	(
+		; UAV defs
+		(quadrotor uav0)
+		(quadrotor uav2)
+		(quadrotor uav3)
+		(quadrotor uav1)
+		(quadrotor uav4)
+
+		; location defs
+		(location 0)
+		(location 1)
+		(location 2)
+		(location 3)
+		(location 4)
+		(location 5)
+		(location 6)
+		(location 7)
+		(location 8)
+		(location 9)
+		(location 10)
+		(location 11)
+		(location 12)
+		(location 13)
+		(location 14)
+		(location 15)
+		(location 16)
+		(location 17)
+		(location 18)
+		(location 19)
+
+		; path defs
+		(path p0 0 1 100)
+		(path p1 1 2 100)
+		(path p2 2 3 100)
+		(path p3 3 4 100)
+		(path p5 4 5 100)
+		(path p6 5 6 100)
+		(path p7 6 7 100)
+		(path p8 7 8 100)
+		(path p9 8 9 100)
+		(path p10 9 10 100)
+		(path p11 10 11 100)
+		(path p13 0 4 1)
+		(path p14 3 7 1)
+		(path p15 4 8 1)
+		(path p16 7 11 1)
+		(path p25 8 12 1)
+		(path p26 11 15 1)
+		(path p27 12 16 1)
+		(path p28 15 19 1)
+		(path p17 11 12 100)
+		(path p18 12 13 100)
+		(path p19 13 14 100)
+		(path p20 14 15 100)
+		(path p21 15 16 100)
+		(path p22 16 17 100)
+		(path p23 17 18 100)
+		(path p24 18 19 100)
+
+		; UAV0 state defs
+		(battery uav0 2000)
+		(at uav0 0)
+		(landed uav0)
+
+		; UAV1 state defs
+		(battery uav1 2000)
+		(at uav1 0)
+		(landed uav1)
+		(unused uav1)
+
+		; UAV2 state defs
+		(battery uav2 2000)
+		(at uav2 0)
+		(landed uav2)
+
+		; UAV3 state defs
+		(battery uav3 2000)
+		(at uav3 0)
+		(landed uav3)
+
+		; UAV4 state defs
+		(battery uav4 2000)
+		(at uav4 0)
+		(landed uav4)
+		(unused uav4)
+
+
+		; read/write times UAV0 
+		(write-time at uav0 0)
+		(read-time at uav0 0)
+
+		(write-time battery uav0 0)
+		(read-time battery uav0 0)
+
+		; read/write times UAV1 
+		(write-time at uav1 0)
+		(read-time at uav1 0)
+
+		(write-time battery uav1 0)
+		(read-time battery uav1 0)
+
+		; read/write times UAV2 
+		(write-time at uav2 0)
+		(read-time at uav2 0)
+
+		(write-time battery uav2 0)
+		(read-time battery uav2 0)
+
+		; read/write times UAV3 
+		(write-time at uav3 0)
+		(read-time at uav3 0)
+
+		(write-time battery uav3 0)
+		(read-time battery uav3 0)
+
+		; read/write times UAV4 
+		(write-time at uav4 0)
+		(read-time at uav4 0)
+
+		(write-time battery uav4 0)
+		(read-time battery uav4 0)
+
+
+	)
+
+	; GOALS
+	(
+
+		(mapGeneration uav0 2)
+		(surveillance uav0 6)
+		(mapGeneration uav0 3)
+		(mapGeneration uav0 4)
+		(surveillance uav0 5)
+		(mapGeneration uav0 11)
+		(surveillance uav0 19)
+		(surveillance uav0 14)
+		(surveillance uav2 8)
+		(mapGeneration uav2 9)
+		(mapGeneration uav2 13)
+		(mapGeneration uav2 15)
+		(surveillance uav3 1)
+		(mapGeneration uav3 7)
+		(mapGeneration uav3 12)
+		(mapGeneration uav3 16)
+		(mapGeneration uav3 18)
+		(surveillance uav3 17)
+		(surveillance uav3 10)
+
+	)
+)

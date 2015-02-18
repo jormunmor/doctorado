@@ -1,0 +1,246 @@
+(defdomain quadrotor (
+		
+		;;;;;;;;;;;;;;;;;;;;;
+		;;;;;;OPERATORS;;;;;;
+		;;;;;;;;;;;;;;;;;;;;;
+
+		(:operator (!takeoff ?a ?start ?duration)
+			
+			;precondition		
+			( 
+				(quadrotor ?a) (landed ?a) (battery ?a ?r) (read-time battery ?a ?t0) 
+				(write-time battery ?a ?t1) (assign ?end (call + ?start ?duration)) (call >= (call - ?r ?duration) 0) 
+			)
+				 			
+			;delete list 
+			( (landed ?a) (battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1) )
+			
+			;add list
+			( (hovering ?a) (battery ?a (call - ?r ?duration)) (read-time battery ?a ?end) (write-time battery ?a ?end) )
+		
+		)
+			
+		(:operator (!land ?a ?start ?duration)
+			
+			;precondition
+			( (quadrotor ?a) (hovering ?a) (battery ?a ?r) (read-time battery ?a ?t0)
+				(write-time battery ?a ?t1) (assign ?end (call + ?start ?duration)) (call >= (call - ?r ?duration) 0) ) 
+			
+			;delete list
+			( (hovering ?a) (battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1) )
+			
+			;add list
+			( (landed ?a) (battery ?a (call - ?r ?duration)) (read-time battery ?a ?end) (write-time battery ?a ?end) )
+		
+		)
+
+		(:operator (!doMove ?a ?source ?destination ?start ?duration)
+			
+			;precondition
+			( (quadrotor ?a) (hovering ?a) (location ?source) (location ?destination) (at ?a ?source) (not (at ?a ?destination))
+				(battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1) 
+				(read-time at ?a ?t2) (write-time at ?a ?t3) (assign ?end (call + ?start ?duration))
+				(call >= (call - ?r ?duration) 0)
+			) 
+			
+			;delete list
+			( (at ?a ?source) (battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1) 
+				(read-time at ?a ?t2) (write-time at ?a ?t3) )
+			
+			;add list
+			( (at ?a ?destination) (battery ?a (call - ?r ?duration)) (read-time battery ?a ?end) 
+				(write-time battery ?a ?end) (read-time at ?a ?end) (write-time at ?a ?end) )
+		
+		)
+
+		(:operator (!doSurveillance ?a ?x ?id ?start ?duration)
+			
+			;precondition
+			( 
+				(quadrotor ?a) (hovering ?a) (location ?x) (at ?a ?x) (battery ?a ?r) (read-time battery ?a ?t0)
+				(write-time battery ?a ?t1) (assign ?end (call + ?start ?duration)) (call >= (call - ?r ?duration) 0)
+				(subarea ?x ?id ?percentage ?cost) (unassigned ?x ?id) 
+			) 
+			
+			;delete list
+			( (battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1) (unassigned ?x ?id) )
+			
+			;add list
+			( (battery ?a (call - ?r ?duration)) (read-time battery ?a ?end) (write-time battery ?a ?end) (assigned ?x ?id) )
+		
+		)
+
+		(:operator (!doMapGeneration ?a ?x ?id ?start ?duration)
+			
+			;precondition
+			( 
+				(quadrotor ?a) (hovering ?a) (location ?x) (at ?a ?x) (battery ?a ?r) (read-time battery ?a ?t0)
+				(write-time battery ?a ?t1) (assign ?end (call + ?start ?duration)) (call >= (call - ?r ?duration) 0)
+				(subarea ?x ?id ?percentage ?cost) (unassigned ?x ?id)
+			) 
+			
+			;delete list
+			( (battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1) (unassigned ?x ?id) )
+			
+			;add list
+			( (battery ?a (call - ?r ?duration)) (read-time battery ?a ?end) (write-time battery ?a ?end) (assigned ?x ?id) )
+		
+		)
+	
+		;;;;;;;;;;;;;;;;;;;;;
+		;;;;;;;METHODS;;;;;;;
+		;;;;;;;;;;;;;;;;;;;;;
+
+		(:method (surveillance ?a ?x ?percentage)
+			
+			;precondition 
+			( 
+					(quadrotor ?a) (location ?x) (not (at ?a ?x)) (quadrotor ?b) (not (at ?b ?x)) (unused ?b) (call != ?a ?b) 
+					(assign ?uavList (?a ?b)) (quadrotor ?c) (call Member ?c ?uavList)
+			)
+
+			;subtasks
+			( (move ?c ?x) (surveillanceMission ?c ?x ?percentage) )
+
+			;precondition 
+			( 
+				(quadrotor ?a) (location ?x) (at ?a ?x) (quadrotor ?b) (at ?b ?x) (unused ?b)  (call != ?a ?b) 
+				(assign ?uavList (?a ?b)) (quadrotor ?c) (call Member ?c ?uavList) 
+			)
+
+			;subtasks
+			( (surveillanceMission ?c ?x ?percentage) )
+
+		)
+
+		(:method (surveillanceMission ?a ?x ?percentage)  
+			
+			;precondition 
+			( 
+				(quadrotor ?a) (location ?x) (at ?a ?x) (battery ?a ?r) 
+				(read-time battery ?a ?t0) (write-time battery ?a ?t1) (read-time at ?a ?t2) (write-time at ?a ?t3)  
+				(subarea ?x ?id ?percentage ?cost) (unassigned ?x ?id)  ; cost is in meters 
+				(assign ?duration (call Ceil (call / ?cost 10)) ) ; We are supposing 10m/s velocity
+				(assign ?start (call Max ?t0 ?t1 ?t2 ?t3))
+				(call >= (call - ?r ?duration) 0) ; we are supposing 8600 mA/h batteries
+			)
+
+			;subtasks
+			( (!doSurveillance ?a ?x ?id ?start ?duration) )
+
+		)
+
+		(:method (mapGeneration ?a ?x ?percentage)
+			
+			;precondition (quad not at location)
+			( 
+				(quadrotor ?a) (location ?x) (not (at ?a ?x)) (quadrotor ?b) (not (at ?b ?x)) (unused ?b) (call != ?a ?b) 
+				(assign ?uavList (?a ?b)) (quadrotor ?c) (call Member ?c ?uavList) 
+			)
+
+			;subtasks
+			( (move ?c ?x) (mapGenerationMission ?c ?x ?percentage) )
+
+			;precondition (quad at location)
+			( 
+				(quadrotor ?a) (location ?x) (at ?a ?x) (quadrotor ?b) (at ?b ?x) (call != ?a ?b) 
+				(assign ?uavList (?a ?b)) (quadrotor ?c) (call Member ?c ?uavList)
+			)
+
+			;subtasks
+			( (mapGenerationMission ?c ?x ?percentage) )
+
+		)
+
+		(:method (mapGenerationMission ?a ?x ?percentage)
+			
+			;precondition 
+			( 
+				(quadrotor ?a) (location ?x) (at ?a ?x) (battery ?a ?r) 
+				(read-time battery ?a ?t0) (write-time battery ?a ?t1) (read-time at ?a ?t2) (write-time at ?a ?t3)  
+				(subarea ?x ?id ?percentage ?cost) (unassigned ?x ?id) ; cost is in meters
+				(assign ?duration (call Ceil (call / ?cost 10)) ) ;We are supposing 10m/s velocity
+				(assign ?start (call Max ?t0 ?t1 ?t2 ?t3))
+				(call >= (call - ?r ?duration) 0) ; we are supposing 8600 mA/h batteries
+			)
+
+			;subtasks
+			( (!doMapGeneration ?a ?x ?id ?start ?duration) )
+
+		)
+
+		(:method (move ?a ?x)
+			
+			;precondition 
+			( 
+
+				(quadrotor ?a) (landed ?a) (location ?y) (at ?a ?y) (location ?x) (not (at ?a ?x))
+				(battery ?a ?r) (assign ?cost (call MoveCost ?y ?x)) (call >= ?cost 0) (assign ?duration (call Ceil (call / ?cost 10)) ) ; We are supposing 10m/s velocity
+				(call >= (call - ?r (call + ?duration 15)) 0) ; have to take into account the cost of takeing off;
+
+			)
+			
+			;subtasks
+			( (takeoff ?a) (moveMission ?a ?x ?duration) )
+
+			;precondition 
+			( 
+
+				(quadrotor ?a) (hovering ?a) (location ?y) (at ?a ?y) (location ?x) (not (at ?a ?x))
+				(battery ?a ?r) (assign ?cost (call MoveCost ?y ?x)) (call >= ?cost 0) (assign ?duration (call Ceil (call / ?cost 10)) ) ; We are supposing 10m/s velocity
+ 				(call >= (call - ?r ?duration) 0)
+
+			)
+
+			;subtasks
+			( (moveMission ?a ?x ?duration) )
+
+		)
+
+		(:method (moveMission ?a ?x ?duration)
+			
+			;precondition
+			( 
+				(quadrotor ?a) (hovering ?a) (location ?y) (at ?a ?y) (location ?x) (not (at ?a ?x)) 
+				(battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1) 
+				(read-time at ?a ?t2) (write-time at ?a ?t3) 
+				(assign ?start (call Max ?t0 ?t1 ?t2 ?t3))
+				(call >= (call - ?r ?duration) 0)
+			)
+			
+			;subtasks
+			( (!doMove ?a ?y ?x ?start ?duration) )
+			
+		)
+
+		(:method (takeoff ?a)
+			
+			;precondition		
+			( 
+				(quadrotor ?a) (landed ?a) (battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1)
+				(assign ?duration 15) (assign ?start (call Max ?t0 ?t1)) (call >= (call - ?r ?duration) 0) 
+			)
+
+			;subtasks
+			( (!takeoff ?a ?start ?duration) )
+		
+		)
+
+		(:method (land ?a)
+			
+			;precondition
+			( 
+				(quadrotor ?a) (hovering ?a) (battery ?a ?r) (read-time battery ?a ?t0) (write-time battery ?a ?t1)
+				(assign ?duration 15) (assign ?start (call Max ?t0 ?t1)) (call >= (call - ?r ?duration) 0) 
+			) 
+			
+			;subtasks
+			( (!land ?a ?start ?duration) )
+		
+		)
+
+	)
+)
+
+
+

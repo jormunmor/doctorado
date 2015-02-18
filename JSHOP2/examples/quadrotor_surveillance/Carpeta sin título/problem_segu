@@ -1,0 +1,82 @@
+(defproblem problem quadrotor
+
+	; FACTS
+	(
+		; UAV defs
+		(quadrotor uav18)
+		(quadrotor uav23)
+		(quadrotor uav29)
+		(cuacua 1)
+
+		; location defs
+		(location 3)
+		(location 4)
+		(location 5)
+		(location 6)
+		(location 7)
+		(location 8)
+		(location 9)
+		(location 10)
+		(location 11)
+		(location 12)
+		(location 13)
+		(location 14)
+
+		; path defs
+		(path p1 3 13 10)
+		(path p2 13 12 10)
+		(path p3 12 11 10)
+		(path p4 11 14 10)
+		(path p5 3 4 10)
+		(path p6 4 9 10)
+		(path p7 9 10 10)
+		(path p8 10 5 10)
+		(path p9 5 6 10)
+		(path p10 6 7 10)
+		(path p11 7 8 10)
+
+		; UAV18 state defs
+		(battery uav18 1000)
+		(at uav18 3)
+		(landed uav18)
+
+		; UAV23 state defs
+		(battery uav23 1000)
+		(at uav23 3)
+		(landed uav23)
+
+
+		; read/write times UAV18 
+		(write-time at uav18 0)
+		(read-time at uav18 0)
+
+		(write-time battery uav18 0)
+		(read-time battery uav18 0)
+
+		; read/write times UAV23 
+		(write-time at uav23 0)
+		(read-time at uav23 0)
+
+		(write-time battery uav23 0)
+		(read-time battery uav23 0)
+
+
+	)
+
+	; GOALS
+	(
+
+		(go uav18 13)
+		(go uav18 12)
+		(go uav18 11)
+		(go uav18 14)
+		(go uav23 4)
+		(go uav23 9)
+		(go uav23 10)
+		(go uav23 5)
+		(go uav23 6)
+		(go uav23 7)
+		(go uav23 8)
+
+	)
+)
