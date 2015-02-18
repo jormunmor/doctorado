@@ -20,4 +20,5 @@ For the moment, two domains are present in the planning engine:
 1. The Arcas domain. It can be run with the problem present in the example.
 
 2. The Surveillance domain. It requires to have a VREP server running in background to accept the incoming requests done
-	in the preconditions of the domain, so the VREP server must be started.
+in the preconditions of the domain, so the VREP server must be started. If not, then all move operations will be
+succesful and will return a 0 cost.

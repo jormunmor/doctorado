@@ -12,43 +12,42 @@ public class MoveCost implements Calculate {
   public Term call(List l)
   {
 
-		TermNumber fromLoc = (TermNumber) l.getHead();
-	  l = l.getRest();
-		TermNumber toLoc = (TermNumber) l.getHead();
-		int fromLocation = (int) fromLoc.getNumber();
-		int toLocation = (int) toLoc.getNumber();
-		TermNumber result = null;
+	TermNumber fromLoc = (TermNumber) l.getHead();
+	l = l.getRest();
+	TermNumber toLoc = (TermNumber) l.getHead();
+	int fromLocation = (int) fromLoc.getNumber();
+	int toLocation = (int) toLoc.getNumber();
+	TermNumber result = null;
+	String uavName = "uav#0";
+	String fromLocationName = "loc" + fromLocation;
+	String toLocationName = "loc" + toLocation;
 
-		String uavName = "Quadricopter#0";
-		String fromLocationName = "loc" + fromLocation;
-		String toLocationName = "loc" + toLocation;
+	try{
+		Runtime rt = Runtime.getRuntime();
+		String command = "/home/jorge/Escritorio/SystemPlanner/bin/vrep_client/VRepClient pathplanning " + uavName + " " + fromLocationName + " " + toLocationName;
+		//System.out.println("Executing command to VREP: " + command);
+		Process ps = rt.exec(command);
+		ps.waitFor();
+		int res = ps.exitValue();
+		if(res == 255){
+			res = -1;
+			System.out.println("Possible loss of data!!");
 
-		try{
-
-			Runtime rt = Runtime.getRuntime();
-			String command = "/home/jorge/Escritorio/SystemPlanner/bin/vrep_client/VRepClient pathplanning " + uavName + " " + fromLocationName + " " + toLocationName;
-			Process ps = rt.exec(command);
-			ps.waitFor();
-			int res = ps.exitValue();
-			if(res == 255){
-				res = -1;
-				System.out.println("Possible loss of data!!");
-
-			}
-			
-			result = new TermNumber((double) res);
-
-		} catch(IOException exception) {
-			exception.printStackTrace();
-		
-		} catch(InterruptedException exception) {
-			exception.printStackTrace();
-		
 		}
+			
+		result = new TermNumber((double) res);
 
-		System.out.println("Resultado: " + result.getNumber());
+	} catch(IOException exception) {
+		exception.printStackTrace();
 		
-		return result;
+	} catch(InterruptedException exception) {
+		exception.printStackTrace();
+		
+	}
+
+	System.out.println("The returned distance is: " + result.getNumber());
+		
+	return result;
 
   }
 
