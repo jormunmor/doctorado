@@ -94,15 +94,13 @@ public class SolverAndPersistenceFrame extends JFrame {
     private JTextField scoreField;
     private ShowConstraintMatchesDialogAction showConstraintMatchesDialogAction;
     
-    private final String solutionPath = "/home/jorge/Escritorio/SystemPlanner/ArcasAssemblyProblemSolution.xml"; ///TODO: avoid hard-conding
-    private final String planPath = "/home/jorge/Escritorio/SystemPlanner/planJShop2.txt";
-    private final String finalSolutionPath = "/home/jorge/Escritorio/SystemPlanner/tmp/ArcasAssemblyProblemSolution.xml";
-    private final String finalPlanPath = "/home/jorge/Escritorio/SystemPlanner/tmp/finalPlan.txt";
-    private final String updatedSystemConfigPath = "/home/jorge/Escritorio/SystemPlanner/UpdatedSystemConfig.xml";
-    private final String tasksPath = "/home/jorge/Escritorio/SystemPlanner/Tasks/"; // In this path will be all related task data
-    private final String outPddlPath = "/home/jorge/pruebas_software/JSHOP2/examples/quadrotor_final/problem";
-    private final String execString = "bash /home/jorge/pruebas_software/JSHOP2/executeJSHOP2.sh"; ///TODO: avoid hard-conding
-    private OptaPlannerSolutionParser parser;
+    //private final String solutionPath = System.getProperty("user.home") + "/SystemPlanner/ArcasAssemblyProblemSolution.xml"; ///TODO: avoid hard-conding
+    //private final String planPath = System.getProperty("user.home") + "/planJShop2.txt";
+    //private final String finalSolutionPath = System.getProperty("user.home") + "/SystemPlanner/tmp/ArcasAssemblyProblemSolution.xml";
+    //private final String finalPlanPath = System.getProperty("user.home") + "/SystemPlanner/tmp/finalPlan.txt";
+    //private final String updatedSystemConfigPath = System.getProperty("user.home") + "/SystemPlanner/UpdatedSystemConfig.xml";
+    //private final String execString = "bash " + System.getProperty("user.home") + "/pruebas_software/JSHOP2/executeJSHOP2.sh"; ///TODO: avoid hard-conding
+    //private OptaPlannerSolutionParser parser;
 
     public SolverAndPersistenceFrame(SolutionBusiness solutionBusiness, SolutionPanel solutionPanel,
             String titlePrefix) {
