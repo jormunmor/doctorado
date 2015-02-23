@@ -1,0 +1,15 @@
+-------------------------------------------------------------------------------
+Test set: org.optaplanner.examples.vehiclerouting.persistence.VehicleRoutingImporterTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.005 sec <<< FAILURE! - in org.optaplanner.examples.vehiclerouting.persistence.VehicleRoutingImporterTest
+initializationError(org.optaplanner.examples.vehiclerouting.persistence.VehicleRoutingImporterTest)  Time elapsed: 0.003 sec  <<< ERROR!
+java.lang.IllegalStateException: The directory dataDir (/home/jorge/git_projects/doctorado/optaplanner-distribution-6.1.0.Arcas/examples/sources/data/vehiclerouting) does not exist.
+ The working directory should be set to the directory that contains the data directory (which is not the data directory itself).
+ The working directory is different in a git clone (optaplanner/optaplanner-examples) and the release zip (examples).
+ In an IDE (IntelliJ, Eclipse, NetBeans), open the "Run configuration" to change the field "Working directory".
+	at org.optaplanner.examples.common.persistence.AbstractSolutionDao.<init>(AbstractSolutionDao.java:35)
+	at org.optaplanner.examples.common.persistence.XStreamSolutionDao.<init>(XStreamSolutionDao.java:29)
+	at org.optaplanner.examples.vehiclerouting.persistence.VehicleRoutingDao.<init>(VehicleRoutingDao.java:25)
+	at org.optaplanner.examples.vehiclerouting.persistence.VehicleRoutingImporter.<init>(VehicleRoutingImporter.java:51)
+	at org.optaplanner.examples.vehiclerouting.persistence.VehicleRoutingImporterTest.getInputFilesAsParameters(VehicleRoutingImporterTest.java:35)
+
