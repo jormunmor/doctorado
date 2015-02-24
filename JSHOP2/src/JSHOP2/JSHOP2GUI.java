@@ -609,7 +609,8 @@ public class JSHOP2GUI extends JFrame {
         
         // setting messageLabel
         messageLabel.setText( "Plan found" );
-	PrintWriter writer = new PrintWriter(System.getProperty("user.home") + "/planJShop2.txt", "UTF-8");
+	//PrintWriter writer = new PrintWriter(System.getProperty("user.home") + "/planJShop2.txt", "UTF-8");
+	PrintWriter writer = new PrintWriter("../../planJShop2.txt", "UTF-8");
 	Enumeration enumNodes = rootNode.depthFirstEnumeration();
 	while(enumNodes.hasMoreElements()) {
 		TreeNode node = (TreeNode) enumNodes.nextElement();
