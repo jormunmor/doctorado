@@ -1,0 +1,437 @@
+<OptaplannerProblem id="1">
+  <id>0</id>
+  <name>MultiUAVProblem</name>
+  <locationList id="2">
+    <Location id="3">
+      <id>0</id>
+      <latitude>37.4122489</latitude>
+      <longitude>-6.0037397</longitude>
+    </Location>
+    <Location id="4">
+      <id>1</id>
+      <latitude>37.4123496</latitude>
+      <longitude>-6.0031697</longitude>
+    </Location>
+    <Location id="5">
+      <id>2</id>
+      <latitude>37.4121735</latitude>
+      <longitude>-6.0026471</longitude>
+    </Location>
+    <Location id="6">
+      <id>3</id>
+      <latitude>37.4120792</latitude>
+      <longitude>-6.0021483</longitude>
+    </Location>
+    <Location id="7">
+      <id>4</id>
+      <latitude>37.4119785</latitude>
+      <longitude>-6.0017129</longitude>
+    </Location>
+    <Location id="8">
+      <id>5</id>
+      <latitude>37.4116955</latitude>
+      <longitude>-6.0019188</longitude>
+    </Location>
+    <Location id="9">
+      <id>6</id>
+      <latitude>37.4117773</latitude>
+      <longitude>-6.0024571</longitude>
+    </Location>
+    <Location id="10">
+      <id>7</id>
+      <latitude>37.4120226</latitude>
+      <longitude>-6.002948</longitude>
+    </Location>
+    <Location id="11">
+      <id>8</id>
+      <latitude>37.4119219</latitude>
+      <longitude>-6.0038743</longitude>
+    </Location>
+    <Location id="12">
+      <id>9</id>
+      <latitude>37.4116452</latitude>
+      <longitude>-6.0036289</longitude>
+    </Location>
+    <Location id="13">
+      <id>10</id>
+      <latitude>37.4114314</latitude>
+      <longitude>-6.0028847</longitude>
+    </Location>
+    <Location id="14">
+      <id>11</id>
+      <latitude>37.4114314</latitude>
+      <longitude>-6.0018633</longitude>
+    </Location>
+    <Location id="15">
+      <id>12</id>
+      <latitude>37.4110227</latitude>
+      <longitude>-6.0023067</longitude>
+    </Location>
+    <Location id="16">
+      <id>13</id>
+      <latitude>37.4112553</latitude>
+      <longitude>-6.0033201</longitude>
+    </Location>
+    <Location id="17">
+      <id>14</id>
+      <latitude>37.4112616</latitude>
+      <longitude>-6.004001</longitude>
+    </Location>
+    <Location id="18">
+      <id>15</id>
+      <latitude>37.4109724</latitude>
+      <longitude>-6.0033597</longitude>
+    </Location>
+    <Location id="19">
+      <id>16</id>
+      <latitude>37.4108403</latitude>
+      <longitude>-6.0027263</longitude>
+    </Location>
+    <Location id="20">
+      <id>17</id>
+      <latitude>37.4107774</latitude>
+      <longitude>-6.0018475</longitude>
+    </Location>
+    <Location id="21">
+      <id>18</id>
+      <latitude>37.4105259</latitude>
+      <longitude>-6.0029717</longitude>
+    </Location>
+    <Location id="22">
+      <id>19</id>
+      <latitude>37.4107963</latitude>
+      <longitude>-6.0041514</longitude>
+    </Location>
+  </locationList>
+  <initialLocationList id="23">
+    <InitialLocation id="24">
+      <id>0</id>
+      <location reference="17"/>
+    </InitialLocation>
+    <InitialLocation id="25">
+      <id>1</id>
+      <location reference="7"/>
+    </InitialLocation>
+    <InitialLocation id="26">
+      <id>2</id>
+      <location reference="10"/>
+    </InitialLocation>
+    <InitialLocation id="27">
+      <id>3</id>
+      <location reference="15"/>
+    </InitialLocation>
+    <InitialLocation id="28">
+      <id>4</id>
+      <location reference="20"/>
+    </InitialLocation>
+  </initialLocationList>
+  <autonomousVehicleList id="29">
+    <AutonomousVehicle id="30">
+      <id>0</id>
+      <capacity>600</capacity>
+      <initialLocation reference="24"/>
+      <nextTask id="31">
+        <id>30</id>
+        <location reference="11"/>
+        <demand>34</demand>
+        <type>mapGeneration</type>
+        <previousStandstill class="AutonomousVehicle" reference="30"/>
+        <nextTask id="32">
+          <id>0</id>
+          <location reference="3"/>
+          <demand>60</demand>
+          <type>mapGeneration</type>
+          <previousStandstill class="Task" reference="31"/>
+          <nextTask id="33">
+            <id>0</id>
+            <location reference="3"/>
+            <demand>60</demand>
+            <type>mapGeneration</type>
+            <previousStandstill class="Task" reference="32"/>
+            <nextTask id="34">
+              <id>0</id>
+              <location reference="3"/>
+              <demand>60</demand>
+              <type>mapGeneration</type>
+              <previousStandstill class="Task" reference="33"/>
+              <nextTask id="35">
+                <id>0</id>
+                <location reference="3"/>
+                <demand>60</demand>
+                <type>mapGeneration</type>
+                <previousStandstill class="Task" reference="34"/>
+                <nextTask id="36">
+                  <id>0</id>
+                  <location reference="3"/>
+                  <demand>60</demand>
+                  <type>mapGeneration</type>
+                  <previousStandstill class="Task" reference="35"/>
+                  <nextTask id="37">
+                    <id>0</id>
+                    <location reference="3"/>
+                    <demand>60</demand>
+                    <type>mapGeneration</type>
+                    <previousStandstill class="Task" reference="36"/>
+                    <nextTask id="38">
+                      <id>0</id>
+                      <location reference="3"/>
+                      <demand>60</demand>
+                      <type>mapGeneration</type>
+                      <previousStandstill class="Task" reference="37"/>
+                      <nextTask id="39">
+                        <id>0</id>
+                        <location reference="3"/>
+                        <demand>60</demand>
+                        <type>mapGeneration</type>
+                        <previousStandstill class="Task" reference="38"/>
+                        <nextTask id="40">
+                          <id>0</id>
+                          <location reference="3"/>
+                          <demand>60</demand>
+                          <type>mapGeneration</type>
+                          <previousStandstill class="Task" reference="39"/>
+                          <vehicle reference="30"/>
+                        </nextTask>
+                        <vehicle reference="30"/>
+                      </nextTask>
+                      <vehicle reference="30"/>
+                    </nextTask>
+                    <vehicle reference="30"/>
+                  </nextTask>
+                  <vehicle reference="30"/>
+                </nextTask>
+                <vehicle reference="30"/>
+              </nextTask>
+              <vehicle reference="30"/>
+            </nextTask>
+            <vehicle reference="30"/>
+          </nextTask>
+          <vehicle reference="30"/>
+        </nextTask>
+        <vehicle reference="30"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="41">
+      <id>1</id>
+      <capacity>600</capacity>
+      <initialLocation reference="25"/>
+      <nextTask id="42">
+        <id>21</id>
+        <location reference="8"/>
+        <demand>60</demand>
+        <type>surveillance</type>
+        <previousStandstill class="AutonomousVehicle" reference="41"/>
+        <nextTask id="43">
+          <id>21</id>
+          <location reference="8"/>
+          <demand>47</demand>
+          <type>surveillance</type>
+          <previousStandstill class="Task" reference="42"/>
+          <nextTask id="44">
+            <id>23</id>
+            <location reference="9"/>
+            <demand>60</demand>
+            <type>surveillance</type>
+            <previousStandstill class="Task" reference="43"/>
+            <nextTask id="45">
+              <id>23</id>
+              <location reference="9"/>
+              <demand>58</demand>
+              <type>surveillance</type>
+              <previousStandstill class="Task" reference="44"/>
+              <nextTask id="46">
+                <id>23</id>
+                <location reference="9"/>
+                <demand>60</demand>
+                <type>surveillance</type>
+                <previousStandstill class="Task" reference="45"/>
+                <nextTask id="47">
+                  <id>23</id>
+                  <location reference="9"/>
+                  <demand>60</demand>
+                  <type>surveillance</type>
+                  <previousStandstill class="Task" reference="46"/>
+                  <nextTask id="48">
+                    <id>23</id>
+                    <location reference="9"/>
+                    <demand>60</demand>
+                    <type>surveillance</type>
+                    <previousStandstill class="Task" reference="47"/>
+                    <nextTask id="49">
+                      <id>23</id>
+                      <location reference="9"/>
+                      <demand>60</demand>
+                      <type>surveillance</type>
+                      <previousStandstill class="Task" reference="48"/>
+                      <nextTask id="50">
+                        <id>23</id>
+                        <location reference="9"/>
+                        <demand>60</demand>
+                        <type>surveillance</type>
+                        <previousStandstill class="Task" reference="49"/>
+                        <nextTask id="51">
+                          <id>19</id>
+                          <location reference="6"/>
+                          <demand>60</demand>
+                          <type>mapGeneration</type>
+                          <previousStandstill class="Task" reference="50"/>
+                          <nextTask id="52">
+                            <id>19</id>
+                            <location reference="6"/>
+                            <demand>11</demand>
+                            <type>mapGeneration</type>
+                            <previousStandstill class="Task" reference="51"/>
+                            <vehicle reference="41"/>
+                          </nextTask>
+                          <vehicle reference="41"/>
+                        </nextTask>
+                        <vehicle reference="41"/>
+                      </nextTask>
+                      <vehicle reference="41"/>
+                    </nextTask>
+                    <vehicle reference="41"/>
+                  </nextTask>
+                  <vehicle reference="41"/>
+                </nextTask>
+                <vehicle reference="41"/>
+              </nextTask>
+              <vehicle reference="41"/>
+            </nextTask>
+            <vehicle reference="41"/>
+          </nextTask>
+          <vehicle reference="41"/>
+        </nextTask>
+        <vehicle reference="41"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="53">
+      <id>2</id>
+      <capacity>600</capacity>
+      <initialLocation reference="26"/>
+      <nextTask id="54">
+        <id>0</id>
+        <location reference="3"/>
+        <demand>45</demand>
+        <type>mapGeneration</type>
+        <previousStandstill class="AutonomousVehicle" reference="53"/>
+        <nextTask id="55">
+          <id>0</id>
+          <location reference="3"/>
+          <demand>60</demand>
+          <type>mapGeneration</type>
+          <previousStandstill class="Task" reference="54"/>
+          <nextTask id="56">
+            <id>11</id>
+            <location reference="4"/>
+            <demand>60</demand>
+            <type>surveillance</type>
+            <previousStandstill class="Task" reference="55"/>
+            <nextTask id="57">
+              <id>11</id>
+              <location reference="4"/>
+              <demand>60</demand>
+              <type>surveillance</type>
+              <previousStandstill class="Task" reference="56"/>
+              <nextTask id="58">
+                <id>11</id>
+                <location reference="4"/>
+                <demand>60</demand>
+                <type>surveillance</type>
+                <previousStandstill class="Task" reference="57"/>
+                <nextTask id="59">
+                  <id>11</id>
+                  <location reference="4"/>
+                  <demand>60</demand>
+                  <type>surveillance</type>
+                  <previousStandstill class="Task" reference="58"/>
+                  <nextTask id="60">
+                    <id>11</id>
+                    <location reference="4"/>
+                    <demand>60</demand>
+                    <type>surveillance</type>
+                    <previousStandstill class="Task" reference="59"/>
+                    <nextTask id="61">
+                      <id>11</id>
+                      <location reference="4"/>
+                      <demand>41</demand>
+                      <type>surveillance</type>
+                      <previousStandstill class="Task" reference="60"/>
+                      <nextTask id="62">
+                        <id>17</id>
+                        <location reference="5"/>
+                        <demand>24</demand>
+                        <type>mapGeneration</type>
+                        <previousStandstill class="Task" reference="61"/>
+                        <nextTask id="63">
+                          <id>17</id>
+                          <location reference="5"/>
+                          <demand>60</demand>
+                          <type>mapGeneration</type>
+                          <previousStandstill class="Task" reference="62"/>
+                          <vehicle reference="53"/>
+                        </nextTask>
+                        <vehicle reference="53"/>
+                      </nextTask>
+                      <vehicle reference="53"/>
+                    </nextTask>
+                    <vehicle reference="53"/>
+                  </nextTask>
+                  <vehicle reference="53"/>
+                </nextTask>
+                <vehicle reference="53"/>
+              </nextTask>
+              <vehicle reference="53"/>
+            </nextTask>
+            <vehicle reference="53"/>
+          </nextTask>
+          <vehicle reference="53"/>
+        </nextTask>
+        <vehicle reference="53"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="64">
+      <id>3</id>
+      <capacity>600</capacity>
+      <initialLocation reference="27"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="65">
+      <id>4</id>
+      <capacity>600</capacity>
+      <initialLocation reference="28"/>
+    </AutonomousVehicle>
+  </autonomousVehicleList>
+  <taskList id="66">
+    <Task reference="33"/>
+    <Task reference="40"/>
+    <Task reference="35"/>
+    <Task reference="39"/>
+    <Task reference="37"/>
+    <Task reference="34"/>
+    <Task reference="32"/>
+    <Task reference="38"/>
+    <Task reference="36"/>
+    <Task reference="55"/>
+    <Task reference="54"/>
+    <Task reference="57"/>
+    <Task reference="59"/>
+    <Task reference="56"/>
+    <Task reference="60"/>
+    <Task reference="58"/>
+    <Task reference="61"/>
+    <Task reference="63"/>
+    <Task reference="62"/>
+    <Task reference="51"/>
+    <Task reference="52"/>
+    <Task reference="42"/>
+    <Task reference="43"/>
+    <Task reference="47"/>
+    <Task reference="50"/>
+    <Task reference="44"/>
+    <Task reference="46"/>
+    <Task reference="48"/>
+    <Task reference="49"/>
+    <Task reference="45"/>
+    <Task reference="31"/>
+  </taskList>
+  <score id="67">0hard/-600636soft</score>
+</OptaplannerProblem>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<plans>
+	<assemblyPlan>
+		<metric value="4"/>
+		<assemblyOperation action="base">
+			<effect>
+				<at part="Product21" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</effect>
+		</assemblyOperation>
+		<assemblyOperation action="base">
+			<effect>
+				<at part="Product31" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</effect>
+		</assemblyOperation>
+		<assemblyOperation action="connection"><vector x="0" y="0" z="-1"/>
+			<precondition>
+				<at part="Product21" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</precondition>
+			<precondition>
+				<at part="Product31" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</precondition>
+			<effect>
+				<at part="Product81" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</effect>
+		</assemblyOperation>
+		<assemblyOperation action="connection"><vector x="0" y="0" z="-1"/>
+			<precondition>
+				<at part="Product21" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</precondition>
+			<precondition>
+				<at part="Product31" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</precondition>
+			<effect>
+				<at part="Product41" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</effect>
+		</assemblyOperation>
+		<assemblyOperation action="connection"><vector x="0" y="0" z="-1"/>
+			<precondition>
+				<at part="Product41" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</precondition>
+			<precondition>
+				<at part="Product81" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</precondition>
+			<effect>
+				<at part="Product111" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</effect>
+		</assemblyOperation>
+		<assemblyOperation action="connection"><vector x="0" y="0" z="-1"/>
+			<precondition>
+				<at part="Product41" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</precondition>
+			<precondition>
+				<at part="Product81" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</precondition>
+			<effect>
+				<at part="Product51" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</effect>
+		</assemblyOperation>
+		<assemblyOperation action="connection"><vector x="0" y="0" z="-1"/>
+			<precondition>
+				<at part="Product51" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</precondition>
+			<precondition>
+				<at part="Product111" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</precondition>
+			<effect>
+				<at part="Product71" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</effect>
+		</assemblyOperation>
+		<assemblyOperation action="connection"><vector x="0" y="0" z="-1"/>
+			<precondition>
+				<at part="Product51" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</precondition>
+			<precondition>
+				<at part="Product111" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</precondition>
+			<effect>
+				<at part="Product61" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</effect>
+		</assemblyOperation>
+		<assemblyOperation action="connection"><vector x="0" y="0" z="-1"/>
+			<precondition>
+				<at part="Product61" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</precondition>
+			<precondition>
+				<at part="Product71" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</precondition>
+			<effect>
+				<at part="Product101" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</effect>
+		</assemblyOperation>
+		<assemblyOperation action="connection"><vector x="0" y="0" z="-1"/>
+			<precondition>
+				<at part="Product61" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</precondition>
+			<precondition>
+				<at part="Product71" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</precondition>
+			<effect>
+				<at part="Product91" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0" y="0.0" z="0.0"/>
+			</effect>
+		</assemblyOperation>
+	</assemblyPlan>
+</plans>

@@ -1,0 +1,751 @@
+(defdomain quadrotor (
+		
+		;;;;;;;;;;;;;;;;;;;;;
+		;;;;;;OPERATORS;;;;;;
+		;;;;;;;;;;;;;;;;;;;;;
+
+		(:operator (!takeoff ?uav ?start ?duration)
+			
+			;precondition		
+			( 
+				(quadrotor ?uav) (landed ?uav) (battery ?uav ?r) (read-time battery ?uav ?t0) 
+				(write-time battery ?uav ?t1) (assign ?end (call + ?start ?duration)) (call >= (call - ?r ?duration) 0) 
+			)
+				 			
+			;delete list 
+			( (landed ?uav) (battery ?uav ?r) (read-time battery ?uav ?t0) (write-time battery ?uav ?t1) )
+			
+			;add list
+			( (hovering ?uav) (battery ?uav (call - ?r ?duration)) (read-time battery ?uav ?end) (write-time battery ?uav ?end) )
+		
+		)
+			
+		(:operator (!land ?uav ?start ?duration)
+			
+			;precondition
+			( (quadrotor ?uav) (hovering ?uav) (battery ?uav ?r) (read-time battery ?uav ?t0)
+				(write-time battery ?uav ?t1) (assign ?end (call + ?start ?duration)) (call >= (call - ?r ?duration) 0) ) 
+			
+			;delete list
+			( (hovering ?uav) (battery ?uav ?r) (read-time battery ?uav ?t0) (write-time battery ?uav ?t1) )
+			
+			;add list
+			( (landed ?uav) (battery ?uav (call - ?r ?duration)) (read-time battery ?uav ?end) (write-time battery ?uav ?end) )
+		
+		)
+
+		(:operator (!do_move ?uav ?source ?destination ?start ?duration) ; source may be equal to destination, but this implies that duration must be 0
+			
+			;precondition
+			( 
+				(quadrotor ?uav) (hovering ?uav) (location ?source) (location ?destination) (at ?uav ?source)
+				(battery ?uav ?r) (read-time battery ?uav ?t0) (write-time battery ?uav ?t1) 
+				(read-time at ?uav ?t2) (write-time at ?uav ?t3) (assign ?end (call + ?start ?duration))
+				(call >= (call - ?r ?duration) 0)
+			) 
+			
+			;delete list
+			( 
+				(at ?uav ?source) (battery ?uav ?r) (read-time battery ?uav ?t0) (write-time battery ?uav ?t1) 
+				(read-time at ?uav ?t2) (write-time at ?uav ?t3) 
+			)
+			
+			;add list
+			( 
+				(at ?uav ?destination) (battery ?uav (call - ?r ?duration)) (read-time battery ?uav ?end) 
+				(write-time battery ?uav ?end) (read-time at ?uav ?end) (write-time at ?uav ?end) 
+			)
+		
+		)
+
+		(:operator (!do_move ?uav1 ?uav2 ?source ?destination ?start ?duration) ; source may be equal to destination, but this implies that duration must be 0
+			
+			;precondition
+			( 
+				(quadrotor ?uav1) (hovering ?uav1) (quadrotor ?uav2) (hovering ?uav2) (location ?source) (location ?destination)
+				(at ?uav1 ?source) (at ?uav2 ?source)
+				(battery ?uav1 ?r1) (read-time battery ?uav1 ?t0) (write-time battery ?uav1 ?t1) 
+				(read-time at ?uav1 ?t2) (write-time at ?uav1 ?t3)
+				(battery ?uav2 ?r2) (read-time battery ?uav2 ?t4) (write-time battery ?uav2 ?t5) 
+				(read-time at ?uav2 ?t6) (write-time at ?uav2 ?t7) 
+				(assign ?end (call + ?start ?duration))
+				(call >= (call - ?r1 ?duration) 0) (call >= (call - ?r2 ?duration) 0)
+			) 
+			
+			;delete list
+			( 
+				(at ?uav1 ?source) (at ?uav2 ?source) (battery ?uav1 ?r1) (battery ?uav2 ?r2) 
+				(read-time battery ?uav1 ?t0) (write-time battery ?uav1 ?t1) (read-time at ?uav1 ?t2) (write-time at ?uav1 ?t3) 
+				(read-time battery ?uav2 ?t4) (write-time battery ?uav2 ?t5) (read-time at ?uav2 ?t6) (write-time at ?uav2 ?t7)
+			)
+			
+			;add list
+			( 
+				(at ?uav1 ?destination) (at ?uav2 ?destination) (battery ?uav1 (call - ?r1 ?duration)) (battery ?uav2 (call - ?r2 ?duration)) 
+				(read-time battery ?uav1 ?end) (write-time battery ?uav1 ?end) (read-time at ?uav1 ?end) (write-time at ?uav1 ?end)
+				(read-time battery ?uav2 ?end) (write-time battery ?uav2 ?end) (read-time at ?uav2 ?end) (write-time at ?uav2 ?end)  
+			)
+		
+		)
+
+		(:operator (!do_mission ?missionType ?uav ?loc ?subarea_id ?start ?duration)
+			
+			;precondition
+			( 
+				(quadrotor ?uav) (hovering ?uav) (location ?loc) (at ?uav ?loc) (battery ?uav ?r) (read-time battery ?uav ?t0)
+				(write-time battery ?uav ?t1) (assign ?end (call + ?start ?duration)) (call >= (call - ?r ?duration) 0)
+				(subarea ?loc ?subarea_id ?percentage ?cost) (unassigned ?loc ?subarea_id)
+			) 
+			
+			;delete list
+			( (battery ?uav ?r) (read-time battery ?uav ?t0) (write-time battery ?uav ?t1) (unassigned ?loc ?subarea_id) )
+			
+			;add list
+			( (battery ?uav (call - ?r ?duration)) (read-time battery ?uav ?end) (write-time battery ?uav ?end) (assigned ?loc ?subarea_id) )
+		
+		)
+
+		(:operator (!do_synchro_mission ?missionType ?uav ?loc ?objectName ?start ?duration) ; ?depends is a list that contains all the objects that must be done before ?objectName
+			
+			;precondition		
+			( 
+				(quadrotor ?uav) (object ?objectName) (hovering ?uav) (location ?loc) (at ?uav ?loc)
+				(transported ?objectName) (at ?objectName ?uav) (transporting ?uav)	
+				(depends ?objectName ?dependency_list) 
+				(forall (?z)((object ?z) (call Member ?z ?dependency_list)) (done_with ?z))
+				(read-time at ?uav ?t0) (read-time at ?objectName ?t1) (write-time at ?objectName ?t2)  (assign ?end (call + ?start ?duration))
+				(remaining_tasks ?remaining) (call > ?remaining 0) (assign ?left (call - ?remaining 1))
+			)
+				 			
+			;delete list 
+			( 	
+				(read-time at ?uav ?t0) (read-time at ?objectName ?t1) (write-time at ?objectName ?t2) (transported ?objectName) 
+				(at ?objectName ?uav) (transporting ?uav) (remaining_tasks ?remaining)
+			)
+			
+			;add list
+			( 	
+				(read-time at ?uav ?end) (read-time at ?objectName ?end) (write-time at ?objectName ?end) (at ?objectName ?loc) (done_with ?objectName) (remaining_tasks ?left)
+			)
+		
+		)
+
+		(:operator (!do_synchro_mission ?missionType ?uav1 ?uav2 ?loc ?objectName ?start ?duration) ; ?depends is a list that contains all the objects that must be done before ?objectName
+			
+			;precondition		
+			( 
+				(quadrotor ?uav1) (quadrotor ?uav2) (object ?objectName) (hovering ?uav1) (hovering ?uav2) (location ?loc) (at ?uav1 ?loc) (at ?uav2 ?loc)
+				(transported ?objectName) (at ?objectName ?uav1) (at ?objectName ?uav2) (transporting ?uav1) (transporting ?uav2)
+				(depends ?objectName ?dependency_list) (forall (?z)((object ?z) (call Member ?z ?dependency_list)) (done_with ?z))
+				(read-time at ?uav1 ?t0) (read-time at ?uav2 ?t1) (read-time at ?objectName ?t2) (write-time at ?objectName ?t3)  (assign ?end (call + ?start ?duration))
+				(remaining_tasks ?remaining) (call > ?remaining 0) (assign ?left (call - ?remaining 1))
+			)
+				 			
+			;delete list 
+			( 	
+				(read-time at ?uav1 ?t0) (read-time at ?uav2 ?t1) (read-time at ?objectName ?t2) (write-time at ?objectName ?t3) (transported ?objectName) 
+				(at ?objectName ?uav1) (at ?objectName ?uav2) (transporting ?uav1) (transporting ?uav2) (remaining_tasks ?remaining)
+			)
+			
+			;add list
+			( 	
+				(read-time at ?uav1 ?end) (read-time at ?uav2 ?end) (read-time at ?objectName ?end) (write-time at ?objectName ?end) 
+				(at ?objectName ?loc) (done_with ?objectName) (remaining_tasks ?left)
+			)
+		
+		)
+
+		(:operator (!pick_object ?uav ?objectName ?start ?duration)
+			
+			;precondition		
+			( 
+				(quadrotor ?uav) (object ?objectName) (hovering ?uav) (location ?loc) (at ?objectName ?loc) (at ?uav ?loc) 
+				(not (transported ?objectName)) (not (transporting ?uav)) (assign ?end (call + ?start ?duration))
+				(read-time at ?uav ?t0) (read-time at ?objectName ?t1) (write-time at ?objectName ?t2)
+			)
+				 			
+			;delete list 
+			( (read-time at ?uav ?t0) (read-time at ?objectName ?t1) (write-time at ?objectName ?t2) (at ?objectName ?loc) )
+			
+			;add list
+			( 	
+				(transporting ?uav) (transported ?objectName) (at ?objectName ?uav) (read-time at ?uav ?end) 
+				(read-time at ?objectName ?end) (write-time at ?objectName ?end) 
+			)
+		
+		)
+
+		(:operator (!pick_object ?uav1 ?uav2 ?objectName ?start ?duration)
+			
+			;precondition		
+			( 
+				(quadrotor ?uav1) (quadrotor ?uav2) (object ?objectName) (hovering ?uav1) (hovering ?uav2) (location ?loc) (at ?objectName ?loc)
+				(at ?uav1 ?loc) (at ?uav2 ?loc)	(not (transported ?objectName)) (not (transporting ?uav1)) (not (transporting ?uav2)) 
+				(assign ?end (call + ?start ?duration))	(read-time at ?uav1 ?t1) (read-time at ?uav2 ?t2) (read-time at ?objectName ?t3) (write-time at ?objectName ?t4)
+			)
+				 			
+			;delete list 
+			( (read-time at ?uav1 ?t1) (read-time at ?uav2 ?t2) (read-time at ?objectName ?t3) (write-time at ?objectName ?t4) (at ?objectName ?loc) )
+			
+			;add list
+			( 	
+				(transporting ?uav1) (transporting ?uav2) (transported ?objectName) (at ?objectName ?uav1) (at ?objectName ?uav2)
+				(read-time at ?uav1 ?end) (read-time at ?uav2 ?end) (read-time at ?objectName ?end) (write-time at ?objectName ?end) 
+			)
+		
+		)
+
+		(:operator (!synchro_wait ?uav ?start ?duration)
+			
+			;precondition		
+			( 
+				(assign ?end (call + ?start ?duration)) (read-time at ?uav ?t0)
+			)
+				 			
+			;delete list 
+			( 	
+				(read-time at ?uav ?t0)
+			)
+			
+			;add list
+			( 	
+				(read-time at ?uav ?end)
+			)
+		
+		)
+
+		(:operator (!assembly_plan_finished)
+			
+			;precondition		
+			( 
+				(remaining_tasks 0)
+			)
+				 			
+			;delete list 
+			( 	
+				
+			)
+			
+			;add list
+			( 	
+				
+			)
+		
+		)
+
+		(:operator (!first_branch ?objectName)
+			
+			;precondition		
+			( 
+				(object ?objectName)
+			)
+				 			
+			;delete list 
+			( 	
+				
+			)
+			
+			;add list
+			( 	
+				
+			)
+		
+		)
+
+		(:operator (!second_branch)
+			
+			;precondition		
+			( 
+
+			)
+				 			
+			;delete list 
+			( 	
+				
+			)
+			
+			;add list
+			( 	
+				
+			)
+		
+		)
+	
+		;;;;;;;;;;;;;;;;;;;;;
+		;;;;;;;METHODS;;;;;;;
+		;;;;;;;;;;;;;;;;;;;;;
+
+		(:method (mission ?missionType ?uav ?targetLocation ?percentage) ; old missions
+			
+			;precondition 
+			( 
+				(quadrotor ?uav) (location ?targetLocation) (not (at ?uav ?targetLocation)) (quadrotor ?b) (not (at ?b ?targetLocation)) (unused ?b) (call != ?uav ?b) 
+				(assign ?uavList (?uav ?b)) (quadrotor ?c) (call Member ?c ?uavList)
+			)
+
+			;subtasks
+			( (move ?c ?targetLocation) (try_mission ?missionType ?c ?targetLocation ?percentage) )
+
+			;precondition 
+			( 
+				(quadrotor ?uav) (location ?targetLocation) (at ?uav ?targetLocation) (quadrotor ?b) (at ?b ?targetLocation) (unused ?b)  (call != ?uav ?b) 
+				(assign ?uavList (?uav ?b)) (quadrotor ?c) (call Member ?c ?uavList) 
+			)
+
+			;subtasks
+			( (try_mission ?missionType ?c ?targetLocation ?percentage) )
+
+		)
+
+		(:method (synchro_mission ?missionType ?uav ?targetLocation ?objectName ?workload) ; arcas missions
+			
+			;precondition (uav not at objectName location)
+			( 
+				(quadrotor ?uav) (object ?objectName) (location ?loc) (at ?objectName ?loc)
+				(location ?targetLocation)  (not (transporting ?uav)) (not (transported ?objectName)) (not (done_with ?objectName))
+				(depends ?objectName ?dependency_list) 
+				(forall (?z)((object ?z) (call Member ?z ?dependency_list)) (done_with ?z))
+				
+
+			)
+
+			;subtasks
+			( 
+				(move ?uav ?loc) (synchro_wait ?uav ?objectName) (pick_object ?uav ?objectName) 
+				(move ?uav ?targetLocation) (try_synchro_mission ?missionType ?uav ?targetLocation ?objectName) 
+			)
+
+		)
+
+		(:method (synchro_mission ?missionType ?uav1 ?uav2 ?targetLocation ?objectName ?workload) ; arcas missions
+			
+			;precondition
+			( 
+				(quadrotor ?uav1) (quadrotor ?uav2) (object ?objectName) (location ?loc) (at ?objectName ?loc) 
+				(location ?targetLocation)  (not (transporting ?uav1)) (not (transporting ?uav2)) (not (transported ?objectName)) (not (done_with ?objectName))
+				(depends ?objectName ?dependency_list) 
+				(forall (?z)((object ?z) (call Member ?z ?dependency_list)) (done_with ?z))
+				
+
+			)
+
+			;subtasks
+			( 
+				(move ?uav1 ?loc) (move ?uav2 ?loc) (synchro_wait_v ?uav1 ?uav2 ) (synchro_wait ?uav1 ?objectName) (synchro_wait ?uav2 ?objectName) (pick_object ?uav1 ?uav2 ?objectName) 
+				(move ?uav1 ?uav2 ?targetLocation) (try_synchro_mission ?missionType ?uav1 ?uav2 ?targetLocation ?objectName) 
+			)
+
+		)
+
+		(:method (try_mission ?missionType ?uav ?loc ?percentage)  ; old missions
+			
+			;precondition 
+			( 
+				(quadrotor ?uav) (location ?loc) (at ?uav ?loc) (battery ?uav ?r) 
+				(read-time battery ?uav ?t0) (write-time battery ?uav ?t1) (read-time at ?uav ?t2) (write-time at ?uav ?t3)  
+				(subarea ?loc ?subarea_id ?percentage ?cost) (unassigned ?loc ?subarea_id)  ; cost is in meters 
+				(assign ?duration (call Ceil (call / ?cost 10)) ) ; We are supposing 10m/s velocity
+				(assign ?start (call Max ?t0 ?t1 ?t2 ?t3))
+				(call >= (call - ?r ?duration) 0) ; we are supposing 8600 mA/h batteries
+			)
+
+			;subtasks
+			( (!do_mission ?missionType ?uav ?loc ?subarea_id ?start ?duration) )
+
+		)
+
+		(:method (try_synchro_mission ?missionType ?uav ?targetLocation ?objectName) ; arcas missions
+			
+			;precondition
+			( 
+				(quadrotor ?uav) (object ?objectName) (hovering ?uav) (location ?targetLocation) (at ?uav ?targetLocation)
+				(transported ?objectName) (at ?objectName ?uav) (transporting ?uav)
+				(depends ?objectName ?dependency_list) 
+				(forall (?z)((object ?z) (call Member ?z ?dependency_list)) (done_with ?z))
+				(read-time at ?uav ?t0) (read-time at ?objectName ?t1) (write-time at ?objectName ?t2) 
+				(assign ?duration 20) (assign ?start (call Max ?t0 ?t1 ?t2))  
+			) 
+			
+			;subtasks
+			( (!do_synchro_mission ?missionType ?uav ?targetLocation ?objectName ?start ?duration) )
+		
+		)
+
+		(:method (try_synchro_mission ?missionType ?uav1 ?uav2 ?targetLocation ?objectName) ; arcas missions
+			
+			;precondition
+			( 
+				(quadrotor ?uav1) (quadrotor ?uav2) (object ?objectName) (hovering ?uav1) (hovering ?uav2) (location ?targetLocation) 
+				(at ?uav1 ?targetLocation) (at ?uav2 ?targetLocation) (transported ?objectName) (at ?objectName ?uav1) (at ?objectName ?uav2) 
+				(transporting ?uav1) (transporting ?uav2)
+				(depends ?objectName ?dependency_list) (forall (?z)((object ?z) (call Member ?z ?dependency_list)) (done_with ?z))
+				(read-time at ?uav1 ?t0) (read-time at ?uav2 ?t1) (read-time at ?objectName ?t2) (write-time at ?objectName ?t3)  
+				(assign ?duration 30) (assign ?start (call Max ?t0 ?t1 ?t2 ?t3))  
+			) 
+			
+			;subtasks
+			( (!do_synchro_mission ?missionType ?uav1 ?uav2 ?targetLocation ?objectName ?start ?duration) )
+		
+		)
+
+		(:method (pick_object ?uav ?objectName)
+			
+			;precondition
+			( 
+				(quadrotor ?uav) (object ?objectName) (hovering ?uav) (location ?loc) (at ?objectName ?loc) (at ?uav ?loc) (not (transporting ?uav))
+				(read-time at ?uav ?t0) (read-time at ?objectName ?t1) (write-time at ?objectName ?t2) (not (transported ?objectName))
+				(assign ?duration 20) (assign ?start (call Max ?t0 ?t1 ?t2))  
+			) 
+			
+			;subtasks
+			( (!pick_object ?uav ?objectName ?start ?duration) )
+		
+		)
+
+		(:method (pick_object ?uav1 ?uav2 ?objectName)
+			
+			;precondition
+			( 
+				(quadrotor ?uav1) (quadrotor ?uav2) (object ?objectName) (hovering ?uav1) (hovering ?uav2) (location ?loc) (at ?objectName ?loc)
+				(at ?uav1 ?loc) (at ?uav2 ?loc) (not (transporting ?uav1)) (not (transporting ?uav2))
+				(read-time at ?uav1 ?t1) (read-time at ?uav2 ?t2) (call = ?t1 ?t2) (read-time at ?objectName ?t3) (write-time at ?objectName ?t4) (not (transported ?objectName))
+				(assign ?duration 30) (assign ?start (call Max ?t1 ?t3 ?t4))  
+			) 
+			
+			;subtasks
+			( (!pick_object ?uav1 ?uav2 ?objectName ?start ?duration) )
+		
+		)
+
+
+		(:method (move ?uav ?nextLoc)
+			
+			;precondition 
+			( 
+
+				(quadrotor ?uav) (landed ?uav) (location ?currentLoc) (at ?uav ?currentLoc) (location ?nextLoc)
+				(battery ?uav ?r) (assign ?cost (call MoveCost ?currentLoc ?nextLoc)) (call >= ?cost 0) (assign ?duration (call Ceil (call / ?cost 10)) ) ; We are supposing 10m/s velocity
+				(call >= (call - ?r (call + ?duration 15)) 0) ; have to take into account the cost of takeing off;
+
+			)
+			
+			;subtasks
+			( (takeoff ?uav) (move_mission ?uav ?nextLoc ?duration) )
+
+			;precondition 
+			( 
+
+				(quadrotor ?uav) (hovering ?uav) (location ?currentLoc) (at ?uav ?currentLoc) (location ?nextLoc)
+				(battery ?uav ?r) (assign ?cost (call MoveCost ?currentLoc ?nextLoc)) (call >= ?cost 0) (assign ?duration (call Ceil (call / ?cost 10)) ) ; We are supposing 10m/s velocity
+ 				(call >= (call - ?r ?duration) 0)
+
+			)
+
+			;subtasks
+			( (move_mission ?uav ?nextLoc ?duration) )
+
+		)
+
+		(:method (move ?uav1 ?uav2 ?nextLoc) ; they are synchronized, this comes from the synchro_mission
+			;precondition 
+			( 
+
+				(quadrotor ?uav1) (hovering ?uav1) (quadrotor ?uav2) (hovering ?uav2) (location ?currentLoc) (at ?uav1 ?currentLoc) (at ?uav2 ?currentLoc) (location ?nextLoc)
+				(battery ?uav1 ?r1) (battery ?uav2 ?r2) (assign ?cost (call MoveCost ?currentLoc ?nextLoc)) (call >= ?cost 0) (assign ?duration (call Ceil (call / ?cost 10)) ) ; We are supposing 10m/s velocity
+ 				(call >= (call - ?r1 ?duration) 0) (call >= (call - ?r2 ?duration) 0)
+
+			)
+
+			;subtasks
+			( (move_mission ?uav1 ?uav2 ?nextLoc ?duration) )
+
+		)
+
+		(:method (move_mission ?uav ?nextLoc ?duration)
+			
+			;precondition
+			( 
+				(quadrotor ?uav) (hovering ?uav) (location ?currentLoc) (at ?uav ?currentLoc) (location ?nextLoc)
+				(battery ?uav ?r) (read-time battery ?uav ?t0) (write-time battery ?uav ?t1) 
+				(read-time at ?uav ?t2) (write-time at ?uav ?t3) 
+				(assign ?start (call Max ?t0 ?t1 ?t2 ?t3))
+				(call >= (call - ?r ?duration) 0)
+			)
+			
+			;subtasks
+			( (!do_move ?uav ?currentLoc ?nextLoc ?start ?duration) )
+			
+		)
+
+		(:method (move_mission ?uav1 ?uav2 ?nextLoc ?duration)
+			
+			;precondition
+			( 
+				(quadrotor ?uav1) (quadrotor ?uav2) (hovering ?uav1) (hovering ?uav2) (location ?currentLoc) (at ?uav1 ?currentLoc) (at ?uav2 ?currentLoc) (location ?nextLoc)
+				(battery ?uav1 ?r1) (battery ?uav2 ?r2) (read-time battery ?uav1 ?t0) (write-time battery ?uav1 ?t1) 
+				(read-time at ?uav1 ?t2) (write-time at ?uav1 ?t3) (read-time battery ?uav2 ?t4) (write-time battery ?uav2 ?t5) 
+				(read-time at ?uav2 ?t6) (write-time at ?uav2 ?t7) 
+				(assign ?start (call Max ?t0 ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?t7))
+				(call >= (call - ?r1 ?duration) 0) (call >= (call - ?r2 ?duration) 0)
+			)
+			
+			;subtasks
+			( (!do_move ?uav1 ?uav2 ?currentLoc ?nextLoc ?start ?duration) )
+			
+		)
+
+		(:method (takeoff ?uav)
+			
+			;precondition		
+			( 
+				(quadrotor ?uav) (landed ?uav) (battery ?uav ?r) (read-time battery ?uav ?t0) (write-time battery ?uav ?t1)
+				(assign ?duration 15) (assign ?start (call Max ?t0 ?t1)) (call >= (call - ?r ?duration) 0) 
+			)
+
+			;subtasks
+			( (!takeoff ?uav ?start ?duration) )
+		
+		)
+
+		(:method (land ?uav)
+			
+			;precondition
+			( 
+				(quadrotor ?uav) (hovering ?uav) (battery ?uav ?r) (read-time battery ?uav ?t0) (write-time battery ?uav ?t1)
+				(assign ?duration 15) (assign ?start (call Max ?t0 ?t1)) (call >= (call - ?r ?duration) 0) 
+			) 
+			
+			;subtasks
+			( (!land ?uav ?start ?duration) )
+		
+		)
+
+		(:method (synchro_wait ?uav ?objectName)
+
+			;precondition ; the write time of the UAV is after those of the dependent objects -> wait 0 seconds
+			( 
+				(quadrotor ?uav) (object ?objectName) (not (done_with ?objectName))
+				(depends ?objectName ?dependency_list) 
+				(forall (?z)((object ?z) (call Member ?z ?dependency_list)) (done_with ?z))
+				(write-time at ?uav ?t0) (read-time at ?uav ?t1) (assign ?maxi (call Max ?t0 ?t1)) ; TODO: check read/write times for correctness				
+				(assign ?maxTime (call LastWriteTime ?dependency_list))
+				(call >= ?maxi ?maxTime) (assign ?start ?maxi) (assign ?duration 0) 
+
+			)
+
+			;subtasks
+			( (!synchro_wait ?uav ?start ?duration) )
+
+			;precondition ; the write time of the UAV is before those of the dependent objects -> wait MAX seconds
+			( 
+				(quadrotor ?uav) (object ?objectName) (not (done_with ?objectName))
+				(depends ?objectName ?dependency_list) 
+				(forall (?z)((object ?z) (call Member ?z ?dependency_list)) (done_with ?z))
+				(write-time at ?uav ?t0) (read-time at ?uav ?t1) (assign ?maxi (call Max ?t0 ?t1)) ; TODO: check read/write times for correctness				
+				(assign ?maxTime (call LastWriteTime ?dependency_list))				
+				(call < ?maxi ?maxTime) (assign ?start ?maxi) (assign ?duration (call - ?maxTime ?maxi)) 
+
+			)
+
+			;subtasks
+			( (!synchro_wait ?uav ?start ?duration) )
+
+	
+		)
+
+		(:method (synchro_wait_v ?uav1 ?uav2)
+
+			;precondition ; the write time of the uav1 is after that of the uav2 -> uav2 must wait
+			( 
+				(quadrotor ?uav1) (quadrotor ?uav2) 
+				(write-time at ?uav1 ?t1) (write-time at ?uav2 ?t2)
+				(call >= ?t1 ?t2) (assign ?duration (call - ?t1 ?t2))				
+				(assign ?start ?t2)
+
+			)
+
+			;subtasks
+			( (!synchro_wait ?uav2 ?start ?duration) )
+
+			;precondition ; the write time of the uav1 is before that of the uav2 -> uav1 must wait
+			( 
+				(quadrotor ?uav1) (quadrotor ?uav2) 
+				(write-time at ?uav1 ?t1) (write-time at ?uav2 ?t2)
+				(call < ?t1 ?t2) (assign ?duration (call - ?t2 ?t1))				
+				(assign ?start ?t1)
+
+			)
+
+			;subtasks
+			( (!synchro_wait ?uav1 ?start ?duration) )
+
+	
+		)
+
+		;;;;;NEW ARCAS MODEL;;;;;
+		
+		(:method (mission ?missionType) ; arcas missions
+			
+			;precondition (arcas mission) (there are remaining parts without preconditions (void dependency_list), assemble the undependant first) (two uavs)
+			( 
+
+				(call = ?missionType assemble)
+				(remaining_tasks ?remaining)
+				(call > ?remaining 0)
+				(object ?objectName) (not(done_with ?objectName)) (depends ?objectName ?dependency_list) (call = ?dependency_list ())
+				(location ?loc) (assembly_location ?objectName ?loc)				
+				(quadrotor ?uav1) (quadrotor ?uav2) (call != ?uav1 ?uav2) (assigned ?objectName ?uav1) (assigned ?objectName ?uav2) 
+				
+
+			)
+
+			;subtasks
+			( 
+
+				(synchro_mission assemble ?uav1 ?uav2 ?loc ?objectName 100) (mission ?missionType)
+
+			)
+
+			;precondition (arcas mission) (there are remaining parts without preconditions (void dependency_list), assemble the undependant first) (one uav)
+			( 
+
+				(call = ?missionType assemble)
+				(remaining_tasks ?remaining)
+				(call > ?remaining 0)
+				(object ?objectName) (not(done_with ?objectName)) (depends ?objectName ?dependency_list) (call = ?dependency_list ())
+				(quadrotor ?uav) (assigned ?objectName ?uav) (location ?loc) (assembly_location ?objectName ?loc)
+				
+
+			)
+
+			;subtasks
+			( 
+
+				(synchro_mission assemble ?uav ?loc ?objectName 100) (mission ?missionType)
+
+			)
+
+			;precondition (arcas mission) (there are remaining parts with preconditions, assemble first those which have the preconditions met) (two uavs)
+			( 
+
+				(call = ?missionType assemble)
+				(remaining_tasks ?remaining)
+				(call > ?remaining 0)
+				(object ?objectName) (not(done_with ?objectName)) (depends ?objectName ?dependency_list)
+				(location ?loc) (assembly_location ?objectName ?loc)
+				(forall (?z)((object ?z) (call Member ?z ?dependency_list)) (done_with ?z))
+				(quadrotor ?uav1) (quadrotor ?uav2) (call != ?uav1 ?uav2) (assigned ?objectName ?uav1) (assigned ?objectName ?uav2)
+
+
+			)
+
+			;subtasks
+			( 
+
+				(synchro_mission assemble ?uav1 ?uav2 ?loc ?objectName 100) (mission ?missionType)
+
+			)
+
+			;precondition (arcas mission) (there are remaining parts with preconditions, assemble first those which have the preconditions met) (one uav)
+			( 
+
+				(call = ?missionType assemble)
+				(remaining_tasks ?remaining)
+				(call > ?remaining 0)
+				(object ?objectName) (not(done_with ?objectName)) (depends ?objectName ?dependency_list)
+				(forall (?z)((object ?z) (call Member ?z ?dependency_list)) (done_with ?z))
+				(quadrotor ?uav) (assigned ?objectName ?uav) (location ?loc) (assembly_location ?objectName ?loc)
+
+
+			)
+
+			;subtasks
+			( 
+
+				(synchro_mission assemble ?uav ?loc ?objectName 100) (mission ?missionType)
+
+			)
+
+			;precondition (arcas mission)  (there are no remaining parts)
+			( 
+
+				(call = ?missionType assemble)
+				(remaining_tasks 0)
+				
+
+			)
+
+			;subtasks
+			( 
+
+				(!assembly_plan_finished) 
+
+			)
+
+		)
+
+		(:method (mission ?missionType ?dummy) ; arcas missions
+
+			;precondition (arcas mission) (there are remaining parts without preconditions (void dependency_list), assemble the undependant first)
+			( 
+
+				(call = ?missionType assemble)
+				(remaining_tasks ?remaining)
+				(call > ?remaining 0)
+				(object ?objectName) (not(done_with ?objectName)) (depends ?objectName ?dependency_list) (call = ?dependency_list ())
+				(quadrotor ?uav) (assigned ?objectName ?uav) (location ?loc) (assembly_location ?objectName ?loc)
+				
+
+			)
+
+			;subtasks
+			( 
+
+				(synchro_mission assemble ?uav ?loc ?objectName 100) (mission ?missionType)
+
+			)
+
+			;precondition (arcas mission) (there are remaining parts with preconditions, assemble first those which have the preconditions met)
+			( 
+
+				(call = ?missionType assemble)
+				(remaining_tasks ?remaining)
+				(call > ?remaining 0)
+				(object ?objectName) (not(done_with ?objectName)) (depends ?objectName ?dependency_list)
+				(forall (?z)((object ?z) (call Member ?z ?dependency_list)) (done_with ?z))
+				(quadrotor ?uav) (assigned ?objectName ?uav) (location ?loc) (assembly_location ?objectName ?loc)
+
+
+			)
+
+			;subtasks
+			( 
+
+				(synchro_mission assemble ?uav ?loc ?objectName 100) (mission ?missionType)
+
+			)
+
+			;precondition (arcas mission)  (there are no remaining parts)
+			( 
+
+				(call = ?missionType assemble)
+				(remaining_tasks 0)
+				
+
+			)
+
+			;subtasks
+			( 
+
+				(!assembly_plan_finished) 
+
+			)
+
+		)
+		
+
+	)
+)
+
+
+

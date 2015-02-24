@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<plans>
+	<assemblyPlan>
+		<metric value="2" />
+		<assemblyOperation action="base">
+			<effect>
+				<at part="base1" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0"
+					rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0"
+					y="0.0" z="0.0" />
+			</effect>
+		</assemblyOperation>
+		<assemblyOperation action="connection">
+			<vector x="0" y="0" z="-1" />
+			<precondition>
+				<at part="base1" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0"
+					rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0"
+					y="0.0" z="0.0" />
+			</precondition>
+			<effect>
+				<at part="leftAssembly1" rot11="1.0" rot12="0.0" rot13="0.0"
+					rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0"
+					x="0.0" y="0.0" z="0.0" />
+			</effect>
+		</assemblyOperation>
+		<assemblyOperation action="connection">
+			<vector x="0" y="0" z="-1" />
+			<precondition>
+				<at part="base1" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0"
+					rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0"
+					y="0.0" z="0.0" />
+			</precondition>
+			<effect>
+				<at part="rightAssembly1" rot11="1.0" rot12="0.0" rot13="0.0"
+					rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0"
+					x="0.0" y="0.0" z="0.0" />
+			</effect>
+		</assemblyOperation>
+		<assemblyOperation action="connection">
+			<vector x="0" y="0" z="-1" />
+			<precondition>
+				<at part="rightAssembly1" rot11="1.0" rot12="0.0" rot13="0.0"
+					rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0"
+					x="0.0" y="0.0" z="0.0" />
+			</precondition>
+			<precondition>
+				<at part="leftAssembly1" rot11="1.0" rot12="0.0" rot13="0.0"
+					rot21="0.0" rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0"
+					x="0.0" y="0.0" z="0.0" />
+			</precondition>
+			<effect>
+				<at part="top1" rot11="1.0" rot12="0.0" rot13="0.0" rot21="0.0"
+					rot22="1.0" rot23="0.0" rot31="0.0" rot32="0.0" rot33="1.0" x="0.0"
+					y="0.0" z="0.0" />
+			</effect>
+		</assemblyOperation>
+	</assemblyPlan>
+</plans>

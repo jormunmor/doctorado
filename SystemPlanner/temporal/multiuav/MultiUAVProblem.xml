@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<OptaplannerProblem id="1">
+  <id>0</id>
+  <name>MultiUAVProblem</name>
+  <locationList id="2">
+    <Location id="3">
+      <id>0</id>
+      <latitude>37.4122489</latitude>
+      <longitude>-6.0037397</longitude>
+    </Location>
+    <Location id="4">
+      <id>1</id>
+      <latitude>37.4123496</latitude>
+      <longitude>-6.0031697</longitude>
+    </Location>
+    <Location id="5">
+      <id>2</id>
+      <latitude>37.4121735</latitude>
+      <longitude>-6.0026471</longitude>
+    </Location>
+    <Location id="6">
+      <id>3</id>
+      <latitude>37.4120792</latitude>
+      <longitude>-6.0021483</longitude>
+    </Location>
+    <Location id="7">
+      <id>4</id>
+      <latitude>37.4119785</latitude>
+      <longitude>-6.0017129</longitude>
+    </Location>
+    <Location id="8">
+      <id>5</id>
+      <latitude>37.4116955</latitude>
+      <longitude>-6.0019188</longitude>
+    </Location>
+    <Location id="9">
+      <id>6</id>
+      <latitude>37.4117773</latitude>
+      <longitude>-6.0024571</longitude>
+    </Location>
+    <Location id="10">
+      <id>7</id>
+      <latitude>37.4120226</latitude>
+      <longitude>-6.002948</longitude>
+    </Location>
+    <Location id="11">
+      <id>8</id>
+      <latitude>37.4119219</latitude>
+      <longitude>-6.0038743</longitude>
+    </Location>
+    <Location id="12">
+      <id>9</id>
+      <latitude>37.4116452</latitude>
+      <longitude>-6.0036289</longitude>
+    </Location>
+    <Location id="13">
+      <id>10</id>
+      <latitude>37.4114314</latitude>
+      <longitude>-6.0028847</longitude>
+    </Location>
+    <Location id="14">
+      <id>11</id>
+      <latitude>37.4114314</latitude>
+      <longitude>-6.0018633</longitude>
+    </Location>
+    <Location id="15">
+      <id>12</id>
+      <latitude>37.4110227</latitude>
+      <longitude>-6.0023067</longitude>
+    </Location>
+    <Location id="16">
+      <id>13</id>
+      <latitude>37.4112553</latitude>
+      <longitude>-6.0033201</longitude>
+    </Location>
+    <Location id="17">
+      <id>14</id>
+      <latitude>37.4112616</latitude>
+      <longitude>-6.004001</longitude>
+    </Location>
+    <Location id="18">
+      <id>15</id>
+      <latitude>37.4109724</latitude>
+      <longitude>-6.0033597</longitude>
+    </Location>
+    <Location id="19">
+      <id>16</id>
+      <latitude>37.4108403</latitude>
+      <longitude>-6.0027263</longitude>
+    </Location>
+    <Location id="20">
+      <id>17</id>
+      <latitude>37.4107774</latitude>
+      <longitude>-6.0018475</longitude>
+    </Location>
+    <Location id="21">
+      <id>18</id>
+      <latitude>37.4105259</latitude>
+      <longitude>-6.0029717</longitude>
+    </Location>
+    <Location id="22">
+      <id>19</id>
+      <latitude>37.4107963</latitude>
+      <longitude>-6.0041514</longitude>
+    </Location>
+  </locationList>
+  <initialLocationList id="23">
+    <InitialLocation id="24">
+      <id>0</id>
+      <location reference="17"/>
+    </InitialLocation>
+    <InitialLocation id="25">
+      <id>1</id>
+      <location reference="7"/>
+    </InitialLocation>
+    <InitialLocation id="26">
+      <id>2</id>
+      <location reference="10"/>
+    </InitialLocation>
+    <InitialLocation id="27">
+      <id>3</id>
+      <location reference="15"/>
+    </InitialLocation>
+    <InitialLocation id="28">
+      <id>4</id>
+      <location reference="20"/>
+    </InitialLocation>
+  </initialLocationList>
+  <autonomousVehicleList id="29">
+    <AutonomousVehicle id="30">
+      <id>0</id>
+      <capacity>600</capacity>
+      <initialLocation reference="24"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="31">
+      <id>1</id>
+      <capacity>600</capacity>
+      <initialLocation reference="25"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="32">
+      <id>2</id>
+      <capacity>600</capacity>
+      <initialLocation reference="26"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="33">
+      <id>3</id>
+      <capacity>600</capacity>
+      <initialLocation reference="27"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="34">
+      <id>4</id>
+      <capacity>600</capacity>
+      <initialLocation reference="28"/>
+    </AutonomousVehicle>
+  </autonomousVehicleList>
+  <taskList id="35">
+    <Task id="36">
+      <id>0</id>
+      <location reference="3"/>
+      <type>mapGeneration</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="37">
+      <id>0</id>
+      <location reference="3"/>
+      <type>mapGeneration</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="38">
+      <id>0</id>
+      <location reference="3"/>
+      <type>mapGeneration</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="39">
+      <id>0</id>
+      <location reference="3"/>
+      <type>mapGeneration</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="40">
+      <id>0</id>
+      <location reference="3"/>
+      <type>mapGeneration</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="41">
+      <id>0</id>
+      <location reference="3"/>
+      <type>mapGeneration</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="42">
+      <id>0</id>
+      <location reference="3"/>
+      <type>mapGeneration</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="43">
+      <id>0</id>
+      <location reference="3"/>
+      <type>mapGeneration</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="44">
+      <id>0</id>
+      <location reference="3"/>
+      <type>mapGeneration</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="45">
+      <id>0</id>
+      <location reference="3"/>
+      <type>mapGeneration</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="46">
+      <id>0</id>
+      <location reference="3"/>
+      <type>mapGeneration</type>
+      <demand>45</demand>
+    </Task>
+    <Task id="47">
+      <id>11</id>
+      <location reference="4"/>
+      <type>surveillance</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="48">
+      <id>11</id>
+      <location reference="4"/>
+      <type>surveillance</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="49">
+      <id>11</id>
+      <location reference="4"/>
+      <type>surveillance</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="50">
+      <id>11</id>
+      <location reference="4"/>
+      <type>surveillance</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="51">
+      <id>11</id>
+      <location reference="4"/>
+      <type>surveillance</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="52">
+      <id>11</id>
+      <location reference="4"/>
+      <type>surveillance</type>
+      <demand>41</demand>
+    </Task>
+    <Task id="53">
+      <id>17</id>
+      <location reference="5"/>
+      <type>mapGeneration</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="54">
+      <id>17</id>
+      <location reference="5"/>
+      <type>mapGeneration</type>
+      <demand>24</demand>
+    </Task>
+    <Task id="55">
+      <id>19</id>
+      <location reference="6"/>
+      <type>mapGeneration</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="56">
+      <id>19</id>
+      <location reference="6"/>
+      <type>mapGeneration</type>
+      <demand>11</demand>
+    </Task>
+    <Task id="57">
+      <id>21</id>
+      <location reference="8"/>
+      <type>surveillance</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="58">
+      <id>21</id>
+      <location reference="8"/>
+      <type>surveillance</type>
+      <demand>47</demand>
+    </Task>
+    <Task id="59">
+      <id>23</id>
+      <location reference="9"/>
+      <type>surveillance</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="60">
+      <id>23</id>
+      <location reference="9"/>
+      <type>surveillance</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="61">
+      <id>23</id>
+      <location reference="9"/>
+      <type>surveillance</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="62">
+      <id>23</id>
+      <location reference="9"/>
+      <type>surveillance</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="63">
+      <id>23</id>
+      <location reference="9"/>
+      <type>surveillance</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="64">
+      <id>23</id>
+      <location reference="9"/>
+      <type>surveillance</type>
+      <demand>60</demand>
+    </Task>
+    <Task id="65">
+      <id>23</id>
+      <location reference="9"/>
+      <type>surveillance</type>
+      <demand>58</demand>
+    </Task>
+    <Task id="66">
+      <id>30</id>
+      <location reference="11"/>
+      <type>mapGeneration</type>
+      <demand>34</demand>
+    </Task>
+  </taskList>
+</OptaplannerProblem>

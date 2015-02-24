@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SystemConfig>
+  <id>0</id>
+  <name>ArcasAssemblyProblem</name>
+  <locationList>
+    <Location>
+      <id>1</id>
+      <latitude>34.0</latitude>
+      <longitude>31.0</longitude>
+    </Location>
+    <Location>
+      <id>2</id>
+      <latitude>45.0</latitude>
+      <longitude>45.0</longitude>
+    </Location>
+    <Location>
+      <id>3</id>
+      <latitude>70.0</latitude>
+      <longitude>80.0</longitude>
+    </Location>
+    <Location>
+      <id>4</id>
+      <latitude>100.0</latitude>
+      <longitude>55.0</longitude>
+    </Location>
+    <Location>
+      <id>5</id>
+      <latitude>85.0</latitude>
+      <longitude>61.0</longitude>
+    </Location>
+    <Location>
+      <id>6</id>
+      <latitude>59.0</latitude>
+      <longitude>35.0</longitude>
+    </Location>
+    <Location>
+      <id>7</id>
+      <latitude>45.0</latitude>
+      <longitude>60.0</longitude>
+    </Location>
+    <Location>
+      <id>8</id>
+      <latitude>69.0</latitude>
+      <longitude>65.0</longitude>
+    </Location>
+    <Location> <!-- MOUNT LOCATION -->
+      <id>9</id>
+      <latitude>100</latitude>
+      <longitude>100</longitude>
+    </Location>
+  </locationList>
+  <initialLocationList>
+    <InitialLocation>
+      <id>1</id>
+      <location referenceId="1"/>
+    </InitialLocation>
+    <InitialLocation>
+      <id>2</id>
+      <location referenceId="2"/>
+    </InitialLocation>
+    <InitialLocation>
+      <id>3</id>
+      <location referenceId="3"/>
+    </InitialLocation>
+    <InitialLocation>
+      <id>4</id>
+      <location referenceId="4"/>
+    </InitialLocation>
+  </initialLocationList>
+  <autonomousVehicleList>
+    <AutonomousVehicle>
+      <id>1</id>
+      <capacity>71</capacity>
+      <initialLocation referenceId="1"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle>
+      <id>2</id>
+      <capacity>71</capacity>
+      <initialLocation referenceId="2"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle>
+      <id>3</id>
+      <capacity>71</capacity>
+      <initialLocation referenceId="3"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle>
+      <id>4</id>
+      <capacity>71</capacity>
+      <initialLocation referenceId="4"/>
+    </AutonomousVehicle>
+  </autonomousVehicleList>
+  <taskList>
+    <Task> <!-- base1 -->
+      <id>0</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="9"/> <!-- where the task has to be done -->
+      <objectName>base1</objectName>
+      <objectLocation referenceId="5"/> <!-- where the object is located -->
+      <demand>27</demand>
+    <preconditionList/>
+      <goalOrder>0</goalOrder>
+    </Task>
+    <Task> <!-- leftAssembly1 -->
+      <id>1</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="9"/>
+      <objectName>leftAssembly1</objectName>
+      <objectLocation referenceId="6"/>
+      <demand>15</demand>
+    <preconditionList>
+        <TaskDependency id="27">
+          <id>0</id>
+        </TaskDependency>
+      </preconditionList>
+      <goalOrder>1</goalOrder>
+    </Task>
+    <Task> <!-- rightAssembly1 -->
+      <id>2</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="9"/>
+      <objectName>rightAssembly1</objectName>
+      <objectLocation referenceId="7"/>
+      <demand>7</demand>
+    <preconditionList>
+        <TaskDependency id="28">
+          <id>0</id>
+        </TaskDependency>
+      </preconditionList>
+      <goalOrder>2</goalOrder>
+    </Task>
+    <Task> <!-- top1 -->
+      <id>3</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="9"/>
+      <objectName>top1</objectName>
+      <objectLocation referenceId="8"/>
+      <demand>4</demand>
+    <preconditionList>
+        <TaskDependency id="29">
+          <id>2</id>
+        </TaskDependency>
+        <TaskDependency id="30">
+          <id>1</id>
+        </TaskDependency>
+      </preconditionList>
+      <goalOrder>3</goalOrder>
+    </Task>
+  </taskList>
+</SystemConfig>

@@ -1,0 +1,304 @@
+<SystemConfig>
+  <id>0</id>
+  <name>ArcasAssemblyProblem</name>
+  <discreteValue>450</discreteValue>
+  <locationList>
+    <Location> <!-- Box001 Object -->
+      <id>1</id>
+      <x>6.700</x>
+      <y>6.930</y>
+      <z>1.663</z>
+    </Location>
+    <Location> <!-- Box001 Mount -->
+      <id>2</id>
+      <x>5.317</x>
+      <y>-6.906</y>
+      <z>0.165</z>
+    </Location>
+    <Location> <!-- Box002 Object -->
+      <id>3</id>
+      <x>7.300</x>
+      <y>6.930</y>
+      <z>1.663</z>
+    </Location>
+    <Location> <!-- Box002 Mount -->
+      <id>4</id>
+      <x>7.132</x>
+      <y>-5.091</y>
+      <z>0.165</z>
+    </Location>
+    <Location> <!-- Box003 Object -->
+      <id>5</id>
+      <x>-7.400</x>
+      <y>7.000</y>
+      <z>1.663</z>
+    </Location>
+    <Location> <!-- Box003 Mount -->
+      <id>6</id>
+      <x>6.225</x>
+      <y>-5.998</y>
+      <z>0.819</z>
+    </Location>
+    <Location> <!-- Box004 Object -->
+      <id>7</id>
+      <x>5.750</x>
+      <y>6.930</y>
+      <z>1.663</z>
+    </Location>
+    <Location> <!-- Box004 Mount -->
+      <id>8</id>
+      <x>7.040</x>
+      <y>-4.999</y>
+      <z>0.819</z>
+    </Location>
+    <Location> <!-- Box005 Object -->
+      <id>9</id>
+      <x>6.170</x>
+      <y>6.930</y>
+      <z>1.663</z>
+    </Location>
+    <Location> <!-- Box005 Mount -->
+      <id>10</id>
+      <x>7.224</x>
+      <y>-5.183</y>
+      <z>0.819</z>
+    </Location>
+    <Location>  <!-- Box006 Object -->
+      <id>11</id>
+      <x>-6.700</x>
+      <y>6.930</y>
+      <z>1.663</z>
+    </Location>
+    <Location> <!-- Box006 Mount --> 
+      <id>12</id>
+      <x>5.409</x>
+      <y>-6.998</y>
+      <z>0.819</z>
+    </Location>
+    <Location>  <!-- Box007 Object -->
+      <id>13</id>
+      <x>-8.200</x>
+      <y>6.930</y>
+      <z>1.663</z>
+    </Location>
+    <Location> <!-- Box007 Mount --> 
+      <id>14</id>
+      <x>5.225</x>
+      <y>-6.814</y>
+      <z>0.819</z>
+    </Location>
+    <Location>  <!-- Box008 Object -->
+      <id>15</id>
+      <x>-8.000</x>
+      <y>-5.800</y>
+      <z>1.663</z>
+    </Location>
+    <Location> <!-- Box008 Mount -->
+      <id>16</id>
+      <x>5.015</x>
+      <y>-7.208</y>
+      <z>0.492</z>
+    </Location>
+    <Location> <!-- Box009 Object -->
+      <id>17</id>
+      <x>-6.700</x>
+      <y>-5.800</y>
+      <z>1.663</z>
+    </Location>
+    <Location> <!-- Box009 Mount -->
+      <id>18</id>
+      <x>5.620</x>
+      <y>-6.603</y>
+      <z>0.492</z>
+    </Location>
+    <Location> <!-- Box010 Object -->
+      <id>19</id>
+      <x>-8.000</x>
+      <y>-7.300</y>
+      <z>1.663</z>
+    </Location>
+    <Location> <!-- Box010 Mount -->
+      <id>20</id>
+      <x>6.830</x>
+      <y>-5.393</y>
+      <z>0.492</z>
+    </Location>
+    <Location> <!-- Box011 Object -->
+      <id>21</id>
+      <x>-6.700</x>
+      <y>-7.300</y>
+      <z>1.663</z>
+    </Location>
+    <Location> <!-- Box011 Mount -->
+      <id>22</id>
+      <x>7.435</x>
+      <y>-4.789</y>
+      <z>0.492</z>
+    </Location>
+    <Location> <!-- Despegue 1 -->
+      <id>23</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location> <!-- Despegue 2 -->
+      <id>24</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location> <!-- Despegue 3 -->
+      <id>25</id>
+      <x>0</x>
+      <y>7</y>
+      <z>0.5</z>
+    </Location>
+    <Location> <!-- Despegue 4 -->
+      <id>26</id>
+      <x>0</x>
+      <y>-7</y>
+      <z>0.5</z>
+    </Location>
+  </locationList>
+  <initialLocationList>
+    <InitialLocation>
+      <id>1</id>
+      <location referenceId="23"/>
+    </InitialLocation>
+    <InitialLocation>
+      <id>2</id>
+      <location referenceId="24"/>
+    </InitialLocation>
+    <InitialLocation>
+      <id>3</id>
+      <location referenceId="25"/>
+    </InitialLocation>
+    <InitialLocation>
+      <id>4</id>
+      <location referenceId="26"/>
+    </InitialLocation>
+  </initialLocationList>
+  <autonomousVehicleList>
+    <AutonomousVehicle>
+      <id>1</id>
+      <capacity>450</capacity>
+      <initialLocation referenceId="1"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle>
+      <id>2</id>
+      <capacity>450</capacity>
+      <initialLocation referenceId="2"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle>
+      <id>3</id>
+      <capacity>450</capacity>
+      <initialLocation referenceId="3"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle>
+      <id>4</id>
+      <capacity>450</capacity>
+      <initialLocation referenceId="4"/>
+    </AutonomousVehicle>
+  </autonomousVehicleList>
+  <taskList>
+    <Task> 
+      <id>0</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="2"/> 
+      <objectName>Box001-lib</objectName>
+      <objectLocation referenceId="1"/>
+      <demand>900</demand>
+    </Task>
+    <Task>
+      <id>1</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="4"/>
+      <objectName>Box002-lib</objectName>
+      <objectLocation referenceId="3"/>
+      <demand>900</demand>
+    </Task>
+    <Task>
+      <id>2</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="6"/>
+      <objectName>Box003-lib</objectName>
+      <objectLocation referenceId="5"/>
+      <demand>900</demand>
+    </Task>
+    <Task>
+      <id>3</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="8"/>
+      <objectName>Box004-lib</objectName>
+      <objectLocation referenceId="7"/>
+      <demand>300</demand>
+    </Task>
+    <Task>
+      <id>4</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="10"/>
+      <objectName>Box005-lib</objectName>
+      <objectLocation referenceId="9"/>
+      <demand>300</demand>
+    </Task>
+    <Task> 
+      <id>5</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="12"/>
+      <objectName>Box006-lib</objectName>
+      <objectLocation referenceId="11"/>
+      <demand>300</demand>
+    </Task>
+    <Task>
+      <id>6</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="14"/>
+      <objectName>Box007-lib</objectName>
+      <objectLocation referenceId="13"/>
+      <demand>300</demand>
+    </Task>
+    <Task>
+      <id>7</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="16"/>
+      <objectName>Box008-lib</objectName>
+      <objectLocation referenceId="15"/>
+      <demand>300</demand>
+    </Task>
+    <Task>
+      <id>8</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="18"/>
+      <objectName>Box009-lib</objectName>
+      <objectLocation referenceId="17"/>
+      <demand>300</demand>
+    </Task>
+    <Task>
+      <id>9</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="20"/>
+      <objectName>Box010-lib</objectName>
+      <objectLocation referenceId="19"/>
+      <demand>300</demand>
+    </Task>
+    <Task>
+      <id>10</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="22"/>
+      <objectName>Box011-lib</objectName>
+      <objectLocation referenceId="21"/>
+      <demand>300</demand>
+    </Task>
+  </taskList>
+</SystemConfig>
