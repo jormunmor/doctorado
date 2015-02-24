@@ -3,9 +3,13 @@ CONFIG += console
 CONFIG -= qt
 
 SOURCES += \
-    findpath.cpp
+    findpath.cpp \
+    MapSearchNode.cpp \
+    MapProblem.cpp
 
 HEADERS += \
     stlastar.h \
-    fsa.h
+    fsa.h \
+    MapSearchNode.h \
+    MapProblem.h
 
