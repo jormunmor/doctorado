@@ -44,7 +44,8 @@ using namespace std;
 
 // Fixed size memory allocator can be disabled to compare performance
 // Uses std new and delete instead if you turn it off
-#define USE_FSA_MEMORY 1
+//#define USE_FSA_MEMORY 1
+#define USE_FSA_MEMORY 0
 
 // disable warning that debugging information has lines that are truncated
 // occurs in stl headers
@@ -122,7 +123,7 @@ public: // methods
 		m_State( SEARCH_STATE_NOT_INITIALISED ),
 		m_CurrentSolutionNode( NULL ),
 #if USE_FSA_MEMORY
-		m_FixedSizeAllocator( 1000 ),
+        m_FixedSizeAllocator( 1000 ),
 #endif
 		m_AllocateNodeCount(0),
 		m_CancelRequest( false )

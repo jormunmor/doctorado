@@ -3,9 +3,9 @@ CONFIG += console
 CONFIG -= qt
 
 SOURCES += \
-    findpath.cpp \
     MapSearchNode.cpp \
-    MapProblem.cpp
+    MapProblem.cpp \
+    main.cpp
 
 HEADERS += \
     stlastar.h \
@@ -13,3 +13,8 @@ HEADERS += \
     MapSearchNode.h \
     MapProblem.h
 
+unix|win32: LIBS += -lopencv_core
+
+unix|win32: LIBS += -lopencv_imgproc
+
+unix|win32: LIBS += -lopencv_highgui

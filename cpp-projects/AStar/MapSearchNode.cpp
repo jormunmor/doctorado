@@ -30,10 +30,7 @@ bool MapSearchNode::IsSameState( MapSearchNode &rhs )
 
 void MapSearchNode::PrintNodeInfo()
 {
-    char str[100];
-    sprintf( str, "Node position : (%d,%d)\n", x,y );
-
-    cout << str;
+    printf("Node position : (%d,%d)\n", x, y);
 }
 
 
@@ -79,7 +76,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
 
     // push each possible move except allowing the search to go backwards
 
-    if( (problem->GetMap( x-1, y ) < 9)
+    if( (problem->GetMap( x-1, y ) < 255)
         && !((parent_x == x-1) && (parent_y == y))
       )
     {
@@ -87,7 +84,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
         astarsearch->AddSuccessor( NewNode );
     }
 
-    if( (problem->GetMap( x, y-1 ) < 9)
+    if( (problem->GetMap( x, y-1 ) < 255)
         && !((parent_x == x) && (parent_y == y-1))
       )
     {
@@ -95,7 +92,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
         astarsearch->AddSuccessor( NewNode );
     }
 
-    if( (problem->GetMap( x+1, y ) < 9)
+    if( (problem->GetMap( x+1, y ) < 255)
         && !((parent_x == x+1) && (parent_y == y))
       )
     {
@@ -104,7 +101,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
     }
 
 
-    if( (problem->GetMap( x, y+1 ) < 9)
+    if( (problem->GetMap( x, y+1 ) < 255)
         && !((parent_x == x) && (parent_y == y+1))
         )
     {
@@ -119,8 +116,9 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
 // of our map the answer is the map terrain value at this node since that is
 // conceptually where we're moving
 
-float MapSearchNode::GetCost( MapSearchNode &successor )
+float MapSearchNode::GetCost(MapSearchNode &successor)
 {
     return (float) problem->GetMap( x, y );
 
 }
+

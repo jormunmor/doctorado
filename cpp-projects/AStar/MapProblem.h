@@ -3,15 +3,21 @@
 
 #include <iostream>
 
+/*
+ * This class represents a navigation problem. It contains a map
+ * with the navigation costs as well as the width and height of
+ * the map.
+*/
+
 class MapProblem
 {
 public:
     int width;
     int height;
-    int *world_map;
+    unsigned char *world_map;
 
-    MapProblem(int w, int h, int *map);
-    int GetMap(int x, int y);
+    MapProblem(int w, int h, unsigned char *map);
+    unsigned char GetMap(int x, int y);
     void PrintMap();
 
 };
