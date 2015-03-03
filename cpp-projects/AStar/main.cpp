@@ -522,7 +522,7 @@ void executeCvExample4()
 void executeCvExample5()
 {
     // Create and show the initial state image
-    Mat initialStateImage = imread("maze12.png", CV_LOAD_IMAGE_COLOR);
+    Mat initialStateImage = imread("maze23.png", CV_LOAD_IMAGE_COLOR);
     namedWindow("Color Image", cv::WINDOW_AUTOSIZE);// Create a window for display.
     imshow("Color Image", initialStateImage);
     waitKey(0);
@@ -531,59 +531,90 @@ void executeCvExample5()
     Mat costImage(initialStateImage.rows, initialStateImage.cols, CV_8UC1);
     cvtColor(initialStateImage, costImage, COLOR_BGR2GRAY);
 
-    // Add a +1 to each black pixel to avoid cost of 0. This is a costly operation.
-    Mat blackPixels = costImage==0; // now each pixel with a 0 contains a 255, and 0 the rest. But we need a one instead of 255.
+    // To avoid having the heuristic a small value compared with the actual cost for
+    // reaching a given pixel, the cost values for each cell have to be small. For so,
+    // we will give each 3-channel color gray conversion a new cost.
+
+    // Create a map of grayTones->costValues.
+    std::map<uchar,uchar> costMap;
+    uchar cost = 0;
+
+    // Set the cost to black pixels
+    costMap[0] = cost;
+    cost++;
+
+    // Red color
+    Mat redColorPix(1, 1, CV_8UC3); // Mat that holds a single color pixel.
+    redColorPix.at<Vec3b>(cv::Point(0, 0)) = cv::Vec3b(0, 0, 255); // Pure red.
+    Mat redToGrayCorrespondencePix(1, 1, CV_8UC1); // Mat that holds the gray correspondence of the color pixel
+    cvtColor(redColorPix, redToGrayCorrespondencePix, COLOR_BGR2GRAY);
+    unsigned char redToGrayColorValue = redToGrayCorrespondencePix.at<uchar>(cv::Point(0,0));
+    // Set the cost to red pixels
+    costMap[redToGrayColorValue] = cost;
+    cost++;
+
+    // Green color (the destination)
+    Mat greenColorPix(1, 1, CV_8UC3); // Mat that holds a single color pixel.
+    greenColorPix.at<Vec3b>(cv::Point(0, 0)) = cv::Vec3b(0, 255, 0); // Pure green.
+    Mat greenToGrayCorrespondencePix(1, 1, CV_8UC1); // Mat that holds the gray correspondence of the color pixel
+    cvtColor(greenColorPix, greenToGrayCorrespondencePix, COLOR_BGR2GRAY);
+    unsigned char greenToGrayColorValue = greenToGrayCorrespondencePix.at<uchar>(cv::Point(0,0));
+    // Set the cost to green pixels
+    costMap[greenToGrayColorValue] = 100;
+    cost++;
+
+    // Update the cost image to set the new costs.
+    for(int j=0; j<costImage.rows; j++)
+    {
+        for(int i=0; i<costImage.cols; i++)
+        {
+            cv::Point p(i,j);
+            map<uchar,uchar>::iterator it = costMap.find(costImage.at<uchar>(p));
+            if ( it == costMap.end() ) { // not found, put an obstacle
+              costImage.at<uchar>(p) = 255;
+
+            } else { // found, put the cost assigned to that gray color value
+              costImage.at<uchar>(p) = it->second;
+
+            }
+        }
+    }
+
+    // Get the index matrix for each of the colors
+    Mat blackPixels = costImage==0;
+    Mat greenPixels = costImage==costMap[greenToGrayColorValue];
+    Mat redPixels = costImage==costMap[redToGrayColorValue];
+    // Uncomment to add a +1 to each black pixel to avoid cost of 0. This is a costly operation.
     //cv::Mat binaryAdd(blackPixels.size(), blackPixels.type());    // Binary image.
     //cv::threshold(blackPixels, binaryAdd, 0, 1, cv::THRESH_BINARY);    //Apply thresholding
     //costImage += binaryAdd; // execute the +1 sum to black pixels
-
-    //TO_DEBUG//
-    Mat colorPixPrueba(1, 1, CV_8UC3); // Mat that holds a single color pixel.
-    colorPixPrueba.at<Vec3b>(cv::Point(0, 0)) = initialStateImage.at<Vec3b>(cv::Point(0, 0));
-    Mat grayCorrespondencePixPrueba(1, 1, CV_8UC1); // Mat that holds the gray correspondence of the color pixel
-    cvtColor(colorPixPrueba, grayCorrespondencePixPrueba, COLOR_BGR2GRAY);
-    unsigned char grayColorValuePrueba = grayCorrespondencePixPrueba.at<uchar>(cv::Point(0,0));
-    cout << "Surrounding value: " << (int) grayColorValuePrueba << endl;
-
-    /*
-    int val = 0;
-    if(val < 1)
-    {
-        return;
-
-    }
-    */
 
     // Show the cost image
     namedWindow("Cost Image", cv::WINDOW_AUTOSIZE);
     imshow("Cost Image", costImage);
     waitKey(0);
+
+    // Show the blacks
     namedWindow("Black Pixels Position", cv::WINDOW_AUTOSIZE);
     imshow("Black Pixels Position", blackPixels);
     waitKey(0);
 
-    // Choose the destination color, the pixels where the blacks will be placed (green in that case)
-    Mat colorPix(1, 1, CV_8UC3); // Mat that holds a single color pixel.
-    colorPix.at<Vec3b>(cv::Point(0, 0)) = cv::Vec3b(0, 255, 0); // Pure green.
-    Mat grayCorrespondencePix(1, 1, CV_8UC1); // Mat that holds the gray correspondence of the color pixel
-    cvtColor(colorPix, grayCorrespondencePix, COLOR_BGR2GRAY);
-    unsigned char grayColorValue = grayCorrespondencePix.at<uchar>(cv::Point(0,0));
-
-    //now we must recover the indexes where the end pixels are (the color pixels)
-    Mat colorPixels = costImage==grayColorValue;
-    namedWindow("Destination Pixels Position", cv::WINDOW_AUTOSIZE);// Create a window for display.
-    imshow("Destination Pixels Position", colorPixels);
+    // Show the greens
+    namedWindow("Green Pixels Position", cv::WINDOW_AUTOSIZE);// Create a window for display.
+    imshow("Green Pixels Position", greenPixels);
     waitKey(0);
 
-    // get the destination pixels, the contours
-    std::vector<cv::Point> destinationPixelsVector;  // vector with the contours index
-    destinationPixelsVector = getContourVector(colorPixels);
+    // Show the reds
+    namedWindow("Red Pixels Position", cv::WINDOW_AUTOSIZE);// Create a window for display.
+    imshow("Red Pixels Position", redPixels);
+    waitKey(0);
 
-    // Now we must recover the indexes where the start pixels are (the black pixels).
-    // These index will be used as a key to recover the position of the black pixels.
-    // This is due to the fact that black pixels can be moved if they are in the path
-    // calculated for any other black pixel.
-    std::vector<cv::Point> blackPixelsVector;  // vector with the initial index position used as key for the map
+    // Get the destination pixels, the contours
+    std::vector<cv::Point> destinationPixelsVector;  // vector with the contours index
+    destinationPixelsVector = getContourVector(greenPixels);
+
+    // Get the start pixels (the black pixels).
+    std::vector<cv::Point> blackPixelsVector;
     fillIndexVector(blackPixels, blackPixelsVector);
 
     // Initialize random seed
@@ -604,10 +635,11 @@ void executeCvExample5()
             // calculate the new contour and update the loop variables. This
             // balances the growing of the destination region around its border
             // and fastens the A* algorithm.
-            cout << "Destination border depleted. New contour computed." << endl;
-            colorPixels = costImage==grayColorValue;
-            destinationPixelsVector = getContourVector(colorPixels);
+
+            greenPixels = costImage==costMap[greenToGrayColorValue];
+            destinationPixelsVector = getContourVector(greenPixels);
             contourIndex = 0;
+            cout << "Destination border depleted. New contour computed." << endl;
         }
         cv::Point endPixel = destinationPixelsVector.at(contourIndex);
 
@@ -615,7 +647,7 @@ void executeCvExample5()
         Vec3b endPositionColor = initialStateImage.at<Vec3b>(endPixel);
         // Paint the pixel to move with the destination color and update its cost.
         initialStateImage.at<Vec3b>(startPixel) = endPositionColor;
-        costImage.at<uchar>(startPixel) = grayColorValue;
+        costImage.at<uchar>(startPixel) = costMap[greenToGrayColorValue];
         movePixel(startPixel, endPixel, initialStateImage, costImage, blackPixelsVector); // TODO independize the function to only move pixels and not color the startPixel
         contourIndex++;
         //imshow("Color World Map", initialStateImage);

@@ -15,6 +15,7 @@ public:
     int width;
     int height;
     unsigned char *world_map;
+    const unsigned char obstacle_value = (unsigned char) 255;
 
     MapProblem(int w, int h, unsigned char *map);
     unsigned char GetMap(int x, int y);

@@ -76,7 +76,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
 
     // push each possible move except allowing the search to go backwards
 
-    if( (problem->GetMap( x-1, y ) < 255)
+    if( (problem->GetMap( x-1, y ) < problem->obstacle_value)
         && !((parent_x == x-1) && (parent_y == y))
       )
     {
@@ -84,7 +84,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
         astarsearch->AddSuccessor( NewNode );
     }
 
-    if( (problem->GetMap( x, y-1 ) < 255)
+    if( (problem->GetMap( x, y-1 ) < problem->obstacle_value)
         && !((parent_x == x) && (parent_y == y-1))
       )
     {
@@ -92,7 +92,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
         astarsearch->AddSuccessor( NewNode );
     }
 
-    if( (problem->GetMap( x+1, y ) < 255)
+    if( (problem->GetMap( x+1, y ) < problem->obstacle_value)
         && !((parent_x == x+1) && (parent_y == y))
       )
     {
@@ -101,7 +101,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
     }
 
 
-    if( (problem->GetMap( x, y+1 ) < 255)
+    if( (problem->GetMap( x, y+1 ) < problem->obstacle_value)
         && !((parent_x == x) && (parent_y == y+1))
         )
     {
