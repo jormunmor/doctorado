@@ -33,7 +33,7 @@ using namespace std;
 // images
 Mat markerMask; // image that contains the seeds
 Mat imgOneChannel; // this image is used to mark in the markerMask image the exterior and forbidden areas as a segmented area
-Mat viewportImg; // extended image with white borders
+Mat expandedPolygonImage; // extended image with white borders
 Mat wshed; // image with the final segmentation
 
 // polygon vectors
@@ -120,22 +120,22 @@ int main( int argc, char** argv )
 
     // The following image is the bigger one that contains the polygon image inside. The background is white.
     // Also the additional rows and cols will be white.
-    viewportImg = Mat(img0.rows + added_lines, img0.cols + added_lines, CV_8UC3);
-    viewportImg = Scalar::all(255);
+    expandedPolygonImage = Mat(img0.rows + added_lines, img0.cols + added_lines, CV_8UC3);
+    expandedPolygonImage = Scalar::all(255);
 
     // To paint the polygon image in the bigger one, we create a ROI with appropriate height and width.
     // An offset of added_lines/2 is applied to center the ROI.
     cv::Rect roi( cv::Point(added_lines/2, added_lines/2), cv::Size(img0.cols, img0.rows));
-    cv::Mat destinationROI = viewportImg(roi);
+    cv::Mat destinationROI = expandedPolygonImage(roi);
     img0.copyTo( destinationROI );
 
     // The watershed algorithm paints in white the barriers between segmented areas. If we use the vertex to place
     // the seeds, then we need an additional border for the polygon to let the algorithm create a barrier between the
     // polygon itself and the outter white background.
     // Thickness may be a problem if the additional pixels are added inner to the contour.
-    drawContours( viewportImg, viewport_polygon, 0, Scalar(0, 0, 0), 2);
-    cvtColor(viewportImg, markerMask, COLOR_BGR2GRAY); // markerMask is a 1-channel image
-    cvtColor(viewportImg, imgOneChannel, COLOR_BGR2GRAY);
+    drawContours( expandedPolygonImage, viewport_polygon, 0, Scalar(0, 0, 0), 2);
+    cvtColor(expandedPolygonImage, markerMask, COLOR_BGR2GRAY); // markerMask is a 1-channel image
+    cvtColor(expandedPolygonImage, imgOneChannel, COLOR_BGR2GRAY);
     markerMask = Scalar::all(0);
 
     // Generate and place the seed points
@@ -210,7 +210,7 @@ int main( int argc, char** argv )
     int numberOfCells = countNonZero(markers==0);
 
     // The algorithm is applied to the bigger image. The results are stored in the markers Mat
-    watershed2( viewportImg, markers, percentages, conqueredCells, numberOfCells );
+    watershed2( expandedPolygonImage, markers, percentages, conqueredCells, numberOfCells );
     t = (double)getTickCount() - t;
     int remainingCells = countNonZero(markers==0);
     printf( "Execution time = %gms\n", t*1000./getTickFrequency() );
@@ -883,7 +883,7 @@ void save_images_to_disk()
     //flip(wshed, wshed, 0);
 
     // write to disk
-    imwrite(input_img_filename, viewportImg);
+    imwrite(input_img_filename, expandedPolygonImage);
     imwrite(output_img_filename, wshed);
 
 }
