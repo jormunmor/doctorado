@@ -48,6 +48,11 @@ double max_y = std::numeric_limits<double>::min();
 double min_x = std::numeric_limits<double>::max();
 double min_y = std::numeric_limits<double>::max();
 
+// constants
+const int BARRIER_R = 50;
+const int BARRIER_G = 50;
+const int BARRIER_B = 50;
+
 string polygonFilePath = "/home/jorge/Desktop/polygon.txt";
 string input_img_filename;
 string output_img_filename;
@@ -130,11 +135,12 @@ int main( int argc, char** argv )
     cv::Mat destinationROI = expandedPolygonImage(roi);
     polygonImage.copyTo( destinationROI );
 
-    // The watershed algorithm paints in white the barriers between segmented areas. If we use the vertex to place
-    // the seeds, then we need an additional border for the polygon to let the algorithm create a barrier between the
-    // polygon itself and the outter white background.
-    // Thickness may be a problem if the additional pixels are added inner to the contour.
-    drawContours(expandedPolygonImage, viewport_polygon, 0, Scalar(0, 0, 0), 2);
+    // In previous versions, the polygon was re-painted with a thickness of 2 pixels to avoid having
+    // the white background from the outter polygon and forbidden areas touching the seeds. Now
+    // the watersheed has been modified to represent the white areas as negative values that
+    // can not grow, so the seeds can touch it. Thus, the thickness can be of one pixel. Indeed this is no
+    // longer needed, so even the drawContours call may be commented.
+    //drawContours(expandedPolygonImage, viewport_polygon, 0, Scalar(0, 0, 0), 1);
     cvtColor(expandedPolygonImage, markerMask, COLOR_BGR2GRAY); // markerMask is a 1-channel image
     cvtColor(expandedPolygonImage, grayPolygonImage, COLOR_BGR2GRAY);
     markerMask = Scalar::all(0);
@@ -158,9 +164,9 @@ int main( int argc, char** argv )
     int i, j, compCount = 0;
     vector<vector<cv::Point> > contours;
     vector<Vec4i> hierarchy;
+
     // Find the seeds, pixels with value = 255. Each contour is a vector of points
     findContours(markerMask, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
-
     if( contours.empty() )
     {
         cout << "Error: no seeds were placed. Aborting..." << endl;
@@ -177,7 +183,6 @@ int main( int argc, char** argv )
 
     // here IDX takes as values (0, 1, 2...) as seeds placed in the image starting from 0
     // compCount takes as values (1, 2, 3, ...) as seeds placed starting from 1
-
     if( compCount == 0 )
     {
         cout << "Error: no components found. Aborting..." << endl;
@@ -185,18 +190,27 @@ int main( int argc, char** argv )
 
     }
 
-    // Add a segmented white background to the polygon and forbidden areas
+    // The outter polygon and the forbidden areas must be marked in any form
+    // to exclude them from the growing. Assigning a high positive value is not a
+    // good idea because the growing will still occur (seeds are positive values in range [0,255]).
+    // For this reason, the white parts of the color image are marked in the markers matrix as negative
+    // values (-255). The watershed algorithm has been modified to accept this kind
+    // of values, as well as the -1 for the barriers.
     Mat add = grayPolygonImage==255;
     add.convertTo(add,CV_32S);
-    markers += add;
+    markers -= add;
 
     // Create a color for each component
     vector<Vec3b> colorTab;
     for( i = 0; i < compCount; i++ )
     {
-        int b = theRNG().uniform(0, 255);
-        int g = theRNG().uniform(0, 255);
-        int r = theRNG().uniform(0, 255);
+        int b, g, r;
+        do
+        {
+            b = theRNG().uniform(0, 255);
+            g = theRNG().uniform(0, 255);
+            r = theRNG().uniform(0, 255);
+        } while(b==BARRIER_B && g==BARRIER_G && r==BARRIER_R); // we avoid the barrier color to represent the seeds
 
         colorTab.push_back(Vec3b((uchar)b, (uchar)g, (uchar)r));
     }
@@ -223,6 +237,7 @@ int main( int argc, char** argv )
     for( i = 1; i <= numberOfSeeds; i++){
         sum += conqueredCells[i-1];
         int remaining = (percentages[i-1]*numberOfCells/100.0)-conqueredCells[i-1];
+        cout << "Number of conquered cells for color " << colorTab[i-1] << ": " << conqueredCells[i-1] << endl;
         cout << "Number of remaining cells for color " << colorTab[i-1] << ": " << remaining << endl;
         // uncomment this if the seeds are placed in more than one pixel
         //int conqueredPixels = countNonZero(markers==i);
@@ -230,6 +245,13 @@ int main( int argc, char** argv )
 
     }
     printf("Number of cells to conquer after execution: %d\n", numberOfCells - sum);
+    printf("Number of blacks after execution: %d\n", countNonZero(markers==0));
+
+    /*
+    int value = 4;
+    if(value == 4)
+        return 0;
+    */
 
     //int remainingCells = countNonZero(markers==0);
     //printf("Number of cells to conquer after execution: %d\n", remainingCells);
@@ -242,17 +264,25 @@ int main( int argc, char** argv )
         for( j = 0; j < markers.cols; j++ )
         {
             int index = markers.at<int>(i,j);
-            if( index == -1 )
+            if(index < -1) // negatives below -1 are considered obstacles and thus painted in white
             {
-                wshed.at<Vec3b>(i,j) = Vec3b(255,255,255);
+                wshed.at<Vec3b>(i,j) = Vec3b(255, 255, 255);
+            }
+            else if(index == -1) // barriers are painted in a color never used for the seeds.
+            {
+                wshed.at<Vec3b>(i,j) = Vec3b(BARRIER_B, BARRIER_G, BARRIER_R);
 
             }
-            else if( index <= 0 || index > compCount )
+            else if(index == 0) // un-painted are colored in black
             {
-                    wshed.at<Vec3b>(i,j) = Vec3b(0,0,0);
+                    wshed.at<Vec3b>(i,j) = Vec3b(0, 0, 0);
 
             }
-            else
+            else if(index > compCount) // positives above the seeds are considered obstacles and thus painted in white
+            {
+                wshed.at<Vec3b>(i,j) = Vec3b(255, 255, 255);
+            }
+            else // use the color of the seeds
             {
                 wshed.at<Vec3b>(i,j) = colorTab[index - 1];
 
@@ -479,23 +509,52 @@ void cvWatershed2( const CvArr* srcarr, CvArr* dstarr, int* percentages, int* co
     for( i = 256; i <= 512; i++ )
         subs_tab[i] = i - 256;
 
-    // draw a pixel-wide border of dummy "watershed" (i.e. boundary) pixels
+    // This code is to draw two pixel rows for the image,
+    // the upper and lower border with WSHED values.
     for( j = 0; j < size.width; j++ )
         mask[j] = mask[j + mstep*(size.height-1)] = WSHED;
 
-    // initial phase: put all the neighbor pixels of each marker to the ordered queue -
-    // determine the initial boundaries of the basins
+    // Initial phase: put all the neighbor pixels of each marker to the ordered queue and
+    // determine the initial boundaries of the basins. The borders of the image are not
+    // iterated by the loop index i and j.
     for( i = 1; i < size.height-1; i++ )
     {
+        // The istep and mstep values contain the byte offset
+        // that represent the width of the color image
+        // and markers image, respectively.
         img += istep; mask += mstep;
+
+        // This line is to draw two pixel columns for the image,
+        // the left and right borders with WSHED values.
         mask[0] = mask[size.width-1] = WSHED;
 
+        // For each row, we will see the value of each cell in the marker matrix.
         for( j = 1; j < size.width-1; j++ )
         {
+            // Recover the marker[i][j] element.
             int* m = mask + j;
-            if( m[0] < 0 ) m[0] = 0;
+
+            // In the original watershed, the negative values were set to 0 initially.
+            // Now we allow having negative values to mark these zones as zones that
+            // must not grow. If the pixel is such a zone, then we do not add any of its
+            // surrounding pixels. We must distinguish among the -1 value for barriers that
+            // are generated for the watershed, and values lower than -1 (-255 i.e.) that
+            // represent the forbidden areas and outter polygon.
+            if( m[0] < 0 )
+            {
+                //m[0] = -1;
+                continue;
+
+            }
+
+            // If m[i][j] is zero and is surrounded (4-neighbours) by any seed
+            // then we add it to the queue.
             if( m[0] == 0 && (m[-1] > 0 || m[1] > 0 || m[-mstep] > 0 || m[mstep] > 0) )
             {
+                // This code is to compute the priority of the pixel.
+                // This priority is based on the pixel color and the
+                // pixel color of the surrounding seeds. It is computed
+                // as the minimum color difference.
                 uchar* ptr = img + j*3;
                 int idx = 256, t;
                 if( m[-1] > 0 )
@@ -517,21 +576,24 @@ void cvWatershed2( const CvArr* srcarr, CvArr* dstarr, int* percentages, int* co
                 }
                 assert( 0 <= idx && idx <= 255 );
                 ws_push( idx, i*mstep + j, i*istep + j*3 );
-                // the number of queues tou put
-                //cout << "IDX: " << idx << endl;
+                // After being added to the apropriate queue,
+                // the cell is marked as IN_QUEUE.
                 m[0] = IN_QUEUE;
             }
         }
     }
 
-    // find the first non-empty queue
+    // Find the first non-empty queue. The range
+    // is [0, 255].
     for( i = 0; i < NQ; i++ )
         if( q[i].first )
             break;
 
-    // if there is no markers, exit immediately
+    // If there is no markers, exit immediately.
     if( i == NQ )
+    {
         return;
+    }
 
     active_queue = i;
     img = src->data.ptr;
@@ -545,18 +607,31 @@ void cvWatershed2( const CvArr* srcarr, CvArr* dstarr, int* percentages, int* co
         int* m;
         uchar* ptr;
 
+        // Check if the active queue has elements.
+        // If not, then search for the following queue.
         if( q[active_queue].first == 0 )
         {
             for( i = active_queue+1; i < NQ; i++ )
+            {
                 if( q[i].first )
+                {
                     break;
+                }
+            }
+
+            // If no queue was found, then exit inmediately.
             if( i == NQ )
+            {
                 break;
+            }
+
             active_queue = i;
         }
 
+        // Extract the element from the given queue.
         ws_pop( active_queue, mofs, iofs );
 
+        // Compute the value to 'paint' the element.
         m = mask + mofs;
         ptr = img + iofs;
         t = m[-1];
@@ -585,11 +660,14 @@ void cvWatershed2( const CvArr* srcarr, CvArr* dstarr, int* percentages, int* co
         if(lab != WSHED){
             int actualPercentage = (conqueredCells[lab-1]/((double) numberOfCells))*100;
             if(actualPercentage >= percentages[lab-1]){
+                lab = WSHED;
+                /*
                 if(active_queue == 0 || active_queue == 255){
                     m[0] = WSHED;
 
                 }
                 continue;
+                */
 
             } else{
                 conqueredCells[lab-1]++;
@@ -632,6 +710,36 @@ void cvWatershed2( const CvArr* srcarr, CvArr* dstarr, int* percentages, int* co
             m[mstep] = IN_QUEUE;
         }
     }
+
+    //cout << "Computing missing borders..." << endl;
+
+    // After executing the watershed algorithm, some areas may be un-painted. If these
+    // areas are near a polygon (or forbidden area) border, then that border will not be
+    // painted and the polygon shape will appear incomplete. To avoid that, we iterate
+    // over the markers matrix checking for each element with 0 value (not painted) if some
+    // of his 4-neighbours have a -255 value, and if so we paint a barrier (-1). Positions
+    // out of the polygon and inside forbidden areas are supposed to have a -255 value
+    // configured in the main function.
+
+    mask = dst->data.i;
+    for( i = 1; i < size.height-1; i++ )
+    {
+        mask += mstep;
+
+        for( j = 1; j < size.width-1; j++ )
+        {
+            int* m = mask + j;
+            if( m[0] == 0 )
+            {
+                if(m[-1] == -255 || m[1] == -255 || m[-mstep] == -255 || m[mstep] == -255)
+                {
+                    m[0] = WSHED;
+                }
+            }
+        }
+    }
+
+
 }
 
 static CvWSNode* icvAllocWSNodes( CvMemStorage* storage )
@@ -937,3 +1045,4 @@ void save_config_to_disk()
     fclose(pFile);
 
 }
+
