@@ -220,13 +220,14 @@ int main( int argc, char** argv )
         conqueredCells[i-1] = 1;
         // uncomment this if the seeds are placed in more than one pixel
         //int conqueredPixels = countNonZero(markers==i);
-        //conqueredCells[i-1] = conqueredPixels;
+        //conqueredCells[i-1markers] = conqueredPixels;
 
     }
 
     // Count the number of cells that must be conquered.
-    int numberOfCells = countNonZero(grayPolygonImage==0) - numberOfSeeds;
-    printf("Number of cells to conquer before execution: %d\n", numberOfCells);
+    //int numberOfCells = countNonZero(grayPolygonImage==0) - numberOfSeeds;
+    int numberOfCells = countNonZero(markers==0);
+    cout << "Number of cells to conquer before execution: " << numberOfCells << endl;
 
     // The algorithm is applied to the bigger image. The results are stored in the markers Mat
     watershed2(expandedPolygonImage, markers, percentages, conqueredCells, numberOfCells);
@@ -244,8 +245,8 @@ int main( int argc, char** argv )
         //conqueredCells[i-1] = conqueredPixels;
 
     }
-    printf("Number of cells to conquer after execution: %d\n", numberOfCells - sum);
-    printf("Number of blacks after execution: %d\n", countNonZero(markers==0));
+    //printf("Number of cells to conquer after execution: %d\n", numberOfCells - sum);
+    //printf("Number of blacks after execution: %d\n", countNonZero(markers==0));
 
     /*
     int value = 4;
@@ -268,9 +269,14 @@ int main( int argc, char** argv )
             {
                 wshed.at<Vec3b>(i,j) = Vec3b(255, 255, 255);
             }
-            else if(index == -1) // barriers are painted in a color never used for the seeds.
+            else if(index == -1)
             {
-                wshed.at<Vec3b>(i,j) = Vec3b(BARRIER_B, BARRIER_G, BARRIER_R);
+                // Barriers fill space not conquered by the seeds. If there are many barriers,
+                // they could adulterate the results. Instead of coloring them with a color
+                // distinct from the seeds, we color them black to try to reassign its
+                // space.
+                //wshed.at<Vec3b>(i,j) = Vec3b(BARRIER_B, BARRIER_G, BARRIER_R);
+                wshed.at<Vec3b>(i,j) = Vec3b(0, 0, 0);
 
             }
             else if(index == 0) // un-painted are colored in black
@@ -292,11 +298,24 @@ int main( int argc, char** argv )
 
     }
 
+    // Transform the matrix to gray scale
+    Mat grayWshed(wshed.size(), CV_8UC1);
+    cvtColor(wshed, grayWshed, COLOR_BGR2GRAY);
+
+    // Get the black pixels
+    Mat blackPixels = (grayWshed == 0);
+    namedWindow( "gray watershed transform", 1 );
+    imshow( "gray watershed transform", blackPixels);
+    waitKey(0);
+    int remainingBlacks = countNonZero(blackPixels);
+    cout << "Number of cells to conquer after execution: " << remainingBlacks << endl;
+
     // Vectorize the results. The idea is to create a Matrix for each of the subareas of the final segmentation
     // and calculate the contours of that subarea for each Matrix. Then, approx each with a polygon.
     // We will do all this only if we have more than one seed. If we have only one seed with 100% perctg,
     // we create the images but left intact the initial polygon because it doesn't needed any aproximation.
 
+    /*
     if(percentages[0] != 100)
     {
 
@@ -385,6 +404,7 @@ int main( int argc, char** argv )
         save_contours_to_disk(color_contours, colorTab.size(), percentages);
 
     }
+    */
 
     // save the images in disk, will flip them so the output Mats are modified. Any
     save_images_to_disk();
@@ -510,9 +530,9 @@ void cvWatershed2( const CvArr* srcarr, CvArr* dstarr, int* percentages, int* co
         subs_tab[i] = i - 256;
 
     // This code is to draw two pixel rows for the image,
-    // the upper and lower border with WSHED values.
+    // the upper and lower border with -255 values.
     for( j = 0; j < size.width; j++ )
-        mask[j] = mask[j + mstep*(size.height-1)] = WSHED;
+        mask[j] = mask[j + mstep*(size.height-1)] = -255;
 
     // Initial phase: put all the neighbor pixels of each marker to the ordered queue and
     // determine the initial boundaries of the basins. The borders of the image are not
@@ -525,8 +545,8 @@ void cvWatershed2( const CvArr* srcarr, CvArr* dstarr, int* percentages, int* co
         img += istep; mask += mstep;
 
         // This line is to draw two pixel columns for the image,
-        // the left and right borders with WSHED values.
-        mask[0] = mask[size.width-1] = WSHED;
+        // the left and right borders with -255 values.
+        mask[0] = mask[size.width-1] = -255;
 
         // For each row, we will see the value of each cell in the marker matrix.
         for( j = 1; j < size.width-1; j++ )
