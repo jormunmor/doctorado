@@ -1,6 +1,8 @@
+// opencv includes
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/highgui/highgui.hpp"
 
+// c++ includes
 #include <cstdio>
 #include <iostream>
 #include <fstream>
@@ -9,6 +11,12 @@
 #include <list>
 #include <cmath>
 #include <map>
+#include <cstdlib>
+#include <ctime>
+#include <map>
+
+// AStar includes
+#include "AStarUtilities.h"
 
 typedef struct CvWSNode
 {
@@ -62,13 +70,17 @@ int width, height, final_w, final_h, desired_width = 500, added_lines = 20;
 double scale_ratio = 1;
 
 static CvWSNode* icvAllocWSNodes( CvMemStorage* storage );
-void watershed2(Mat& src, Mat& markers, int* percentages, int* conqueredCells, int numberOfCells );
-void cvWatershed2( const CvArr* srcarr, CvArr* dstarr, int* percentages, int* conqueredCells, int numberOfCells );
+void watershed2(Mat& src, Mat& markers, int* cellsToConquer, int* conqueredCells);
+void cvWatershed2( const CvArr* srcarr, CvArr* dstarr, int* cellsToConquer, int* conqueredCells);
 Mat createMatImg(int numberOfSeeds);
 std::list<cv::Point> generate_seed_points(int numberOfSeeds);
 void save_contours_to_disk(vector<vector<Point> > *color_contours, int size, int* percentages);
 void save_images_to_disk();
 void save_config_to_disk();
+void cover_black_zones(int numberOfSeeds, int* cellsToConquer, int* conqueredCells, vector<Vec3b>& colorTab);
+vector<cv::Point> getContourVector(Mat& matrix);
+void fillIndexVector(Mat& matrix, vector<cv::Point>& vec);
+unsigned int getGrayValue(cv::Vec3b color);
 
 int main( int argc, char** argv )
 {
@@ -181,7 +193,7 @@ int main( int argc, char** argv )
 
     }
 
-    // here IDX takes as values (0, 1, 2...) as seeds placed in the image starting from 0
+    // Here IDX takes as values (0, 1, 2...) as seeds placed in the image starting from 0
     // compCount takes as values (1, 2, 3, ...) as seeds placed starting from 1
     if( compCount == 0 )
     {
@@ -227,39 +239,37 @@ int main( int argc, char** argv )
     // Count the number of cells that must be conquered.
     //int numberOfCells = countNonZero(grayPolygonImage==0) - numberOfSeeds;
     int numberOfCells = countNonZero(markers==0);
-    cout << "Number of cells to conquer before execution: " << numberOfCells << endl;
+    cout << "Number of cells to conquer before execution: " << numberOfCells << "\n" << endl;
+
+    // convert the percentages into number of cells to conquer.
+    int cellsToConquer[numberOfSeeds];
+    for(i=0; i<numberOfSeeds; i++)
+    {
+        cellsToConquer[i] = (int) floor(numberOfCells*percentages[i]/100.0);
+    }
 
     // The algorithm is applied to the bigger image. The results are stored in the markers Mat
-    watershed2(expandedPolygonImage, markers, percentages, conqueredCells, numberOfCells);
+    watershed2(expandedPolygonImage, markers, cellsToConquer, conqueredCells);
     //t = (double)getTickCount() - t;
 
-    // Count and print the number of cells that were not conquered after executing the algorithm.
-    int sum = 0;
+    // Print the number of cells that were/weren't conquered after executing the algorithm.
+    /*
     for( i = 1; i <= numberOfSeeds; i++){
-        sum += conqueredCells[i-1];
-        int remaining = (percentages[i-1]*numberOfCells/100.0)-conqueredCells[i-1];
+        int remaining = cellsToConquer[i-1]-conqueredCells[i-1];
+        cout << "Number of cells to conquer for color " << colorTab[i-1] << ": " << cellsToConquer[i-1] << endl;
         cout << "Number of conquered cells for color " << colorTab[i-1] << ": " << conqueredCells[i-1] << endl;
-        cout << "Number of remaining cells for color " << colorTab[i-1] << ": " << remaining << endl;
+        cout << "Number of remaining cells for color " << colorTab[i-1] << ": " << remaining << "\n" << endl;
         // uncomment this if the seeds are placed in more than one pixel
         //int conqueredPixels = countNonZero(markers==i);
         //conqueredCells[i-1] = conqueredPixels;
 
     }
-    //printf("Number of cells to conquer after execution: %d\n", numberOfCells - sum);
-    //printf("Number of blacks after execution: %d\n", countNonZero(markers==0));
-
-    /*
-    int value = 4;
-    if(value == 4)
-        return 0;
     */
-
-    //int remainingCells = countNonZero(markers==0);
-    //printf("Number of cells to conquer after execution: %d\n", remainingCells);
 
     // Create a Matrix to paint the results with one color per segmented area.
     wshed = Mat(markers.size(), CV_8UC3);
 
+    // Fill the previous matrix.
     for( i = 0; i < markers.rows; i++ )
     {
         for( j = 0; j < markers.cols; j++ )
@@ -299,16 +309,16 @@ int main( int argc, char** argv )
     }
 
     // Transform the matrix to gray scale
-    Mat grayWshed(wshed.size(), CV_8UC1);
-    cvtColor(wshed, grayWshed, COLOR_BGR2GRAY);
+    //Mat grayWshed(wshed.size(), CV_8UC1);
+    //cvtColor(wshed, grayWshed, COLOR_BGR2GRAY);
 
-    // Get the black pixels
-    Mat blackPixels = (grayWshed == 0);
-    namedWindow( "gray watershed transform", 1 );
-    imshow( "gray watershed transform", blackPixels);
-    waitKey(0);
-    int remainingBlacks = countNonZero(blackPixels);
-    cout << "Number of cells to conquer after execution: " << remainingBlacks << endl;
+    // Save the images to disk with the actual status. The barriers will be black and some zones
+    // may be un-painted. We save this to compare the results after applying the post-processing.
+    save_images_to_disk();
+
+    // From now, a post-process will be applyed to redistribute the barriers and un-painted zones
+    // to those colors that were not fully covered.
+    cover_black_zones(numberOfSeeds, cellsToConquer, conqueredCells, colorTab);
 
     // Vectorize the results. The idea is to create a Matrix for each of the subareas of the final segmentation
     // and calculate the contours of that subarea for each Matrix. Then, approx each with a polygon.
@@ -404,10 +414,8 @@ int main( int argc, char** argv )
         save_contours_to_disk(color_contours, colorTab.size(), percentages);
 
     }
-    */
 
-    // save the images in disk, will flip them so the output Mats are modified. Any
-    save_images_to_disk();
+    */
 
     //cout << "\nNumber of remaining pixels without segmentation: " << remainingCells << endl;
     cout << "\nProgram finished. Press any key to continue." << endl;
@@ -428,15 +436,15 @@ int main( int argc, char** argv )
 
 /// TODO: permitir que el algoritmo tome un polígono con degradado y realice el flooding dando prioridad a los pixeles que estén más cerca de los bordes
 
-void watershed2(Mat& src, Mat& markers, int* percentages, int* conqueredCells, int numberOfCells )
+void watershed2(Mat& src, Mat& markers, int* cellsToConquer, int* conqueredCells)
 {
     InputArray i_arr = src;
     InputOutputArray io_arr = markers;
     CvMat c_src = i_arr.getMat(), c_markers = io_arr.getMat();
-    cvWatershed2(&c_src, &c_markers, percentages, conqueredCells, numberOfCells );
+    cvWatershed2(&c_src, &c_markers, cellsToConquer, conqueredCells);
 }
 
-void cvWatershed2( const CvArr* srcarr, CvArr* dstarr, int* percentages, int* conqueredCells, int numberOfCells )
+void cvWatershed2( const CvArr* srcarr, CvArr* dstarr, int* cellsToConquer, int* conqueredCells)
 {
     const int IN_QUEUE = -2;
     const int WSHED = -1;
@@ -678,8 +686,7 @@ void cvWatershed2( const CvArr* srcarr, CvArr* dstarr, int* percentages, int* co
 
         // check if the assigned marker (lab) has conquered the percentage of cells
         if(lab != WSHED){
-            int actualPercentage = (conqueredCells[lab-1]/((double) numberOfCells))*100;
-            if(actualPercentage >= percentages[lab-1]){
+            if(conqueredCells[lab-1] >= cellsToConquer[lab-1]){
                 lab = WSHED;
                 /*
                 if(active_queue == 0 || active_queue == 255){
@@ -850,7 +857,7 @@ Mat createMatImg(int numberOfSeeds)
     utm_polygon.pop_back();
 
     // check if more seeds than vertex. If that's the case, return a size 0 matrix
-    if(utm_polygon[0].size() < numberOfSeeds)
+    if(utm_polygon[0].size() < (unsigned int)numberOfSeeds)
     {
         return outputMat;
     }
@@ -921,7 +928,7 @@ Mat createMatImg(int numberOfSeeds)
 
     }
     const cv::Point* ppt[1] = {poly[0]};
-    int npt[] = {scaled_polygon[0].size()};
+    int npt[] = {scaled_polygon[0].size()}; ///TODO: check if this is correct
     fillPoly(outputMat, ppt, npt, 1, Scalar( 0, 0, 0 ), 0 );
 
     // paint the forbidden areas
@@ -935,7 +942,7 @@ Mat createMatImg(int numberOfSeeds)
 
         }
         const cv::Point* ppt2[1] = {poly[0]};
-        int npt2[] = {scaled_polygon[k].size()};
+        int npt2[] = {scaled_polygon[k].size()}; ///TODO: check if this is correct
         fillPoly(outputMat, ppt2, npt2, 1, Scalar( 255, 255, 255 ), 0 );
 
     }
@@ -1065,4 +1072,223 @@ void save_config_to_disk()
     fclose(pFile);
 
 }
+
+void cover_black_zones(int numberOfSeeds, int* cellsToConquer, int* conqueredCells, vector<Vec3b>& colorTab)
+{
+    // Create the gray and cost matrix. The later will be created from a gray matrix,
+    // considering the whites as obstacles (255). For the moment,
+    // the rest of pixels will be considered of the same cost (1), however by considering
+    // some colors with different costs the results could be better. For example, the color
+    // with greatest number of colored pixel will be less distorted by the travelling
+    // of the moving pixels.
+    Mat grayImage(wshed.rows, wshed.cols, CV_8UC1);
+    cvtColor(wshed, grayImage, COLOR_BGR2GRAY);
+    Mat costImage(wshed.rows, wshed.cols, CV_8UC1);
+    cvtColor(wshed, costImage, COLOR_BGR2GRAY);
+
+    for(int j=0; j<costImage.rows; j++)
+    {
+        for(int i=0; i<costImage.cols; i++)
+        {
+            cv::Point p(i, j);
+            if(costImage.at<uchar>(p) != 255) // the non-white pixels have a one value
+            {
+                costImage.at<uchar>(p) = 1;
+            }
+        }
+    }
+
+    // Get the black pixels that must be painted. These black pixels are those that were not completed
+    // by the colored zones. Thus, the exceeding black pixels (if any) will not be painted. The median filter
+    // must dispatch them.
+    int remainingBlacks = 0;
+    std::vector<int> uncompletedColors; // This will hold the index of the uncompleted colors.
+    for(int i = 1; i <= numberOfSeeds; i++)
+    {
+        int remaining = (cellsToConquer[i-1] - conqueredCells[i-1]); // Get the remaining pixels for color i
+        cout << "Number of remaining black pixels for color " << colorTab[i-1] << ": " << remaining << "\n" << endl;
+        if(remaining > 0)
+        {
+            uncompletedColors.push_back(i);
+            Vec3b col = colorTab[i-1];
+            unsigned int gr = getGrayValue(col);
+            // Show the uncomplete color
+            /*
+            Mat uncomplete = (grayImage==gr);
+            namedWindow( "Uncomplete color" , CV_WINDOW_AUTOSIZE );
+            imshow("Uncomplete color", uncomplete);
+            waitKey(0);
+            */
+            remainingBlacks += remaining;
+        }
+
+    }
+    cout << "Number of remaining black pixels: " << remainingBlacks << "\n" << endl;
+
+    /*
+    int a = 2;
+    if(a==2)
+        return;
+    */
+
+    // Create the black pixels image and store the indexes in a vector.
+    Mat blackPixels = (grayImage==0);
+    std::vector<cv::Point> blackPixelsVector;
+    fillIndexVector(blackPixels, blackPixelsVector);
+
+    // Now for each color, we recover the un-painted pixels and move them to the appropriate
+    // colored zone of the image.
+    while(uncompletedColors.size() > 0)
+    {
+        // Retieve one incomplete color index.
+        int colorIndex = uncompletedColors.back();
+        uncompletedColors.pop_back();
+
+        // Get its BGR color.
+        cv::Vec3b color = colorTab[colorIndex - 1];
+
+        // Get its gray value.
+        unsigned int grayColor = getGrayValue(color);
+
+        // Get the contour for that color. That contour will be the destination
+        // of the black pixels.
+        Mat destinationPixels = (grayImage==grayColor);
+        std::vector<cv::Point> destinationPixelsVector;  // vector with the contours index
+        destinationPixelsVector = getContourVector(destinationPixels);
+        cout << "Initial contour size: " << destinationPixelsVector.size() << endl;
+
+        // We will be adding the pixels to the contour. After completing the contour, we will
+        // calculate the new contour. This enhance the performance and results.
+        unsigned int contourIndex = 0;
+
+        // Get the number of uncolored pixels for that color.
+        int remaining = (cellsToConquer[colorIndex-1] - conqueredCells[colorIndex-1]);
+        cout << "Remaining pixels for color with index " << colorIndex << ": " << remaining << endl;
+
+        /*
+        // Show the images.
+        namedWindow( "Final Image" , CV_WINDOW_AUTOSIZE );
+        imshow("Final Image", wshed);
+        waitKey(0);
+        namedWindow( "Final Gray Image" , CV_WINDOW_AUTOSIZE );
+        imshow("Final Gray Image", grayImage);
+        waitKey(0);
+        namedWindow( "Cost Image" , CV_WINDOW_AUTOSIZE );
+        imshow("Cost Image", costImage);
+        waitKey(0);
+        */
+
+        int moved = 0;
+
+        while(remaining > 0)
+        {
+            // Retrieve a black pixel.
+            cv::Point startPixel = blackPixelsVector.back();
+            blackPixelsVector.pop_back();
+
+            // Select the next end pixel (the next pixel of the contour). If the contour
+            // is depleted, then first we calculate the new contour.
+            if(contourIndex >= destinationPixelsVector.size())
+            {
+                // Now the contour has been depleted by adding pixels around it. We
+                // calculate the new contour and update the loop variables. This
+                // balances the growing of the destination region around its border
+                // and fastens the A* algorithm.
+                destinationPixels = (grayImage==grayColor);
+                destinationPixelsVector = getContourVector(destinationPixels);
+                contourIndex = 0; // Reset the counter.
+                cout << "Destination border depleted. New contour size: " << destinationPixelsVector.size() << endl;
+            }
+            cv::Point endPixel = destinationPixelsVector.at(contourIndex);
+
+            // Paint the pixel to move with the destination color. Due to all the colors (except white) having the same cost,
+            // we don't have to update its cost.
+            wshed.at<Vec3b>(startPixel) = color;
+            grayImage.at<uchar>(startPixel) = grayColor;
+            astar::movePixel(startPixel, endPixel, wshed, grayImage, costImage, blackPixelsVector);
+
+            contourIndex++;
+            remaining--;
+            moved++;
+
+            if(moved%50 == 0)
+            {
+                namedWindow( "Final Image" , CV_WINDOW_AUTOSIZE );
+                imshow("Final Image", wshed);
+                waitKey(0);
+
+            }
+
+            cout << "Remaining pixels for color with index " << colorIndex << ": " << remaining << endl;
+        }
+    }
+
+    // Show the images.
+    namedWindow( "Final Image" , CV_WINDOW_AUTOSIZE );
+    imshow("Final Image", wshed);
+    waitKey(0);
+    namedWindow( "Final Gray Image" , CV_WINDOW_AUTOSIZE );
+    imshow("Final Gray Image", grayImage);
+    waitKey(0);
+    namedWindow( "Cost Image" , CV_WINDOW_AUTOSIZE );
+    imshow("Cost Image", costImage);
+    waitKey(0);
+
+}
+
+// Fill-in the vector with all matrix index that have a value of 255.
+void fillIndexVector(Mat& matrix, vector<cv::Point>& vec)
+{
+    for(int j=0; j<matrix.rows; j++)
+    {
+        for(int i=0; i<matrix.cols; i++)
+        {
+            cv::Point index(i, j);
+            if(matrix.at<uchar>(index) == 255)
+            {
+                vec.push_back(index);
+            }
+        }
+    }
+}
+
+// Given a matrix with values 0 or 255, this functions returns
+// a vector with the outter contour of the positions with value 255.
+// Useful to use with one channel images and operator ==.
+
+// TODO; what happens with the image border and findConcours?
+vector<cv::Point> getContourVector(Mat& matrix)
+{
+
+    vector<vector<cv::Point> > contours;
+    vector<cv::Point> contour;
+    vector<Vec4i> hierarchy;
+    // Find the contours of pixels with value = 255. Each contour is a vector of points
+    findContours(matrix, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
+
+    if( contours.empty() )
+    {
+        cout << "Error: no contours detected. Aborting..." << endl;
+        return contour;
+    }
+
+    // Only one contour must be detected.
+    contour = contours[0];
+    cout << "Number of contour pixels: " << contour.size() << endl;
+    return contour;
+
+}
+
+// Given a color, retrieve its gray correspondence.
+unsigned int getGrayValue(cv::Vec3b color)
+{
+    Mat colorPix(1, 1, CV_8UC3);
+    colorPix.at<Vec3b>(cv::Point(0, 0)) = color;
+    Mat colorToGrayCorrespondencePix(1, 1, CV_8UC1);
+    cvtColor(colorPix, colorToGrayCorrespondencePix, COLOR_BGR2GRAY);
+
+    return colorToGrayCorrespondencePix.at<uchar>(cv::Point(0,0));
+}
+
+
 
