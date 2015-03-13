@@ -79,6 +79,7 @@ void save_images_to_disk();
 void save_config_to_disk();
 void cover_black_zones(int numberOfSeeds, int* cellsToConquer, int* conqueredCells, vector<Vec3b>& colorTab);
 vector<cv::Point> getContourVector(Mat& matrix);
+vector<cv::Point> getContourVector2(Mat& matrix, Mat& greyMatrix);
 void fillIndexVector(Mat& matrix, vector<cv::Point>& vec);
 unsigned int getGrayValue(cv::Vec3b color);
 
@@ -281,12 +282,10 @@ int main( int argc, char** argv )
             }
             else if(index == -1)
             {
-                // Barriers fill space not conquered by the seeds. If there are many barriers,
-                // they could adulterate the results. Instead of coloring them with a color
-                // distinct from the seeds, we color them black to try to reassign its
-                // space.
+                // Barriers. Don't paint it black, let the median filter take care
+                // of them.
                 //wshed.at<Vec3b>(i,j) = Vec3b(BARRIER_B, BARRIER_G, BARRIER_R);
-                wshed.at<Vec3b>(i,j) = Vec3b(0, 0, 0);
+                wshed.at<Vec3b>(i,j) = Vec3b(254, 254, 254);
 
             }
             else if(index == 0) // un-painted are colored in black
@@ -1075,12 +1074,79 @@ void save_config_to_disk()
 
 void cover_black_zones(int numberOfSeeds, int* cellsToConquer, int* conqueredCells, vector<Vec3b>& colorTab)
 {
-    // Create the gray and cost matrix. The later will be created from a gray matrix,
-    // considering the whites as obstacles (255). For the moment,
-    // the rest of pixels will be considered of the same cost (1), however by considering
-    // some colors with different costs the results could be better. For example, the color
-    // with greatest number of colored pixel will be less distorted by the travelling
-    // of the moving pixels.
+    // First we will create a cost map. This cost map will hold the cost of each of the colors.
+    // We could assign the cost by using better criteria, but for the moment we assign the lower
+    // costs to the colors with more number of pixels. By this way, colors with less pixels will
+    // have a higher cost and be less modified due to the moving pixels. This will fasten the A*
+    // compared with having all color with the same cost.
+    int costCounter = 1; // We start asigning a 1.
+    int costArray[numberOfSeeds];
+    vector<int> seeds; // Create a vector and insert the seeds.
+    for(int i=0; i<numberOfSeeds; i++)
+    {
+        seeds.push_back(i + 1); // Seeds are integers starting at 1. Range [1, numberOfSeeds]
+    }
+
+     //Extract at each time the seed with more pixels and assign a cost.
+    while(seeds.size() > 0)
+    {
+        int maxValue = -1;
+        int maxValueSeed = -1;
+        int maxValueSeedIndex = -1;
+        for(int j = 0; j<seeds.size(); j++) // loop to get the seed with more conquered pixels of the vector
+        {
+            int seedNumber = seeds[j];
+            int conquered = conqueredCells[seedNumber-1];
+            if(conquered > maxValue)
+            {
+                maxValue = conquered;
+                maxValueSeed = seedNumber;
+                maxValueSeedIndex = j;
+            }
+        }
+
+        costArray[maxValueSeed-1] = costCounter;
+        /*
+        if((maxValueSeed-1)==2)
+            costArray[maxValueSeed-1] = 255;
+            */
+        //costCounter++;
+        // pop the seed from the vector
+        seeds.erase(seeds.begin() + maxValueSeedIndex);
+
+    }
+
+    // Print the computed costs for each color, as well as the number of conquered pixels.
+    for(int i=0; i<numberOfSeeds; i++)
+    {
+        cout << "Cost for color " << colorTab[i] << ": " << costArray[i] << endl;
+        cout << "Conquered pixels: " << conqueredCells[i] << endl;
+    }
+
+    // Create the cost map: grayTones->costValues.
+    std::map<uchar,uchar> costMap;
+    // Set the cost to black pixels. Set a 1.
+    costMap[0] = 1;
+    // Set the cost to white pixels. Set a 255 (obstacle).
+    costMap[255] = 255;
+    // Set the cost to barrier pixels. Set a 1.
+    costMap[254] = 1;
+    // Set the cost to the seed colors
+    for(int i=0; i<numberOfSeeds; i++)
+    {
+        Vec3b color = colorTab[i];
+        unsigned char grayColor = getGrayValue(color);
+        costMap[grayColor] = costArray[i];
+    }
+
+    /*
+    int a = 4;
+    if(a==4)
+        return;
+    */
+
+    // Create the gray and cost matrix. Each gray color have a cost
+    // that we must set in the cost matrix.
     Mat grayImage(wshed.rows, wshed.cols, CV_8UC1);
     cvtColor(wshed, grayImage, COLOR_BGR2GRAY);
     Mat costImage(wshed.rows, wshed.cols, CV_8UC1);
@@ -1091,12 +1157,28 @@ void cover_black_zones(int numberOfSeeds, int* cellsToConquer, int* conqueredCel
         for(int i=0; i<costImage.cols; i++)
         {
             cv::Point p(i, j);
-            if(costImage.at<uchar>(p) != 255) // the non-white pixels have a one value
-            {
-                costImage.at<uchar>(p) = 1;
-            }
+            int cost = costMap[grayImage.at<uchar>(p)];
+            costImage.at<uchar>(p) = cost;
+
         }
     }
+
+    /*
+    Mat s = costImage==1;
+    namedWindow( "Cost" , CV_WINDOW_AUTOSIZE );
+    imshow("Cost", s);
+    waitKey(0);
+
+    s = costImage==2;
+    namedWindow( "Cost" , CV_WINDOW_AUTOSIZE );
+    imshow("Cost", s);
+    waitKey(0);
+
+    s = costImage==3;
+    namedWindow( "Cost" , CV_WINDOW_AUTOSIZE );
+    imshow("Cost", s);
+    waitKey(0);
+    */
 
     // Get the black pixels that must be painted. These black pixels are those that were not completed
     // by the colored zones. Thus, the exceeding black pixels (if any) will not be painted. The median filter
@@ -1154,7 +1236,8 @@ void cover_black_zones(int numberOfSeeds, int* cellsToConquer, int* conqueredCel
         // of the black pixels.
         Mat destinationPixels = (grayImage==grayColor);
         std::vector<cv::Point> destinationPixelsVector;  // vector with the contours index
-        destinationPixelsVector = getContourVector(destinationPixels);
+        //destinationPixelsVector = getContourVector(destinationPixels);
+        destinationPixelsVector = getContourVector2(destinationPixels, grayImage);
         cout << "Initial contour size: " << destinationPixelsVector.size() << endl;
 
         // We will be adding the pixels to the contour. After completing the contour, we will
@@ -1162,11 +1245,12 @@ void cover_black_zones(int numberOfSeeds, int* cellsToConquer, int* conqueredCel
         unsigned int contourIndex = 0;
 
         // Get the number of uncolored pixels for that color.
-        int remaining = (cellsToConquer[colorIndex-1] - conqueredCells[colorIndex-1]);
+        int remaining = (cellsToConquer[colorIndex-1] - conqueredCells[colorIndex-1])-742; // TODO: substract the barriers, and not hard code it
         cout << "Remaining pixels for color with index " << colorIndex << ": " << remaining << endl;
 
-        /*
+
         // Show the images.
+        /*
         namedWindow( "Final Image" , CV_WINDOW_AUTOSIZE );
         imshow("Final Image", wshed);
         waitKey(0);
@@ -1194,29 +1278,47 @@ void cover_black_zones(int numberOfSeeds, int* cellsToConquer, int* conqueredCel
                 // calculate the new contour and update the loop variables. This
                 // balances the growing of the destination region around its border
                 // and fastens the A* algorithm.
-                destinationPixels = (grayImage==grayColor);
-                destinationPixelsVector = getContourVector(destinationPixels);
+                //destinationPixels = (grayImage==grayColor);
+                //destinationPixelsVector = getContourVector(destinationPixels);
+                //destinationPixelsVector = getContourVector2(destinationPixels, grayImage);
                 contourIndex = 0; // Reset the counter.
                 cout << "Destination border depleted. New contour size: " << destinationPixelsVector.size() << endl;
             }
             cv::Point endPixel = destinationPixelsVector.at(contourIndex);
 
-            // Paint the pixel to move with the destination color. Due to all the colors (except white) having the same cost,
-            // we don't have to update its cost.
+            // Paint the pixel to move with the destination color.
             wshed.at<Vec3b>(startPixel) = color;
+            //wshed.at<Vec3b>(startPixel) = Vec3b(0, 255, 0); //GREEN
             grayImage.at<uchar>(startPixel) = grayColor;
+            costImage.at<uchar>(startPixel) = costMap[grayColor];
             astar::movePixel(startPixel, endPixel, wshed, grayImage, costImage, blackPixelsVector);
 
             contourIndex++;
             remaining--;
             moved++;
 
-            if(moved%50 == 0)
+            /*
+            if(moved%10 == 0)
+            {
+                namedWindow( "Temporal Image" , CV_WINDOW_AUTOSIZE );
+                imshow("Temporal Image", wshed);
+                waitKey(0);
+                //return;
+
+            }
+            */
+
+            if(moved == 8000)
             {
                 namedWindow( "Final Image" , CV_WINDOW_AUTOSIZE );
                 imshow("Final Image", wshed);
                 waitKey(0);
-
+                namedWindow( "Final Gray Image" , CV_WINDOW_AUTOSIZE );
+                imshow("Final Gray Image", grayImage);
+                waitKey(0);
+                namedWindow( "Cost Image" , CV_WINDOW_AUTOSIZE );
+                imshow("Cost Image", costImage);
+                waitKey(0);
             }
 
             cout << "Remaining pixels for color with index " << colorIndex << ": " << remaining << endl;
@@ -1234,6 +1336,7 @@ void cover_black_zones(int numberOfSeeds, int* cellsToConquer, int* conqueredCel
     imshow("Cost Image", costImage);
     waitKey(0);
 
+
 }
 
 // Fill-in the vector with all matrix index that have a value of 255.
@@ -1247,6 +1350,7 @@ void fillIndexVector(Mat& matrix, vector<cv::Point>& vec)
             if(matrix.at<uchar>(index) == 255)
             {
                 vec.push_back(index);
+
             }
         }
     }
@@ -1274,9 +1378,8 @@ vector<cv::Point> getContourVector(Mat& matrix)
 
     // Only one contour must be detected.
     contour = contours[0];
-    cout << "Number of contour pixels: " << contour.size() << endl;
-    return contour;
 
+    return contour;
 }
 
 // Given a color, retrieve its gray correspondence.
@@ -1289,6 +1392,54 @@ unsigned int getGrayValue(cv::Vec3b color)
 
     return colorToGrayCorrespondencePix.at<uchar>(cv::Point(0,0));
 }
+
+
+
+// TODO; what happens with the image border and findConcours?
+vector<cv::Point> getContourVector2(Mat& matrix, Mat& greyMatrix)
+{
+
+    vector<vector<cv::Point> > contours;
+    vector<cv::Point> contour;
+    vector<Vec4i> hierarchy;
+    // Find the contours of pixels with value = 255. Each contour is a vector of points
+    findContours(matrix, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
+
+    if( contours.empty() )
+    {
+        cout << "Error: no contours detected. Aborting..." << endl;
+        return contour;
+    }
+
+    // Only one contour must be detected.
+    contour = contours[0];
+
+    vector<cv::Point> returnVec;
+    for(int i=0; i<contour.size(); i++)
+    {
+        cv::Point p = contour.at(i);
+
+        if(greyMatrix.at<uchar>(cv::Point(p.x-1, p.y)) == 255
+                || greyMatrix.at<uchar>(cv::Point(p.x+1, p.y)) == 255
+                || greyMatrix.at<uchar>(cv::Point(p.x, p.y-1)) == 255
+                || greyMatrix.at<uchar>(cv::Point(p.x, p.y+1)) == 255
+
+                )
+        {
+            // discard those that are near a obstacle
+            continue;
+        }
+        returnVec.push_back(p);
+    }
+
+    //cout << "Final number of contour pixels: " << returnVec.size() << endl;
+    return returnVec;
+
+}
+
+
+
+
 
 
 

@@ -1,4 +1,8 @@
 #include "AStarUtilities.h"
+#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/highgui/highgui.hpp"
+
+using namespace cv;
 
 namespace astar
 {
@@ -58,7 +62,7 @@ namespace astar
 
                 // If nextColor is a black pixel, then we have to update its new coordinates on the blackPixelsVector because it
                 // has been moved.
-                if(nextGrayColor == 0)
+                if(nextColor.val[0]==0 && nextColor.val[1]==0 && nextColor.val[2]==0)
                 {
                     for(unsigned int i=0; i<blackPixelsVector.size(); i++)
                     {
@@ -76,6 +80,11 @@ namespace astar
                 costImage.at<uchar>(next) = previousCost;
                 image.at<cv::Vec3b>(next) = previousColor;
                 grayImage.at<uchar>(next) = previousGrayColor;
+                /*
+                namedWindow( "Temporal Image" , CV_WINDOW_AUTOSIZE );
+                imshow("Temporal Image", image);
+                waitKey(0);
+                */
                 previous = next;
 
                 // now we color the path with a green pixel on the original image
@@ -203,7 +212,8 @@ namespace astar
 
     float MapSearchNode::GoalDistanceEstimate( MapSearchNode &nodeGoal )
     {
-        return fabsf(x - nodeGoal.x) + fabsf(y - nodeGoal.y);
+        //return fabsf(x - nodeGoal.x) + fabsf(y - nodeGoal.y);
+        return sqrt((x - nodeGoal.x)*(x - nodeGoal.x) + (y - nodeGoal.y)*(y - nodeGoal.y));
     }
 
     bool MapSearchNode::IsGoal( MapSearchNode &nodeGoal )
@@ -238,6 +248,38 @@ namespace astar
         MapSearchNode NewNode;
 
         // push each possible move except allowing the search to go backwards
+
+        if( (problem->GetMap( x-1, y-1 ) < problem->obstacle_value)
+            && !((parent_x == x-1) && (parent_y == y-1))
+          )
+        {
+            NewNode = MapSearchNode(x-1, y-1, problem);
+            astarsearch->AddSuccessor( NewNode );
+        }
+
+        if( (problem->GetMap( x+1, y+1 ) < problem->obstacle_value)
+            && !((parent_x == x+1) && (parent_y == y+1))
+          )
+        {
+            NewNode = MapSearchNode(x+1, y+1, problem);
+            astarsearch->AddSuccessor( NewNode );
+        }
+
+        if( (problem->GetMap( x-1, y+1 ) < problem->obstacle_value)
+            && !((parent_x == x-1) && (parent_y == y+1))
+          )
+        {
+            NewNode = MapSearchNode(x-1, y+1, problem);
+            astarsearch->AddSuccessor( NewNode );
+        }
+
+        if( (problem->GetMap( x+1, y-1 ) < problem->obstacle_value)
+            && !((parent_x == x+1) && (parent_y == y-1))
+          )
+        {
+            NewNode = MapSearchNode(x+1, y-1, problem);
+            astarsearch->AddSuccessor( NewNode );
+        }
 
         if( (problem->GetMap( x-1, y ) < problem->obstacle_value)
             && !((parent_x == x-1) && (parent_y == y))
