@@ -8,7 +8,7 @@ namespace astar
 {
 
     // To move one pixel from start to end, by applying the A* algorithm.
-    void movePixel(cv::Point& startPosition, cv::Point& endPosition, cv::Mat& image, cv::Mat& grayImage, cv::Mat& costImage, std::vector<cv::Point>& blackPixelsVector)
+    int movePixel(cv::Point& startPosition, cv::Point& endPosition, cv::Mat& image, cv::Mat& grayImage, cv::Mat& costImage, std::vector<cv::Point>& blackPixelsVector, std::map<string, int>& blackPixelsMapIndex)
     {
         // Create an instance of the search class. We create it here and pass it as
         // a pointer to avoid passing/returning it by copy, for efficiency purposes.
@@ -61,8 +61,13 @@ namespace astar
                 grayImage.at<uchar>(previous) = nextGrayColor;
 
                 // If nextColor is a black pixel, then we have to update its new coordinates on the blackPixelsVector because it
-                // has been moved.
-                if(nextColor.val[0]==0 && nextColor.val[1]==0 && nextColor.val[2]==0)
+                // has been moved. This is a costly operation.
+                // TODO: search another form to do this.
+
+                // Searching method: uncomment to use this. This is very costly.
+
+                /*
+                if(nextGrayColor == 0)
                 {
                     for(unsigned int i=0; i<blackPixelsVector.size(); i++)
                     {
@@ -76,6 +81,41 @@ namespace astar
                         }
                     }
                 }
+                */
+
+                // Map method and vector update. May give good performance. Un comment to use this.
+                // TODO: debug why this generates noise (additional black pixels)
+                if(nextGrayColor == 0)
+                {
+                    // Create the key for the moving black pixel.
+                    std::stringstream sstm;
+                    sstm << next.x << "," << next.y;
+                    string keyString = sstm.str();
+                    //cout << "Old key string: " << keyString << endl;
+
+                    // Get the index in the vector for that black pixel and remove it.
+                    int idx = blackPixelsMapIndex[keyString];
+                    blackPixelsVector.erase(blackPixelsVector.begin() + idx);
+
+                    // Remove the old key from the map.
+                    blackPixelsMapIndex.erase(keyString);
+
+                    // Create the new key for the map.
+                    std::stringstream sstm2;
+                    sstm2 << previous.x << "," << previous.y;
+                    string newKeyString = sstm2.str();
+                    //cout << "New key string: " << newKeyString << endl;
+
+                    // Create the new point and add it to the vector.
+                    cv::Point newPoint(previous.x, previous.y);
+                    blackPixelsVector.push_back(newPoint);
+
+                    // Update the map.
+                    blackPixelsMapIndex[newKeyString] = ((int) blackPixelsVector.size()) - 1;
+
+                }
+
+
                 // comment this line after debugging
                 costImage.at<uchar>(next) = previousCost;
                 image.at<cv::Vec3b>(next) = previousColor;
@@ -100,7 +140,7 @@ namespace astar
             //waitKey(0);
             // Once we're done with the solution, free the nodes up
             aStarSearch.FreeSolutionNodes();
-            cout << "Moved pixel from: (" << startPosition.x << "," << startPosition.y << ") to (" << endPosition.x << "," << endPosition.y << ")" << endl;
+            //cout << "Moved pixel from: (" << startPosition.x << "," << startPosition.y << ") to (" << endPosition.x << "," << endPosition.y << ")" << endl;
 
         }
         else
@@ -109,6 +149,8 @@ namespace astar
         }
 
         aStarSearch.EnsureMemoryFreed();
+
+        return success;
 
     }
 
@@ -121,8 +163,6 @@ namespace astar
         // in travelling (think ice rink if you can skate) whilst 5 represents the
         // most difficult. 9 indicates that we cannot pass.
         MapProblem problem(size.x, size.y, world_map);
-
-        //problem.PrintMap();
 
         // Create a start state
         MapSearchNode nodeStart(start.x, start.y, &problem);
@@ -142,9 +182,6 @@ namespace astar
             SearchSteps++;
         }
         while(SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SEARCHING);
-
-        // Display the number of loops the search went through
-        //cout << "Number of search steps executed: " << SearchSteps << "\n";
 
         if(SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SUCCEEDED)
         {

@@ -37,7 +37,7 @@ namespace astar
            void PrintNodeInfo();
    };
 
-   void movePixel(cv::Point& startPosition, cv::Point& endPosition, cv::Mat& image, cv::Mat& grayImage, cv::Mat& costImage, std::vector<cv::Point>& blackPixelsVector);
+   int movePixel(cv::Point& startPosition, cv::Point& endPosition, cv::Mat& image, cv::Mat& grayImage, cv::Mat& costImage, std::vector<cv::Point>& blackPixelsVector, std::map<string, int>& blackPixelsMapIndex);
 
    int executeAStar(cv::Point start, cv::Point end, cv::Point size, unsigned char *world_map, AStarSearch<MapSearchNode> *aStarSearch);
 
