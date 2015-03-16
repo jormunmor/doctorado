@@ -85,6 +85,7 @@ namespace astar
 
                 // Map method and vector update. May give good performance. Un comment to use this.
                 // TODO: debug why this generates noise (additional black pixels)
+
                 if(nextGrayColor == 0)
                 {
                     // Create the key for the moving black pixel.
