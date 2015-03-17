@@ -1,0 +1,344 @@
+<UavPlanningSolution id="1">
+  <id>0</id>
+  <name>AssignmentProblem_0001</name>
+  <locationList id="2">
+    <Location id="3">
+      <id>0</id>
+      <latitude>37.4122489</latitude>
+      <longitude>-6.0037397</longitude>
+    </Location>
+    <Location id="4">
+      <id>1</id>
+      <latitude>37.4123496</latitude>
+      <longitude>-6.0031697</longitude>
+    </Location>
+    <Location id="5">
+      <id>2</id>
+      <latitude>37.4121735</latitude>
+      <longitude>-6.0026471</longitude>
+    </Location>
+    <Location id="6">
+      <id>3</id>
+      <latitude>37.4120792</latitude>
+      <longitude>-6.0021483</longitude>
+    </Location>
+    <Location id="7">
+      <id>4</id>
+      <latitude>37.4119785</latitude>
+      <longitude>-6.0017129</longitude>
+    </Location>
+    <Location id="8">
+      <id>5</id>
+      <latitude>37.4116955</latitude>
+      <longitude>-6.0019188</longitude>
+    </Location>
+    <Location id="9">
+      <id>6</id>
+      <latitude>37.4117773</latitude>
+      <longitude>-6.0024571</longitude>
+    </Location>
+    <Location id="10">
+      <id>7</id>
+      <latitude>37.4120226</latitude>
+      <longitude>-6.002948</longitude>
+    </Location>
+    <Location id="11">
+      <id>8</id>
+      <latitude>37.4119219</latitude>
+      <longitude>-6.0038743</longitude>
+    </Location>
+    <Location id="12">
+      <id>9</id>
+      <latitude>37.4116452</latitude>
+      <longitude>-6.0036289</longitude>
+    </Location>
+    <Location id="13">
+      <id>10</id>
+      <latitude>37.4114314</latitude>
+      <longitude>-6.0028847</longitude>
+    </Location>
+    <Location id="14">
+      <id>11</id>
+      <latitude>37.4114314</latitude>
+      <longitude>-6.0018633</longitude>
+    </Location>
+    <Location id="15">
+      <id>12</id>
+      <latitude>37.4110227</latitude>
+      <longitude>-6.0023067</longitude>
+    </Location>
+    <Location id="16">
+      <id>13</id>
+      <latitude>37.4112553</latitude>
+      <longitude>-6.0033201</longitude>
+    </Location>
+    <Location id="17">
+      <id>14</id>
+      <latitude>37.4112616</latitude>
+      <longitude>-6.004001</longitude>
+    </Location>
+    <Location id="18">
+      <id>15</id>
+      <latitude>37.4109724</latitude>
+      <longitude>-6.0033597</longitude>
+    </Location>
+    <Location id="19">
+      <id>16</id>
+      <latitude>37.4108403</latitude>
+      <longitude>-6.0027263</longitude>
+    </Location>
+    <Location id="20">
+      <id>17</id>
+      <latitude>37.4107774</latitude>
+      <longitude>-6.0018475</longitude>
+    </Location>
+    <Location id="21">
+      <id>18</id>
+      <latitude>37.4105259</latitude>
+      <longitude>-6.0029717</longitude>
+    </Location>
+    <Location id="22">
+      <id>19</id>
+      <latitude>37.4107963</latitude>
+      <longitude>-6.0041514</longitude>
+    </Location>
+  </locationList>
+  <startPointList id="23">
+    <StartPoint id="24">
+      <id>0</id>
+      <location reference="17"/>
+    </StartPoint>
+    <StartPoint id="25">
+      <id>1</id>
+      <location reference="7"/>
+    </StartPoint>
+    <StartPoint id="26">
+      <id>2</id>
+      <location reference="10"/>
+    </StartPoint>
+    <StartPoint id="27">
+      <id>3</id>
+      <location reference="15"/>
+    </StartPoint>
+    <StartPoint id="28">
+      <id>4</id>
+      <location reference="20"/>
+    </StartPoint>
+  </startPointList>
+  <uavList id="29">
+    <Uav id="30">
+      <id>0</id>
+      <flightTime>600</flightTime>
+      <startPoint reference="24"/>
+      <nextTask id="31">
+        <id>30</id>
+        <location reference="11"/>
+        <cost>34</cost>
+        <nextTask id="32">
+          <id>3</id>
+          <location reference="3"/>
+          <cost>60</cost>
+          <nextTask id="33">
+            <id>8</id>
+            <location reference="3"/>
+            <cost>60</cost>
+            <nextTask id="34">
+              <id>0</id>
+              <location reference="3"/>
+              <cost>60</cost>
+              <nextTask id="35">
+                <id>6</id>
+                <location reference="3"/>
+                <cost>60</cost>
+                <nextTask id="36">
+                  <id>4</id>
+                  <location reference="3"/>
+                  <cost>60</cost>
+                  <nextTask id="37">
+                    <id>1</id>
+                    <location reference="3"/>
+                    <cost>60</cost>
+                    <nextTask id="38">
+                      <id>9</id>
+                      <location reference="3"/>
+                      <cost>60</cost>
+                      <nextTask id="39">
+                        <id>10</id>
+                        <location reference="3"/>
+                        <cost>45</cost>
+                        <nextTask id="40">
+                          <id>2</id>
+                          <location reference="3"/>
+                          <cost>60</cost>
+                        </nextTask>
+                      </nextTask>
+                    </nextTask>
+                  </nextTask>
+                </nextTask>
+              </nextTask>
+            </nextTask>
+          </nextTask>
+        </nextTask>
+      </nextTask>
+    </Uav>
+    <Uav id="41">
+      <id>1</id>
+      <flightTime>600</flightTime>
+      <startPoint reference="25"/>
+      <nextTask id="42">
+        <id>20</id>
+        <location reference="6"/>
+        <cost>11</cost>
+        <nextTask id="43">
+          <id>19</id>
+          <location reference="6"/>
+          <cost>60</cost>
+          <nextTask id="44">
+            <id>26</id>
+            <location reference="9"/>
+            <cost>60</cost>
+            <nextTask id="45">
+              <id>25</id>
+              <location reference="9"/>
+              <cost>60</cost>
+              <nextTask id="46">
+                <id>27</id>
+                <location reference="9"/>
+                <cost>60</cost>
+                <nextTask id="47">
+                  <id>24</id>
+                  <location reference="9"/>
+                  <cost>60</cost>
+                  <nextTask id="48">
+                    <id>29</id>
+                    <location reference="9"/>
+                    <cost>58</cost>
+                    <nextTask id="49">
+                      <id>23</id>
+                      <location reference="9"/>
+                      <cost>60</cost>
+                      <nextTask id="50">
+                        <id>28</id>
+                        <location reference="9"/>
+                        <cost>60</cost>
+                        <nextTask id="51">
+                          <id>22</id>
+                          <location reference="8"/>
+                          <cost>47</cost>
+                          <nextTask id="52">
+                            <id>21</id>
+                            <location reference="8"/>
+                            <cost>60</cost>
+                          </nextTask>
+                        </nextTask>
+                      </nextTask>
+                    </nextTask>
+                  </nextTask>
+                </nextTask>
+              </nextTask>
+            </nextTask>
+          </nextTask>
+        </nextTask>
+      </nextTask>
+    </Uav>
+    <Uav id="53">
+      <id>2</id>
+      <flightTime>600</flightTime>
+      <startPoint reference="26"/>
+      <nextTask id="54">
+        <id>18</id>
+        <location reference="5"/>
+        <cost>24</cost>
+        <nextTask id="55">
+          <id>17</id>
+          <location reference="5"/>
+          <cost>60</cost>
+          <nextTask id="56">
+            <id>14</id>
+            <location reference="4"/>
+            <cost>60</cost>
+            <nextTask id="57">
+              <id>11</id>
+              <location reference="4"/>
+              <cost>60</cost>
+              <nextTask id="58">
+                <id>13</id>
+                <location reference="4"/>
+                <cost>60</cost>
+                <nextTask id="59">
+                  <id>12</id>
+                  <location reference="4"/>
+                  <cost>60</cost>
+                  <nextTask id="60">
+                    <id>15</id>
+                    <location reference="4"/>
+                    <cost>60</cost>
+                    <nextTask id="61">
+                      <id>16</id>
+                      <location reference="4"/>
+                      <cost>41</cost>
+                      <nextTask id="62">
+                        <id>5</id>
+                        <location reference="3"/>
+                        <cost>60</cost>
+                        <nextTask id="63">
+                          <id>7</id>
+                          <location reference="3"/>
+                          <cost>60</cost>
+                        </nextTask>
+                      </nextTask>
+                    </nextTask>
+                  </nextTask>
+                </nextTask>
+              </nextTask>
+            </nextTask>
+          </nextTask>
+        </nextTask>
+      </nextTask>
+    </Uav>
+    <Uav id="64">
+      <id>3</id>
+      <flightTime>600</flightTime>
+      <startPoint reference="27"/>
+    </Uav>
+    <Uav id="65">
+      <id>4</id>
+      <flightTime>600</flightTime>
+      <startPoint reference="28"/>
+    </Uav>
+  </uavList>
+  <genericTaskList id="66">
+    <GenericTask reference="34"/>
+    <GenericTask reference="37"/>
+    <GenericTask reference="40"/>
+    <GenericTask reference="32"/>
+    <GenericTask reference="36"/>
+    <GenericTask reference="62"/>
+    <GenericTask reference="35"/>
+    <GenericTask reference="63"/>
+    <GenericTask reference="33"/>
+    <GenericTask reference="38"/>
+    <GenericTask reference="39"/>
+    <GenericTask reference="57"/>
+    <GenericTask reference="59"/>
+    <GenericTask reference="58"/>
+    <GenericTask reference="56"/>
+    <GenericTask reference="60"/>
+    <GenericTask reference="61"/>
+    <GenericTask reference="55"/>
+    <GenericTask reference="54"/>
+    <GenericTask reference="43"/>
+    <GenericTask reference="42"/>
+    <GenericTask reference="52"/>
+    <GenericTask reference="51"/>
+    <GenericTask reference="49"/>
+    <GenericTask reference="47"/>
+    <GenericTask reference="45"/>
+    <GenericTask reference="44"/>
+    <GenericTask reference="46"/>
+    <GenericTask reference="50"/>
+    <GenericTask reference="48"/>
+    <GenericTask reference="31"/>
+  </genericTaskList>
+  <score id="67">0hard/-600636soft</score>
+</UavPlanningSolution>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Location markers</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script>
+function initialize() {
+  var loc0 = new google.maps.LatLng(37.4122489,-6.0037397);
+  var loc1 = new google.maps.LatLng(37.4123496,-6.0031697);
+  var loc2 = new google.maps.LatLng(37.4121735,-6.0026471);
+  var loc3 = new google.maps.LatLng(37.4120792,-6.0021483);
+  var loc5 = new google.maps.LatLng(37.4116955,-6.0019188);
+  var loc6 = new google.maps.LatLng(37.4117773,-6.0024571);
+  var loc8 = new google.maps.LatLng(37.4119219,-6.0038743);
+  
+  var uav0 = new google.maps.LatLng(37.4112616,-6.004001);
+  var uav1 = new google.maps.LatLng(37.4119785,-6.0017129);
+  var uav2 = new google.maps.LatLng(37.4120226,-6.002948);
+  var uav3 = new google.maps.LatLng(37.4110227,-6.0023067);
+  var uav4 = new google.maps.LatLng(37.4107774,-6.0018475);
+
+
+
+  var mapOptions = {
+    zoom: 18,
+    center: loc6
+  }
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var marker = new google.maps.Marker({
+      position: loc0,
+      map: map,
+      title: '3D Map Generation',
+	  icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+  });
+  var marker = new google.maps.Marker({
+      position: loc1,
+      map: map,
+      title: 'Surveillance',
+	  icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+  });
+  var marker = new google.maps.Marker({
+      position: loc2,
+      map: map,
+      title: '3D Map Generation',
+	  icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+  });
+  var marker = new google.maps.Marker({
+      position: loc3,
+      map: map,
+      title: '3D Map Generation',
+	  icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+  });
+  var marker = new google.maps.Marker({
+      position: loc5,
+      map: map,
+      title: 'Surveillance',
+	  icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+  });
+  var marker = new google.maps.Marker({
+      position: loc6,
+      map: map,
+      title: 'Surveillance',
+	  icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+  });
+  var marker = new google.maps.Marker({
+      position: loc8,
+      map: map,
+      title: '3D Map Generation',
+	  icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+  });
+  
+  
+  
+  var marker = new google.maps.Marker({
+      position: uav0,
+      map: map,
+      title: 'Starting Point 0',
+	  icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+  });
+  
+  var marker = new google.maps.Marker({
+      position: uav1,
+      map: map,
+      title: 'Starting Point 1',
+  	  icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+
+  });
+  
+  var marker = new google.maps.Marker({
+      position: uav2,
+      map: map,
+      title: 'Starting Point 2',
+	  icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+
+  });
+  
+  var marker = new google.maps.Marker({
+      position: uav3,
+      map: map,
+      title: 'Starting Point 3',
+	  icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+
+  });
+  
+  var marker = new google.maps.Marker({
+      position: uav4,
+      map: map,
+      title: 'Starting Point 4',
+	  icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+
+  });
+  
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>

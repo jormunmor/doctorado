@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="Jorge Juan Munoz Morera" />
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
+	<link type="text/css" rel="stylesheet" href="css/style.css" media="screen" />
+	<!-- Dojo -->
+	<link rel="stylesheet" href="js/dojo-release/dojox/image/resources/image.css" />
+	<!-- LightBox -->
+	<link rel="stylesheet" href="js/lightbox/css/lightbox.css">
+	
+	<style type="text/css">
+		@import "js/dojo-release/dojo/resources/dojo.css";
+	</style>
+	
+	<!-- required: dojo.js -->
+	<script type="text/javascript" src="js/dojo-release/dojo/dojo.js" data-dojo-config="isDebug:true, parseOnLoad:true"></script>
+	<script>
+    	require(["dojo/query", "dojox/image/Badge", "dojo/on", "dojo/parser", "dojo/domReady!"]);
+	</script>
+	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="js/lightbox/js/lightbox.js"></script>
+
+	<title>Jorge Juan Mu&ntilde;oz Morera</title>
+</head>
+
+<body>
+	<div id="mainwrap">
+		<header>
+			<h1><a href="index.html">Jorge Juan Mu&ntilde;oz Morera</a></h1>
+			<h2>Researcher in University of Seville</h2>
+			<ul id="menu">
+				<li><a class="profile" href="#profile" title="Profile">Profile</a><span>Some information about me</span></li>
+				<li><a class="resume" href="#resume" title="Resume">Resume</a><span>Professional information</span></li>
+				<li><a class="gallery" href="#gallery" title="Gallery">Gallery</a><span>Images of my work</span></li>
+			</ul>
+		</header>
+		<div style="clear:both"></div>
+		<div id="content">
+			<div id="profile" class="section">
+				<div class="column col3">
+					<table id="bioinfo">
+						<tbody>
+							<tr>
+								<td class="odd">Name</td>
+								<td class="even">Jorge Juan Mu&ntilde;oz Morera</td>
+							</tr>
+							<tr>
+								<td class="odd">Date of birth</td>
+								<td class="even">29-04-1984</td>
+							</tr>
+							<tr>
+								<td class="odd">Address</td>
+								<td class="even">Seville, Spain</td>
+							</tr>
+							<tr>
+								<td class="odd">Languages</td>
+								<td class="even">Spanish, English, French, Italian</td>
+							</tr>
+							<tr>
+								<td class="odd">Field</td>
+								<td class="even">Computer Science</td>
+							</tr>
+							<tr>
+								<td class="odd">Email</td>
+								<td class="even"><img src="img/em2.png" class="centered_image" alt="Jorge Juan Mu&ntilde;oz Morera" width="128" height="19"/></td>
+							</tr>
+						</tbody>
+					</table>
+					<ul class="social">
+						<li><a href="http://linkedin.com/in/jorgejuanmunozmorera" target="_blank" class="external"><img src="img/icons/linkedin.png" alt="Linkedin" /></a></li>
+					</ul>
+				</div>
+				<div class="column col5 pl-50">
+					<img src="img/photo1.png" alt="Jorge Juan Munoz Morera" />
+					<p class="footer">
+					Welcome to my personal web page. Here you can find some info related to the last years of my work. A more complete
+					description of all my experiences can be found in my LinkedIn profile, by clicking the icon on the left. Hope you enjoy!
+					</p>
+				</div>
+				
+			</div>
+
+			<div id="resume" class="section">
+				<table id="cv">
+					<tbody>
+						<tr>
+							<td class="col2"><div class="date">December 2013 - present</div></td>
+							<td class="col6 pl-30">
+								<p class="company">Robotics, Vision and Control Group (GRVC)</p>
+								<p class="title">R&D engineer</p>
+								<p class="description">
+								This is where it goes now!. At the GRVC I work in the field of A.I., by developing planning systems for the
+								execution of missions in multi-UAV contexts. Schedulers, task planners, assembly planners, motion planners... 
+								trying to put it together for the planning and execution of real UAV missions, but taking into account other 
+								non-flying unmanned vehicles.
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="col2"><div class="date">April 2013 - November 2013</span></td>
+							<td class="col6 pl-30">
+								<p class="company">M.D.U.</p>
+								<p class="title">Embedded Systems Engineer</p>
+								<p class="description">
+								This is where it continued!. At M.D.U. I worked on a navigation system to track objectives with an UAV
+								and follow them by estimating the position of the tracked objects in base of the UAV position, the fly altitude
+								and the camera angles. I also developed a Ground Control Station and several GUIs in QT and OpenCV for the project.
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="col2"><div class="date">September 2012 - April 2013</span></td>
+							<td class="col6 pl-30">
+								<p class="company">FADA-CATEC</p>
+								<p class="title">Embedded Systems Engineer</p>
+								 <p class="description">
+								 This is where it all started! At the Avionics and Unmanned Systems department I developed embedded Linux distributions
+								 to be deployed on embedded computers for different UAVs. I worked also programming in ROS and OpenCV a vision
+								 system to take and display thermographic images/videos with a FLIR Thermal Camera.
+								 </p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+
+			<div id="gallery" class="section">
+				<div class="noBorderWrapper center">
+					<div dojoType="dojox.image.Badge" cellSize="100" rows="3" cols="3" children="img.thing">
+						<a href="img/img1.jpg" data-lightbox="img1"><img src="img/img1.jpg" class="thing" /></a>
+						<a href="img/img2.jpg" data-lightbox="img2"><img src="img/img2.jpg" class="thing" /></a>
+						<a href="img/img3.jpg" data-lightbox="img3"><img src="img/img3.jpg" class="thing" /></a>
+						<a href="img/img4.jpg" data-lightbox="img4"><img src="img/img4.jpg" class="thing" /></a>
+						<a href="img/img5.jpg" data-lightbox="img5"><img src="img/img5.jpg" class="thing" /></a>
+						<a href="img/img6.jpg" data-lightbox="img6"><img src="img/img6.jpg" class="thing" /></a>
+						<a href="img/img7.jpg" data-lightbox="img7"><img src="img/img7.jpg" class="thing" /></a>
+						<a href="img/img8.jpg" data-lightbox="img8"><img src="img/img8.jpg" class="thing" /></a>
+						<a href="img/img9.jpg" data-lightbox="img9"><img src="img/img9.jpg" class="thing" /></a>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+		<div id="footer">
+			&copy; 2014 Jorge Juan Mu&ntilde;oz Morera &middot; <a href="http://andreasviklund.com/templates/this-is-me-dark/">Template design</a> by <a href="http://andreasviklund.com/">Veselka Dobreva</a><br />
+		</div>
+	  
+		<script type="text/javascript">
+			$(document).ready(function() {
+			    $(".section").not(":first").hide();
+			    $("ul#menu li:first").addClass("active").show(); 
+			 
+			    $("ul#menu li").click(function() {
+			        $("ul#menu li.active").removeClass("active");
+			        $(this).addClass("active");
+			        $(".section").slideUp();       
+			        $($('a',this).attr("href")).slideDown('slow');
+			 
+			        return false;
+			    });
+			 
+			});
+		</script>
+	</div>
+</body>
+</html>
