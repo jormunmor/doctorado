@@ -362,6 +362,7 @@ namespace astar
     float MapSearchNode::GetCost(MapSearchNode &successor)
     {
         return (float) problem->GetMap( x, y );
+        //return (float) problem->GetMap( successor.x, successor.y );
 
     }
 
