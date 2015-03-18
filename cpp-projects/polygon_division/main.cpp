@@ -158,7 +158,8 @@ int main( int argc, char** argv )
     cvtColor(expandedPolygonImage, grayPolygonImage, COLOR_BGR2GRAY);
     markerMask = Scalar::all(0);
 
-    // Generate and place the seed points
+    // Generate and place the seed points (on vertex).
+    /*
     std::list<cv::Point> seed_points = generate_seed_points(numberOfSeeds);
     std::list<cv::Point>::iterator it;
     for (it=seed_points.begin(); it!=seed_points.end(); ++it)
@@ -167,6 +168,20 @@ int main( int argc, char** argv )
         markerMask.at<uchar>(seed) = 255;
 
     }
+    */
+
+    // Hard-coded seeds. Comment after using and uncomment the previous loop.
+    std::list<cv::Point> seed_points(3);
+    cv::Point point1(82, 200);
+    cv::Point point2(426, 205);
+    cv::Point point3(294, 387);
+    seed_points.push_back(point1);
+    seed_points.push_back(point2);
+    seed_points.push_back(point3);
+    markerMask.at<uchar>(point1) = 255;
+    markerMask.at<uchar>(point2) = 255;
+    markerMask.at<uchar>(point3) = 255;
+
 
     //Mat blackPixels = (grayPolygonImage == 0);
     //namedWindow( "Original Image" , CV_WINDOW_AUTOSIZE );
@@ -1214,7 +1229,7 @@ void cover_black_zones(int numberOfSeeds, int* cellsToConquer, int* conqueredCel
         unsigned int grayColor = getGrayValue(color);
 
         // Give the actual destination color a high value to avoid appendix creation.
-        costMap[grayColor] = 3;
+        costMap[grayColor] = 2;
 
         // Create the cost matrix. We do this each time we select a seed to complete.
         for(int j=0; j<costImage.rows; j++)
