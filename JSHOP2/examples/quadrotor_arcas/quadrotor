@@ -214,6 +214,25 @@
 		
 		)
 
+		(:operator (!sync ?uav1 ?uav2 ?start ?duration)
+			
+			;precondition		
+			( 
+				(assign ?end (call + ?start ?duration)) (read-time at ?uav1 ?t0)
+			)
+				 			
+			;delete list 
+			( 	
+				(read-time at ?uav1 ?t0)
+			)
+			
+			;add list
+			( 	
+				(read-time at ?uav1 ?end)
+			)
+		
+		)
+
 		(:operator (!assembly_plan_finished)
 			
 			;precondition		
@@ -565,7 +584,10 @@
 			)
 
 			;subtasks
-			( (!synchro_wait ?uav2 ?start ?duration) )
+			( 
+				(!sync ?uav2 ?uav1 ?start ?duration) 
+				(!sync ?uav1 ?uav2 ?t1 0)
+			)
 
 			;precondition ; the write time of the uav1 is before that of the uav2 -> uav1 must wait
 			( 
@@ -577,7 +599,10 @@
 			)
 
 			;subtasks
-			( (!synchro_wait ?uav1 ?start ?duration) )
+			( 
+				(!sync ?uav1 ?uav2 ?start ?duration) 
+				(!sync ?uav2 ?uav1 ?t2 0)
+			)
 
 	
 		)

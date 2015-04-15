@@ -114,7 +114,7 @@ void MainWindow::readPlanFile(QString fileName)
         // ..
         // (sync uav1 uav2)
         // ..
-        // (sync uav2 uav2)
+        // (sync uav2 uav1)
         // The sync operation is the only 'cooperative' operation that appears once
         // for each of the involved UAVs. In fact, the operator is not 'really' cooperative, it means that
         // uav1 requires synchronization with uav2 in the first line. Thus, inserting it to the first UAV that appears
@@ -302,6 +302,7 @@ void MainWindow::updateTable(int tableRow, int tableColumn, int state)
         case Ui::QUEUED_COOP: cell->setBackground(Qt::darkMagenta); break;
         case Ui::EXECUTING: cell->setBackground(Qt::darkYellow); break;
         case Ui::EXECUTING_COOP: cell->setBackground(Qt::yellow); break;
+        case Ui::SYNCHRONIZING: cell->setBackground(Qt::blue); break;
         case Ui::ABORTED: cell->setBackground(Qt::darkRed); break;
         case Ui::ABORTED_COOP: cell->setBackground(Qt::red); break;
         case Ui::FINISHED: cell->setBackground(Qt::darkGreen); break;

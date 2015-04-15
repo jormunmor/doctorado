@@ -16,6 +16,7 @@ namespace Ui {
         QUEUED_COOP,
         EXECUTING,
         EXECUTING_COOP,
+        SYNCHRONIZING,
         ABORTED,
         ABORTED_COOP,
         FINISHED,
