@@ -61,6 +61,7 @@ public:
   void setupDemo(int demoIndex);
   void setupBarChartDemo(QCustomPlot *customPlot);
   void setupAutomaticBarChartDemo(QCustomPlot *customPlot);
+  void setupAutomaticBarChartDemo2(QCustomPlot *customPlot);
   void setupPlayground(QCustomPlot *customPlot);
   
 private slots:

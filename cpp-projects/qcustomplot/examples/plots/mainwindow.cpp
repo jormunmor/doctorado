@@ -67,6 +67,7 @@ void MainWindow::setupDemo(int demoIndex)
     {
         case 0: setupBarChartDemo(ui->customPlot); break;
         case 1: setupAutomaticBarChartDemo(ui->customPlot); break;
+        case 2: setupAutomaticBarChartDemo2(ui->customPlot); break;
     }
     setWindowTitle("ArcasExecLayer: Gantt Demo");
     statusBar()->clearMessage();
@@ -151,6 +152,105 @@ void MainWindow::setupAutomaticBarChartDemo(QCustomPlot *customPlot)
         currentBar->moveAbove(previousBar);
         previousBar = currentBar;
         ui->customPlot->replot();
+
+    }
+
+}
+
+void MainWindow::setupAutomaticBarChartDemo2(QCustomPlot *customPlot)
+{
+    QTime now = QTime::currentTime();
+    qsrand(now.msec());
+
+    // Common part of all charts.
+
+    // Prepare Y-axis with vehicle labels:
+    QVector<double> ticks;
+    QVector<QString> labels;
+    ticks << 1;
+    labels << "UAV1";
+    customPlot->yAxis->setAutoTicks(false);
+    customPlot->yAxis->setAutoTickLabels(false);
+    customPlot->yAxis->setTickVector(ticks);
+    customPlot->yAxis->setTickVectorLabels(labels);
+    customPlot->yAxis->setTickLabelRotation(60);
+    customPlot->yAxis->setSubTickCount(0);
+    customPlot->yAxis->setTickLength(0, 4);
+    customPlot->yAxis->grid()->setVisible(true);
+    customPlot->yAxis->setRange(0, 2);
+
+    // Prepare X-axis with time units:
+    customPlot->xAxis->setRange(0, 12.1);
+    customPlot->xAxis->setPadding(5); // a bit more space to the left border
+    customPlot->xAxis->setLabel("Time (s)");
+    customPlot->xAxis->grid()->setSubGridVisible(true);
+    QPen gridPen;
+    gridPen.setStyle(Qt::SolidLine);
+    gridPen.setColor(QColor(0, 0, 0, 25));
+    customPlot->yAxis->grid()->setPen(gridPen);
+    gridPen.setStyle(Qt::DotLine);
+    customPlot->yAxis->grid()->setSubGridPen(gridPen);
+
+    // Set the chart properties: alignment, drag and zoom.
+    customPlot->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignTop|Qt::AlignHCenter);
+    customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+
+    // Create the colors and pen
+    QColor boxColorArray[3];
+    QColor penColorArray[3];
+    //boxColorArray[0] = QColor(255, 131, 0, 50);
+    //boxColorArray[1] = QColor(1, 92, 191, 50);
+    //boxColorArray[2] = QColor(150, 222, 0, 70);
+    boxColorArray[0] = QColor(255, 131, 0, 50);
+    boxColorArray[1] = QColor(1, 92, 191, 50);
+    boxColorArray[2] = QColor(150, 222, 0, 50);
+    penColorArray[0] = QColor(255, 131, 0);
+    penColorArray[1] = QColor(1, 92, 191);
+    penColorArray[2] = QColor(150, 222, 0);
+    QPen pen;
+    pen.setWidthF(1.2);
+
+    // Create a fake first bar
+    QCPBars *previousBar = new QCPBars(customPlot->yAxis, customPlot->xAxis);
+    int randomIndex = 0;
+    pen.setColor(penColorArray[randomIndex]);
+    previousBar->setPen(pen);
+    previousBar->setBrush(boxColorArray[randomIndex]);
+    customPlot->addPlottable(previousBar);
+
+    QVector<double> previousBarData;
+    previousBarData << 0;
+    ticks << 1;
+    previousBar->setData(ticks, previousBarData);
+
+    // Lets print some boxes.
+    for(int i=0; i<125; i++)
+    {
+        std::cout << "Looping at 300 msecs..." << std::endl;
+        delay(100);
+        QCPBarData oldBarData = previousBar->data()->value(1);
+        std::cout << "Key: " << oldBarData.key << " Value: " << oldBarData.value << std::endl;
+        QVector<double> newBarData;
+        newBarData << oldBarData.value + 1;
+        previousBar->setData(ticks, newBarData);
+        ui->customPlot->replot();
+        if(i==70)
+        {
+            QCPBars *anotherBar = new QCPBars(customPlot->yAxis, customPlot->xAxis);
+            int randomIndex = 1;
+            pen.setColor(penColorArray[randomIndex]);
+            anotherBar->setPen(pen);
+            anotherBar->setBrush(boxColorArray[randomIndex]);
+            customPlot->addPlottable(anotherBar);
+
+            QVector<double> anotherBarData;
+            anotherBarData << 0;
+            ticks << 1;
+            anotherBar->setData(ticks, anotherBarData);
+            anotherBar->moveAbove(previousBar);
+            previousBar = anotherBar;
+
+        }
 
     }
 
