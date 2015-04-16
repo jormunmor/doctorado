@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <QApplication>
 #include <QTime>
+#include <string>
 
 using namespace std;
 
@@ -29,6 +30,14 @@ void VehicleScheduler::execute()
     std::cout << "Started thread with id: " << QThread::currentThreadId() << " corresponding to vehicle with id: " << vehicleID << std::endl;
     //qsrand(QTime::currentTime().msec());
     qsrand(vehicleID);
+
+    // Create the client object. We do not include it as a class member
+    // to avoid collateral effects of not calling ros::init in the vehicle
+    // scheduler constructor.
+    QString nodeName = QString("action_client")  + QString::number(vehicleID);
+    //std::string nodeName = "action_client" + std::to_string(vehicleID);
+
+    ArcasExecLayerClient actionClient(nodeName.toStdString(), "ArcasExecLayerServer", boost::bind(&VehicleScheduler::activeCb, this), boost::bind(&VehicleScheduler::feedbackCb, this, _1));
 
     int tableColumn = 0;
     while(operations.size() > 0)
@@ -111,7 +120,7 @@ void VehicleScheduler::execute()
 
         }
 
-        // Execute the operation.By the moment, simulate
+        // Execute the operation. By the moment, simulate
         // its execution by waiting a random amount.
         int seconds = (qrand() % 5) + 1;
 
@@ -148,4 +157,14 @@ void VehicleScheduler::threadSync(int waitingThreadVehicleId, int requestedThrea
         //std::cout << "Thread " << QThread::currentThreadId() << ": that was me who sent that signal. Ignoring it..." << std::endl;
     }
 
+}
+
+void VehicleScheduler::activeCb(void)
+{
+    std::cout << "activeCb from vehicleID: " << vehicleID << std::endl;
+}
+
+void VehicleScheduler::feedbackCb(const arcas_exec_layer::ArcasExecLayerFeedbackConstPtr& feedback)
+{
+    std::cout << "feedbackCb from vehicleID: " << vehicleID << std::endl;
 }

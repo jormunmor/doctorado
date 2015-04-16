@@ -6,6 +6,9 @@
 #include <QStringList>
 #include <QThread>
 #include <QMetaType>
+// The followings are needed to use the actionlib client
+#include "ArcasExecLayerClient.h"
+#include "constants.h"
 
 namespace Ui {
 
@@ -33,6 +36,8 @@ class VehicleScheduler : public QObject
 public:
     explicit VehicleScheduler(const int &id, const QVector<QStringList> &ops, const int &row, QObject *parent = 0);
     ~VehicleScheduler();
+    void activeCb(void);
+    void feedbackCb(const arcas_exec_layer::ArcasExecLayerFeedbackConstPtr& feedback);
     
 signals:
     void stateChanged(int row, int column, int state);
