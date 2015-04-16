@@ -305,6 +305,8 @@ void MainWindow::updateTable(int tableRow, int tableColumn, int state)
         case Ui::SYNCHRONIZING: cell->setBackground(Qt::blue); break;
         case Ui::ABORTED: cell->setBackground(Qt::darkRed); break;
         case Ui::ABORTED_COOP: cell->setBackground(Qt::red); break;
+        case Ui::FAILED: cell->setBackground(Qt::darkRed); break;
+        case Ui::FAILED_COOP: cell->setBackground(Qt::red); break;
         case Ui::FINISHED: cell->setBackground(Qt::darkGreen); break;
         case Ui::FINISHED_COOP: cell->setBackground(Qt::green); break;
         default: break;

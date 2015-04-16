@@ -14,7 +14,7 @@ namespace Ui {
 
     class VehicleScheduler;
 
-    enum OperationState {
+    enum OperationState{
         QUEUED,
         QUEUED_COOP,
         EXECUTING,
@@ -22,6 +22,8 @@ namespace Ui {
         SYNCHRONIZING,
         ABORTED,
         ABORTED_COOP,
+        FAILED,
+        FAILED_COOP,
         FINISHED,
         FINISHED_COOP
     };
@@ -38,7 +40,8 @@ public:
     ~VehicleScheduler();
     void activeCb(void);
     void feedbackCb(const arcas_exec_layer::ArcasExecLayerFeedbackConstPtr& feedback);
-    
+    void doneCb(const actionlib::SimpleClientGoalState& state, const arcas_exec_layer::ArcasExecLayerResultConstPtr& result);
+
 signals:
     void stateChanged(int row, int column, int state);
     void syncThread(int waitingThreadVehicleId, int requestedThreadVehicleId);
@@ -51,6 +54,8 @@ private:
     int vehicleID; // Id of the vehicle for the scheduler.
     int tableRow; // The table row on which the uav is displayed.
     int waitingFor; // Id of the vehicle the scheduler is waiting for.
+    int currentOp; // The number of the operation the vehicle is currently executing.
+    int currentOpType; // The type of the current operation (STANDALONE or COOPERATIVE).
     QVector<QStringList> operations; // The operations the vehicle must execute.
     QVector<int> syncRequests;
 

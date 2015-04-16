@@ -10,31 +10,25 @@
 #include "ArcasExecLayerClient.h"
 
 ArcasExecLayerClient::ArcasExecLayerClient(
-    std::string node_name,
     std::string server_name,
 	actionlib::SimpleActionClient<arcas_exec_layer::ArcasExecLayerAction>::SimpleActiveCallback active_cb,
-	actionlib::SimpleActionClient<arcas_exec_layer::ArcasExecLayerAction>::SimpleFeedbackCallback feedback_cb
+    actionlib::SimpleActionClient<arcas_exec_layer::ArcasExecLayerAction>::SimpleFeedbackCallback feedback_cb,
+    actionlib::SimpleActionClient<arcas_exec_layer::ArcasExecLayerAction>::SimpleDoneCallback done_cb
 )
 {
-	// Init the ROS node
-	int argc = 1;
-    char* argv[] = {(char*) node_name.c_str()};
-	ros::init(argc, argv, node_name);
-
 	// Create the action client
     action_client = new actionlib::SimpleActionClient<arcas_exec_layer::ArcasExecLayerAction>(server_name, true);
 
 	// Setup the callback functions
 	activeCb = active_cb;
 	feedbackCb = feedback_cb;
+    doneCb2 = done_cb;
 
 }
 
 ArcasExecLayerClient::~ArcasExecLayerClient()
 {
 	delete action_client;
-	ros::shutdown();
-
 }
 
 void ArcasExecLayerClient::doneCb(const actionlib::SimpleClientGoalState& state,
@@ -42,8 +36,7 @@ void ArcasExecLayerClient::doneCb(const actionlib::SimpleClientGoalState& state,
 {
 	finished = true;
 	finalState = state.state_;
-	ROS_INFO("Finishing execution of the client.");
-
+    doneCb2(state, result);
 }
 
 int ArcasExecLayerClient::executeGoal(Goal& goal)

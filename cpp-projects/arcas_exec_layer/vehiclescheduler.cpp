@@ -1,9 +1,13 @@
 #include "vehiclescheduler.h"
 #include <iostream>
 #include <unistd.h>
+#include <cstdlib>
 #include <QApplication>
 #include <QTime>
 #include <string>
+
+/// TODO: avoid using QString to create std::strings to use with ROS nodes. Sometimes
+/// they introduce unexpected chars. May be due to the encoding?.
 
 using namespace std;
 
@@ -34,12 +38,13 @@ void VehicleScheduler::execute()
     // Create the client object. We do not include it as a class member
     // to avoid collateral effects of not calling ros::init in the vehicle
     // scheduler constructor.
-    QString nodeName = QString("action_client")  + QString::number(vehicleID);
-    //std::string nodeName = "action_client" + std::to_string(vehicleID);
 
-    ArcasExecLayerClient actionClient(nodeName.toStdString(), "ArcasExecLayerServer", boost::bind(&VehicleScheduler::activeCb, this), boost::bind(&VehicleScheduler::feedbackCb, this, _1));
+    std::ostringstream ss;
+    ss << vehicleID;
+    std::string serverName = std::string("VehicleServer") + ss.str();
+    ArcasExecLayerClient actionClient(serverName, boost::bind(&VehicleScheduler::activeCb, this), boost::bind(&VehicleScheduler::feedbackCb, this, _1), boost::bind(&VehicleScheduler::doneCb, this, _1, _2));
+    currentOp = 0;
 
-    int tableColumn = 0;
     while(operations.size() > 0)
     {
 
@@ -54,10 +59,11 @@ void VehicleScheduler::execute()
         // among two vehicles. If the curren operation is of that type, we
         // must wait until the other vehicle has reached the operation on its
         // queue.
-        int executingStateColor = Ui::EXECUTING;
-        int finishedStateColor = Ui::FINISHED;
+        currentOpType = STANDALONE;
         if(op.size()>=3 && op.at(2).contains(Ui::UAV_IDENTIFIER)) // This is a cooperative operation, the third field is a uav ID
         {
+            currentOpType = COOPERATIVE;
+
             // Get the cooperative uav ID
             secondUavId = op.at(2).right(op.at(2).size() - Ui::UAV_IDENTIFIER.size()).toInt();
 
@@ -79,17 +85,10 @@ void VehicleScheduler::execute()
             // Set the table cell to synchro color,
             // we must hold this color until the other uav
             // tell us it is synchronized.
-            emit(stateChanged(tableRow, tableColumn, Ui::SYNCHRONIZING));
-
-            // Configure the color to use after the synchronizing.
-            executingStateColor = Ui::EXECUTING_COOP;
-            finishedStateColor = Ui::FINISHED_COOP;
+            emit(stateChanged(tableRow, currentOp, Ui::SYNCHRONIZING));
 
             // Signal our cooperative operation and wait until
             // secondUavId waits for us.
-            QString joined = op.join(" ");
-            //std::cout << "Operation: " << joined.toStdString() << std::endl;
-            //std::cout << "Emiting... " <<  "waiting thread: " << vehicleID << " requestedThread: " << secondUavId << std::endl;
             emit(syncThread(vehicleID, secondUavId));
 
             int uavRequestIndex = -1;
@@ -120,20 +119,14 @@ void VehicleScheduler::execute()
 
         }
 
-        // Execute the operation. By the moment, simulate
-        // its execution by waiting a random amount.
-        int seconds = (qrand() % 5) + 1;
-
-        // Emit the executing signal to display the status in the table
-        emit(stateChanged(tableRow, tableColumn, executingStateColor));
-
-        // Execute (wait for the moment)
-        sleep(seconds);
-
-        // Emit the finish signal to display the status in the table
-        emit(stateChanged(tableRow, tableColumn, finishedStateColor));
-
-        tableColumn++;
+        // Execute The action. First we create the goal.
+        Goal fakeGoal;
+        fakeGoal.vehicleID = vehicleID;
+        fakeGoal.group = VEHICLE_FRAME;
+        fakeGoal.actionType = TAKEOFF;
+        fakeGoal.pose.position.z = 10;
+        actionClient.executeGoal(fakeGoal);
+        currentOp++;
 
     }
 
@@ -141,30 +134,89 @@ void VehicleScheduler::execute()
 
 void VehicleScheduler::threadSync(int waitingThreadVehicleId, int requestedThreadVehicleId)
 {
-    //std::cout << "Inside " << vehicleID <<  " || waiting thread: " << waitingThreadVehicleId << " requestedThread: " << requestedThreadVehicleId << std::endl;
 
     if(waitingThreadVehicleId != vehicleID) // That wasn't me who sent this signal
     {
         if(requestedThreadVehicleId == vehicleID) // Someone is waiting for me.
         {
-            //std::cout << "Thread " << QThread::currentThreadId() << ": vehicleID" << waitingThreadVehicleId << " is waiting for vehicleID" << requestedThreadVehicleId << " (mine)" << std::endl;
             syncRequests.push_back(waitingThreadVehicleId);
 
         }
     }
     else // That was me who sent this signal, discard it
     {
-        //std::cout << "Thread " << QThread::currentThreadId() << ": that was me who sent that signal. Ignoring it..." << std::endl;
+
     }
 
 }
 
+/**
+  This function executes when the current action starts its execution in the
+  remote actionlib server. Its purpose is to update the action state in
+  the table widget.
+  */
 void VehicleScheduler::activeCb(void)
 {
-    std::cout << "activeCb from vehicleID: " << vehicleID << std::endl;
+    // Emit the signal to display the status in the table. activeCb
+    // executes when the operation is about to start to execute.)
+    int operationState = 0;
+
+    switch(currentOpType)
+    {
+        case STANDALONE: operationState = Ui::EXECUTING; break;
+        case COOPERATIVE: operationState = Ui::EXECUTING_COOP;break;
+        default: break;
+    }
+
+    emit(stateChanged(tableRow, currentOp, operationState));
 }
 
+/**
+  This function executes periodically after the current action starts its
+  execution and stops executing after the action finishes. Its purpose is
+  to update the gantt chart.
+  */
 void VehicleScheduler::feedbackCb(const arcas_exec_layer::ArcasExecLayerFeedbackConstPtr& feedback)
 {
-    std::cout << "feedbackCb from vehicleID: " << vehicleID << std::endl;
+
+}
+
+/**
+  This function executes after the current action has finished its
+  execution. Its purpose is to update the action state in the table widget.
+  By the moment, we only consider success and fail states.
+  */
+void VehicleScheduler::doneCb(const actionlib::SimpleClientGoalState& state, const arcas_exec_layer::ArcasExecLayerResultConstPtr& result)
+{
+    int operationState = 0;
+
+    if(state.state_ == actionlib::SimpleClientGoalState::SUCCEEDED)
+    {
+        if(currentOpType == STANDALONE)
+        {
+            operationState = Ui::FINISHED;
+
+        }
+        else
+        {
+            operationState = Ui::FINISHED_COOP;
+
+        }
+    }
+    else // Failed
+    {
+        if(currentOpType == STANDALONE)
+        {
+            operationState = Ui::FAILED;
+
+        }
+        else
+        {
+            operationState = Ui::FAILED_COOP;
+
+        }
+    }
+
+    // Emit the finish signal to display the status in the table
+    emit(stateChanged(tableRow, currentOp, operationState));
 }
