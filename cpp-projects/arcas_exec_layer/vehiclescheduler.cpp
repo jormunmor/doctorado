@@ -11,8 +11,8 @@
 
 using namespace std;
 
-VehicleScheduler::VehicleScheduler(const int &id, const QVector<QStringList> &ops, const int &row, QObject *parent) :
-    QObject(parent), vehicleID(id), tableRow(row), waitingFor(-1), operations(ops), syncRequests(QVector<int>())
+VehicleScheduler::VehicleScheduler(const int &id, const QVector<QStringList> &ops, const int &row, std::map<int, geometry_msgs::Pose> *locMap, QObject *parent) :
+    QObject(parent), vehicleID(id), tableRow(row), waitingFor(-1), locationsMap(locMap), operations(ops), syncRequests(QVector<int>())
 {
 
 }
@@ -119,13 +119,57 @@ void VehicleScheduler::execute()
 
         }
 
+        // We are going to execute the goal, so retrieve the pose of the end location (if any).
+        // If not, we use a fake pose that will not be used by the action server.
+        geometry_msgs::Pose pose;
+        pose.position.x = 0;
+        pose.position.y = 0;
+        pose.position.z = 0;
+        pose.orientation.w = 1;
+        pose.orientation.x = 0;
+        pose.orientation.y = 0;
+        pose.orientation.z = 0;
+
+        // Create the goal
+        Goal goal;
+        goal.vehicleID = vehicleID;
+
+        // Check the type of operation
+        if(op.at(0).contains("takeoff")) // TAKEOFF
+        {
+            goal.group = VEHICLE_FRAME;
+            goal.actionType = TAKEOFF;
+
+            // There is no pose in the QStringList, so we use the previous as a fake unused pose for the server.
+
+
+        } else if(op.at(0).contains("do_move")) // MOVE
+        {
+            std::cout << "MOVE action detected." << std::endl;
+            goal.group = VEHICLE_FRAME;
+            goal.actionType = MOVE;
+            int locNumber = 0;
+
+            if(currentOpType == STANDALONE)
+            {
+                locNumber = (int) op.at(3).toDouble(); // The TO location is on the third position of the QStringList.
+
+
+            } else
+            {
+                locNumber = (int) op.at(4).toDouble(); // The TO location is on the fourth position of the QStringList.
+
+            }
+
+            // There is a pose in the QStringList, so we get it from the map for the server.
+            pose = locationsMap->at(locNumber);
+
+        }
+
+        goal.pose = pose;
+
         // Execute The action. First we create the goal.
-        Goal fakeGoal;
-        fakeGoal.vehicleID = vehicleID;
-        fakeGoal.group = VEHICLE_FRAME;
-        fakeGoal.actionType = TAKEOFF;
-        fakeGoal.pose.position.z = 10;
-        actionClient.executeGoal(fakeGoal);
+        actionClient.executeGoal(goal);
         currentOp++;
 
     }
@@ -159,6 +203,7 @@ void VehicleScheduler::activeCb(void)
 {
     // Emit the signal to display the status in the table. activeCb
     // executes when the operation is about to start to execute.)
+    std::cout << "activeCb" << std::endl;
     int operationState = 0;
 
     switch(currentOpType)
@@ -178,6 +223,7 @@ void VehicleScheduler::activeCb(void)
   */
 void VehicleScheduler::feedbackCb(const arcas_exec_layer::ArcasExecLayerFeedbackConstPtr& feedback)
 {
+    std::cout << "feedbackCb" << std::endl;
 
 }
 
@@ -188,6 +234,8 @@ void VehicleScheduler::feedbackCb(const arcas_exec_layer::ArcasExecLayerFeedback
   */
 void VehicleScheduler::doneCb(const actionlib::SimpleClientGoalState& state, const arcas_exec_layer::ArcasExecLayerResultConstPtr& result)
 {
+    std::cout << "doneCb" << std::endl;
+
     int operationState = 0;
 
     if(state.state_ == actionlib::SimpleClientGoalState::SUCCEEDED)

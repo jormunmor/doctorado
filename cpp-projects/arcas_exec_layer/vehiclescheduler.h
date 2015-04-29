@@ -9,6 +9,7 @@
 // The followings are needed to use the actionlib client
 #include "ArcasExecLayerClient.h"
 #include "constants.h"
+#include <map>
 
 namespace Ui {
 
@@ -36,7 +37,7 @@ class VehicleScheduler : public QObject
 {
     Q_OBJECT
 public:
-    explicit VehicleScheduler(const int &id, const QVector<QStringList> &ops, const int &row, QObject *parent = 0);
+    explicit VehicleScheduler(const int &id, const QVector<QStringList> &ops, const int &row, std::map<int, geometry_msgs::Pose> *locMap, QObject *parent = 0);
     ~VehicleScheduler();
     void activeCb(void);
     void feedbackCb(const arcas_exec_layer::ArcasExecLayerFeedbackConstPtr& feedback);
@@ -56,6 +57,7 @@ private:
     int waitingFor; // Id of the vehicle the scheduler is waiting for.
     int currentOp; // The number of the operation the vehicle is currently executing.
     int currentOpType; // The type of the current operation (STANDALONE or COOPERATIVE).
+    std::map<int, geometry_msgs::Pose> *locationsMap; // each location identifier is associated with a position and orientation.
     QVector<QStringList> operations; // The operations the vehicle must execute.
     QVector<int> syncRequests;
 

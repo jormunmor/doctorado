@@ -266,7 +266,7 @@ void MainWindow::on_actionExecute_triggered()
     for (it = uavOperations->begin(); it != uavOperations->end(); it++)
     {
         QThread* t = new QThread();
-        VehicleScheduler* sch = new VehicleScheduler(it.key(), it.value(), row);
+        VehicleScheduler* sch = new VehicleScheduler(it.key(), it.value(), row, generateLocationsMap());
         sch->moveToThread(t);
         connect(t, SIGNAL(finished()), sch, SLOT(deleteLater()));
         connect(this, SIGNAL(startSchedulers()), sch, SLOT(execute()));
@@ -342,4 +342,39 @@ void MainWindow::cleanThreads()
 
     delete uavThreads;
 
+}
+
+/*
+  To generate a map from locations to poses. Hard-coded by the moment.
+
+  */
+std::map<int, geometry_msgs::Pose>* MainWindow::generateLocationsMap()
+{
+    std::map<int, geometry_msgs::Pose>* locMap = new std::map<int, geometry_msgs::Pose>;
+
+    geometry_msgs::Pose pose23;
+    pose23.position.x = -6;
+    pose23.position.y = -6;
+    pose23.position.z = 0.25;
+    pose23.orientation.w = 1;
+    pose23.orientation.x = 0;
+    pose23.orientation.y = 0;
+    pose23.orientation.z = 0;
+
+    geometry_msgs::Pose pose1;
+    pose23.position.x = -4;
+    pose23.position.y = -4;
+    pose23.position.z = 2;
+    pose23.orientation.x = 0;
+    pose23.orientation.y = 0;
+    pose23.orientation.z = 0.383;
+    pose23.orientation.w = 0.924;
+
+    locMap->insert(std::pair<int, geometry_msgs::Pose>(23, pose23));
+    locMap->insert(std::pair<int, geometry_msgs::Pose>(1, pose1));
+
+    // Position 23 is the hard-coded initial position present in the launch_simulator.launch.
+    // -x -6.0 -y -6.0 -z 0.25  -R 0.0 -P 0.0 -Y 0.0
+
+    return locMap;
 }

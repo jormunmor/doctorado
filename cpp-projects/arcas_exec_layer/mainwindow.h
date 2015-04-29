@@ -7,6 +7,7 @@
 #include <QStringList>
 #include <QThread>
 #include "vehiclescheduler.h"
+#include <map>
 
 namespace Ui {
 class MainWindow;
@@ -35,6 +36,7 @@ private:
     void readPlanFile(QString fileName);
     void fillTableWidget();
     void cleanThreads();
+    std::map<int, geometry_msgs::Pose> *generateLocationsMap();
     Ui::MainWindow *ui;
     QMap<int, QVector<QStringList> > *uavOperations;
     QMap<int, QThread* > *uavThreads;
