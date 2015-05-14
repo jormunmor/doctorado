@@ -13,14 +13,19 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     vehiclescheduler.cpp \
-    ArcasExecLayerClient.cpp
+    ArcasExecLayerClient.cpp \
+    qcustomplot.cpp \
+    ganttdialog.cpp
 
 HEADERS  += mainwindow.h \
     vehiclescheduler.h \
     ArcasExecLayerClient.h \
-    constants.h
+    constants.h \
+    qcustomplot.h \
+    ganttdialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    ganttdialog.ui
 
 # ROS flags
 unix:!macx:!symbian: LIBS += -L$$PWD/../../../../../../opt/ros/hydro/lib/ -lroscpp

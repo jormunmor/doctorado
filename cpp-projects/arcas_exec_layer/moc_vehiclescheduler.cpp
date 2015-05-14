@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'vehiclescheduler.h'
 **
-** Created: Tue Apr 28 16:13:22 2015
+** Created: Wed May 13 21:56:09 2015
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,20 +23,23 @@ static const uint qt_meta_data_VehicleScheduler[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       2,       // signalCount
+       4,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
       35,   18,   17,   17, 0x05,
      109,   61,   17,   17, 0x05,
+     140,  129,   17,   17, 0x05,
+     168,  164,   17,   17, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-     129,   17,   17,   17, 0x08,
-     139,   61,   17,   17, 0x08,
+     185,   17,   17,   17, 0x08,
+     195,   61,   17,   17, 0x08,
+     215,   17,   17,   17, 0x08,
 
        0        // eod
 };
@@ -45,8 +48,10 @@ static const char qt_meta_stringdata_VehicleScheduler[] = {
     "VehicleScheduler\0\0row,column,state\0"
     "stateChanged(int,int,int)\0"
     "waitingThreadVehicleId,requestedThreadVehicleId\0"
-    "syncThread(int,int)\0execute()\0"
-    "threadSync(int,int)\0"
+    "syncThread(int,int)\0row,action\0"
+    "newGanttAction(int,int)\0row\0"
+    "updateGantt(int)\0execute()\0"
+    "threadSync(int,int)\0updateGanttAction()\0"
 };
 
 void VehicleScheduler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -57,8 +62,11 @@ void VehicleScheduler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         switch (_id) {
         case 0: _t->stateChanged((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
         case 1: _t->syncThread((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 2: _t->execute(); break;
-        case 3: _t->threadSync((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 2: _t->newGanttAction((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 3: _t->updateGantt((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 4: _t->execute(); break;
+        case 5: _t->threadSync((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 6: _t->updateGanttAction(); break;
         default: ;
         }
     }
@@ -96,9 +104,9 @@ int VehicleScheduler::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 7;
     }
     return _id;
 }
@@ -115,5 +123,19 @@ void VehicleScheduler::syncThread(int _t1, int _t2)
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void VehicleScheduler::newGanttAction(int _t1, int _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
+}
+
+// SIGNAL 3
+void VehicleScheduler::updateGantt(int _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 QT_END_MOC_NAMESPACE

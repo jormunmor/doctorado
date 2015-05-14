@@ -6,6 +6,8 @@
 #include <QMessageBox>
 #include <QFile>
 #include <QFileDialog>
+#include <QTime>
+#include <math.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -20,6 +22,12 @@ MainWindow::MainWindow(QWidget *parent) :
     // Create first a map to store the operation list for each of the uavs.
     uavOperations = new QMap<int, QVector<QStringList> >();
     uavThreads = new QMap<int, QThread*>();
+    ganttDialog = new GanttDialog(this);
+    ganttDialog->setWindowTitle("Gantt Chart");
+    //ganttDialog = new QDialog(this);
+
+    //ganttPlot = new QCustomPlot(ganttDialog);
+    //ganttDialog->show();
 
 }
 
@@ -28,6 +36,8 @@ MainWindow::~MainWindow()
     std::cout << "Closing the application..." << std::endl;
     delete ui;
     delete uavOperations;
+    //delete ganttPlot;
+    delete ganttDialog;
     cleanThreads(); // This will also delete the uavThreads
 
 }
@@ -158,9 +168,127 @@ void MainWindow::readPlanFile(QString fileName)
     // Fill the table widget
     fillTableWidget();
 
-    // All ok, set visible the table widget and enable the execute action
+    // All ok, set visible the table widget, the gantt chart and enable the execute action
     ui->tableWidget->setVisible(true);
     ui->actionExecute->setEnabled(true);
+    QPoint point = this->pos();
+    point.setX(point.x() + this->width() + 1); // Set the gantt dialog at the right of the main window.
+    ganttDialog->move(point);
+    setGanttPlot();
+    ganttDialog->show();
+    //ganttDialog->ui->customPlot;
+
+}
+
+void MainWindow::setGanttPlot()
+{
+    // Prepare Y-axis with vehicle labels:
+    QVector<double> ticks;
+    QVector<QString> labels;
+    for(int i=0; i<ui->tableWidget->rowCount(); i++)
+    {
+        QTableWidgetItem* verticalHeaderCell = ui->tableWidget->verticalHeaderItem(i);
+        labels << verticalHeaderCell->text();
+        ticks << (i + 1);
+        //std::cout << "Open Plan Action canceled by user." << std::endl;
+        //std::cout << "Header text: " << verticalHeaderCell->text().toStdString() << std::endl;
+    }
+
+    ganttDialog->customPlot->yAxis->setAutoTicks(false);
+    ganttDialog->customPlot->yAxis->setAutoTickLabels(false);
+    ganttDialog->customPlot->yAxis->setTickVector(ticks);
+    ganttDialog->customPlot->yAxis->setTickVectorLabels(labels);
+    ganttDialog->customPlot->yAxis->setTickLabelRotation(60);
+    ganttDialog->customPlot->yAxis->setSubTickCount(0);
+    ganttDialog->customPlot->yAxis->setTickLength(0, 4);
+    ganttDialog->customPlot->yAxis->grid()->setVisible(true);
+    ganttDialog->customPlot->yAxis->setRange(0, ticks.last() + 1);
+
+    // Prepare X-axis with time units:
+    ganttDialog->customPlot->xAxis->setRange(0, 12);
+    ganttDialog->customPlot->xAxis->setAutoTickStep(false);
+    ganttDialog->customPlot->xAxis->setTickStep(1);
+    //ganttDialog->customPlot->xAxis->setAutoSubTicks(false);
+    //ganttDialog->customPlot->xAxis->setSubTickCount(1);
+    //ganttDialog->customPlot->xAxis->setSubTickLength(0.5);
+    //ganttDialog->customPlot->xAxis->setAutoTickCount(1);
+    ganttDialog->customPlot->xAxis->setPadding(5); // a bit more space to the left border
+    ganttDialog->customPlot->xAxis->setLabel("Time (s)");
+    //ganttDialog->customPlot->xAxis->grid()->setSubGridVisible(true);
+
+    QPen gridPen;
+    gridPen.setStyle(Qt::SolidLine);
+    gridPen.setColor(QColor(0, 0, 0, 25));
+    ganttDialog->customPlot->yAxis->grid()->setPen(gridPen);
+    gridPen.setStyle(Qt::DotLine);
+    ganttDialog->customPlot->yAxis->grid()->setSubGridPen(gridPen);
+
+    // Set the chart properties: alignment, drag and zoom.
+    ganttDialog->customPlot->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignTop|Qt::AlignHCenter);
+    ganttDialog->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+
+    /*
+
+    // Create the colors and pen
+    QColor boxColorArray[3];
+    QColor penColorArray[3];
+    //boxColorArray[0] = QColor(255, 131, 0, 50);
+    //boxColorArray[1] = QColor(1, 92, 191, 50);
+    //boxColorArray[2] = QColor(150, 222, 0, 70);
+    boxColorArray[0] = QColor(255, 131, 0, 50);
+    boxColorArray[1] = QColor(1, 92, 191, 50);
+    boxColorArray[2] = QColor(150, 222, 0, 50);
+    penColorArray[0] = QColor(255, 131, 0);
+    penColorArray[1] = QColor(1, 92, 191);
+    penColorArray[2] = QColor(150, 222, 0);
+    QPen pen;
+    pen.setWidthF(1.2);
+
+    // Create a fake first bar
+    QCPBars *previousBar = new QCPBars(customPlot->yAxis, customPlot->xAxis);
+    int randomIndex = 0;
+    pen.setColor(penColorArray[randomIndex]);
+    previousBar->setPen(pen);
+    previousBar->setBrush(boxColorArray[randomIndex]);
+    customPlot->addPlottable(previousBar);
+
+    QVector<double> previousBarData;
+    previousBarData << 0;
+    ticks << 1;
+    previousBar->setData(ticks, previousBarData);
+
+    // Lets print some boxes.
+    for(int i=0; i<125; i++)
+    {
+        std::cout << "Looping at 300 msecs..." << std::endl;
+        delay(100);
+        QCPBarData oldBarData = previousBar->data()->value(1);
+        std::cout << "Key: " << oldBarData.key << " Value: " << oldBarData.value << std::endl;
+        QVector<double> newBarData;
+        newBarData << oldBarData.value + 1;
+        previousBar->setData(ticks, newBarData);
+        ui->customPlot->replot();
+        if(i==70)
+        {
+            QCPBars *anotherBar = new QCPBars(customPlot->yAxis, customPlot->xAxis);
+            int randomIndex = 1;
+            pen.setColor(penColorArray[randomIndex]);
+            anotherBar->setPen(pen);
+            anotherBar->setBrush(boxColorArray[randomIndex]);
+            customPlot->addPlottable(anotherBar);
+
+            QVector<double> anotherBarData;
+            anotherBarData << 0;
+            ticks << 1;
+            anotherBar->setData(ticks, anotherBarData);
+            anotherBar->moveAbove(previousBar);
+            previousBar = anotherBar;
+
+        }
+
+    }
+
+      */
 
 }
 
@@ -348,10 +476,11 @@ void MainWindow::cleanThreads()
   To generate a map from locations to poses. Hard-coded by the moment.
 
   */
-std::map<int, geometry_msgs::Pose>* MainWindow::generateLocationsMap()
+std::map<int, Goal>* MainWindow::generateLocationsMap()
 {
-    std::map<int, geometry_msgs::Pose>* locMap = new std::map<int, geometry_msgs::Pose>;
+    std::map<int,Goal>* locMap = new std::map<int, Goal>;
 
+    Goal goal23;
     geometry_msgs::Pose pose23;
     pose23.position.x = -6;
     pose23.position.y = -6;
@@ -360,18 +489,23 @@ std::map<int, geometry_msgs::Pose>* MainWindow::generateLocationsMap()
     pose23.orientation.x = 0;
     pose23.orientation.y = 0;
     pose23.orientation.z = 0;
+    goal23.pose = pose23;
+    goal23.yaw = 0;
 
+    Goal goal1;
     geometry_msgs::Pose pose1;
-    pose23.position.x = -4;
-    pose23.position.y = -4;
-    pose23.position.z = 2;
-    pose23.orientation.x = 0;
-    pose23.orientation.y = 0;
-    pose23.orientation.z = 0.383;
-    pose23.orientation.w = 0.924;
+    pose1.position.x = -4;
+    pose1.position.y = -4;
+    pose1.position.z = 2;
+    pose1.orientation.x = 0;
+    pose1.orientation.y = 0;
+    pose1.orientation.z = 0.383; // The lack of decimals make this quaternion incorrect, use yaw instead.
+    pose1.orientation.w = 0.924;
+    goal1.pose = pose1;
+    goal1.yaw = M_PI/4.0;
 
-    locMap->insert(std::pair<int, geometry_msgs::Pose>(23, pose23));
-    locMap->insert(std::pair<int, geometry_msgs::Pose>(1, pose1));
+    locMap->insert(std::pair<int, Goal>(23, goal23));
+    locMap->insert(std::pair<int, Goal>(1, goal1));
 
     // Position 23 is the hard-coded initial position present in the launch_simulator.launch.
     // -x -6.0 -y -6.0 -z 0.25  -R 0.0 -P 0.0 -Y 0.0

@@ -6,8 +6,11 @@
 #include <QVector>
 #include <QStringList>
 #include <QThread>
+#include <QDialog>
 #include "vehiclescheduler.h"
 #include <map>
+#include "ganttdialog.h"
+//#include "qcustomplot.h"
 
 namespace Ui {
 class MainWindow;
@@ -36,8 +39,12 @@ private:
     void readPlanFile(QString fileName);
     void fillTableWidget();
     void cleanThreads();
-    std::map<int, geometry_msgs::Pose> *generateLocationsMap();
+    std::map<int, Goal> *generateLocationsMap();
+    void setGanttPlot();
     Ui::MainWindow *ui;
+    GanttDialog *ganttDialog;
+    //QDialog *ganttDialog;
+    //QCustomPlot *ganttPlot;
     QMap<int, QVector<QStringList> > *uavOperations;
     QMap<int, QThread* > *uavThreads;
     static const QString UAV_IDENTIFIER;

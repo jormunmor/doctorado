@@ -11,14 +11,16 @@
 
 using namespace std;
 
-VehicleScheduler::VehicleScheduler(const int &id, const QVector<QStringList> &ops, const int &row, std::map<int, geometry_msgs::Pose> *locMap, QObject *parent) :
+VehicleScheduler::VehicleScheduler(const int &id, const QVector<QStringList> &ops, const int &row, std::map<int, Goal> *locMap, QObject *parent) :
     QObject(parent), vehicleID(id), tableRow(row), waitingFor(-1), locationsMap(locMap), operations(ops), syncRequests(QVector<int>())
 {
-
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateGanttAction()));
 }
 
 VehicleScheduler::~VehicleScheduler()
 {
+    delete timer;
 
 }
 
@@ -121,6 +123,7 @@ void VehicleScheduler::execute()
 
         // We are going to execute the goal, so retrieve the pose of the end location (if any).
         // If not, we use a fake pose that will not be used by the action server.
+        /*
         geometry_msgs::Pose pose;
         pose.position.x = 0;
         pose.position.y = 0;
@@ -129,25 +132,35 @@ void VehicleScheduler::execute()
         pose.orientation.x = 0;
         pose.orientation.y = 0;
         pose.orientation.z = 0;
+        */
 
-        // Create the goal
+        // Create the goal variable and configure an initial value for its fields
         Goal goal;
-        goal.vehicleID = vehicleID;
+        goal.pose.position.x = 0;
+        goal.pose.position.y = 0;
+        goal.pose.position.z = 0;
+        goal.pose.orientation.w = 1;
+        goal.pose.orientation.x = 0;
+        goal.pose.orientation.y = 0;
+        goal.pose.orientation.z = 0;
+        goal.yaw = 0;
+        //goal.vehicleID = vehicleID;
 
         // Check the type of operation
         if(op.at(0).contains("takeoff")) // TAKEOFF
         {
             goal.group = VEHICLE_FRAME;
             goal.actionType = TAKEOFF;
+            currentActionType = TAKEOFF;
 
             // There is no pose in the QStringList, so we use the previous as a fake unused pose for the server.
 
 
         } else if(op.at(0).contains("do_move")) // MOVE
         {
-            std::cout << "MOVE action detected." << std::endl;
-            goal.group = VEHICLE_FRAME;
-            goal.actionType = MOVE;
+            //std::cout << "MOVE action detected." << std::endl;
+            //goal.group = VEHICLE_FRAME;
+            //goal.actionType = MOVE;
             int locNumber = 0;
 
             if(currentOpType == STANDALONE)
@@ -162,11 +175,16 @@ void VehicleScheduler::execute()
             }
 
             // There is a pose in the QStringList, so we get it from the map for the server.
-            pose = locationsMap->at(locNumber);
+            //pose = locationsMap->at(locNumber);
+            goal = locationsMap->at(locNumber);
+            goal.group = VEHICLE_FRAME;
+            goal.actionType = MOVE;
+            currentActionType = MOVE;
 
         }
 
-        goal.pose = pose;
+        goal.vehicleID = vehicleID;
+        //goal.pose = pose;
 
         // Execute The action. First we create the goal.
         actionClient.executeGoal(goal);
@@ -194,6 +212,12 @@ void VehicleScheduler::threadSync(int waitingThreadVehicleId, int requestedThrea
 
 }
 
+void VehicleScheduler::updateGanttAction()
+{
+    emit updateGantt(tableRow);
+
+}
+
 /**
   This function executes when the current action starts its execution in the
   remote actionlib server. Its purpose is to update the action state in
@@ -203,7 +227,7 @@ void VehicleScheduler::activeCb(void)
 {
     // Emit the signal to display the status in the table. activeCb
     // executes when the operation is about to start to execute.)
-    std::cout << "activeCb" << std::endl;
+    //std::cout << "activeCb" << std::endl;
     int operationState = 0;
 
     switch(currentOpType)
@@ -214,6 +238,9 @@ void VehicleScheduler::activeCb(void)
     }
 
     emit(stateChanged(tableRow, currentOp, operationState));
+    emit newGanttAction(tableRow, currentActionType);
+    timer->start(100); // Starts the timer to update the gantt.
+
 }
 
 /**
@@ -223,18 +250,20 @@ void VehicleScheduler::activeCb(void)
   */
 void VehicleScheduler::feedbackCb(const arcas_exec_layer::ArcasExecLayerFeedbackConstPtr& feedback)
 {
-    std::cout << "feedbackCb" << std::endl;
+    //std::cout << "feedbackCb" << std::endl;
 
 }
 
 /**
   This function executes after the current action has finished its
   execution. Its purpose is to update the action state in the table widget.
-  By the moment, we only consider success and fail states.
+  By the moment, we only consider success and fail states. It also stops the
+  timer associated with the scheduler.
   */
 void VehicleScheduler::doneCb(const actionlib::SimpleClientGoalState& state, const arcas_exec_layer::ArcasExecLayerResultConstPtr& result)
 {
-    std::cout << "doneCb" << std::endl;
+    timer->stop(); // Stops the timer which updates the Gantt.
+    //std::cout << "doneCb" << std::endl;
 
     int operationState = 0;
 
