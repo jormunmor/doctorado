@@ -53,7 +53,6 @@ signals:
 private slots:
     void execute();
     void threadSync(int waitingThreadVehicleId, int requestedThreadVehicleId);
-    void updateGanttAction();
 
 private:
     int vehicleID; // Id of the vehicle for the scheduler.
@@ -65,7 +64,7 @@ private:
     std::map<int, Goal> *locationsMap; // each location identifier is associated with a position and orientation.
     QVector<QStringList> operations; // The operations the vehicle must execute.
     QVector<int> syncRequests;
-    QTimer *timer;
+
 
 
 };

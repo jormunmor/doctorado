@@ -33,6 +33,8 @@ public slots:
     void on_actionExecute_triggered();
     void updateTable(int tableRow, int tableColumn, int state);
     void syncThread(int waitingThreadVehicleId, int requestedThreadVehicleId);
+    void addGanttBar(int row, int action);
+    void updateGanttPlot(int row);
 
 private:
     void showMessageBox(QString message);
@@ -48,6 +50,7 @@ private:
     QMap<int, QVector<QStringList> > *uavOperations;
     QMap<int, QThread* > *uavThreads;
     static const QString UAV_IDENTIFIER;
+    QVector< QVector<QCPBars *> > plotBars; // This will hold the QCPBars for each of the rows (vehicles) of the table
 
 };
 

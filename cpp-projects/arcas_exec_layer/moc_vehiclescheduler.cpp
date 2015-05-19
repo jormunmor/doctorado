@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'vehiclescheduler.h'
 **
-** Created: Wed May 13 21:56:09 2015
+** Created: Mon May 18 11:45:42 2015
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_VehicleScheduler[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -39,7 +39,6 @@ static const uint qt_meta_data_VehicleScheduler[] = {
  // slots: signature, parameters, type, tag, flags
      185,   17,   17,   17, 0x08,
      195,   61,   17,   17, 0x08,
-     215,   17,   17,   17, 0x08,
 
        0        // eod
 };
@@ -51,7 +50,7 @@ static const char qt_meta_stringdata_VehicleScheduler[] = {
     "syncThread(int,int)\0row,action\0"
     "newGanttAction(int,int)\0row\0"
     "updateGantt(int)\0execute()\0"
-    "threadSync(int,int)\0updateGanttAction()\0"
+    "threadSync(int,int)\0"
 };
 
 void VehicleScheduler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -66,7 +65,6 @@ void VehicleScheduler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 3: _t->updateGantt((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 4: _t->execute(); break;
         case 5: _t->threadSync((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 6: _t->updateGanttAction(); break;
         default: ;
         }
     }
@@ -104,9 +102,9 @@ int VehicleScheduler::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 6;
     }
     return _id;
 }

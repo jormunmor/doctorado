@@ -14,13 +14,12 @@ using namespace std;
 VehicleScheduler::VehicleScheduler(const int &id, const QVector<QStringList> &ops, const int &row, std::map<int, Goal> *locMap, QObject *parent) :
     QObject(parent), vehicleID(id), tableRow(row), waitingFor(-1), locationsMap(locMap), operations(ops), syncRequests(QVector<int>())
 {
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(updateGanttAction()));
+
+
 }
 
 VehicleScheduler::~VehicleScheduler()
 {
-    delete timer;
 
 }
 
@@ -186,7 +185,7 @@ void VehicleScheduler::execute()
         goal.vehicleID = vehicleID;
         //goal.pose = pose;
 
-        // Execute The action. First we create the goal.
+        // Execute The action. First we create the goal. Blocking function.
         actionClient.executeGoal(goal);
         currentOp++;
 
@@ -212,12 +211,6 @@ void VehicleScheduler::threadSync(int waitingThreadVehicleId, int requestedThrea
 
 }
 
-void VehicleScheduler::updateGanttAction()
-{
-    emit updateGantt(tableRow);
-
-}
-
 /**
   This function executes when the current action starts its execution in the
   remote actionlib server. Its purpose is to update the action state in
@@ -228,6 +221,7 @@ void VehicleScheduler::activeCb(void)
     // Emit the signal to display the status in the table. activeCb
     // executes when the operation is about to start to execute.)
     //std::cout << "activeCb" << std::endl;
+    ROS_INFO("Action is now ACTIVE");
     int operationState = 0;
 
     switch(currentOpType)
@@ -237,9 +231,11 @@ void VehicleScheduler::activeCb(void)
         default: break;
     }
 
+
     emit(stateChanged(tableRow, currentOp, operationState));
     emit newGanttAction(tableRow, currentActionType);
-    timer->start(100); // Starts the timer to update the gantt.
+    //ROS_INFO("Exiting ACTIVE...");
+
 
 }
 
@@ -251,6 +247,8 @@ void VehicleScheduler::activeCb(void)
 void VehicleScheduler::feedbackCb(const arcas_exec_layer::ArcasExecLayerFeedbackConstPtr& feedback)
 {
     //std::cout << "feedbackCb" << std::endl;
+    ROS_INFO("FeedBack Cb.");
+    emit updateGantt(tableRow);
 
 }
 
@@ -262,7 +260,7 @@ void VehicleScheduler::feedbackCb(const arcas_exec_layer::ArcasExecLayerFeedback
   */
 void VehicleScheduler::doneCb(const actionlib::SimpleClientGoalState& state, const arcas_exec_layer::ArcasExecLayerResultConstPtr& result)
 {
-    timer->stop(); // Stops the timer which updates the Gantt.
+    ROS_INFO("Action is now DONE");
     //std::cout << "doneCb" << std::endl;
 
     int operationState = 0;
@@ -296,4 +294,5 @@ void VehicleScheduler::doneCb(const actionlib::SimpleClientGoalState& state, con
 
     // Emit the finish signal to display the status in the table
     emit(stateChanged(tableRow, currentOp, operationState));
+    ROS_INFO("Exiting DONE...");
 }

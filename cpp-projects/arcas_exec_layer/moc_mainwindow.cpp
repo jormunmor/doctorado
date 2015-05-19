@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Wed May 13 21:56:03 2015
+** Created: Mon May 18 13:03:17 2015
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -39,6 +39,8 @@ static const uint qt_meta_data_MainWindow[] = {
      128,   11,   11,   11, 0x0a,
      184,  157,   11,   11, 0x0a,
      209,   30,   11,   11, 0x0a,
+     240,  229,   11,   11, 0x0a,
+     265,  261,   11,   11, 0x0a,
 
        0        // eod
 };
@@ -50,6 +52,8 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "on_actionExecute_triggered()\0"
     "tableRow,tableColumn,state\0"
     "updateTable(int,int,int)\0syncThread(int,int)\0"
+    "row,action\0addGanttBar(int,int)\0row\0"
+    "updateGanttPlot(int)\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -64,6 +68,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->on_actionExecute_triggered(); break;
         case 4: _t->updateTable((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
         case 5: _t->syncThread((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 6: _t->addGanttBar((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 7: _t->updateGanttPlot((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -101,9 +107,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 8;
     }
     return _id;
 }

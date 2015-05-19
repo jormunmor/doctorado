@@ -9,6 +9,8 @@
 #include <QTime>
 #include <math.h>
 
+/// TODO: implement the closePlan action
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -180,117 +182,7 @@ void MainWindow::readPlanFile(QString fileName)
 
 }
 
-void MainWindow::setGanttPlot()
-{
-    // Prepare Y-axis with vehicle labels:
-    QVector<double> ticks;
-    QVector<QString> labels;
-    for(int i=0; i<ui->tableWidget->rowCount(); i++)
-    {
-        QTableWidgetItem* verticalHeaderCell = ui->tableWidget->verticalHeaderItem(i);
-        labels << verticalHeaderCell->text();
-        ticks << (i + 1);
-        //std::cout << "Open Plan Action canceled by user." << std::endl;
-        //std::cout << "Header text: " << verticalHeaderCell->text().toStdString() << std::endl;
-    }
 
-    ganttDialog->customPlot->yAxis->setAutoTicks(false);
-    ganttDialog->customPlot->yAxis->setAutoTickLabels(false);
-    ganttDialog->customPlot->yAxis->setTickVector(ticks);
-    ganttDialog->customPlot->yAxis->setTickVectorLabels(labels);
-    ganttDialog->customPlot->yAxis->setTickLabelRotation(60);
-    ganttDialog->customPlot->yAxis->setSubTickCount(0);
-    ganttDialog->customPlot->yAxis->setTickLength(0, 4);
-    ganttDialog->customPlot->yAxis->grid()->setVisible(true);
-    ganttDialog->customPlot->yAxis->setRange(0, ticks.last() + 1);
-
-    // Prepare X-axis with time units:
-    ganttDialog->customPlot->xAxis->setRange(0, 12);
-    ganttDialog->customPlot->xAxis->setAutoTickStep(false);
-    ganttDialog->customPlot->xAxis->setTickStep(1);
-    //ganttDialog->customPlot->xAxis->setAutoSubTicks(false);
-    //ganttDialog->customPlot->xAxis->setSubTickCount(1);
-    //ganttDialog->customPlot->xAxis->setSubTickLength(0.5);
-    //ganttDialog->customPlot->xAxis->setAutoTickCount(1);
-    ganttDialog->customPlot->xAxis->setPadding(5); // a bit more space to the left border
-    ganttDialog->customPlot->xAxis->setLabel("Time (s)");
-    //ganttDialog->customPlot->xAxis->grid()->setSubGridVisible(true);
-
-    QPen gridPen;
-    gridPen.setStyle(Qt::SolidLine);
-    gridPen.setColor(QColor(0, 0, 0, 25));
-    ganttDialog->customPlot->yAxis->grid()->setPen(gridPen);
-    gridPen.setStyle(Qt::DotLine);
-    ganttDialog->customPlot->yAxis->grid()->setSubGridPen(gridPen);
-
-    // Set the chart properties: alignment, drag and zoom.
-    ganttDialog->customPlot->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignTop|Qt::AlignHCenter);
-    ganttDialog->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
-
-    /*
-
-    // Create the colors and pen
-    QColor boxColorArray[3];
-    QColor penColorArray[3];
-    //boxColorArray[0] = QColor(255, 131, 0, 50);
-    //boxColorArray[1] = QColor(1, 92, 191, 50);
-    //boxColorArray[2] = QColor(150, 222, 0, 70);
-    boxColorArray[0] = QColor(255, 131, 0, 50);
-    boxColorArray[1] = QColor(1, 92, 191, 50);
-    boxColorArray[2] = QColor(150, 222, 0, 50);
-    penColorArray[0] = QColor(255, 131, 0);
-    penColorArray[1] = QColor(1, 92, 191);
-    penColorArray[2] = QColor(150, 222, 0);
-    QPen pen;
-    pen.setWidthF(1.2);
-
-    // Create a fake first bar
-    QCPBars *previousBar = new QCPBars(customPlot->yAxis, customPlot->xAxis);
-    int randomIndex = 0;
-    pen.setColor(penColorArray[randomIndex]);
-    previousBar->setPen(pen);
-    previousBar->setBrush(boxColorArray[randomIndex]);
-    customPlot->addPlottable(previousBar);
-
-    QVector<double> previousBarData;
-    previousBarData << 0;
-    ticks << 1;
-    previousBar->setData(ticks, previousBarData);
-
-    // Lets print some boxes.
-    for(int i=0; i<125; i++)
-    {
-        std::cout << "Looping at 300 msecs..." << std::endl;
-        delay(100);
-        QCPBarData oldBarData = previousBar->data()->value(1);
-        std::cout << "Key: " << oldBarData.key << " Value: " << oldBarData.value << std::endl;
-        QVector<double> newBarData;
-        newBarData << oldBarData.value + 1;
-        previousBar->setData(ticks, newBarData);
-        ui->customPlot->replot();
-        if(i==70)
-        {
-            QCPBars *anotherBar = new QCPBars(customPlot->yAxis, customPlot->xAxis);
-            int randomIndex = 1;
-            pen.setColor(penColorArray[randomIndex]);
-            anotherBar->setPen(pen);
-            anotherBar->setBrush(boxColorArray[randomIndex]);
-            customPlot->addPlottable(anotherBar);
-
-            QVector<double> anotherBarData;
-            anotherBarData << 0;
-            ticks << 1;
-            anotherBar->setData(ticks, anotherBarData);
-            anotherBar->moveAbove(previousBar);
-            previousBar = anotherBar;
-
-        }
-
-    }
-
-      */
-
-}
 
 void MainWindow::showMessageBox(QString message)
 {
@@ -401,6 +293,8 @@ void MainWindow::on_actionExecute_triggered()
         connect(this, SIGNAL(threadSync(int,int)), sch, SLOT(threadSync(int,int)));
         connect(sch, SIGNAL(stateChanged(int,int,int)), this, SLOT(updateTable(int,int,int)));
         connect(sch, SIGNAL(syncThread(int,int)), this, SLOT(syncThread(int,int)));
+        connect(sch, SIGNAL(newGanttAction(int,int)), this, SLOT(addGanttBar(int,int)));
+        connect(sch, SIGNAL(updateGantt(int)), this, SLOT(updateGanttPlot(int)));
         t->start();
         uavThreads->insert(it.key(), t);
         row++;
@@ -417,6 +311,200 @@ void MainWindow::on_actionExecute_triggered()
 void MainWindow::syncThread(int waitingThreadVehicleId, int requestedThreadVehicleId)
 {
     emit(threadSync(waitingThreadVehicleId, requestedThreadVehicleId));
+}
+
+void MainWindow::setGanttPlot()
+{
+    // Prepare Y-axis with vehicle labels:
+    QVector<double> ticks;
+    QVector<QString> labels;
+    for(int i=0; i<ui->tableWidget->rowCount(); i++)
+    {
+        QTableWidgetItem* verticalHeaderCell = ui->tableWidget->verticalHeaderItem(i);
+        labels << verticalHeaderCell->text();
+        ticks << (i + 1);
+
+        // Set the QCPBar vector for each vehicle, with an initial capacity for 10 bars.
+        QVector<QCPBars*> newVector;
+        plotBars.push_back(newVector);
+
+    }
+
+    // Configure the y-Axis.
+    ganttDialog->customPlot->yAxis->setAutoTicks(false);
+    ganttDialog->customPlot->yAxis->setAutoTickLabels(false);
+    ganttDialog->customPlot->yAxis->setTickVector(ticks);
+    ganttDialog->customPlot->yAxis->setTickVectorLabels(labels);
+    ganttDialog->customPlot->yAxis->setTickLabelRotation(60);
+    ganttDialog->customPlot->yAxis->setSubTickCount(0);
+    ganttDialog->customPlot->yAxis->setTickLength(0, 4);
+    ganttDialog->customPlot->yAxis->grid()->setVisible(true);
+    ganttDialog->customPlot->yAxis->setRange(0, ticks.last() + 1);
+
+    // Prepare X-axis with time units:
+    ganttDialog->customPlot->xAxis->setRange(0, 12);
+    ganttDialog->customPlot->xAxis->setAutoTickStep(false);
+    ganttDialog->customPlot->xAxis->setTickStep(1);
+    //ganttDialog->customPlot->xAxis->setAutoSubTicks(false);
+    //ganttDialog->customPlot->xAxis->setSubTickCount(1);
+    //ganttDialog->customPlot->xAxis->setSubTickLength(0.5);
+    //ganttDialog->customPlot->xAxis->setAutoTickCount(1);
+    ganttDialog->customPlot->xAxis->setPadding(5); // a bit more space to the left border
+    ganttDialog->customPlot->xAxis->setLabel("Time (s)");
+    //ganttDialog->customPlot->xAxis->grid()->setSubGridVisible(true);
+
+    QPen gridPen;
+    gridPen.setStyle(Qt::SolidLine);
+    gridPen.setColor(QColor(0, 0, 0, 25));
+    ganttDialog->customPlot->yAxis->grid()->setPen(gridPen);
+    gridPen.setStyle(Qt::DotLine);
+    ganttDialog->customPlot->yAxis->grid()->setSubGridPen(gridPen);
+
+    // Set the chart properties: alignment, drag and zoom.
+    ganttDialog->customPlot->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignTop|Qt::AlignHCenter);
+    ganttDialog->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+
+    // Now, for each of the vehicles, we create a fake bar that will be the initial on which
+    // the rest will be stacked.
+    for(int i=0; i<ui->tableWidget->rowCount(); i++)
+    {
+        QCPBars *initialBar = new QCPBars(ganttDialog->customPlot->yAxis, ganttDialog->customPlot->xAxis);
+        QVector<double> initialBarData;
+        QVector<double> initialTicks;
+        initialBarData << 0;
+        ticks << i+1;
+        initialBar->setData(initialTicks, initialBarData);
+        ganttDialog->customPlot->addPlottable(initialBar);
+        plotBars[i].push_back(initialBar);
+
+    }
+
+}
+
+void MainWindow::addGanttBar(int row, int action)
+{
+
+    ROS_INFO("addGanttBar for row: %d", row);
+    // Recover the previous bar, because the new will be stacked on top of it
+    ROS_INFO("row bar vector size: %d", plotBars.at(row).size());
+    QCPBars *previousBar = plotBars.at(row).last();
+    if(previousBar == NULL)
+        ROS_INFO("previousBar is NULL");
+
+    // Create the new bar
+    QCPBars *newBar = new QCPBars(ganttDialog->customPlot->yAxis, ganttDialog->customPlot->xAxis);
+    QVector<double> newBarData;
+    QVector<double> newBarTicks;
+    newBarData << 0;
+    newBarTicks << row + 1;
+    newBar->setData(newBarTicks, newBarData);
+    ganttDialog->customPlot->addPlottable(newBar);
+    newBar->moveAbove(previousBar);
+    plotBars[row].push_back(newBar);
+
+    // Set the pen for the new bar
+    QPen pen;
+    pen.setWidthF(1.2);
+    switch(action)
+    {
+        case TAKEOFF: pen.setColor(QColor(255, 131, 0));
+                      newBar->setBrush(QColor(255, 131, 0, 50));
+                      break;
+
+        case MOVE:    pen.setColor(QColor(1, 92, 191));
+                      newBar->setBrush(QColor(1, 92, 191, 50));
+                      break;
+
+        default: break;
+
+    }
+
+    newBar->setPen(pen);
+
+    ROS_INFO("Exiting addGanttBar");
+
+    /*
+    QColor boxColorArray[3];
+    QColor penColorArray[3];
+    //boxColorArray[0] = QColor(255, 131, 0, 50);
+    //boxColorArray[1] = QColor(1, 92, 191, 50);
+    //boxColorArray[2] = QColor(150, 222, 0, 70);
+    boxColorArray[0] = QColor(255, 131, 0, 50);
+    boxColorArray[1] = QColor(1, 92, 191, 50);
+    boxColorArray[2] = QColor(150, 222, 0, 50);
+    penColorArray[0] = QColor(255, 131, 0);
+    penColorArray[1] = QColor(1, 92, 191);
+    penColorArray[2] = QColor(150, 222, 0);
+    QPen pen;
+    pen.setWidthF(1.2);
+
+    // Create a fake first bar
+    QCPBars *previousBar = new QCPBars(customPlot->yAxis, customPlot->xAxis);
+    int randomIndex = 0;
+    pen.setColor(penColorArray[randomIndex]);
+    previousBar->setPen(pen);
+    previousBar->setBrush(boxColorArray[randomIndex]);
+    customPlot->addPlottable(previousBar);
+
+    QVector<double> previousBarData;
+    previousBarData << 0;
+    ticks << 1;
+    previousBar->setData(ticks, previousBarData);
+
+    // Lets print some boxes.
+    for(int i=0; i<125; i++)
+    {
+        std::cout << "Looping at 300 msecs..." << std::endl;
+        delay(100);
+        QCPBarData oldBarData = previousBar->data()->value(1);
+        std::cout << "Key: " << oldBarData.key << " Value: " << oldBarData.value << std::endl;
+        QVector<double> newBarData;
+        newBarData << oldBarData.value + 1;
+        previousBar->setData(ticks, newBarData);
+        ui->customPlot->replot();
+        if(i==70)
+        {
+            QCPBars *anotherBar = new QCPBars(customPlot->yAxis, customPlot->xAxis);
+            int randomIndex = 1;
+            pen.setColor(penColorArray[randomIndex]);
+            anotherBar->setPen(pen);
+            anotherBar->setBrush(boxColorArray[randomIndex]);
+            customPlot->addPlottable(anotherBar);
+
+            QVector<double> anotherBarData;
+            anotherBarData << 0;
+            ticks << 1;
+            anotherBar->setData(ticks, anotherBarData);
+            anotherBar->moveAbove(previousBar);
+            previousBar = anotherBar;
+
+        }
+
+    }
+
+      */
+
+
+}
+
+void MainWindow::updateGanttPlot(int row)
+{
+    ROS_INFO("updateGanttPlot for row");
+
+    // Get the bar to update, it is the last of the vector
+    QCPBars* bar = plotBars[row].last();
+    QCPBarData oldBarData = bar->data()->value(row + 1);
+    ROS_INFO("old bar data: %lf", oldBarData.value);
+    QVector<double> newBarData;
+    newBarData << oldBarData.value + 0.5;
+    QVector<double> ticks;
+    ticks.push_back(row + 1);
+    bar->setData(ticks, newBarData);
+    ganttDialog->customPlot->replot();
+
+    ROS_INFO("Exiting updateGanttPlot");
+
+
 }
 
 void MainWindow::updateTable(int tableRow, int tableColumn, int state)
