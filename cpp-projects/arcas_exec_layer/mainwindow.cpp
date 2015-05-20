@@ -294,7 +294,7 @@ void MainWindow::on_actionExecute_triggered()
         connect(sch, SIGNAL(stateChanged(int,int,int)), this, SLOT(updateTable(int,int,int)));
         connect(sch, SIGNAL(syncThread(int,int)), this, SLOT(syncThread(int,int)));
         connect(sch, SIGNAL(newGanttAction(int,int)), this, SLOT(addGanttBar(int,int)));
-        connect(sch, SIGNAL(updateGantt(int)), this, SLOT(updateGanttPlot(int)));
+        connect(sch, SIGNAL(updateGantt(int, float)), this, SLOT(updateGanttPlot(int, float)));
         t->start();
         uavThreads->insert(it.key(), t);
         row++;
@@ -423,86 +423,25 @@ void MainWindow::addGanttBar(int row, int action)
 
     ROS_INFO("Exiting addGanttBar");
 
-    /*
-    QColor boxColorArray[3];
-    QColor penColorArray[3];
-    //boxColorArray[0] = QColor(255, 131, 0, 50);
-    //boxColorArray[1] = QColor(1, 92, 191, 50);
-    //boxColorArray[2] = QColor(150, 222, 0, 70);
-    boxColorArray[0] = QColor(255, 131, 0, 50);
-    boxColorArray[1] = QColor(1, 92, 191, 50);
-    boxColorArray[2] = QColor(150, 222, 0, 50);
-    penColorArray[0] = QColor(255, 131, 0);
-    penColorArray[1] = QColor(1, 92, 191);
-    penColorArray[2] = QColor(150, 222, 0);
-    QPen pen;
-    pen.setWidthF(1.2);
-
-    // Create a fake first bar
-    QCPBars *previousBar = new QCPBars(customPlot->yAxis, customPlot->xAxis);
-    int randomIndex = 0;
-    pen.setColor(penColorArray[randomIndex]);
-    previousBar->setPen(pen);
-    previousBar->setBrush(boxColorArray[randomIndex]);
-    customPlot->addPlottable(previousBar);
-
-    QVector<double> previousBarData;
-    previousBarData << 0;
-    ticks << 1;
-    previousBar->setData(ticks, previousBarData);
-
-    // Lets print some boxes.
-    for(int i=0; i<125; i++)
-    {
-        std::cout << "Looping at 300 msecs..." << std::endl;
-        delay(100);
-        QCPBarData oldBarData = previousBar->data()->value(1);
-        std::cout << "Key: " << oldBarData.key << " Value: " << oldBarData.value << std::endl;
-        QVector<double> newBarData;
-        newBarData << oldBarData.value + 1;
-        previousBar->setData(ticks, newBarData);
-        ui->customPlot->replot();
-        if(i==70)
-        {
-            QCPBars *anotherBar = new QCPBars(customPlot->yAxis, customPlot->xAxis);
-            int randomIndex = 1;
-            pen.setColor(penColorArray[randomIndex]);
-            anotherBar->setPen(pen);
-            anotherBar->setBrush(boxColorArray[randomIndex]);
-            customPlot->addPlottable(anotherBar);
-
-            QVector<double> anotherBarData;
-            anotherBarData << 0;
-            ticks << 1;
-            anotherBar->setData(ticks, anotherBarData);
-            anotherBar->moveAbove(previousBar);
-            previousBar = anotherBar;
-
-        }
-
-    }
-
-      */
-
-
 }
 
-void MainWindow::updateGanttPlot(int row)
+void MainWindow::updateGanttPlot(int row, float secs)
 {
-    ROS_INFO("updateGanttPlot for row");
+    ROS_INFO("Update Gantt for row %d with %lf secs", row, secs);
 
     // Get the bar to update, it is the last of the vector
     QCPBars* bar = plotBars[row].last();
     QCPBarData oldBarData = bar->data()->value(row + 1);
-    ROS_INFO("old bar data: %lf", oldBarData.value);
+    ROS_INFO("Old bar data: %lf", oldBarData.value);
     QVector<double> newBarData;
-    newBarData << oldBarData.value + 0.5;
+    newBarData << oldBarData.value + secs;
+    ROS_INFO("New bar data: %lf", newBarData[0]);
     QVector<double> ticks;
     ticks.push_back(row + 1);
     bar->setData(ticks, newBarData);
     ganttDialog->customPlot->replot();
 
-    ROS_INFO("Exiting updateGanttPlot");
+    //ROS_INFO("Exiting updateGanttPlot");
 
 
 }

@@ -34,7 +34,7 @@ public slots:
     void updateTable(int tableRow, int tableColumn, int state);
     void syncThread(int waitingThreadVehicleId, int requestedThreadVehicleId);
     void addGanttBar(int row, int action);
-    void updateGanttPlot(int row);
+    void updateGanttPlot(int row, float secs);
 
 private:
     void showMessageBox(QString message);

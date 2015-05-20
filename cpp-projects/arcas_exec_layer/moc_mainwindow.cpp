@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Mon May 18 13:03:17 2015
+** Created: Tue May 19 11:42:36 2015
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -40,7 +40,7 @@ static const uint qt_meta_data_MainWindow[] = {
      184,  157,   11,   11, 0x0a,
      209,   30,   11,   11, 0x0a,
      240,  229,   11,   11, 0x0a,
-     265,  261,   11,   11, 0x0a,
+     270,  261,   11,   11, 0x0a,
 
        0        // eod
 };
@@ -52,8 +52,8 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "on_actionExecute_triggered()\0"
     "tableRow,tableColumn,state\0"
     "updateTable(int,int,int)\0syncThread(int,int)\0"
-    "row,action\0addGanttBar(int,int)\0row\0"
-    "updateGanttPlot(int)\0"
+    "row,action\0addGanttBar(int,int)\0"
+    "row,secs\0updateGanttPlot(int,float)\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -69,7 +69,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 4: _t->updateTable((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
         case 5: _t->syncThread((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 6: _t->addGanttBar((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 7: _t->updateGanttPlot((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 7: _t->updateGanttPlot((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< float(*)>(_a[2]))); break;
         default: ;
         }
     }

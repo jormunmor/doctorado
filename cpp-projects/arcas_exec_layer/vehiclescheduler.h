@@ -7,6 +7,7 @@
 #include <QThread>
 #include <QMetaType>
 #include <QTimer>
+#include <QTime>
 // The followings are needed to use the actionlib client
 #include "ArcasExecLayerClient.h"
 #include "constants.h"
@@ -48,7 +49,7 @@ signals:
     void stateChanged(int row, int column, int state);
     void syncThread(int waitingThreadVehicleId, int requestedThreadVehicleId);
     void newGanttAction(int row, int action);
-    void updateGantt(int row);
+    void updateGantt(int row, float secs);
 
 private slots:
     void execute();
@@ -64,6 +65,7 @@ private:
     std::map<int, Goal> *locationsMap; // each location identifier is associated with a position and orientation.
     QVector<QStringList> operations; // The operations the vehicle must execute.
     QVector<int> syncRequests;
+    QTime lastFeedbackTime;
 
 
 

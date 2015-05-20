@@ -218,6 +218,9 @@ void VehicleScheduler::threadSync(int waitingThreadVehicleId, int requestedThrea
   */
 void VehicleScheduler::activeCb(void)
 {
+    // mark the current time for the action
+    lastFeedbackTime = QTime::currentTime();
+
     // Emit the signal to display the status in the table. activeCb
     // executes when the operation is about to start to execute.)
     //std::cout << "activeCb" << std::endl;
@@ -242,13 +245,16 @@ void VehicleScheduler::activeCb(void)
 /**
   This function executes periodically after the current action starts its
   execution and stops executing after the action finishes. Its purpose is
-  to update the gantt chart.
+  to update the gantt chart with the time elapsed from the last feedback
+  call, or the active call.
   */
 void VehicleScheduler::feedbackCb(const arcas_exec_layer::ArcasExecLayerFeedbackConstPtr& feedback)
 {
-    //std::cout << "feedbackCb" << std::endl;
-    ROS_INFO("FeedBack Cb.");
-    emit updateGantt(tableRow);
+    QTime currentFeedbackTime = QTime::currentTime();
+    int msecs = lastFeedbackTime.msecsTo(currentFeedbackTime);
+    ROS_INFO("msecs since last feedback: %d", msecs);
+    lastFeedbackTime = currentFeedbackTime;
+    emit updateGantt(tableRow, msecs/1000.0);
 
 }
 
