@@ -2,7 +2,6 @@
 #include "opencv2/highgui/highgui.hpp"
 #include <cstdio>
 #include <iostream>
-
 using namespace cv;
 using namespace std;
 
