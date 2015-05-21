@@ -14,12 +14,17 @@ using namespace std;
 VehicleScheduler::VehicleScheduler(const int &id, const QVector<QStringList> &ops, const int &row, std::map<int, Goal> *locMap, QObject *parent) :
     QObject(parent), vehicleID(id), tableRow(row), waitingFor(-1), locationsMap(locMap), operations(ops), syncRequests(QVector<int>())
 {
-
+    lastFeedbackTime = NULL;
 
 }
 
 VehicleScheduler::~VehicleScheduler()
 {
+    if(lastFeedbackTime != NULL)
+    {
+        delete lastFeedbackTime;
+
+    }
 
 }
 
@@ -180,6 +185,12 @@ void VehicleScheduler::execute()
             goal.actionType = MOVE;
             currentActionType = MOVE;
 
+        } else if(op.at(0).contains("pick"))
+        {
+            goal.group = VEHICLE_FRAME;
+            goal.actionType = PICK;
+            currentActionType = PICK;
+
         }
 
         goal.vehicleID = vehicleID;
@@ -219,7 +230,8 @@ void VehicleScheduler::threadSync(int waitingThreadVehicleId, int requestedThrea
 void VehicleScheduler::activeCb(void)
 {
     // mark the current time for the action
-    lastFeedbackTime = QTime::currentTime();
+    QTime current = QTime::currentTime();
+    lastFeedbackTime = new QTime(current.hour(), current.minute(), current.second(), current.msec());
 
     // Emit the signal to display the status in the table. activeCb
     // executes when the operation is about to start to execute.)
@@ -250,11 +262,17 @@ void VehicleScheduler::activeCb(void)
   */
 void VehicleScheduler::feedbackCb(const arcas_exec_layer::ArcasExecLayerFeedbackConstPtr& feedback)
 {
-    QTime currentFeedbackTime = QTime::currentTime();
-    int msecs = lastFeedbackTime.msecsTo(currentFeedbackTime);
-    ROS_INFO("msecs since last feedback: %d", msecs);
-    lastFeedbackTime = currentFeedbackTime;
-    emit updateGantt(tableRow, msecs/1000.0);
+    if(lastFeedbackTime != NULL)
+    {
+        QTime current = QTime::currentTime();
+        QTime *currentFeedbackTime = new QTime(current.hour(), current.minute(), current.second(), current.msec());
+        int msecs = lastFeedbackTime->msecsTo(*currentFeedbackTime);
+        ROS_INFO("msecs since last feedback: %d", msecs);
+        delete lastFeedbackTime;
+        lastFeedbackTime = currentFeedbackTime;
+        emit updateGantt(tableRow, msecs/1000.0);
+
+    }
 
 }
 
@@ -266,6 +284,8 @@ void VehicleScheduler::feedbackCb(const arcas_exec_layer::ArcasExecLayerFeedback
   */
 void VehicleScheduler::doneCb(const actionlib::SimpleClientGoalState& state, const arcas_exec_layer::ArcasExecLayerResultConstPtr& result)
 {
+    delete lastFeedbackTime;
+    lastFeedbackTime = NULL;
     ROS_INFO("Action is now DONE");
     //std::cout << "doneCb" << std::endl;
 

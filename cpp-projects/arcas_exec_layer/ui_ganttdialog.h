@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ganttdialog.ui'
 **
-** Created: Wed May 13 19:09:00 2015
+** Created: Wed May 20 17:27:31 2015
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

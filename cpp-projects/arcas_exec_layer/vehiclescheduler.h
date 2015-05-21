@@ -65,7 +65,7 @@ private:
     std::map<int, Goal> *locationsMap; // each location identifier is associated with a position and orientation.
     QVector<QStringList> operations; // The operations the vehicle must execute.
     QVector<int> syncRequests;
-    QTime lastFeedbackTime;
+    QTime *lastFeedbackTime;
 
 
 

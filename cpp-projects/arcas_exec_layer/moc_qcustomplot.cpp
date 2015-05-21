@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'qcustomplot.h'
 **
-** Created: Wed May 13 18:01:51 2015
+** Created: Wed May 20 17:28:20 2015
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

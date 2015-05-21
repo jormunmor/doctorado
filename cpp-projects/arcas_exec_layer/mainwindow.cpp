@@ -512,10 +512,10 @@ std::map<int, Goal>* MainWindow::generateLocationsMap()
     pose23.position.x = -6;
     pose23.position.y = -6;
     pose23.position.z = 0.25;
-    pose23.orientation.w = 1;
     pose23.orientation.x = 0;
     pose23.orientation.y = 0;
     pose23.orientation.z = 0;
+    pose23.orientation.w = 1;
     goal23.pose = pose23;
     goal23.yaw = 0;
 
@@ -531,8 +531,34 @@ std::map<int, Goal>* MainWindow::generateLocationsMap()
     goal1.pose = pose1;
     goal1.yaw = M_PI/4.0;
 
+    Goal goal80;
+    geometry_msgs::Pose pose80;
+    pose80.position.x = -6;
+    pose80.position.y = -4;
+    pose80.position.z = 2;
+    pose80.orientation.x = 0;
+    pose80.orientation.y = 0;
+    pose80.orientation.z = 0.383; // The lack of decimals make this quaternion incorrect, use yaw instead.
+    pose80.orientation.w = 0.924;
+    goal80.pose = pose80;
+    goal80.yaw = M_PI/4.0;
+
+    Goal goal10; // Part center position
+    geometry_msgs::Pose pose10;
+    pose10.position.x = -7;
+    pose10.position.y = 0;
+    pose10.position.z = 1.10 + 0.75; // Add an offset, this is the center of the bar
+    pose10.orientation.x = 0;
+    pose10.orientation.y = 0;
+    pose10.orientation.z = 0; // The lack of decimals make this quaternion incorrect, use yaw instead.
+    pose10.orientation.w = 1;
+    goal10.pose = pose10;
+    goal10.yaw = M_PI - M_PI/4.0; // Add an offset
+
     locMap->insert(std::pair<int, Goal>(23, goal23));
     locMap->insert(std::pair<int, Goal>(1, goal1));
+    locMap->insert(std::pair<int, Goal>(80, goal80));
+    locMap->insert(std::pair<int, Goal>(10, goal10));
 
     // Position 23 is the hard-coded initial position present in the launch_simulator.launch.
     // -x -6.0 -y -6.0 -z 0.25  -R 0.0 -P 0.0 -Y 0.0
