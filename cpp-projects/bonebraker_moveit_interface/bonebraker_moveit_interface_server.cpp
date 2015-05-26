@@ -1,8 +1,9 @@
 /*
 	This class implements an actionlib server to communicate
-	with the arcas_exec_layer GUI. By the moment it is
-	a fake server. It increments the goal pose.position.z a
-	certain amount.
+	with the arcas_exec_layer GUI.
+
+	Developed by: Jorge Juan Muñoz Morera
+					Ricardo Ragel de la Torre
 */
 
 #include <iostream>
@@ -34,15 +35,8 @@
 #include <arcas_msgs/QuadStateEstimationWithCovarianceStamped.h>
 // Topic: Arm position estimation
 #include <arcas_msgs/ArmStateEstimationStamped.h>
-
-class BonebrakerServer;
-typedef struct {
-	BonebrakerServer* serverObject;
-	arcas_exec_layer::ArcasExecLayerGoalConstPtr goal;
-	bool actionFinished;
-	bool actionSuccess;
-
-} ActionThreadData;
+// Boost: to create execution threads and give feedback while executing.
+#include <boost/thread.hpp>
 
 /// TODO: avoid defining the whole class in a single .cpp file. Separate it in .h and .cpp files.
 
@@ -192,28 +186,6 @@ class BonebrakerServer
 
 	}
 
-	bool executeAction(const arcas_exec_layer::ArcasExecLayerGoalConstPtr &goal)
-	{
-		bool success = false;
-		switch(goal->actionType)
-		{
-			case TAKEOFF:
-				success = executeTAKEOFF(goal);				 
-				break;
-			case MOVE: 
-				success = executeMOVE(goal);
-				break;
-			case PICK: 
-				success = executePICK(goal);
-				break;
-
-		}
-
-		return success;
-		
-
-	}
-
 	~BonebrakerServer()
 	{
 		delete spinner;
@@ -227,36 +199,32 @@ class BonebrakerServer
 
 	private:
 
+	bool executingAction; // Whether the server is currently executing an action.
+	bool actionSucceeded; // Status of last action executed.
+
+	/*
+		This function executes when a goal arrives. It creates a boost thread to execute
+		the goal and query whether the thread has finished. While doing so, feedback messages
+		are published to the client. The thread uses as function a member function from this
+		class, and changes the value of some member variables, so these variables must be
+		handled carefully to avoid rare conditions. 
+	*/
 	void executeCB(const arcas_exec_layer::ArcasExecLayerGoalConstPtr &goal)
 	{
-		ActionThreadData threadData;
-		threadData.goal = goal;
-		threadData.actionFinished = false;
-		threadData.actionSuccess = false;
-		threadData.serverObject = this;
-
-		pthread_t t;
-		int rc = pthread_create(&t, NULL, &BonebrakerServer::threadFunction, &threadData);
-		if(rc)
-		{
-        	ROS_INFO("Unable to create execution thread.");
-			as.setAborted(result);
-			return;
-
-		}
-
-		while(!threadData.actionFinished)
+		executingAction = true;
+		boost::thread executionThread = boost::thread(&BonebrakerServer::executeAction, this, goal);
+		while(executingAction)
 		{
 			setFeedbackMsg();
 			as.publishFeedback(feedback);
-			ros::Duration(0.01).sleep(); // sleep 10 millisecons
+			ros::Duration(0.1).sleep(); // sleep 100 millisecons
 
 		}
 
 		setFeedbackMsg();
 		as.publishFeedback(feedback);
 
-		if(threadData.actionSuccess)
+		if(actionSucceeded)
 		{
 			as.setSucceeded(result);
 
@@ -269,17 +237,37 @@ class BonebrakerServer
 
 	}
 
-	static void *threadFunction(void *context)
+	/*
+		This function is used in the thread created in the executeCB. It executes
+		the action and updates some member variables. 
+	*/
+	void executeAction(const arcas_exec_layer::ArcasExecLayerGoalConstPtr &goal)
 	{
-		ActionThreadData* threadData = (ActionThreadData*) context;
-		bool success = threadData->serverObject->executeAction(threadData->goal);				
-		threadData->actionSuccess = success;
-		threadData->actionFinished = true;
+		actionSucceeded = false;
+		switch(goal->actionType)
+		{
+			case TAKEOFF:
+				actionSucceeded = executeTAKEOFF(goal);				 
+				break;
+			case MOVE: 
+				actionSucceeded = executeMOVE(goal);
+				break;
+			case PICK: 
+				actionSucceeded = executePICK(goal);
+				break;
+			default: break;
 
-	}	
+		}
+
+		executingAction = false;		
+
+	}
 
 	/*
-		This function sets the feedback msg to have the current pose of the vehicle.
+		This function sets the feedback msg to hold the current pose of the vehicle. 
+
+		TODO: it could be useful to set the pose depending on the action type: if moving the arm
+		the feedback message should contain the pose of the arm instead of the pose of the vehicle.
 	*/
 	void setFeedbackMsg()
 	{
@@ -287,7 +275,6 @@ class BonebrakerServer
 		feedback.pose.position.x = quad_state_estimation.quad_state_estimation_with_covariance.position.x;
 		feedback.pose.position.y = quad_state_estimation.quad_state_estimation_with_covariance.position.y;
 		feedback.pose.position.z = quad_state_estimation.quad_state_estimation_with_covariance.position.z;
-		//ROS_INFO("Current height: %lf", feedback.pose.position.z);
 		// Set the feedback message orientation to the current orientation
 		tfScalar roll = quad_state_estimation.quad_state_estimation_with_covariance.attitude.roll;
 		tfScalar pitch = quad_state_estimation.quad_state_estimation_with_covariance.attitude.pitch;
@@ -301,40 +288,32 @@ class BonebrakerServer
 
 	}
 
-	/// TODO: take a look at the TakeOffActionWrapper implementation, it has
-	/// tOff_Active_CB, tOff_Feedback_CB and tOff_Done_CB unused. Can be useful.	
+	/*
+		This function executes a TAKEOFF action.
+
+		TODO: always return success. Check the case of the takeoff failing.
+	*/	
 	bool executeTAKEOFF(const arcas_exec_layer::ArcasExecLayerGoalConstPtr &goal)
 	{
 		ROS_INFO("TAKEOFF Goal arrived.");
-		// The first feedback will have the pose before taking off.
-		//setFeedbackMsg();
-		//as.publishFeedback(feedback);
 		takeoffActionclient->takeOff(); /// TODO: the TAKEOFF height is set as a constant in Control/ual/include/ual/ualhectorgazebo.h
-		//setFeedbackMsg();
-		//as.publishFeedback(feedback);
-		ros::Rate loop_rate(30); // loop at 10 Hz
+		ros::Rate loop_rate(10); // loop at 10 Hz
 		while(takeoffActionclient->hasGoalRunning())
 		{	
-			// Publish the feedback and loop
-			//setFeedbackMsg();
-			//as.publishFeedback(feedback);		
 			loop_rate.sleep();	
 
 		}
-		//ros::Duration(5).sleep();
 		ROS_INFO("TAKEOFF Action succeeded!");
-		//setFeedbackMsg();
-		//as.publishFeedback(feedback);
-		//result.pose = feedback.pose; // Set the result with the current feedback
-		//as.setSucceeded(result);
 		return true;
 
 	}
 
+	/*
+		This function executes a MOVE action.
+
+	*/	
 	bool executeMOVE(const arcas_exec_layer::ArcasExecLayerGoalConstPtr &goal)
 	{
-		// Publish some feedback
-		//as.publishFeedback(feedback);
 		ROS_INFO("MOVE Goal arrived.");
 
 		// Stabilize the vehicle
@@ -365,16 +344,10 @@ class BonebrakerServer
 		ROS_INFO("Moving to position (%lf, %lf, %lf)", goal->pose.position.x, goal->pose.position.y, goal->pose.position.z);
 		ROS_INFO("Moving to orientation (%lf, %lf, %lf, %lf)", q.x(), q.y(), q.z(), q.w());
 
-		// Publish some feedback
-		//as.publishFeedback(feedback);
-
 		// Plan for this group
 		moveit::planning_interface::MoveGroup::Plan uav_plan;
 		uav_group->setJointValueTarget(group_variable_values);
 		bool uav_success = uav_group->plan(uav_plan);
-
-		// Publish some feedback
-		//as.publishFeedback(feedback);
 
 		// Moving the uav to a pose goal
 		if(uav_success)
@@ -386,7 +359,6 @@ class BonebrakerServer
 			if(!uav_success)
 			{
 				ROS_INFO("MOVE Action aborted. Execute phase failed!.");
-				//as.setAborted(result);
 				return false;
 
 			}
@@ -395,22 +367,22 @@ class BonebrakerServer
 		else
 		{
 			ROS_INFO("MOVE Action aborted. Planning phase failed!.");
-			//as.setAborted(result);
 			return false;
 		}
 	
 		ROS_INFO("MOVE Action succeeded!.");
-		//as.setSucceeded(result);
+
 		return true;
 
 	}
 
+	/*
+		This function executes a PICK action.
+
+	*/
 	bool executePICK(const arcas_exec_layer::ArcasExecLayerGoalConstPtr &goal)
 	{
 		ROS_INFO("PICK Goal arrived.");		
-
-		// Publish some feedback
-		//as.publishFeedback(feedback);
 		
 		// Stabilize before extending the arm, not really needed, but doesn't hurt
 		stabilize();
@@ -418,13 +390,9 @@ class BonebrakerServer
 		// Extend the arm
 		if(!armExtend())
 		{
-			//as.setAborted(result);
 			return false;
 
 		}
-
-		// Publish some feedback
-		//as.publishFeedback(feedback);
 
 		// Stabilize after extending the arm, REALLY NEEDED
 		stabilize();
@@ -432,13 +400,9 @@ class BonebrakerServer
 		// Move the arm to pick pose
 		if(!armToPickPose())
 		{
-			//as.setAborted(result);
 			return false;
 
 		}
-
-		// Publish some feedback
-		//as.publishFeedback(feedback);
 
 		// Stabilize before opening the gripper
 		stabilize();
@@ -446,13 +410,9 @@ class BonebrakerServer
 		// Open the gripper
 		if(!armGripperInteraction(true))
 		{
-			//as.setAborted(result);
 			return false;
 
 		}
-
-		// Publish some feedback
-		//as.publishFeedback(feedback);
 
 		// Stabilize before moving
 		stabilize();
@@ -461,13 +421,9 @@ class BonebrakerServer
 		bool down = true;
 		if(!vehicleToPosition(down))
 		{
-			//as.setAborted(result);
 			return false;
 
 		}
-
-		// Publish some feedback
-		//as.publishFeedback(feedback);
 
 		// Stabilize before closing the gripper
 		stabilize();
@@ -475,7 +431,6 @@ class BonebrakerServer
 		// Close the gripper
 		if(!armGripperInteraction(false))
 		{
-			//as.setAborted(result);
 			return false;
 
 		}
@@ -483,21 +438,22 @@ class BonebrakerServer
 		// Vehicle rise up
 		if(!vehicleToPosition(!down))
 		{
-			//as.setAborted(result);
 			return false;
 
 		}
 
-		// Publish some feedback
-		//as.publishFeedback(feedback);
-
 		ROS_INFO("PICK Action succeeded!.");
-		return true;		
-		//as.setSucceeded(result);
 
+		return true;		
 
 	}
 
+	/*
+		This callback function is used to set the initial reference for the vehicle, which is used in the TAKEOFF
+		server. It also updates the state of the vehicle.
+
+		TODO: search the node wich sets the initial Z reference to zero and set that references on that node.
+	*/
 	void quadStateEstimationCallback(const arcas_msgs::QuadStateEstimationWithCovarianceStampedConstPtr &st)
 	{
 	   quad_state_estimation = *st;
@@ -505,6 +461,9 @@ class BonebrakerServer
 
 	}
 
+	/*
+		This callback function updates the state of the arm.
+	*/
 	void armStateEstimationCallback(const arcas_msgs::ArmStateEstimationStamped &arm)
 	{
 		arm_state = arm.arm_state_estimation;
@@ -527,6 +486,10 @@ class BonebrakerServer
 
 	}
 
+	/*
+		This function is used to set the pose of the arm to pick a part that is placed
+		horizontally below the current position of the vehicle.
+	*/
 	bool armToPickPose()
 	{
 		geometry_msgs::Pose arm_target_pose;
@@ -587,6 +550,9 @@ class BonebrakerServer
 
 	}
 
+	/*
+		This function is used to open/close the gripper.
+	*/
 	bool armGripperInteraction(bool open)
 	{
 		bool gripper_success = false;
@@ -635,12 +601,16 @@ class BonebrakerServer
 
 	}
 
-	/*
-		bool down: - true to aprox the vehicle to the part to pick it
+	/* This function is used to move the vehicle between the aprox positions, i.e. go
+		down to pick a part or go up after picking the part.
+
+		bool down: - true to descend the vehicle to the part to pick it
 					- false to rise up the vehicle after picking the part
+
+		TODO: instead of receiving a boolean, an enum could be better, more descriptive and let
+		define other types of movements when picking/placing, as will be the case of having parts
+		that are placed vertically.
 	*/
-	/// TODO: instead of receiving a boolean, an enum could be better, more descriptive and let
-	/// define other types of movements when picking/placing
 	bool vehicleToPosition(bool down)
 	{
 		bool uav_success = false;
@@ -714,6 +684,11 @@ class BonebrakerServer
 
 	}
 
+	/*
+		This function is used to stabilize the vehicle while not moving and must be called before any critical
+		action that requires planning such as moving the vehicle of moving the arm. It considers
+		that the vehicle is stabilized if its orientation (roll and pitch) is constant along a second.
+	*/
 	void stabilize()
 	{
 		// Wait to UAV stabilization
@@ -738,6 +713,12 @@ class BonebrakerServer
 
 	}
 
+	/*
+		Helper function used by stabilize.
+
+		TODO: although checking the yaw is not needed by our purposes, it could be good to check that angle too
+				to ensure that the vehicle is stabilized in the three angles.
+	*/
 	bool checkUavStabilization()
 	{
 		double roll = quad_state_estimation.quad_state_estimation_with_covariance.attitude.roll;
