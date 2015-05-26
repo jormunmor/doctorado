@@ -35,6 +35,15 @@
 // Topic: Arm position estimation
 #include <arcas_msgs/ArmStateEstimationStamped.h>
 
+class BonebrakerServer;
+typedef struct {
+	BonebrakerServer* serverObject;
+	arcas_exec_layer::ArcasExecLayerGoalConstPtr goal;
+	bool actionFinished;
+	bool actionSuccess;
+
+} ActionThreadData;
+
 /// TODO: avoid defining the whole class in a single .cpp file. Separate it in .h and .cpp files.
 
 class BonebrakerServer
@@ -183,7 +192,29 @@ class BonebrakerServer
 
 	}
 
-	~BonebrakerServer(void)
+	bool executeAction(const arcas_exec_layer::ArcasExecLayerGoalConstPtr &goal)
+	{
+		bool success = false;
+		switch(goal->actionType)
+		{
+			case TAKEOFF:
+				success = executeTAKEOFF(goal);				 
+				break;
+			case MOVE: 
+				success = executeMOVE(goal);
+				break;
+			case PICK: 
+				success = executePICK(goal);
+				break;
+
+		}
+
+		return success;
+		
+
+	}
+
+	~BonebrakerServer()
 	{
 		delete spinner;
 		delete takeoffActionclient;
@@ -198,69 +229,112 @@ class BonebrakerServer
 
 	void executeCB(const arcas_exec_layer::ArcasExecLayerGoalConstPtr &goal)
 	{
-		switch(goal->actionType)
+		ActionThreadData threadData;
+		threadData.goal = goal;
+		threadData.actionFinished = false;
+		threadData.actionSuccess = false;
+		threadData.serverObject = this;
+
+		pthread_t t;
+		int rc = pthread_create(&t, NULL, &BonebrakerServer::threadFunction, &threadData);
+		if(rc)
 		{
-			case TAKEOFF:
-				executeTAKEOFF(goal);				 
-				break;
-			case MOVE: 
-				executeMOVE(goal);
-				break;
-			case PICK: 
-				executePICK(goal);
-				break;
+        	ROS_INFO("Unable to create execution thread.");
+			as.setAborted(result);
+			return;
 
 		}
+
+		while(!threadData.actionFinished)
+		{
+			setFeedbackMsg();
+			as.publishFeedback(feedback);
+			ros::Duration(0.01).sleep(); // sleep 10 millisecons
+
+		}
+
+		setFeedbackMsg();
+		as.publishFeedback(feedback);
+
+		if(threadData.actionSuccess)
+		{
+			as.setSucceeded(result);
+
+		}
+		else
+		{
+			as.setAborted(result);
+
+		}
+
+	}
+
+	static void *threadFunction(void *context)
+	{
+		ActionThreadData* threadData = (ActionThreadData*) context;
+		bool success = threadData->serverObject->executeAction(threadData->goal);				
+		threadData->actionSuccess = success;
+		threadData->actionFinished = true;
+
+	}	
+
+	/*
+		This function sets the feedback msg to have the current pose of the vehicle.
+	*/
+	void setFeedbackMsg()
+	{
+		// Set the feedback message position to the current position
+		feedback.pose.position.x = quad_state_estimation.quad_state_estimation_with_covariance.position.x;
+		feedback.pose.position.y = quad_state_estimation.quad_state_estimation_with_covariance.position.y;
+		feedback.pose.position.z = quad_state_estimation.quad_state_estimation_with_covariance.position.z;
+		//ROS_INFO("Current height: %lf", feedback.pose.position.z);
+		// Set the feedback message orientation to the current orientation
+		tfScalar roll = quad_state_estimation.quad_state_estimation_with_covariance.attitude.roll;
+		tfScalar pitch = quad_state_estimation.quad_state_estimation_with_covariance.attitude.pitch;
+		tfScalar yaw = quad_state_estimation.quad_state_estimation_with_covariance.attitude.yaw;
+		tf::Quaternion orientation;
+		orientation.setRPY(roll, pitch, yaw);
+		feedback.pose.orientation.x = orientation.x();
+		feedback.pose.orientation.y = orientation.y();
+		feedback.pose.orientation.z = orientation.z();
+		feedback.pose.orientation.w = orientation.w();		
 
 	}
 
 	/// TODO: take a look at the TakeOffActionWrapper implementation, it has
 	/// tOff_Active_CB, tOff_Feedback_CB and tOff_Done_CB unused. Can be useful.	
-	void executeTAKEOFF(const arcas_exec_layer::ArcasExecLayerGoalConstPtr &goal)
+	bool executeTAKEOFF(const arcas_exec_layer::ArcasExecLayerGoalConstPtr &goal)
 	{
 		ROS_INFO("TAKEOFF Goal arrived.");
-		takeoffActionclient->takeOff(); /// TODO: how to set the TAKEOFF height?
-		ROS_INFO("TAKEOFF Action sent.");
-		ros::Rate loop_rate(10);
+		// The first feedback will have the pose before taking off.
+		//setFeedbackMsg();
+		//as.publishFeedback(feedback);
+		takeoffActionclient->takeOff(); /// TODO: the TAKEOFF height is set as a constant in Control/ual/include/ual/ualhectorgazebo.h
+		//setFeedbackMsg();
+		//as.publishFeedback(feedback);
+		ros::Rate loop_rate(30); // loop at 10 Hz
 		while(takeoffActionclient->hasGoalRunning())
-		{
-			ROS_INFO("TAKEOFF Action: waiting to finish...");
-			// Here we publish a feedback state. It should contains the actual
-			// quad position, but this have to be managed by the CATEC WRAPPER.
-			// By the moment, we publish as feedback the goal position.
-			feedback.pose = goal->pose;
-			as.publishFeedback(feedback);
+		{	
+			// Publish the feedback and loop
+			//setFeedbackMsg();
+			//as.publishFeedback(feedback);		
 			loop_rate.sleep();	
 
 		}
-		/// TODO: at the moment, we suppose the TAKEOFF action is always succesful. Take into
-		/// account the other cases.
-		/// TODO: the takeoff finishes befoe reaching the position. At the moment, we solve it
-		/// by sleeping an amount.
-		//ros::Duration(3).sleep();
-		ros::Duration(0.8).sleep();
-		as.publishFeedback(feedback);
-		ros::Duration(1.0).sleep();
-		as.publishFeedback(feedback);
-		ros::Duration(0.2).sleep();
-		as.publishFeedback(feedback);
-		ros::Duration(0.25).sleep();
-		as.publishFeedback(feedback);
-		ros::Duration(0.25).sleep();
-		as.publishFeedback(feedback);
-		ros::Duration(1.5).sleep();
-		as.publishFeedback(feedback);
-
+		//ros::Duration(5).sleep();
 		ROS_INFO("TAKEOFF Action succeeded!");
-		result.pose = goal->pose;
-		as.setSucceeded(result);
+		//setFeedbackMsg();
+		//as.publishFeedback(feedback);
+		//result.pose = feedback.pose; // Set the result with the current feedback
+		//as.setSucceeded(result);
+		return true;
 
 	}
 
-	void executeMOVE(const arcas_exec_layer::ArcasExecLayerGoalConstPtr &goal)
+	bool executeMOVE(const arcas_exec_layer::ArcasExecLayerGoalConstPtr &goal)
 	{
 		// Publish some feedback
-		as.publishFeedback(feedback);
+		//as.publishFeedback(feedback);
 		ROS_INFO("MOVE Goal arrived.");
 
 		// Stabilize the vehicle
@@ -292,7 +366,7 @@ class BonebrakerServer
 		ROS_INFO("Moving to orientation (%lf, %lf, %lf, %lf)", q.x(), q.y(), q.z(), q.w());
 
 		// Publish some feedback
-		as.publishFeedback(feedback);
+		//as.publishFeedback(feedback);
 
 		// Plan for this group
 		moveit::planning_interface::MoveGroup::Plan uav_plan;
@@ -300,7 +374,7 @@ class BonebrakerServer
 		bool uav_success = uav_group->plan(uav_plan);
 
 		// Publish some feedback
-		as.publishFeedback(feedback);
+		//as.publishFeedback(feedback);
 
 		// Moving the uav to a pose goal
 		if(uav_success)
@@ -312,8 +386,8 @@ class BonebrakerServer
 			if(!uav_success)
 			{
 				ROS_INFO("MOVE Action aborted. Execute phase failed!.");
-				as.setAborted(result);
-				return;
+				//as.setAborted(result);
+				return false;
 
 			}
 
@@ -321,21 +395,22 @@ class BonebrakerServer
 		else
 		{
 			ROS_INFO("MOVE Action aborted. Planning phase failed!.");
-			as.setAborted(result);
-			return;
+			//as.setAborted(result);
+			return false;
 		}
 	
 		ROS_INFO("MOVE Action succeeded!.");
-		as.setSucceeded(result);
+		//as.setSucceeded(result);
+		return true;
 
 	}
 
-	void executePICK(const arcas_exec_layer::ArcasExecLayerGoalConstPtr &goal)
+	bool executePICK(const arcas_exec_layer::ArcasExecLayerGoalConstPtr &goal)
 	{
 		ROS_INFO("PICK Goal arrived.");		
 
 		// Publish some feedback
-		as.publishFeedback(feedback);
+		//as.publishFeedback(feedback);
 		
 		// Stabilize before extending the arm, not really needed, but doesn't hurt
 		stabilize();
@@ -343,13 +418,13 @@ class BonebrakerServer
 		// Extend the arm
 		if(!armExtend())
 		{
-			as.setAborted(result);
-			return;
+			//as.setAborted(result);
+			return false;
 
 		}
 
 		// Publish some feedback
-		as.publishFeedback(feedback);
+		//as.publishFeedback(feedback);
 
 		// Stabilize after extending the arm, REALLY NEEDED
 		stabilize();
@@ -357,13 +432,13 @@ class BonebrakerServer
 		// Move the arm to pick pose
 		if(!armToPickPose())
 		{
-			as.setAborted(result);
-			return;
+			//as.setAborted(result);
+			return false;
 
 		}
 
 		// Publish some feedback
-		as.publishFeedback(feedback);
+		//as.publishFeedback(feedback);
 
 		// Stabilize before opening the gripper
 		stabilize();
@@ -371,27 +446,28 @@ class BonebrakerServer
 		// Open the gripper
 		if(!armGripperInteraction(true))
 		{
-			as.setAborted(result);
-			return;
+			//as.setAborted(result);
+			return false;
 
 		}
 
 		// Publish some feedback
-		as.publishFeedback(feedback);
+		//as.publishFeedback(feedback);
 
 		// Stabilize before moving
 		stabilize();
 
 		// Uav to grasp position
-		if(!vehicleToGraspPosition())
+		bool down = true;
+		if(!vehicleToPosition(down))
 		{
-			as.setAborted(result);
-			return;
+			//as.setAborted(result);
+			return false;
 
 		}
 
 		// Publish some feedback
-		as.publishFeedback(feedback);
+		//as.publishFeedback(feedback);
 
 		// Stabilize before closing the gripper
 		stabilize();
@@ -399,16 +475,25 @@ class BonebrakerServer
 		// Close the gripper
 		if(!armGripperInteraction(false))
 		{
-			as.setAborted(result);
-			return;
+			//as.setAborted(result);
+			return false;
 
-		}		
+		}
+
+		// Vehicle rise up
+		if(!vehicleToPosition(!down))
+		{
+			//as.setAborted(result);
+			return false;
+
+		}
 
 		// Publish some feedback
-		as.publishFeedback(feedback);
+		//as.publishFeedback(feedback);
 
 		ROS_INFO("PICK Action succeeded!.");
-		as.setSucceeded(result);
+		return true;		
+		//as.setSucceeded(result);
 
 
 	}
@@ -429,14 +514,14 @@ class BonebrakerServer
 	/// TODO: look the case of the robotic arm failing at extending
 	bool armExtend()
 	{
-		printf("Exetending the arm...");
+		ROS_INFO("Extending the arm.");
 		aalExtensionActionWrapper.extendArm();
-		while(arm_state.arm_state != arcas_msgs::ArmStateEstimation::EXTENDED) 
+		while(aalExtensionActionWrapper.hasGoalRunning()) 
 		{
 		  sleep(10);
 
 		}
-		printf("...[OK]\n");
+		ROS_INFO("Arm extended.");
 
 		return true;
 
@@ -550,7 +635,13 @@ class BonebrakerServer
 
 	}
 
-	bool vehicleToGraspPosition()
+	/*
+		bool down: - true to aprox the vehicle to the part to pick it
+					- false to rise up the vehicle after picking the part
+	*/
+	/// TODO: instead of receiving a boolean, an enum could be better, more descriptive and let
+	/// define other types of movements when picking/placing
+	bool vehicleToPosition(bool down)
 	{
 		bool uav_success = false;
 		int uav_planning_attempts = 0;
@@ -576,7 +667,16 @@ class BonebrakerServer
 			q.setRPY(roll, pitch, yaw);
 			uav_group_target_values[0] = vehicleX;		// X [m]
 			uav_group_target_values[1] = vehicleY;		// Y [m]
-			uav_group_target_values[2] = vehicleZ - ARM_APROX_POS_dZ + ARM_PICK_POS_dZ ;		// Z [m]
+			if(down)
+			{
+				uav_group_target_values[2] = vehicleZ - ARM_APROX_POS_dZ + ARM_PICK_POS_dZ;		// aprox to pick
+
+			}
+			else
+			{
+				uav_group_target_values[2] = vehicleZ + ARM_APROX_POS_dZ - ARM_PICK_POS_dZ;		// rise up after pick
+
+			}
 			uav_group_target_values[3] = q.x();		// qx
 			uav_group_target_values[4] = q.y();		// qy
 			uav_group_target_values[5] = q.z();		// qz
@@ -591,7 +691,8 @@ class BonebrakerServer
 
 		if(uav_success)
 		{
-			ROS_INFO("Vehicle to grasp position planning phase SUCCEEDED.");
+			string succeededMsg = (down)? "Vehicle to grasp position planning phase SUCCEEDED." : "Vehicle rise up planning phase SUCCEEDED.";
+			ROS_INFO(succeededMsg.c_str());
 			uav_success = uav_group->execute(uav_plan);
 			if(!uav_success)
 			{
@@ -603,8 +704,9 @@ class BonebrakerServer
 		}
 		else
 		{
-		  ROS_INFO("Vehicle to grasp position planning phase FAILED.");
-		  return false;
+			string failedMsg = (down)? "Vehicle to grasp position planning phase FAILED." : "Vehicle rise up planning phase FAILED.";
+			ROS_INFO(failedMsg.c_str());
+			return false;
 
 		}
 
@@ -668,7 +770,7 @@ int main(int argc, char** argv)
 	std::cout << nodeName << " started." << std::endl;	
 	while(ros::ok())
 	{
-
+		ros::Duration(1).sleep();
 	}
 	//ros::spin();
 
