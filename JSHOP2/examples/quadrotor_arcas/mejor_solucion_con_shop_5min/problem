@@ -1,0 +1,213 @@
+(defproblem problem quadrotor
+
+	; FACTS
+	(
+		; UAV defs
+		(quadrotor uav1)
+		(quadrotor uav2)
+		(quadrotor uav3)
+		(quadrotor uav4)
+
+		; location defs
+		(location 1)
+		(location 2)
+		(location 3)
+		(location 4)
+		(location 5)
+		(location 6)
+		(location 7)
+		(location 8)
+		(location 9)
+		(location 10)
+		(location 11)
+		(location 12)
+		(location 13)
+		(location 14)
+		(location 15)
+		(location 16)
+		(location 17)
+		(location 18)
+		(location 19)
+		(location 20)
+		(location 21)
+		(location 22)
+		(location 23)
+		(location 24)
+		(location 25)
+		(location 26)
+
+		; object defs
+		(object Box001-lib)
+		(object Box002-lib)
+		(object Box003-lib)
+		(object Box004-lib)
+		(object Box005-lib)
+		(object Box006-lib)
+		(object Box007-lib)
+		(object Box008-lib)
+		(object Box009-lib)
+		(object Box010-lib)
+		(object Box011-lib)
+
+		; object state defs
+		(at Box001-lib 1)
+		(at Box002-lib 3)
+		(at Box003-lib 5)
+		(at Box004-lib 7)
+		(at Box005-lib 9)
+		(at Box006-lib 11)
+		(at Box007-lib 13)
+		(at Box008-lib 15)
+		(at Box009-lib 17)
+		(at Box010-lib 19)
+		(at Box011-lib 21)
+
+		; ObjectDependencies
+		(depends Box001-lib ())
+		(depends Box002-lib ())
+		(depends Box003-lib (Box008-lib Box009-lib Box010-lib Box011-lib))
+		(depends Box004-lib (Box011-lib Box010-lib))
+		(depends Box005-lib (Box011-lib Box010-lib))
+		(depends Box006-lib (Box008-lib Box009-lib))
+		(depends Box007-lib (Box008-lib Box009-lib))
+		(depends Box008-lib (Box001-lib))
+		(depends Box009-lib (Box001-lib))
+		(depends Box010-lib (Box002-lib))
+		(depends Box011-lib (Box002-lib))
+
+		; assembly locations
+		(assembly_location Box001-lib 2)
+		(assembly_location Box002-lib 4)
+		(assembly_location Box003-lib 6)
+		(assembly_location Box004-lib 8)
+		(assembly_location Box005-lib 10)
+		(assembly_location Box006-lib 12)
+		(assembly_location Box007-lib 14)
+		(assembly_location Box008-lib 16)
+		(assembly_location Box009-lib 18)
+		(assembly_location Box010-lib 20)
+		(assembly_location Box011-lib 22)
+
+		; part assignments
+		(assigned Box003-lib uav1)
+		(assigned Box005-lib uav1)
+		(assigned Box011-lib uav1)
+		(assigned Box002-lib uav1)
+		(assigned Box010-lib uav2)
+		(assigned Box002-lib uav2)
+		(assigned Box006-lib uav2)
+		(assigned Box003-lib uav3)
+		(assigned Box001-lib uav3)
+		(assigned Box009-lib uav3)
+		(assigned Box004-lib uav4)
+		(assigned Box001-lib uav4)
+		(assigned Box007-lib uav4)
+		(assigned Box008-lib uav4)
+
+		; UAV1 state defs
+		(battery uav1 1200)
+		(at uav1 23)
+		(landed uav1)
+
+		; UAV2 state defs
+		(battery uav2 1200)
+		(at uav2 24)
+		(landed uav2)
+
+		; UAV3 state defs
+		(battery uav3 1200)
+		(at uav3 25)
+		(landed uav3)
+
+		; UAV4 state defs
+		(battery uav4 1200)
+		(at uav4 26)
+		(landed uav4)
+
+
+		; read/write times UAV1 
+		(write-time at uav1 0)
+		(read-time at uav1 0)
+
+		(write-time battery uav1 0)
+		(read-time battery uav1 0)
+
+		; read/write times UAV2 
+		(write-time at uav2 0)
+		(read-time at uav2 0)
+
+		(write-time battery uav2 0)
+		(read-time battery uav2 0)
+
+		; read/write times UAV3 
+		(write-time at uav3 0)
+		(read-time at uav3 0)
+
+		(write-time battery uav3 0)
+		(read-time battery uav3 0)
+
+		; read/write times UAV4 
+		(write-time at uav4 0)
+		(read-time at uav4 0)
+
+		(write-time battery uav4 0)
+		(read-time battery uav4 0)
+
+
+		; read/write times Box001-lib
+		(write-time at Box001-lib 0)
+		(read-time at Box001-lib 0)
+
+		; read/write times Box002-lib
+		(write-time at Box002-lib 0)
+		(read-time at Box002-lib 0)
+
+		; read/write times Box003-lib
+		(write-time at Box003-lib 0)
+		(read-time at Box003-lib 0)
+
+		; read/write times Box004-lib
+		(write-time at Box004-lib 0)
+		(read-time at Box004-lib 0)
+
+		; read/write times Box005-lib
+		(write-time at Box005-lib 0)
+		(read-time at Box005-lib 0)
+
+		; read/write times Box006-lib
+		(write-time at Box006-lib 0)
+		(read-time at Box006-lib 0)
+
+		; read/write times Box007-lib
+		(write-time at Box007-lib 0)
+		(read-time at Box007-lib 0)
+
+		; read/write times Box008-lib
+		(write-time at Box008-lib 0)
+		(read-time at Box008-lib 0)
+
+		; read/write times Box009-lib
+		(write-time at Box009-lib 0)
+		(read-time at Box009-lib 0)
+
+		; read/write times Box010-lib
+		(write-time at Box010-lib 0)
+		(read-time at Box010-lib 0)
+
+		; read/write times Box011-lib
+		(write-time at Box011-lib 0)
+		(read-time at Box011-lib 0)
+
+
+		; remaining tasks
+		(remaining_tasks 11)
+
+	)
+
+	; GOALS
+	(
+
+		(mission assemble)
+
+	)
+)

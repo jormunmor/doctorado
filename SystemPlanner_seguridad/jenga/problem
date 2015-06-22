@@ -1,0 +1,193 @@
+(defproblem problem quadrotor
+
+	; FACTS
+	(
+		; UAV defs
+		(quadrotor uav1)
+		(quadrotor uav3)
+		(quadrotor uav2)
+		(quadrotor uav4)
+
+		; location defs
+		(location 1)
+		(location 2)
+		(location 3)
+		(location 4)
+		(location 5)
+		(location 6)
+		(location 7)
+		(location 8)
+		(location 9)
+		(location 10)
+		(location 11)
+		(location 12)
+		(location 13)
+		(location 14)
+		(location 15)
+
+		; object defs
+		(object Product71)
+		(object Product51)
+		(object Product61)
+		(object Product111)
+		(object Product41)
+		(object Product31)
+		(object Product81)
+		(object Product101)
+		(object Product21)
+		(object Product91)
+
+		; object state defs
+		(at Product71 5)
+		(at Product51 6)
+		(at Product61 7)
+		(at Product111 8)
+		(at Product41 9)
+		(at Product31 10)
+		(at Product81 11)
+		(at Product101 12)
+		(at Product21 13)
+		(at Product91 14)
+
+		; ObjectDependencies
+		(depends Product71 (Product51 Product111))
+		(depends Product51 (Product41 Product81))
+		(depends Product61 (Product51 Product111))
+		(depends Product111 (Product41 Product81))
+		(depends Product41 (Product21 Product31))
+		(depends Product31 ())
+		(depends Product81 (Product21 Product31))
+		(depends Product101 (Product61 Product71))
+		(depends Product21 ())
+		(depends Product91 (Product61 Product71))
+
+		; assembly locations
+		(assembly_location Product71 15)
+		(assembly_location Product51 15)
+		(assembly_location Product61 15)
+		(assembly_location Product111 15)
+		(assembly_location Product41 15)
+		(assembly_location Product31 15)
+		(assembly_location Product81 15)
+		(assembly_location Product101 15)
+		(assembly_location Product21 15)
+		(assembly_location Product91 15)
+
+		; part assignments
+		(assigned Product81 uav1)
+		(assigned Product71 uav1)
+		(assigned Product21 uav1)
+		(assigned Product111 uav1)
+		(assigned Product101 uav1)
+		(assigned Product61 uav3)
+		(assigned Product31 uav3)
+		(assigned Product101 uav3)
+		(assigned Product41 uav3)
+		(assigned Product51 uav3)
+		(assigned Product91 uav3)
+
+		; UAV1 state defs
+		(battery uav1 1200)
+		(at uav1 1)
+		(landed uav1)
+
+		; UAV2 state defs
+		(battery uav2 1200)
+		(at uav2 2)
+		(landed uav2)
+		(unused uav2)
+
+		; UAV3 state defs
+		(battery uav3 1200)
+		(at uav3 3)
+		(landed uav3)
+
+		; UAV4 state defs
+		(battery uav4 1200)
+		(at uav4 4)
+		(landed uav4)
+		(unused uav4)
+
+
+		; read/write times UAV1 
+		(write-time at uav1 0)
+		(read-time at uav1 0)
+
+		(write-time battery uav1 0)
+		(read-time battery uav1 0)
+
+		; read/write times UAV2 
+		(write-time at uav2 0)
+		(read-time at uav2 0)
+
+		(write-time battery uav2 0)
+		(read-time battery uav2 0)
+
+		; read/write times UAV3 
+		(write-time at uav3 0)
+		(read-time at uav3 0)
+
+		(write-time battery uav3 0)
+		(read-time battery uav3 0)
+
+		; read/write times UAV4 
+		(write-time at uav4 0)
+		(read-time at uav4 0)
+
+		(write-time battery uav4 0)
+		(read-time battery uav4 0)
+
+
+		; read/write times Product71
+		(write-time at Product71 0)
+		(read-time at Product71 0)
+
+		; read/write times Product51
+		(write-time at Product51 0)
+		(read-time at Product51 0)
+
+		; read/write times Product61
+		(write-time at Product61 0)
+		(read-time at Product61 0)
+
+		; read/write times Product111
+		(write-time at Product111 0)
+		(read-time at Product111 0)
+
+		; read/write times Product41
+		(write-time at Product41 0)
+		(read-time at Product41 0)
+
+		; read/write times Product31
+		(write-time at Product31 0)
+		(read-time at Product31 0)
+
+		; read/write times Product81
+		(write-time at Product81 0)
+		(read-time at Product81 0)
+
+		; read/write times Product101
+		(write-time at Product101 0)
+		(read-time at Product101 0)
+
+		; read/write times Product21
+		(write-time at Product21 0)
+		(read-time at Product21 0)
+
+		; read/write times Product91
+		(write-time at Product91 0)
+		(read-time at Product91 0)
+
+
+		; remaining tasks
+		(remaining_tasks 10)
+
+	)
+
+	; GOALS
+	(
+
+		(mission assemble)
+
+	)
+)

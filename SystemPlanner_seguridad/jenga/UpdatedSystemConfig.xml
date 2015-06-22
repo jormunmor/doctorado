@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SystemConfig>
+  <id>0</id>
+  <name>ArcasAssemblyProblem</name>
+  <discreteValue>500</discreteValue>
+  <locationList>
+    <Location>
+      <id>1</id>
+      <latitude>34.0</latitude>
+      <longitude>31.0</longitude>
+    </Location>
+    <Location>
+      <id>2</id>
+      <latitude>45.0</latitude>
+      <longitude>45.0</longitude>
+    </Location>
+    <Location>
+      <id>3</id>
+      <latitude>70.0</latitude>
+      <longitude>80.0</longitude>
+    </Location>
+    <Location>
+      <id>4</id>
+      <latitude>100.0</latitude>
+      <longitude>55.0</longitude>
+    </Location>
+    <Location>
+      <id>5</id>
+      <latitude>85.0</latitude>
+      <longitude>61.0</longitude>
+    </Location>
+    <Location>
+      <id>6</id>
+      <latitude>59.0</latitude>
+      <longitude>35.0</longitude>
+    </Location>
+    <Location>
+      <id>7</id>
+      <latitude>45.0</latitude>
+      <longitude>60.0</longitude>
+    </Location>
+    <Location>
+      <id>8</id>
+      <latitude>69.0</latitude>
+      <longitude>65.0</longitude>
+    </Location>
+    <Location>
+      <id>9</id>
+      <latitude>55</latitude>
+      <longitude>20</longitude>
+    </Location>
+    <Location>
+      <id>10</id>
+      <latitude>50</latitude>
+      <longitude>60</longitude>
+    </Location>
+    <Location> 
+      <id>11</id>
+      <latitude>20</latitude>
+      <longitude>10</longitude>
+    </Location>
+    <Location> 
+      <id>12</id>
+      <latitude>10</latitude>
+      <longitude>20</longitude>
+    </Location>
+    <Location> 
+      <id>13</id>
+      <latitude>70</latitude>
+      <longitude>100</longitude>
+    </Location>
+    <Location> 
+      <id>14</id>
+      <latitude>100</latitude>
+      <longitude>80</longitude>
+    </Location>
+    <Location> <!-- MOUNT LOCATION -->
+      <id>15</id>
+      <latitude>100</latitude>
+      <longitude>100</longitude>
+    </Location>
+  </locationList>
+  <initialLocationList>
+    <InitialLocation>
+      <id>1</id>
+      <location referenceId="1"/>
+    </InitialLocation>
+    <InitialLocation>
+      <id>2</id>
+      <location referenceId="2"/>
+    </InitialLocation>
+    <InitialLocation>
+      <id>3</id>
+      <location referenceId="3"/>
+    </InitialLocation>
+    <InitialLocation>
+      <id>4</id>
+      <location referenceId="4"/>
+    </InitialLocation>
+  </initialLocationList>
+  <autonomousVehicleList>
+    <AutonomousVehicle>
+      <id>1</id>
+      <capacity>500</capacity>
+      <initialLocation referenceId="1"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle>
+      <id>2</id>
+      <capacity>500</capacity>
+      <initialLocation referenceId="2"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle>
+      <id>3</id>
+      <capacity>500</capacity>
+      <initialLocation referenceId="3"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle>
+      <id>4</id>
+      <capacity>500</capacity>
+      <initialLocation referenceId="4"/>
+    </AutonomousVehicle>
+  </autonomousVehicleList>
+  <taskList>
+    <Task> 
+      <id>0</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="15"/> 
+      <objectName>Product71</objectName>
+      <objectLocation referenceId="5"/>
+      <demand>500</demand>
+    <preconditionList>
+        <TaskDependency id="48">
+          <id>1</id>
+        </TaskDependency>
+        <TaskDependency id="49">
+          <id>3</id>
+        </TaskDependency>
+      </preconditionList>
+      <goalOrder>6</goalOrder>
+    </Task>
+    <Task>
+      <id>1</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="15"/>
+      <objectName>Product51</objectName>
+      <objectLocation referenceId="6"/>
+      <demand>500</demand>
+    <preconditionList>
+        <TaskDependency id="46">
+          <id>4</id>
+        </TaskDependency>
+        <TaskDependency id="47">
+          <id>6</id>
+        </TaskDependency>
+      </preconditionList>
+      <goalOrder>5</goalOrder>
+    </Task>
+    <Task>
+      <id>2</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="15"/>
+      <objectName>Product61</objectName>
+      <objectLocation referenceId="7"/>
+      <demand>500</demand>
+    <preconditionList>
+        <TaskDependency id="50">
+          <id>1</id>
+        </TaskDependency>
+        <TaskDependency id="51">
+          <id>3</id>
+        </TaskDependency>
+      </preconditionList>
+      <goalOrder>7</goalOrder>
+    </Task>
+    <Task>
+      <id>3</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="15"/>
+      <objectName>Product111</objectName>
+      <objectLocation referenceId="8"/>
+      <demand>500</demand>
+    <preconditionList>
+        <TaskDependency id="44">
+          <id>4</id>
+        </TaskDependency>
+        <TaskDependency id="45">
+          <id>6</id>
+        </TaskDependency>
+      </preconditionList>
+      <goalOrder>4</goalOrder>
+    </Task>
+    <Task>
+      <id>4</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="15"/>
+      <objectName>Product41</objectName>
+      <objectLocation referenceId="9"/>
+      <demand>500</demand>
+    <preconditionList>
+        <TaskDependency id="42">
+          <id>8</id>
+        </TaskDependency>
+        <TaskDependency id="43">
+          <id>5</id>
+        </TaskDependency>
+      </preconditionList>
+      <goalOrder>3</goalOrder>
+    </Task>
+    <Task> 
+      <id>5</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="15"/>
+      <objectName>Product31</objectName>
+      <objectLocation referenceId="10"/>
+      <demand>500</demand>
+    <preconditionList/>
+      <goalOrder>1</goalOrder>
+    </Task>
+    <Task>
+      <id>6</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="15"/>
+      <objectName>Product81</objectName>
+      <objectLocation referenceId="11"/>
+      <demand>500</demand>
+    <preconditionList>
+        <TaskDependency id="40">
+          <id>8</id>
+        </TaskDependency>
+        <TaskDependency id="41">
+          <id>5</id>
+        </TaskDependency>
+      </preconditionList>
+      <goalOrder>2</goalOrder>
+    </Task>
+    <Task>
+      <id>7</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="15"/>
+      <objectName>Product101</objectName>
+      <objectLocation referenceId="12"/>
+      <demand>1000</demand>
+    <preconditionList>
+        <TaskDependency id="54">
+          <id>2</id>
+        </TaskDependency>
+        <TaskDependency id="55">
+          <id>0</id>
+        </TaskDependency>
+      </preconditionList>
+      <goalOrder>8</goalOrder>
+    </Task>
+    <Task>
+      <id>8</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="15"/>
+      <objectName>Product21</objectName>
+      <objectLocation referenceId="13"/>
+      <demand>500</demand>
+    <preconditionList/>
+      <goalOrder>0</goalOrder>
+    </Task>
+    <Task>
+      <id>9</id>
+      <type>assemble</type>
+      <JSHOP2type optaplannerIgnore="true">synchro_mission</JSHOP2type>
+      <location referenceId="15"/>
+      <objectName>Product91</objectName>
+      <objectLocation referenceId="14"/>
+      <demand>500</demand>
+    <preconditionList>
+        <TaskDependency id="56">
+          <id>2</id>
+        </TaskDependency>
+        <TaskDependency id="57">
+          <id>0</id>
+        </TaskDependency>
+      </preconditionList>
+      <goalOrder>9</goalOrder>
+    </Task>
+  </taskList>
+</SystemConfig>

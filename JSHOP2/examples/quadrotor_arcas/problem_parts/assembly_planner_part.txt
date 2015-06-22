@@ -1,0 +1,13 @@
+		; ObjectDependencies
+		(depends Box001-lib ())
+		(depends Box002-lib ())
+		(depends Box003-lib (Box008-lib Box009-lib Box010-lib Box011-lib))
+		(depends Box004-lib (Box011-lib Box010-lib))
+		(depends Box005-lib (Box011-lib Box010-lib))
+		(depends Box006-lib (Box008-lib Box009-lib))
+		(depends Box007-lib (Box008-lib Box009-lib))
+		(depends Box008-lib (Box001-lib))
+		(depends Box009-lib (Box001-lib))
+		(depends Box010-lib (Box002-lib))
+		(depends Box011-lib (Box002-lib))
+

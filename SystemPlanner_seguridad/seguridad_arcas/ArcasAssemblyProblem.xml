@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<OptaplannerProblem id="1">
+  <id>0</id>
+  <name>ArcasAssemblyProblem</name>
+  <locationList id="2">
+    <Location id="3">
+      <id>1</id>
+      <latitude>34.0</latitude>
+      <longitude>31.0</longitude>
+    </Location>
+    <Location id="4">
+      <id>2</id>
+      <latitude>45.0</latitude>
+      <longitude>45.0</longitude>
+    </Location>
+    <Location id="5">
+      <id>3</id>
+      <latitude>70.0</latitude>
+      <longitude>80.0</longitude>
+    </Location>
+    <Location id="6">
+      <id>4</id>
+      <latitude>100.0</latitude>
+      <longitude>55.0</longitude>
+    </Location>
+    <Location id="7">
+      <id>5</id>
+      <latitude>85.0</latitude>
+      <longitude>61.0</longitude>
+    </Location>
+    <Location id="8">
+      <id>6</id>
+      <latitude>59.0</latitude>
+      <longitude>35.0</longitude>
+    </Location>
+    <Location id="9">
+      <id>7</id>
+      <latitude>45.0</latitude>
+      <longitude>60.0</longitude>
+    </Location>
+    <Location id="10">
+      <id>8</id>
+      <latitude>69.0</latitude>
+      <longitude>65.0</longitude>
+    </Location>
+    <Location id="11">
+      <id>9</id>
+      <latitude>100</latitude>
+      <longitude>100</longitude>
+    </Location>
+  </locationList>
+  <initialLocationList id="12">
+    <InitialLocation id="13">
+      <id>1</id>
+      <location reference="3"/>
+    </InitialLocation>
+    <InitialLocation id="14">
+      <id>2</id>
+      <location reference="4"/>
+    </InitialLocation>
+    <InitialLocation id="15">
+      <id>3</id>
+      <location reference="5"/>
+    </InitialLocation>
+    <InitialLocation id="16">
+      <id>4</id>
+      <location reference="6"/>
+    </InitialLocation>
+  </initialLocationList>
+  <autonomousVehicleList id="17">
+    <AutonomousVehicle id="18">
+      <id>1</id>
+      <capacity>71</capacity>
+      <initialLocation reference="13"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="19">
+      <id>2</id>
+      <capacity>71</capacity>
+      <initialLocation reference="14"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="20">
+      <id>3</id>
+      <capacity>71</capacity>
+      <initialLocation reference="15"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="21">
+      <id>4</id>
+      <capacity>71</capacity>
+      <initialLocation reference="16"/>
+    </AutonomousVehicle>
+  </autonomousVehicleList>
+  <taskList id="22">
+    <Task id="23">
+      <id>1</id>
+      <type>assemble</type>
+      <location reference="11"/>
+      <objectName>base1</objectName>
+      <objectLocation reference="7"/>
+      <demand>27</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+    <Task id="24">
+      <id>2</id>
+      <type>assemble</type>
+      <location reference="11"/>
+      <objectName>leftAssembly1</objectName>
+      <objectLocation reference="8"/>
+      <demand>15</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="27">
+          <id>1</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+    <Task id="25">
+      <id>3</id>
+      <type>assemble</type>
+      <location reference="11"/>
+      <objectName>rightAssembly1</objectName>
+      <objectLocation reference="9"/>
+      <demand>7</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="28">
+          <id>1</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+    <Task id="26">
+      <id>4</id>
+      <type>assemble</type>
+      <location reference="11"/>
+      <objectName>top1</objectName>
+      <objectLocation reference="10"/>
+      <demand>4</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="29">
+          <id>3</id>
+        </TaskDependency>
+        <TaskDependency id="30">
+          <id>2</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+  </taskList>
+</OptaplannerProblem>

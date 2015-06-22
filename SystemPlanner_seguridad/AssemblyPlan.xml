@@ -1,0 +1,107 @@
+<plans>
+    <assemblyPlan>
+        <assemblyOperation action="base">
+            <effect>
+                <at part="Box002-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="6" y="0" z="0.5"/>
+            </effect>
+        </assemblyOperation>
+        <assemblyOperation action="connection">
+            <precondition>
+                <at part="Box002-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="6" y="0" z="0.5"/>
+            </precondition>
+            <effect>
+                <at part="Box011-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="7" y="0" z="1.5"/>
+            </effect>
+        </assemblyOperation>
+        <assemblyOperation action="connection">
+            <precondition>
+                <at part="Box002-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="6" y="0" z="0.5"/>
+            </precondition>
+            <effect>
+                <at part="Box010-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="5" y="0" z="1.5"/>
+            </effect>
+        </assemblyOperation>
+        <assemblyOperation action="base">
+            <effect>
+                <at part="Box001-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="0" y="0" z="0.5"/>
+            </effect>
+        </assemblyOperation>
+        <assemblyOperation action="connection">
+            <precondition>
+                <at part="Box001-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="0" y="0" z="0.5"/>
+            </precondition>
+            <effect>
+                <at part="Box008-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="-1" y="0" z="1.5"/>
+            </effect>
+        </assemblyOperation>
+        <assemblyOperation action="connection">
+            <precondition>
+                <at part="Box001-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="0" y="0" z="0.5"/>
+            </precondition>
+            <effect>
+                <at part="Box009-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="1" y="0" z="1.5"/>
+            </effect>
+        </assemblyOperation>
+        <assemblyOperation action="connection">
+            <precondition>
+                <at part="Box008-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="-1" y="0" z="1.5"/>
+            </precondition>
+            <precondition>
+                <at part="Box009-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="1" y="0" z="1.5"/>
+            </precondition>
+            <effect>
+                <at part="Box007-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="0" y="1" z="2.5"/>
+            </effect>
+        </assemblyOperation>
+        <assemblyOperation action="connection">
+            <precondition>
+                <at part="Box008-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="-1" y="0" z="1.5"/>
+            </precondition>
+            <precondition>
+                <at part="Box009-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="1" y="0" z="1.5"/>
+            </precondition>
+            <effect>
+                <at part="Box006-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="0" y="-1" z="2.5"/>
+            </effect>
+        </assemblyOperation>
+        <assemblyOperation action="connection">
+            <precondition>
+                <at part="Box011-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="7" y="0" z="1.5"/>
+            </precondition>
+            <precondition>
+                <at part="Box010-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="5" y="0" z="1.5"/>
+            </precondition>
+            <effect>
+                <at part="Box005-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="6" y="-1" z="2.5"/>
+            </effect>
+        </assemblyOperation>
+        <assemblyOperation action="connection">
+            <precondition>
+                <at part="Box011-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="7" y="0" z="1.5"/>
+            </precondition>
+            <precondition>
+                <at part="Box010-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="5" y="0" z="1.5"/>
+            </precondition>
+            <effect>
+                <at part="Box004-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="6" y="1" z="2.5"/>
+            </effect>
+        </assemblyOperation>
+        <assemblyOperation action="connection">
+            <precondition>
+                <at part="Box008-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="6" y="0" z="0.5"/>
+            </precondition>
+            <precondition>
+                <at part="Box009-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="0" y="0" z="0.5"/>
+            </precondition>
+            <precondition>
+		<at part="Box010-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="6" y="0" z="0.5"/>
+            </precondition>
+            <precondition>
+                <at part="Box011-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="0" y="0" z="0.5"/>
+            </precondition>
+            <effect>
+                <at part="Box003-lib" rot00="1" rot01="0" rot02="0" rot10="0" rot11="1" rot12="0" rot20="0" rot21="0" rot22="1" x="3" y="0" z="2.5"/>
+            </effect>
+        </assemblyOperation>
+    </assemblyPlan>
+</plans>
