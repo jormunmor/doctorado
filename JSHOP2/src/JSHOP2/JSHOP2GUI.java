@@ -132,40 +132,57 @@ public class JSHOP2GUI extends JFrame {
 		the rest.
 	*/
 
-        setVisible( true );
+        //setVisible( true );
+		setVisible(false);
 
 	// These lines are to ensure that the previous plan is deleted. This is 
 	// necessary because now we do not have the graphical tool and do not
 	// know if the present file is from the current execution or from the
 	// previous if the current did not found a plan.
 
-	/*
-	File file = new File("/home/jorge/Escritorio/SystemPlanner/planJShop2.txt");
+	// Delete the previous plan and cost.
+	File file = new File("planJShop2.txt");
 	file.delete();
-	*/
+	file = new File("planCost.txt");
+	file.delete();
 	
 	// This code was added to automatically start the planning
 	// process after starting JSHOP2.
-	/*
-        while ( runOneStep() ){
+	
+	// Run the planning engine.
+    while ( runOneStep() ){
 
 	}
-	*/
+	
 
 	// Now we check if the loop was exited due to a plan found or
 	// not. For the moment, we omit this code. If after executing and
 	// finishing JSHOP2 there isn't any plan in txt file, then no plan
 	// was found.
-	/*
-	if(no text file found){
-		// do something
+
+	try
+	{	
+		File solutionFile = new File("planJShop2.txt");
+		if(!solutionFile.isFile()){ // No solution was found
+			PrintWriter writer = new PrintWriter("planCost.txt", "UTF-8");
+			writer.println("unfeasible");
+			writer.close();
+
+		}
+
+	} catch(FileNotFoundException e)
+	{
+		System.out.println("Unable to create file planCost.txt.");
+
+	} catch(UnsupportedEncodingException e)
+	{
+		System.out.println("Unsupported encoding to create file planCost.txt.");
 
 	}
-	*/
 
-	// Close the window after terminating. This is as if we closed
+	// Close the window after exiting. This is as if we closed
 	// pressing the X button.
-	// this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+	this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 
 
 
@@ -609,22 +626,46 @@ public class JSHOP2GUI extends JFrame {
         
         // setting messageLabel
         messageLabel.setText( "Plan found" );
-	//PrintWriter writer = new PrintWriter(System.getProperty("user.home") + "/planJShop2.txt", "UTF-8");
-	PrintWriter writer = new PrintWriter("../../planJShop2.txt", "UTF-8");
-	Enumeration enumNodes = rootNode.depthFirstEnumeration();
-	while(enumNodes.hasMoreElements()) {
-		TreeNode node = (TreeNode) enumNodes.nextElement();
-		if(node.isLeaf()){
-			String command = node.toString();   	
-			writer.println( command );
+		//PrintWriter writer = new PrintWriter(System.getProperty("user.home") + "/planJShop2.txt", "UTF-8");
+		PrintWriter writer = new PrintWriter("planJShop2.txt", "UTF-8");
+		Enumeration enumNodes = rootNode.depthFirstEnumeration();
+		double maxTime = -1.0, num1, num2, total;
+		while(enumNodes.hasMoreElements()) {
+			TreeNode node = (TreeNode) enumNodes.nextElement();
+			if(node.isLeaf()){
+				String command = node.toString();
+				writer.println( command );
+				if(!command.contains("assembly_plan_finished")){
+					int beginIndex = command.indexOf("!");
+					int endIndex = command.length() - 1;
+					command = command.substring(beginIndex + 1, endIndex);
+					String[] splittedCommand = command.split(" ");
+					num1 = Double.parseDouble(splittedCommand[splittedCommand.length - 2]);
+					num2 = Double.parseDouble(splittedCommand[splittedCommand.length - 1]);
+					total = num1 + num2;
+					if(total > maxTime){
+						maxTime = total;
+
+					}
+
+				}
 		
-		}
+			}
 	
-	}
-        writer.close();				
+		}
+        writer.close();		
+		writer = new PrintWriter("planCost.txt", "UTF-8");
+		writer.println( maxTime );
+		writer.close();
+		
         // Labeling leaf nodes with appropriate numbers.
         // Although renumberLeaves() does the same thing, it isn't called here
         // so that planList can be created in the process of renumbering the leaves.
+
+		// The following code was commented to execute JSHOP2 as a command line.
+		// Uncomment to get the graphical part.
+
+		/*
         for (int i = 0; i < leafNodes.size(); i++) {                    
             DefaultMutableTreeNode leaf = leafNodes.get(i);
             Node node = (Node)leaf.getUserObject();
@@ -637,7 +678,8 @@ public class JSHOP2GUI extends JFrame {
         title += String.valueOf( planNumber );
         title += " of ";
         title += String.valueOf( numPlans );
-        new PlanDialog( title, plan );
+		new PlanDialog( title, plan );
+		*/
 			} catch(FileNotFoundException e){
 					System.out.println("File not found. Unable to create text file for the plan.");
 			

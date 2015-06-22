@@ -384,9 +384,9 @@ void MainWindow::setGanttPlot()
 void MainWindow::addGanttBar(int row, int action)
 {
 
-    ROS_INFO("addGanttBar for row: %d", row);
+    //ROS_INFO("addGanttBar for row: %d", row);
     // Recover the previous bar, because the new will be stacked on top of it
-    ROS_INFO("row bar vector size: %d", plotBars.at(row).size());
+    //ROS_INFO("row bar vector size: %d", plotBars.at(row).size());
     QCPBars *previousBar = plotBars.at(row).last();
     if(previousBar == NULL)
         ROS_INFO("previousBar is NULL");
@@ -414,6 +414,12 @@ void MainWindow::addGanttBar(int row, int action)
         case MOVE:    pen.setColor(QColor(1, 92, 191));
                       newBar->setBrush(QColor(1, 92, 191, 50));
                       break;
+        case PICK:    pen.setColor(QColor(190, 0, 190));
+                      newBar->setBrush(QColor(190, 0, 190, 50));
+                      break;
+        case PLACE:   pen.setColor(QColor(0, 146, 30));
+                      newBar->setBrush(QColor(0, 146, 30, 50));
+                      break;
 
         default: break;
 
@@ -421,21 +427,21 @@ void MainWindow::addGanttBar(int row, int action)
 
     newBar->setPen(pen);
 
-    ROS_INFO("Exiting addGanttBar");
+    //ROS_INFO("Exiting addGanttBar");
 
 }
 
 void MainWindow::updateGanttPlot(int row, float secs)
 {
-    ROS_INFO("Update Gantt for row %d with %lf secs", row, secs);
+    //ROS_INFO("Update Gantt for row %d with %lf secs", row, secs);
 
     // Get the bar to update, it is the last of the vector
     QCPBars* bar = plotBars[row].last();
     QCPBarData oldBarData = bar->data()->value(row + 1);
-    ROS_INFO("Old bar data: %lf", oldBarData.value);
+    //ROS_INFO("Old bar data: %lf", oldBarData.value);
     QVector<double> newBarData;
     newBarData << oldBarData.value + secs;
-    ROS_INFO("New bar data: %lf", newBarData[0]);
+    //ROS_INFO("New bar data: %lf", newBarData[0]);
     QVector<double> ticks;
     ticks.push_back(row + 1);
     bar->setData(ticks, newBarData);
@@ -507,18 +513,24 @@ std::map<int, Goal>* MainWindow::generateLocationsMap()
 {
     std::map<int,Goal>* locMap = new std::map<int, Goal>;
 
+    /*
     Goal goal23;
     geometry_msgs::Pose pose23;
-    pose23.position.x = -6;
+    pose23.position.x = -4 - 0.3 + 0.075; // placed base x_pos - placed_base_x_dim/2 + picked_part_x_dim/2
     pose23.position.y = -6;
-    pose23.position.z = 0.25;
+    //pose23.position.z = 0.25;
+    //pose23.position.z = 1.24 + 0.75 + 0.25;
+    //pose23.position.z = 1.24 + 0.75;
+    pose23.position.z = 0.21 + 0.21 + 0.75 - 0.05; // placed base height + picked part height + flying offset - placed base handle height
     pose23.orientation.x = 0;
     pose23.orientation.y = 0;
     pose23.orientation.z = 0;
     pose23.orientation.w = 1;
     goal23.pose = pose23;
-    goal23.yaw = 0;
+    goal23.yaw = M_PI - M_PI/4.0;
+    */
 
+    /*
     Goal goal1;
     geometry_msgs::Pose pose1;
     pose1.position.x = -4;
@@ -530,7 +542,9 @@ std::map<int, Goal>* MainWindow::generateLocationsMap()
     pose1.orientation.w = 0.924;
     goal1.pose = pose1;
     goal1.yaw = M_PI/4.0;
+    */
 
+    /*
     Goal goal80;
     geometry_msgs::Pose pose80;
     pose80.position.x = -6;
@@ -542,23 +556,124 @@ std::map<int, Goal>* MainWindow::generateLocationsMap()
     pose80.orientation.w = 0.924;
     goal80.pose = pose80;
     goal80.yaw = M_PI/4.0;
+    */
 
-    Goal goal10; // Part center position
+    Goal goal1; // First part initial pos
+    geometry_msgs::Pose pose1;
+    pose1.position.x = -6.25;
+    pose1.position.y = -6.5;
+    //pose10.position.z = 1.10 + 0.75; // Add an offset, this is the center of the bar PARA LA BARRA
+    pose1.position.z = 1.215 + 0.75; // Add an offset, this is the center of the bar PARA MI PIEZA
+    //pose10.position.z = 1.24 + 0.75 + 0.25; // Add an offset, this is the center of the box
+    //pose10.position.z = 1.24 + 0.75; // Add an offset, this is the center of the box
+    pose1.orientation.x = 0;
+    pose1.orientation.y = 0;
+    pose1.orientation.z = 0; // The lack of decimals make this quaternion incorrect, use yaw instead.
+    pose1.orientation.w = 1;
+    goal1.pose = pose1;
+    goal1.yaw = M_PI - M_PI/4.0; // Add an offset
+
+    Goal goal2; // First part final pos
+    geometry_msgs::Pose pose2;
+    pose2.position.x = 4.841;
+    pose2.position.y = -6.156;
+    //pose10.position.z = 1.10 + 0.75; // Add an offset, this is the center of the bar PARA LA BARRA
+    pose2.position.z = 0.21 + 0.21 + 0.75 - 0.05; // Add an offset, this is the center of the bar PARA MI PIEZA
+    //pose10.position.z = 1.24 + 0.75 + 0.25; // Add an offset, this is the center of the box
+    //pose10.position.z = 1.24 + 0.75; // Add an offset, this is the center of the box
+    pose2.orientation.x = 0;
+    pose2.orientation.y = 0;
+    pose2.orientation.z = 0; // The lack of decimals make this quaternion incorrect, use yaw instead.
+    pose2.orientation.w = 1;
+    goal2.pose = pose2;
+    goal2.yaw = M_PI; // Add an offset
+
+    Goal goal3; // First part initial pos
+    geometry_msgs::Pose pose3;
+    pose3.position.x = -6.75;
+    pose3.position.y = -6.5;
+    //pose10.position.z = 1.10 + 0.75; // Add an offset, this is the center of the bar PARA LA BARRA
+    pose3.position.z = 1.215 + 0.75; // Add an offset, this is the center of the bar PARA MI PIEZA
+    //pose10.position.z = 1.24 + 0.75 + 0.25; // Add an offset, this is the center of the box
+    //pose10.position.z = 1.24 + 0.75; // Add an offset, this is the center of the box
+    pose3.orientation.x = 0;
+    pose3.orientation.y = 0;
+    pose3.orientation.z = 0; // The lack of decimals make this quaternion incorrect, use yaw instead.
+    pose3.orientation.w = 1;
+    goal3.pose = pose3;
+    goal3.yaw = M_PI - M_PI/4.0; // Add an offset
+
+    Goal goal4; // First part final pos
+    geometry_msgs::Pose pose4;
+    pose4.position.x = 5.840;
+    pose4.position.y = -5.150;
+    //pose10.position.z = 1.10 + 0.75; // Add an offset, this is the center of the bar PARA LA BARRA
+    pose4.position.z = 0.21 + 0.21 + 0.75 - 0.05; // Add an offset, this is the center of the bar PARA MI PIEZA
+    //pose10.position.z = 1.24 + 0.75 + 0.25; // Add an offset, this is the center of the box
+    //pose10.position.z = 1.24 + 0.75; // Add an offset, this is the center of the box
+    pose4.orientation.x = 0;
+    pose4.orientation.y = 0;
+    pose4.orientation.z = 0; // The lack of decimals make this quaternion incorrect, use yaw instead.
+    pose4.orientation.w = 1;
+    goal4.pose = pose4;
+    goal4.yaw = M_PI; // Add an offset
+
+    Goal goal5; // First part initial pos
+    geometry_msgs::Pose pose5;
+    pose5.position.x = -7.25;
+    pose5.position.y = -6.5;
+    //pose10.position.z = 1.10 + 0.75; // Add an offset, this is the center of the bar PARA LA BARRA
+    pose5.position.z = 1.215 + 0.75; // Add an offset, this is the center of the bar PARA MI PIEZA
+    //pose10.position.z = 1.24 + 0.75 + 0.25; // Add an offset, this is the center of the box
+    //pose10.position.z = 1.24 + 0.75; // Add an offset, this is the center of the box
+    pose5.orientation.x = 0;
+    pose5.orientation.y = 0;
+    pose5.orientation.z = 0; // The lack of decimals make this quaternion incorrect, use yaw instead.
+    pose5.orientation.w = 1;
+    goal5.pose = pose5;
+    goal5.yaw = M_PI - M_PI/4.0; // Add an offset
+
+    Goal goal6; // First part final pos
+    geometry_msgs::Pose pose6;
+    pose6.position.x = 5.158;
+    pose6.position.y = -5.846;
+    //pose10.position.z = 1.10 + 0.75; // Add an offset, this is the center of the bar PARA LA BARRA
+    pose6.position.z = 0.21 + 0.21 + 0.75 - 0.05; // Add an offset, this is the center of the bar PARA MI PIEZA
+    //pose10.position.z = 1.24 + 0.75 + 0.25; // Add an offset, this is the center of the box
+    //pose10.position.z = 1.24 + 0.75; // Add an offset, this is the center of the box
+    pose6.orientation.x = 0;
+    pose6.orientation.y = 0;
+    pose6.orientation.z = 0; // The lack of decimals make this quaternion incorrect, use yaw instead.
+    pose6.orientation.w = 1;
+    goal6.pose = pose6;
+    goal6.yaw = M_PI; // Add an offset
+
+    /*
+    Goal goal11; // Part center position
     geometry_msgs::Pose pose10;
     pose10.position.x = -7;
     pose10.position.y = 0;
-    pose10.position.z = 1.10 + 0.75; // Add an offset, this is the center of the bar
+    //pose10.position.z = 1.10 + 0.75; // Add an offset, this is the center of the bar PARA LA BARRA
+    pose10.position.z = 1.215 + 0.75; // Add an offset, this is the center of the bar PARA MI PIEZA
+    //pose10.position.z = 1.24 + 0.75 + 0.25; // Add an offset, this is the center of the box
+    //pose10.position.z = 1.24 + 0.75; // Add an offset, this is the center of the box
     pose10.orientation.x = 0;
     pose10.orientation.y = 0;
     pose10.orientation.z = 0; // The lack of decimals make this quaternion incorrect, use yaw instead.
     pose10.orientation.w = 1;
     goal10.pose = pose10;
     goal10.yaw = M_PI - M_PI/4.0; // Add an offset
+    */
 
-    locMap->insert(std::pair<int, Goal>(23, goal23));
     locMap->insert(std::pair<int, Goal>(1, goal1));
-    locMap->insert(std::pair<int, Goal>(80, goal80));
-    locMap->insert(std::pair<int, Goal>(10, goal10));
+    locMap->insert(std::pair<int, Goal>(2, goal2));
+    locMap->insert(std::pair<int, Goal>(3, goal3));
+    locMap->insert(std::pair<int, Goal>(4, goal4));
+    locMap->insert(std::pair<int, Goal>(5, goal5));
+    locMap->insert(std::pair<int, Goal>(6, goal6));
+    //locMap->insert(std::pair<int, Goal>(23, goal23));
+    //locMap->insert(std::pair<int, Goal>(80, goal80));
+    //locMap->insert(std::pair<int, Goal>(10, goal10));
 
     // Position 23 is the hard-coded initial position present in the launch_simulator.launch.
     // -x -6.0 -y -6.0 -z 0.25  -R 0.0 -P 0.0 -Y 0.0

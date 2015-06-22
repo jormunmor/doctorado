@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'vehiclescheduler.h'
 **
-** Created: Thu May 21 13:25:30 2015
+** Created: Thu May 28 18:39:31 2015
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

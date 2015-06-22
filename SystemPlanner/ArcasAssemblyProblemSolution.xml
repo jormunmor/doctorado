@@ -183,75 +183,55 @@
       <capacity>450</capacity>
       <initialLocation reference="30"/>
       <nextTask id="36">
-        <id>2</id>
-        <location reference="8"/>
-        <objectLocation reference="7"/>
+        <id>0</id>
+        <location reference="4"/>
+        <objectLocation reference="3"/>
         <demand>450</demand>
-        <priority>2</priority>
-        <objectName>Box003-lib</objectName>
-        <action>connection</action>
-        <preconditionList id="37">
-          <TaskDependency id="38">
-            <id>7</id>
-          </TaskDependency>
-          <TaskDependency id="39">
-            <id>8</id>
-          </TaskDependency>
-          <TaskDependency id="40">
-            <id>9</id>
-          </TaskDependency>
-          <TaskDependency id="41">
-            <id>10</id>
-          </TaskDependency>
-        </preconditionList>
+        <priority>1</priority>
+        <objectName>Box001-lib</objectName>
+        <action>base</action>
+        <preconditionList id="37"/>
         <type>assemble</type>
         <previousStandstill class="AutonomousVehicle" reference="35"/>
-        <nextTask id="42">
-          <id>3</id>
-          <location reference="10"/>
-          <objectLocation reference="9"/>
+        <nextTask id="38">
+          <id>9</id>
+          <location reference="22"/>
+          <objectLocation reference="21"/>
           <demand>300</demand>
           <priority>2</priority>
-          <objectName>Box004-lib</objectName>
+          <objectName>Box010-lib</objectName>
           <action>connection</action>
-          <preconditionList id="43">
-            <TaskDependency id="44">
-              <id>10</id>
-            </TaskDependency>
-            <TaskDependency id="45">
-              <id>9</id>
+          <preconditionList id="39">
+            <TaskDependency id="40">
+              <id>1</id>
             </TaskDependency>
           </preconditionList>
           <type>assemble</type>
           <previousStandstill class="Task" reference="36"/>
-          <nextTask id="46">
-            <id>0</id>
-            <location reference="4"/>
-            <objectLocation reference="3"/>
+          <nextTask id="41">
+            <id>2</id>
+            <location reference="8"/>
+            <objectLocation reference="7"/>
             <demand>450</demand>
-            <priority>1</priority>
-            <objectName>Box001-lib</objectName>
-            <action>base</action>
-            <preconditionList id="47"/>
+            <priority>2</priority>
+            <objectName>Box003-lib</objectName>
+            <action>connection</action>
+            <preconditionList id="42">
+              <TaskDependency id="43">
+                <id>7</id>
+              </TaskDependency>
+              <TaskDependency id="44">
+                <id>8</id>
+              </TaskDependency>
+              <TaskDependency id="45">
+                <id>9</id>
+              </TaskDependency>
+              <TaskDependency id="46">
+                <id>10</id>
+              </TaskDependency>
+            </preconditionList>
             <type>assemble</type>
-            <previousStandstill class="Task" reference="42"/>
-            <nextTask id="48">
-              <id>7</id>
-              <location reference="18"/>
-              <objectLocation reference="17"/>
-              <demand>300</demand>
-              <priority>2</priority>
-              <objectName>Box008-lib</objectName>
-              <action>connection</action>
-              <preconditionList id="49">
-                <TaskDependency id="50">
-                  <id>0</id>
-                </TaskDependency>
-              </preconditionList>
-              <type>assemble</type>
-              <previousStandstill class="Task" reference="46"/>
-              <vehicle reference="35"/>
-            </nextTask>
+            <previousStandstill class="Task" reference="38"/>
             <vehicle reference="35"/>
           </nextTask>
           <vehicle reference="35"/>
@@ -259,59 +239,79 @@
         <vehicle reference="35"/>
       </nextTask>
     </AutonomousVehicle>
-    <AutonomousVehicle id="51">
+    <AutonomousVehicle id="47">
       <id>2</id>
       <capacity>450</capacity>
       <initialLocation reference="31"/>
-      <nextTask id="52">
-        <id>1</id>
-        <location reference="6"/>
-        <objectLocation reference="5"/>
-        <demand>450</demand>
-        <priority>1</priority>
-        <objectName>Box002-lib</objectName>
-        <action>base</action>
-        <preconditionList id="53"/>
+      <nextTask id="48">
+        <id>5</id>
+        <location reference="14"/>
+        <objectLocation reference="13"/>
+        <demand>300</demand>
+        <priority>2</priority>
+        <objectName>Box006-lib</objectName>
+        <action>connection</action>
+        <preconditionList id="49">
+          <TaskDependency id="50">
+            <id>7</id>
+          </TaskDependency>
+          <TaskDependency id="51">
+            <id>8</id>
+          </TaskDependency>
+        </preconditionList>
         <type>assemble</type>
-        <previousStandstill class="AutonomousVehicle" reference="51"/>
-        <nextTask id="54">
-          <id>6</id>
-          <location reference="16"/>
-          <objectLocation reference="15"/>
-          <demand>300</demand>
-          <priority>2</priority>
-          <objectName>Box007-lib</objectName>
-          <action>connection</action>
-          <preconditionList id="55">
-            <TaskDependency id="56">
-              <id>7</id>
-            </TaskDependency>
-            <TaskDependency id="57">
-              <id>8</id>
-            </TaskDependency>
-          </preconditionList>
+        <previousStandstill class="AutonomousVehicle" reference="47"/>
+        <nextTask id="52">
+          <id>1</id>
+          <location reference="6"/>
+          <objectLocation reference="5"/>
+          <demand>450</demand>
+          <priority>1</priority>
+          <objectName>Box002-lib</objectName>
+          <action>base</action>
+          <preconditionList id="53"/>
           <type>assemble</type>
-          <previousStandstill class="Task" reference="52"/>
-          <nextTask id="58">
-            <id>10</id>
-            <location reference="24"/>
-            <objectLocation reference="23"/>
+          <previousStandstill class="Task" reference="48"/>
+          <nextTask id="54">
+            <id>3</id>
+            <location reference="10"/>
+            <objectLocation reference="9"/>
             <demand>300</demand>
             <priority>2</priority>
-            <objectName>Box011-lib</objectName>
+            <objectName>Box004-lib</objectName>
             <action>connection</action>
-            <preconditionList id="59">
-              <TaskDependency id="60">
-                <id>1</id>
+            <preconditionList id="55">
+              <TaskDependency id="56">
+                <id>10</id>
+              </TaskDependency>
+              <TaskDependency id="57">
+                <id>9</id>
               </TaskDependency>
             </preconditionList>
             <type>assemble</type>
-            <previousStandstill class="Task" reference="54"/>
-            <vehicle reference="51"/>
+            <previousStandstill class="Task" reference="52"/>
+            <nextTask id="58">
+              <id>10</id>
+              <location reference="24"/>
+              <objectLocation reference="23"/>
+              <demand>300</demand>
+              <priority>2</priority>
+              <objectName>Box011-lib</objectName>
+              <action>connection</action>
+              <preconditionList id="59">
+                <TaskDependency id="60">
+                  <id>1</id>
+                </TaskDependency>
+              </preconditionList>
+              <type>assemble</type>
+              <previousStandstill class="Task" reference="54"/>
+              <vehicle reference="47"/>
+            </nextTask>
+            <vehicle reference="47"/>
           </nextTask>
-          <vehicle reference="51"/>
+          <vehicle reference="47"/>
         </nextTask>
-        <vehicle reference="51"/>
+        <vehicle reference="47"/>
       </nextTask>
     </AutonomousVehicle>
     <AutonomousVehicle id="61">
@@ -319,12 +319,12 @@
       <capacity>450</capacity>
       <initialLocation reference="32"/>
       <nextTask id="62">
-        <id>5</id>
-        <location reference="14"/>
-        <objectLocation reference="13"/>
+        <id>6</id>
+        <location reference="16"/>
+        <objectLocation reference="15"/>
         <demand>300</demand>
         <priority>2</priority>
-        <objectName>Box006-lib</objectName>
+        <objectName>Box007-lib</objectName>
         <action>connection</action>
         <preconditionList id="63">
           <TaskDependency id="64">
@@ -337,55 +337,49 @@
         <type>assemble</type>
         <previousStandstill class="AutonomousVehicle" reference="61"/>
         <nextTask id="66">
-          <id>8</id>
-          <location reference="20"/>
-          <objectLocation reference="19"/>
-          <demand>300</demand>
-          <priority>2</priority>
-          <objectName>Box009-lib</objectName>
-          <action>connection</action>
-          <preconditionList id="67">
-            <TaskDependency id="68">
-              <id>0</id>
-            </TaskDependency>
-          </preconditionList>
+          <id>1</id>
+          <location reference="6"/>
+          <objectLocation reference="5"/>
+          <demand>450</demand>
+          <priority>1</priority>
+          <objectName>Box002-lib</objectName>
+          <action>base</action>
+          <preconditionList id="67"/>
           <type>assemble</type>
           <previousStandstill class="Task" reference="62"/>
-          <nextTask id="69">
-            <id>2</id>
-            <location reference="8"/>
-            <objectLocation reference="7"/>
-            <demand>450</demand>
+          <nextTask id="68">
+            <id>8</id>
+            <location reference="20"/>
+            <objectLocation reference="19"/>
+            <demand>300</demand>
             <priority>2</priority>
-            <objectName>Box003-lib</objectName>
+            <objectName>Box009-lib</objectName>
             <action>connection</action>
-            <preconditionList id="70">
-              <TaskDependency id="71">
-                <id>7</id>
-              </TaskDependency>
-              <TaskDependency id="72">
-                <id>8</id>
-              </TaskDependency>
-              <TaskDependency id="73">
-                <id>9</id>
-              </TaskDependency>
-              <TaskDependency id="74">
-                <id>10</id>
+            <preconditionList id="69">
+              <TaskDependency id="70">
+                <id>0</id>
               </TaskDependency>
             </preconditionList>
             <type>assemble</type>
             <previousStandstill class="Task" reference="66"/>
-            <nextTask id="75">
-              <id>1</id>
-              <location reference="6"/>
-              <objectLocation reference="5"/>
-              <demand>450</demand>
-              <priority>1</priority>
-              <objectName>Box002-lib</objectName>
-              <action>base</action>
-              <preconditionList id="76"/>
+            <nextTask id="71">
+              <id>4</id>
+              <location reference="12"/>
+              <objectLocation reference="11"/>
+              <demand>300</demand>
+              <priority>2</priority>
+              <objectName>Box005-lib</objectName>
+              <action>connection</action>
+              <preconditionList id="72">
+                <TaskDependency id="73">
+                  <id>10</id>
+                </TaskDependency>
+                <TaskDependency id="74">
+                  <id>9</id>
+                </TaskDependency>
+              </preconditionList>
               <type>assemble</type>
-              <previousStandstill class="Task" reference="69"/>
+              <previousStandstill class="Task" reference="68"/>
               <vehicle reference="61"/>
             </nextTask>
             <vehicle reference="61"/>
@@ -395,43 +389,49 @@
         <vehicle reference="61"/>
       </nextTask>
     </AutonomousVehicle>
-    <AutonomousVehicle id="77">
+    <AutonomousVehicle id="75">
       <id>4</id>
       <capacity>450</capacity>
       <initialLocation reference="33"/>
-      <nextTask id="78">
-        <id>9</id>
-        <location reference="22"/>
-        <objectLocation reference="21"/>
+      <nextTask id="76">
+        <id>7</id>
+        <location reference="18"/>
+        <objectLocation reference="17"/>
         <demand>300</demand>
         <priority>2</priority>
-        <objectName>Box010-lib</objectName>
+        <objectName>Box008-lib</objectName>
         <action>connection</action>
-        <preconditionList id="79">
-          <TaskDependency id="80">
-            <id>1</id>
+        <preconditionList id="77">
+          <TaskDependency id="78">
+            <id>0</id>
           </TaskDependency>
         </preconditionList>
         <type>assemble</type>
-        <previousStandstill class="AutonomousVehicle" reference="77"/>
-        <nextTask id="81">
-          <id>4</id>
-          <location reference="12"/>
-          <objectLocation reference="11"/>
-          <demand>300</demand>
+        <previousStandstill class="AutonomousVehicle" reference="75"/>
+        <nextTask id="79">
+          <id>2</id>
+          <location reference="8"/>
+          <objectLocation reference="7"/>
+          <demand>450</demand>
           <priority>2</priority>
-          <objectName>Box005-lib</objectName>
+          <objectName>Box003-lib</objectName>
           <action>connection</action>
-          <preconditionList id="82">
+          <preconditionList id="80">
+            <TaskDependency id="81">
+              <id>7</id>
+            </TaskDependency>
+            <TaskDependency id="82">
+              <id>8</id>
+            </TaskDependency>
             <TaskDependency id="83">
-              <id>10</id>
+              <id>9</id>
             </TaskDependency>
             <TaskDependency id="84">
-              <id>9</id>
+              <id>10</id>
             </TaskDependency>
           </preconditionList>
           <type>assemble</type>
-          <previousStandstill class="Task" reference="78"/>
+          <previousStandstill class="Task" reference="76"/>
           <nextTask id="85">
             <id>0</id>
             <location reference="4"/>
@@ -442,30 +442,30 @@
             <action>base</action>
             <preconditionList id="86"/>
             <type>assemble</type>
-            <previousStandstill class="Task" reference="81"/>
-            <vehicle reference="77"/>
+            <previousStandstill class="Task" reference="79"/>
+            <vehicle reference="75"/>
           </nextTask>
-          <vehicle reference="77"/>
+          <vehicle reference="75"/>
         </nextTask>
-        <vehicle reference="77"/>
+        <vehicle reference="75"/>
       </nextTask>
     </AutonomousVehicle>
   </autonomousVehicleList>
   <taskList id="87">
-    <Task reference="46"/>
-    <Task reference="85"/>
-    <Task reference="75"/>
-    <Task reference="52"/>
-    <Task reference="69"/>
     <Task reference="36"/>
-    <Task reference="42"/>
-    <Task reference="81"/>
-    <Task reference="62"/>
-    <Task reference="54"/>
-    <Task reference="48"/>
+    <Task reference="85"/>
+    <Task reference="52"/>
     <Task reference="66"/>
-    <Task reference="78"/>
+    <Task reference="79"/>
+    <Task reference="41"/>
+    <Task reference="54"/>
+    <Task reference="71"/>
+    <Task reference="48"/>
+    <Task reference="62"/>
+    <Task reference="76"/>
+    <Task reference="68"/>
+    <Task reference="38"/>
     <Task reference="58"/>
   </taskList>
-  <score id="88">0hard/0medium/-413393soft</score>
+  <score id="88">0hard/0medium/-311soft</score>
 </OptaplannerProblem>

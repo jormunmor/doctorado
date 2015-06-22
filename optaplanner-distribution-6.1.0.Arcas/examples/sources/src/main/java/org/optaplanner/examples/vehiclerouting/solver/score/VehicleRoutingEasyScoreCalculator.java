@@ -16,6 +16,11 @@
 
 package org.optaplanner.examples.vehiclerouting.solver.score;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -23,6 +28,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.commons.io.FileUtils;
 import org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore;
 
 //import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
@@ -34,6 +42,20 @@ import org.optaplanner.examples.vehiclerouting.domain.Standstill;
 import org.optaplanner.examples.vehiclerouting.domain.TaskDependency;
 
 public class VehicleRoutingEasyScoreCalculator implements EasyScoreCalculator<VehicleRoutingSolution> {
+    
+    /* 
+        This field takes a count of the best solutions found, those which improve
+        the previous.
+    */
+    int solutionCount = 0;
+    
+    /*
+        These fields store the previous best solution found. It is needed to 
+        avoid calling the JSHOP2 process when the current solution does not
+        improve the hard and medium constraints.
+    */
+    int previousHard = -Integer.MAX_VALUE;
+    int previousMedium = -Integer.MAX_VALUE;
 
     @Override
     public HardMediumSoftScore calculateScore(VehicleRoutingSolution schedule) {
@@ -114,7 +136,8 @@ public class VehicleRoutingEasyScoreCalculator implements EasyScoreCalculator<Ve
                 
                 dependencySet.addAll(task.getPreconditionList());
                 
-                // Here comes the travelling cost calculation
+                // Here comes the travelling cost calculation. We can comment it for now.
+                /*
                 if (task.getNextTask() == null) { // Last task
                     softScore -= task.getLocation().getDistance(vehicle.getLocation()); // Add distance from assembly location to vehicle's initial location
                     
@@ -130,7 +153,7 @@ public class VehicleRoutingEasyScoreCalculator implements EasyScoreCalculator<Ve
                     softScore -= task.getObjectLocation().getDistance(task.getLocation()); // Add distance from object to assembly location
                     
                 }
-                
+                */             
                 
             }
         }
@@ -378,8 +401,136 @@ public class VehicleRoutingEasyScoreCalculator implements EasyScoreCalculator<Ve
             }
 
         }
+        
+        softScore -= generateAssignmentFile(taskList, vehicleList, hardScore, mediumScore);        
                 
+        //System.out.println("HARD: " + hardScore);
+        //System.out.println("MEDIUM: " + mediumScore);
+        //System.out.println("SOFT: " + softScore);
+        //System.out.println("TASKS: " + schedule.getTaskList().size());
+        //System.out.println("FACTS: " + schedule.getProblemFacts().size());
         return HardMediumSoftScore.valueOf(hardScore, mediumScore, softScore);
+        
+    }
+    
+    /*
+        Method to generate the softScore value by calling the JSHOP2 process.
+    */
+    public int generateAssignmentFile(List<Task> taskList, List<Vehicle> vehicleList, int hardScore, int mediumScore)
+    {
+        if(hardScore != 0)
+        {
+            return Integer.MAX_VALUE;
+                
+        } 
+        
+        int softScore = Integer.MAX_VALUE;
+        
+        // Set the assignment strings for each of the vehicles (set to empty string).
+        String[] assignmentStrings = new String[vehicleList.size()];
+        for(int i=0; i<assignmentStrings.length; i++)
+        {
+            assignmentStrings[i] = "";
+            
+        }
+                
+        // Complete the assignment strings (set the objectName part).
+        int assignedTasks = 0;
+        for (Task task : taskList) {
+            Standstill previousStandstill = task.getPreviousStandstill(); // The previous task or vehicle.
+            if (previousStandstill != null) { // It is a task.
+                assignedTasks++;
+                // Get the vehicle for the task.
+                Long vehicleId = task.getVehicle().getId();
+                int index = vehicleId.intValue();
+                String objectName = task.getObjectName();  
+                String assignment = "\t\t(assigned " + objectName + " " + "uav" + index + ")\n";
+                assignmentStrings[index-1] += assignment; // Zero-based index.                
+                
+            }
+        }
+        
+        // Finish the assignment strings (set the uav part).
+        String assignmentPart = "\t\t; part assignments\n";
+        for(int i=0; i<assignmentStrings.length; i++)
+        {
+            assignmentPart += assignmentStrings[i];
+            
+        }
+        
+        if(assignedTasks == taskList.size()) { 
+            /* 
+                All planning entities assigned, call JSHOP2 and take
+                the cost of the plan as the soft-constraint value. The 
+                JSHOP2 cost is the time duration of the plan.
+            */
+            
+            try {
+                // Read the different problem parts as strings and create plan.
+                String path = "/home/jorge/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/problem_parts/";
+                String assemblyPlannerPart = FileUtils.readFileToString(new File(path + "assembly_planner_part.txt"), "UTF8");
+                String firstProblemPart = FileUtils.readFileToString(new File(path + "first_problem_part.txt"), "UTF8");
+                String secondProblemPart = FileUtils.readFileToString(new File(path + "second_problem_part.txt"), "UTF8");
+                String jshopPlan = firstProblemPart + assemblyPlannerPart + assignmentPart + secondProblemPart;
+                
+                // Generate plan file
+                path = "/home/jorge/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/";
+                PrintWriter out = new PrintWriter(path + "problem");
+                out.println(jshopPlan);
+                out.close();
+                
+                // Call the JSHOP2 process.
+                String execString = "bash " + System.getProperty("user.home") + "/launch_jshop2.sh";
+                Runtime runtime = Runtime.getRuntime();
+                Process process = runtime.exec(execString);
+                // Wait for JSHOP2 to finish.
+                process.waitFor();
+
+                // Check if the cost file (planCost.txt) was created.
+                String costFilePath = System.getProperty("user.home") + "/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/planCost.txt";
+                File costFile = new File(costFilePath);
+                if(costFile.isFile()) {
+                    String cost = FileUtils.readFileToString(costFile, "UTF8");
+                    System.out.println(cost);
+                    if(cost.contains("unfeasible"))
+                    {
+                        return Integer.MAX_VALUE;
+                        
+                    }else {
+                        return (int) Double.parseDouble(cost);
+                        
+                    }
+                    
+
+                }else {
+                    System.out.println("Missing cost file. Some error occurred!.");
+                    System.out.println("Cost file path: " + costFilePath);
+                    return Integer.MAX_VALUE;
+                    
+                }
+                
+            } catch (IOException ex) {
+                Logger.getLogger(VehicleRoutingEasyScoreCalculator.class.getName()).log(Level.SEVERE, null, ex);
+                
+            } catch (InterruptedException ex) {
+                Logger.getLogger(VehicleRoutingEasyScoreCalculator.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+            
+        } else {
+            /*
+                Not all planning entities have been assigned, for the moment
+                we decide not to call JSHOP2 because it will return a void
+                plan (unfeasible due to not having all the part assignments).
+                Thus, do not spend time in the call and set an inifinite soft
+                score value.
+            */
+            return Integer.MAX_VALUE;
+            
+        }
+        
+        return softScore;
+        
     }
     
 

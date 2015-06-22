@@ -11,7 +11,8 @@ enum ActionType{
     LAND,
     TAKEOFF,
     MOVE,
-    PICK
+    PICK,
+    PLACE
 };
 
 enum OperationType{

@@ -43,10 +43,6 @@ import org.w3c.dom.Node;
  */
 public class OptaPlannerSolutionParser {
 
-    //arcas tasks
-    //private String solutionPath = "/home/jorge/Escritorio/SystemPlanner/ArcasAssemblyProblemSolution.xml"; 
-    //private String updatedSystemConfigPath = "/home/jorge/Escritorio/SystemPlanner/UpdatedSystemConfig.xml";
-    
     private final String solutionPath;
     private final String updatedSystemConfigPath;
     
@@ -83,14 +79,6 @@ public class OptaPlannerSolutionParser {
     private String goalsString = "";
     private int tasksNumber;
     
-    /**
-     *
-     * @param solutionPath
-     * @param updatedSystemConfigPath
-     * @param tasksPath
-     * @param outPddlPath
-     * 
-     */
     public OptaPlannerSolutionParser(String solutionPath, String updatedSystemConfigPath, String tasksPath, String outPddlPath){
         this.solutionPath = solutionPath;
         this.updatedSystemConfigPath = updatedSystemConfigPath;
@@ -104,7 +92,6 @@ public class OptaPlannerSolutionParser {
         String solutionPath = "../../SystemPlanner/ArcasAssemblyProblemSolution.xml"; 
         String updatedSystemConfigPath = "../../SystemPlanner/UpdatedSystemConfig.xml";
         String tasksPath = "../../SystemPlanner/Tasks/"; // In this path will be all related task data
-        //String outPddlPath = "/home/jorge/Escritorio/SystemPlanner/JSHOP2problem";
         String outPddlPath = "../../JSHOP2/examples/quadrotor_arcas/problem";
         OptaPlannerSolutionParser parser = new OptaPlannerSolutionParser(solutionPath, updatedSystemConfigPath, tasksPath, outPddlPath);
         parser.parseSolution();        
@@ -114,15 +101,17 @@ public class OptaPlannerSolutionParser {
     public void parseSolution() {
         try {
             // Clean the taskData directory
-            FileUtils.cleanDirectory(new File(tasksPath));
+            //FileUtils.cleanDirectory(new File(tasksPath));
             
             // Parse the config file
+            
             File systemConfig = new File(updatedSystemConfigPath);
             DocumentBuilderFactory dbFactory1 = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder1 = dbFactory1.newDocumentBuilder();
             Document configDoc = dBuilder1.parse(systemConfig);
             configDoc.getDocumentElement().normalize();
             parseUpdatedConfigFile(configDoc);
+            
             
             // Parse the solution file
             File optaplannerSolution = new File(solutionPath);

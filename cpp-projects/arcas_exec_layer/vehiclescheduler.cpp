@@ -191,6 +191,12 @@ void VehicleScheduler::execute()
             goal.actionType = PICK;
             currentActionType = PICK;
 
+        } else if(op.at(0).contains("assemble"))
+        {
+            goal.group = VEHICLE_FRAME;
+            goal.actionType = PLACE;
+            currentActionType = PLACE;
+
         }
 
         goal.vehicleID = vehicleID;
@@ -267,7 +273,7 @@ void VehicleScheduler::feedbackCb(const arcas_exec_layer::ArcasExecLayerFeedback
         QTime current = QTime::currentTime();
         QTime *currentFeedbackTime = new QTime(current.hour(), current.minute(), current.second(), current.msec());
         int msecs = lastFeedbackTime->msecsTo(*currentFeedbackTime);
-        ROS_INFO("msecs since last feedback: %d", msecs);
+        //ROS_INFO("msecs since last feedback: %d", msecs);
         delete lastFeedbackTime;
         lastFeedbackTime = currentFeedbackTime;
         emit updateGantt(tableRow, msecs/1000.0);
