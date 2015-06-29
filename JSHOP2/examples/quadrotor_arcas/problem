@@ -8,6 +8,19 @@
 		(quadrotor uav3)
 		(quadrotor uav4)
 
+		; object defs
+		(object Box001-lib)
+		(object Box002-lib)
+		(object Box003-lib)
+		(object Box004-lib)
+		(object Box005-lib)
+		(object Box006-lib)
+		(object Box007-lib)
+		(object Box008-lib)
+		(object Box009-lib)
+		(object Box010-lib)
+		(object Box011-lib)
+
 		; location defs
 		(location 1)
 		(location 2)
@@ -36,18 +49,18 @@
 		(location 25)
 		(location 26)
 
-		; object defs
-		(object Box001-lib)
-		(object Box002-lib)
-		(object Box003-lib)
-		(object Box004-lib)
-		(object Box005-lib)
-		(object Box006-lib)
-		(object Box007-lib)
-		(object Box008-lib)
-		(object Box009-lib)
-		(object Box010-lib)
-		(object Box011-lib)
+		; assembly location defs
+		(assembly_location Box001-lib 2)
+		(assembly_location Box002-lib 4)
+		(assembly_location Box003-lib 6)
+		(assembly_location Box004-lib 8)
+		(assembly_location Box005-lib 10)
+		(assembly_location Box006-lib 12)
+		(assembly_location Box007-lib 14)
+		(assembly_location Box008-lib 16)
+		(assembly_location Box009-lib 18)
+		(assembly_location Box010-lib 20)
+		(assembly_location Box011-lib 22)
 
 		; object state defs
 		(at Box001-lib 1)
@@ -75,34 +88,21 @@
 		(depends Box010-lib (Box002-lib))
 		(depends Box011-lib (Box002-lib))
 
-		; assembly locations
-		(assembly_location Box001-lib 2)
-		(assembly_location Box002-lib 4)
-		(assembly_location Box003-lib 6)
-		(assembly_location Box004-lib 8)
-		(assembly_location Box005-lib 10)
-		(assembly_location Box006-lib 12)
-		(assembly_location Box007-lib 14)
-		(assembly_location Box008-lib 16)
-		(assembly_location Box009-lib 18)
-		(assembly_location Box010-lib 20)
-		(assembly_location Box011-lib 22)
-
 		; part assignments
 		(assigned Box001-lib uav1)
-		(assigned Box010-lib uav1)
-		(assigned Box003-lib uav1)
-		(assigned Box006-lib uav2)
+		(assigned Box007-lib uav1)
+		(assigned Box009-lib uav1)
 		(assigned Box002-lib uav2)
+		(assigned Box003-lib uav2)
 		(assigned Box004-lib uav2)
-		(assigned Box011-lib uav2)
-		(assigned Box007-lib uav3)
-		(assigned Box002-lib uav3)
-		(assigned Box009-lib uav3)
-		(assigned Box005-lib uav3)
-		(assigned Box008-lib uav4)
+		(assigned Box010-lib uav2)
+		(assigned Box001-lib uav3)
+		(assigned Box006-lib uav3)
+		(assigned Box008-lib uav3)
+		(assigned Box011-lib uav3)
+		(assigned Box002-lib uav4)
 		(assigned Box003-lib uav4)
-		(assigned Box001-lib uav4)
+		(assigned Box005-lib uav4)
 
 		; UAV1 state defs
 		(battery uav1 1200)
@@ -123,7 +123,6 @@
 		(battery uav4 1200)
 		(at uav4 26)
 		(landed uav4)
-
 
 		; read/write times UAV1 
 		(write-time at uav1 0)
@@ -211,3 +210,4 @@
 
 	)
 )
+

@@ -125,6 +125,11 @@
       <groupId>org.jdom</groupId>
       <artifactId>jdom</artifactId>
     </dependency>
+    <dependency>
+      <groupId>antlr</groupId>
+      <artifactId>antlr</artifactId>
+      <version>2.7.7</version>
+    </dependency>
   </dependencies>
     <version>6.1.0.Arcas</version>
 </project>

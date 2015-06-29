@@ -41,6 +41,12 @@ import org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution;
 import org.optaplanner.examples.vehiclerouting.domain.Standstill;
 import org.optaplanner.examples.vehiclerouting.domain.TaskDependency;
 
+import JSHOP2.InternalDomain;
+import java.net.URL;
+import java.net.URLClassLoader;
+import javax.tools.JavaCompiler;
+import javax.tools.ToolProvider;
+
 public class VehicleRoutingEasyScoreCalculator implements EasyScoreCalculator<VehicleRoutingSolution> {
     
     /* 
@@ -402,7 +408,46 @@ public class VehicleRoutingEasyScoreCalculator implements EasyScoreCalculator<Ve
 
         }
         
+        // old JSHOP2 communication
         softScore -= generateAssignmentFile(taskList, vehicleList, hardScore, mediumScore);        
+        
+        // new JSHOP2 communication
+        /*
+        cd examples/quadrotor_arcas; java JSHOP2.InternalDomain quadrotor
+	cd examples/quadrotor_arcas; java JSHOP2.InternalDomain -r problem
+	cd examples/quadrotor_arcas; javac gui.java
+	cd examples/quadrotor_arcas; java -Xmx256M gui
+	cd examples/quadrotor_arcas; rm quadrotor.java; rm quadrotor.txt; rm problem.java; rm *.class
+        */
+        /*
+        try{
+            String[] domainArgs = {"/home/jorge/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/quadrotor"};
+            String[] problemArgs = {"-r", "/home/jorge/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/problem"};
+            System.out.println("Calling InternalDomain.main twice");
+            InternalDomain.main(domainArgs);
+            InternalDomain.main(problemArgs);
+            
+            //Compile the new class
+            JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+            File javaDirectory = new File("/home/jorge/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/");
+            File javaFile = new File("/home/jorge/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/Ceil.java");
+            compiler.run(null, null, null, javaFile.getPath());
+            
+            // Load and instantiate compiled class.
+            URLClassLoader classLoader = URLClassLoader.newInstance(new URL[] { javaDirectory.toURI().toURL() });
+            Class<?> cls = Class.forName("problem", true, classLoader); // Should print "hello".
+            Object instance = cls.newInstance();
+            System.out.println(instance); // Should print "test.Test@hashcode".
+            
+
+            
+        } catch(Exception e)
+        {
+            System.out.println("Exception thrown calling JSHOP2");
+            
+        }
+        softScore = -500;
+        */
                 
         //System.out.println("HARD: " + hardScore);
         //System.out.println("MEDIUM: " + mediumScore);
@@ -491,7 +536,7 @@ public class VehicleRoutingEasyScoreCalculator implements EasyScoreCalculator<Ve
                 File costFile = new File(costFilePath);
                 if(costFile.isFile()) {
                     String cost = FileUtils.readFileToString(costFile, "UTF8");
-                    System.out.println(cost);
+                    //System.out.println(cost);
                     if(cost.contains("unfeasible"))
                     {
                         return Integer.MAX_VALUE;

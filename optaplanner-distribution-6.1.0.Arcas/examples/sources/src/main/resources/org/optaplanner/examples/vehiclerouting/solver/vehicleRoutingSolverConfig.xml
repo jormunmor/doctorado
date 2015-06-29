@@ -18,7 +18,7 @@
   </scoreDirectorFactory>
 
   <termination>
-    <minutesSpentLimit>90</minutesSpentLimit>
+    <minutesSpentLimit>10</minutesSpentLimit>
   </termination>
 <!--
   <exhaustiveSearch>
