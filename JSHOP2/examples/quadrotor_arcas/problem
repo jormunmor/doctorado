@@ -90,19 +90,19 @@
 
 		; part assignments
 		(assigned Box001-lib uav1)
+		(assigned Box003-lib uav1)
 		(assigned Box007-lib uav1)
-		(assigned Box009-lib uav1)
+		(assigned Box010-lib uav1)
 		(assigned Box002-lib uav2)
 		(assigned Box003-lib uav2)
-		(assigned Box004-lib uav2)
-		(assigned Box010-lib uav2)
-		(assigned Box001-lib uav3)
+		(assigned Box009-lib uav2)
+		(assigned Box011-lib uav2)
+		(assigned Box002-lib uav3)
+		(assigned Box005-lib uav3)
 		(assigned Box006-lib uav3)
 		(assigned Box008-lib uav3)
-		(assigned Box011-lib uav3)
-		(assigned Box002-lib uav4)
-		(assigned Box003-lib uav4)
-		(assigned Box005-lib uav4)
+		(assigned Box001-lib uav4)
+		(assigned Box004-lib uav4)
 
 		; UAV1 state defs
 		(battery uav1 1200)

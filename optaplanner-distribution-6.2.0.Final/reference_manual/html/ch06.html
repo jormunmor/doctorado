@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 6. Optimization algorithms</title><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="OptaPlanner User Guide"/><link rel="up" href="index.html" title="OptaPlanner User Guide"/><link rel="prev" href="ch05.html" title="Chapter 5. Score calculation"/><link rel="next" href="ch07.html" title="Chapter 7. Move and neighborhood selection"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch05.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch07.html"><strong>Next</strong></a></li></ul><div class="chapter" title="Chapter 6. Optimization algorithms"><div class="titlepage"><div><div><h2 class="title"><a id="optimizationAlgorithms"/>Chapter 6. Optimization algorithms</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="ch06.html#searchSpaceSize">6.1. Search space size in the real world</a></span></dt><dt><span class="section"><a href="ch06.html#doesPlannerFindTheOptimalSolution">6.2. Does Planner find the optimal solution?</a></span></dt><dt><span class="section"><a href="ch06.html#architectureOverview">6.3. Architecture overview</a></span></dt><dt><span class="section"><a href="ch06.html#optimizationAlgorithmsOverview">6.4. Optimization algorithms overview</a></span></dt><dt><span class="section"><a href="ch06.html#whichOptimizationAlgorithmsShouldIUse">6.5. Which optimization algorithms should I use?</a></span></dt><dt><span class="section"><a href="ch06.html#solverPhase">6.6. Solver phase</a></span></dt><dt><span class="section"><a href="ch06.html#scopeOverview">6.7. Scope overview</a></span></dt><dt><span class="section"><a href="ch06.html#termination">6.8. Termination</a></span></dt><dd><dl><dt><span class="section"><a href="ch06.html#timeMillisSpentTermination">6.8.1. TimeMillisSpentTermination</a></span></dt><dt><span class="section"><a href="ch06.html#unimprovedTimeMillisSpentTermination">6.8.2. UnimprovedTimeMillisSpentTermination</a></span></dt><dt><span class="section"><a href="ch06.html#bestScoreTermination">6.8.3. BestScoreTermination</a></span></dt><dt><span class="section"><a href="ch06.html#bestScoreFeasibleTermination">6.8.4. BestScoreFeasibleTermination</a></span></dt><dt><span class="section"><a href="ch06.html#stepCountTermination">6.8.5. StepCountTermination</a></span></dt><dt><span class="section"><a href="ch06.html#unimprovedStepCountTermination">6.8.6. UnimprovedStepCountTermination</a></span></dt><dt><span class="section"><a href="ch06.html#combiningMultipleTerminations">6.8.7. Combining multiple Terminations</a></span></dt><dt><span class="section"><a href="ch06.html#asynchronousTermination">6.8.8. Asynchronous termination from another thread</a></span></dt></dl></dd><dt><span class="section"><a href="ch06.html#SolverEventListener">6.9. SolverEventListener</a></span></dt><dt><span class="section"><a href="ch06.html#customSolverPhase">6.10. Custom solver phase</a></span></dt></dl></div><div class="section" title="6.1. Search space size in the real world"><div class="titlepage"><div><div><h2 class="title"><a id="searchSpaceSize"/>6.1. Search space size in the real world</h2></div></div></div><p>The number of possible solutions for a planning problem can be mind blowing. For example:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>4 queens has <code class="literal">256</code> possible solutions (<code class="literal">4^4</code>) and 2 optimal
+        solutions.</p></li><li class="listitem"><p>5 queens has <code class="literal">3125</code> possible solutions (<code class="literal">5^5</code>) and 1 optimal
+        solution.</p></li><li class="listitem"><p>8 queens has <code class="literal">16777216</code> possible solutions (<code class="literal">8^8</code>) and 92 optimal
+        solutions.</p></li><li class="listitem"><p>64 queens has more than <code class="literal">10^115</code> possible solutions (<code class="literal">64^64</code>).</p></li><li class="listitem"><p>Most real-life planning problems have an incredible number of possible solutions and only 1 or a few
+        optimal solutions.</p></li></ul></div><p>For comparison: the minimal number of atoms in the known universe (10^80). As a planning problem gets bigger,
+    the search space tends to blow up really fast. Adding only 1 extra planning entity or planning value can heavily
+    multiply the running time of some algorithms.</p><div class="mediaobject"><img src="images/Chapter-Optimization_algorithms/cloudBalanceSearchSpaceSize.png"/></div><p>Calculating the number of possible solutions depends on the design of the domain model:</p><div class="mediaobject"><img src="images/Chapter-Optimization_algorithms/searchSpaceSizeCalculation.png"/></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2><p>This search space size calculation includes infeasible solutions (if they can be represented by the model),
+      because:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>The optimal solution might be infeasible.</p></li><li class="listitem"><p>There are many types of hard constraints which cannot be incorporated in the formula practically. For
+          example in Cloud Balancing, try incorporating the CPU capacity constraint in the formula.</p></li></ul></div><p>Even in cases were adding some of the hard constraints in the formula is practical, for example Course
+      Scheduling, the resulting search space is still huge.</p></div><p>An algorithm that checks every possible solution (even with pruning such as in <a class="link" href="ch08.html#branchAndBound" title="8.3. Branch And Bound">Branch And Bound</a>) can easily run for billions of years on a single real-life
+    planning problem. What we really want is to <span class="bold"><strong>find the best solution in the limited time at our
+    disposal</strong></span>. Planning competitions (such as the International Timetabling Competition) show that Local
+    Search variations (<a class="link" href="ch10.html#tabuSearch" title="10.4. Tabu Search">Tabu Search</a>, <a class="link" href="ch10.html#simulatedAnnealing" title="10.5. Simulated Annealing">Simulated
+    Annealing</a>, <a class="link" href="ch10.html#lateAcceptance" title="10.6. Late Acceptance">Late Acceptance</a>, ...) usually perform best for real-world
+    problems given real-world time limitations.</p></div><div class="section" title="6.2. Does Planner find the optimal solution?"><div class="titlepage"><div><div><h2 class="title"><a id="doesPlannerFindTheOptimalSolution"/>6.2. Does Planner find the optimal solution?</h2></div></div></div><p>The business wants the optimal solution, but they also have other requirements:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>Scale out: Large production datasets must not crash and have good results too.</p></li><li class="listitem"><p>Optimize the right problem: The constraints must match the actual business needs.</p></li><li class="listitem"><p>Available time: The solution must be found in time, before it becomes useless to execute.</p></li><li class="listitem"><p>Reliability: Every dataset must have at least a decent result (better than a human planner).</p></li></ul></div><p>Given these requirements, and despite the promises of some salesmen, it's usually impossible for anyone or
+    anything to find the optimal solution. Therefore, Planner focuses on finding the best solution in available time. In
+    <a class="link" href="ch03.html#examplesOverview" title="3.1. Examples overview">realistic, independent competitions</a>, it often comes out as the best
+    <span class="emphasis"><em>reusable</em></span> software.</p><p>The nature of NP-complete problems make scaling a prime concern. <span class="bold"><strong>The result quality of a
+    small dataset guarantees nothing about the result quality of a large dataset.</strong></span> Scaling issues cannot be
+    mitigated by hardware purchases later on. Start testing with a production sized dataset as soon as possible. Don't
+    assess quality on small datasets (unless production encounters only such datasets). Instead, solve a production
+    sized dataset and compare the results of longer executions, different algorithms and - if available - the human
+    planner.</p></div><div class="section" title="6.3. Architecture overview"><div class="titlepage"><div><div><h2 class="title"><a id="architectureOverview"/>6.3. Architecture overview</h2></div></div></div><p>Planner is the first framework to combine optimization algorithms (metaheuristics, ...) with score calculation
+    by a rule engine (such as Drools Expert). This combination turns out to be a very efficient, because:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>A rule engine such as Drools Expert is <span class="bold"><strong>great for calculating the score</strong></span> of
+        a solution of a planning problem. It makes it easy and scalable to add additional soft or hard constraints such
+        as "a teacher shouldn't teach more then 7 hours a day". It does delta based score calculation without any extra
+        code. However it tends to be not suitable to actually find new solutions.</p></li><li class="listitem"><p>An optimization algorithm is <span class="bold"><strong>great at finding new improving solutions</strong></span> for
+        a planning problem, without necessarily brute-forcing every possibility. However it needs to know the score of a
+        solution and offers no support in calculating that score efficiently.</p></li></ul></div><div class="mediaobject"><img src="images/Chapter-Optimization_algorithms/architectureOverview.png"/></div></div><div class="section" title="6.4. Optimization algorithms overview"><div class="titlepage"><div><div><h2 class="title"><a id="optimizationAlgorithmsOverview"/>6.4. Optimization algorithms overview</h2></div></div></div><p>Planner supports 3 <span class="emphasis"><em>families</em></span> of optimization algorithms: Exhaustive Search, Construction
+    Heuristics and Metaheuristics. In practice, Metaheuristics (in combination with Construction Heuristics to
+    initialize) are the recommended choice:</p><div class="mediaobject"><img src="images/Chapter-Optimization_algorithms/scalabilityOfOptimizationAlgorithms.png"/></div><p>Each of these families of algorithms has multiple optimization algorithms:</p><div class="table"><a id="d0e6301"/><p class="title"><strong>Table 6.1. Optimization algorithms overview</strong></p><div class="table-contents"><table summary="Optimization algorithms overview" border="1"><colgroup><col width="4*" align="left"/><col width="1*" align="center"/><col width="1*" align="center"/><col width="1*" align="center"/><col width="1*" align="center"/><col width="1*" align="center"/></colgroup><thead><tr><th align="left">Algorithm</th><th align="center">Scalable?</th><th align="center">Optimal?</th><th align="center">Easy to use?</th><th align="center">Tweakable?</th><th align="center">Requires CH?</th></tr></thead><tbody><tr><td align="left"><span class="bold"><strong>Exhaustive Search (ES)</strong></span></td><td align="center"> </td><td align="center"> </td><td align="center"> </td><td align="center"> </td><td align="center"> </td></tr><tr><td align="left">  <a class="link" href="ch08.html#bruteForce" title="8.2. Brute Force">Brute Force</a></td><td align="center">0/5</td><td align="center">5/5</td><td align="center">5/5</td><td align="center">0/5</td><td align="center">No</td></tr><tr><td align="left">  <a class="link" href="ch08.html#branchAndBound" title="8.3. Branch And Bound">Branch And Bound</a></td><td align="center">0/5</td><td align="center">5/5</td><td align="center">4/5</td><td align="center">2/5</td><td align="center">No</td></tr><tr><td align="left"><span class="bold"><strong>Construction heuristics (CH)</strong></span></td><td align="center"> </td><td align="center"> </td><td align="center"> </td><td align="center"> </td><td align="center"> </td></tr><tr><td align="left">  <a class="link" href="ch09.html#firstFit" title="9.2. First Fit">First Fit</a></td><td align="center">5/5</td><td align="center">1/5</td><td align="center">5/5</td><td align="center">1/5</td><td align="center">No</td></tr><tr><td align="left">  <a class="link" href="ch09.html#firstFitDecreasing" title="9.3. First Fit Decreasing">First Fit Decreasing</a></td><td align="center">5/5</td><td align="center">2/5</td><td align="center">4/5</td><td align="center">2/5</td><td align="center">No</td></tr><tr><td align="left">  <a class="link" href="ch09.html#weakestFit" title="9.4. Weakest Fit">Weakest Fit</a></td><td align="center">5/5</td><td align="center">2/5</td><td align="center">4/5</td><td align="center">2/5</td><td align="center">No</td></tr><tr><td align="left">  <a class="link" href="ch09.html#weakestFitDecreasing" title="9.5. Weakest Fit Decreasing">Weakest Fit Decreasing</a></td><td align="center">5/5</td><td align="center">2/5</td><td align="center">4/5</td><td align="center">2/5</td><td align="center">No</td></tr><tr><td align="left">  <a class="link" href="ch09.html#strongestFit" title="9.6. Strongest Fit">Strongest Fit</a></td><td align="center">5/5</td><td align="center">2/5</td><td align="center">4/5</td><td align="center">2/5</td><td align="center">No</td></tr><tr><td align="left">  <a class="link" href="ch09.html#strongestFitDecreasing" title="9.7. Strongest Fit Decreasing">Strongest Fit Decreasing</a></td><td align="center">5/5</td><td align="center">2/5</td><td align="center">4/5</td><td align="center">2/5</td><td align="center">No</td></tr><tr><td align="left">  <a class="link" href="ch09.html#cheapestInsertion" title="9.10. Cheapest Insertion">Cheapest Insertion</a></td><td align="center">3/5</td><td align="center">2/5</td><td align="center">5/5</td><td align="center">2/5</td><td align="center">No</td></tr><tr><td align="left">  <a class="link" href="ch09.html#regretInsertion" title="9.11. Regret Insertion">Regret Insertion</a></td><td align="center">3/5</td><td align="center">2/5</td><td align="center">5/5</td><td align="center">2/5</td><td align="center">No</td></tr><tr><td align="left"><span class="bold"><strong>Metaheuristics (MH)</strong></span></td><td align="center"> </td><td align="center"> </td><td align="center"> </td><td align="center"> </td><td align="center"> </td></tr><tr><td align="left">  Local Search</td><td align="center"> </td><td align="center"> </td><td align="center"> </td><td align="center"> </td><td align="center"> </td></tr><tr><td align="left">    <a class="link" href="ch10.html#hillClimbing" title="10.3. Hill Climbing (Simple Local Search)">Hill Climbing</a></td><td align="center">5/5</td><td align="center">2/5</td><td align="center">4/5</td><td align="center">3/5</td><td align="center">Yes</td></tr><tr><td align="left">    <a class="link" href="ch10.html#tabuSearch" title="10.4. Tabu Search">Tabu Search</a></td><td align="center">5/5</td><td align="center">4/5</td><td align="center">3/5</td><td align="center">5/5</td><td align="center">Yes</td></tr><tr><td align="left">    <a class="link" href="ch10.html#simulatedAnnealing" title="10.5. Simulated Annealing">Simulated Annealing</a></td><td align="center">5/5</td><td align="center">4/5</td><td align="center">2/5</td><td align="center">5/5</td><td align="center">Yes</td></tr><tr><td align="left">    <a class="link" href="ch10.html#lateAcceptance" title="10.6. Late Acceptance">Late Acceptance</a></td><td align="center">5/5</td><td align="center">4/5</td><td align="center">3/5</td><td align="center">5/5</td><td align="center">Yes</td></tr><tr><td align="left">    <a class="link" href="ch10.html#stepCountingHillClimbing" title="10.7. Step Counting Hill Climbing">Step Counting Hill Climbing</a></td><td align="center">5/5</td><td align="center">4/5</td><td align="center">3/5</td><td align="center">5/5</td><td align="center">Yes</td></tr><tr><td align="left">  Evolutionary Algorithms</td><td align="center"> </td><td align="center"> </td><td align="center"> </td><td align="center"> </td><td align="center"> </td></tr><tr><td align="left">    <a class="link" href="ch11.html#evolutionaryStrategies" title="11.2. Evolutionary Strategies">Evolutionary Strategies</a></td><td align="center">4/5</td><td align="center">3/5</td><td align="center">2/5</td><td align="center">5/5</td><td align="center">Yes</td></tr><tr><td align="left">    <a class="link" href="ch11.html#geneticAlgorithms" title="11.3. Genetic Algorithms">Genetic Algorithms</a></td><td align="center">4/5</td><td align="center">3/5</td><td align="center">2/5</td><td align="center">5/5</td><td align="center">Yes</td></tr></tbody></table></div></div><br class="table-break"/><p>If you want to learn more about metaheuristics, read the free books <a class="link" href="http://www.cs.gmu.edu/~sean/book/metaheuristics/">Essentials of Metaheuristics</a> or <a class="link" href="http://www.cleveralgorithms.com/">Clever Algorithms</a>.</p></div><div class="section" title="6.5. Which optimization algorithms should I use?"><div class="titlepage"><div><div><h2 class="title"><a id="whichOptimizationAlgorithmsShouldIUse"/>6.5. Which optimization algorithms should I use?</h2></div></div></div><p>The <span class="emphasis"><em>best</em></span> optimization algorithms configuration for your use case depends heavily on your
+    use case. Nevertheless, this vanilla recipe will get you into the game with a pretty good configuration, probably
+    much better than what you're used to.</p><p>Start with a quick configuration that involves little or no configuration and optimization code:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p><a class="link" href="ch09.html#firstFit" title="9.2. First Fit">First Fit</a></p></li></ol></div><p>Next, implement <a class="link" href="ch04.html#planningEntityDifficulty" title="4.3.3.2. Planning entity difficulty">planning entity difficulty</a> comparison and turn
+    it into:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p><a class="link" href="ch09.html#firstFitDecreasing" title="9.3. First Fit Decreasing">First Fit Decreasing</a></p></li></ol></div><p>Next, add Late Acceptance behind it:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>First Fit Decreasing</p></li><li class="listitem"><p><a class="link" href="ch10.html#lateAcceptance" title="10.6. Late Acceptance">Late Acceptance</a>. A Late Acceptance size of 400 usually works
+        well.</p></li></ol></div><p>At this point <span class="emphasis"><em>the free lunch is over</em></span>. The return on invested time lowers. The result is
+    probably already more than good enough.</p><p>But you can do even better, at a lower return on invested time. Use the <a class="link" href="ch14.html" title="Chapter 14. Benchmarking and tweaking">Benchmarker</a> and try a couple of different Tabu Search, Simulated Annealing and Late
+    Acceptance configurations, for example:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>First Fit Decreasing</p></li><li class="listitem"><p><a class="link" href="ch10.html#tabuSearch" title="10.4. Tabu Search">Tabu Search</a>. An entity tabu size of 7 usually works well.</p></li></ol></div><p>Use the <a class="link" href="ch14.html" title="Chapter 14. Benchmarking and tweaking">Benchmarker</a> to improve the values for those size parameters.</p><p>If it's worth your time, continue experimenting further. For example, try combining multiple algorithms
+    together:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>First Fit Decreasing</p></li><li class="listitem"><p>Late Acceptance (relatively long time)</p></li><li class="listitem"><p>Tabu Search (relatively short time)</p></li></ol></div></div><div class="section" title="6.6. Solver phase"><div class="titlepage"><div><div><h2 class="title"><a id="solverPhase"/>6.6. Solver phase</h2></div></div></div><p>A <code class="literal">Solver</code> can use multiple optimization algorithms in sequence. <span class="bold"><strong>Each
+    optimization algorithm is represented by a solver <code class="literal">Phase</code>.</strong></span> There is never more than 1
+    <code class="literal">Phase</code> solving at the same time.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2><p>Some <code class="literal">Phase</code> implementations can combine techniques from multiple optimization algorithms,
+      but they is still just 1 <code class="literal">Phase</code>. For example: a Local Search <code class="literal">Phase</code> can do
+      Simulated Annealing with entity Tabu.</p></div><p>Here's a configuration that runs 3 phases in sequence:</p><pre><code class="language-xml">&lt;solver&gt;
+  ...
+  &lt;constructionHeuristic&gt;
+    ... &lt;!-- First phase: First Fit Decreasing --&gt;
+  &lt;/constructionHeuristic&gt;
+  &lt;localSearch&gt;
+    ... &lt;!-- Second phase: Late Acceptance --&gt;
+  &lt;/localSearch&gt;
+  &lt;localSearch&gt;
+    ... &lt;!-- Third phase: Tabu Search --&gt;
+  &lt;/localSearch&gt;
+&lt;/solver&gt;</code></pre><p>The solver phases are run in the order defined by solver configuration. When the first
+    <code class="literal">Phase</code> terminates, the second <code class="literal">Phase</code> starts, and so on. When the last
+    <code class="literal">Phase</code> terminates, the <code class="literal">Solver</code> terminates. Usually, a <code class="literal">Solver</code>
+    will first run a construction heuristic and then run 1 or multiple metaheuristics:</p><div class="mediaobject"><img src="images/Chapter-Optimization_algorithms/generalPhaseSequence.png"/></div><p>Some phases (especially construction heuristics) will terminate automatically. Other phases (especially
+    metaheuristics) will only terminate if the <code class="literal">Phase</code> is configured to terminate:</p><pre><code class="language-xml">&lt;solver&gt;
+  ...
+  &lt;termination&gt;&lt;!-- Solver termination --&gt;
+    &lt;secondsSpentLimit&gt;90&lt;/secondsSpentLimit&gt;
+  &lt;/termination&gt;
+  &lt;localSearch&gt;
+    &lt;termination&gt;&lt;!-- Phase termination --&gt;
+      &lt;secondsSpentLimit&gt;60&lt;/secondsSpentLimit&gt;&lt;!-- Give the next phase a chance to run too, before the Solver terminates --&gt;
+    &lt;/termination&gt;
+    ...
+  &lt;/localSearch&gt;
+  &lt;localSearch&gt;
+    ...
+  &lt;/localSearch&gt;
+&lt;/solver&gt;</code></pre><p>If the <code class="literal">Solver</code> terminates (before the last <code class="literal">Phase</code> terminates itself), the
+    current phase is terminated and all subsequent phases won't run.</p></div><div class="section" title="6.7. Scope overview"><div class="titlepage"><div><div><h2 class="title"><a id="scopeOverview"/>6.7. Scope overview</h2></div></div></div><p>A solver will iteratively run phases. Each phase will usually iteratively run steps. Each step, in turn,
+    usually iteratively runs moves. These form 4 nested scopes: solver, phase, step and move.</p><div class="mediaobject"><img src="images/Chapter-Optimization_algorithms/scopeOverview.png"/></div><p>Configure <a class="link" href="ch04.html#logging" title="4.4.4. Logging level: What is the Solver doing?">logging</a> to display the log messages of each scope.</p></div><div class="section" title="6.8. Termination"><div class="titlepage"><div><div><h2 class="title"><a id="termination"/>6.8. Termination</h2></div></div></div><p>Not all phases terminate automatically and sometimes you don't want to wait that long anyway. A
+    <code class="literal">Solver</code> can be terminated synchronously by up-front configuration or asynchronously from another
+    thread.</p><p>Especially metaheuristic phases will need to be told when to stop solving. This can be because of a number of
+    reasons: the time is up, the perfect score has been reached, ... The only thing you can't depend on, is on finding
+    the optimal solution (unless you know the optimal score), because a metaheuristic algorithm generally doesn't know
+    it when it finds the optimal solution. For real-life problems this doesn't turn out to be much of a problem, because
+    finding the optimal solution could take years, so you'll want to terminate sooner anyway. The only thing that
+    matters is finding the best solution in the available time.</p><p>For synchronous termination, configure a <code class="literal">Termination</code> on a <code class="literal">Solver</code> or a
+    <code class="literal">Phase</code> when it needs to stop. You can implement your own <code class="literal">Termination</code>, but the
+    built-in implementations should suffice for most needs. Every <code class="literal">Termination</code> can calculate a
+    <span class="emphasis"><em>time gradient</em></span> (needed for some optimization algorithms), which is a ratio between the time
+    already spent solving and the estimated entire solving time of the <code class="literal">Solver</code> or
+    <code class="literal">Phase</code>.</p><div class="section" title="6.8.1. TimeMillisSpentTermination"><div class="titlepage"><div><div><h3 class="title"><a id="timeMillisSpentTermination"/>6.8.1. TimeMillisSpentTermination</h3></div></div></div><p>Terminates when an amount of time has been used:</p><pre><code class="language-xml">  &lt;termination&gt;
+    &lt;millisecondsSpentLimit&gt;500&lt;/millisecondsSpentLimit&gt;
+  &lt;/termination&gt;</code></pre><pre><code class="language-xml">  &lt;termination&gt;
+    &lt;secondsSpentLimit&gt;10&lt;/secondsSpentLimit&gt;
+  &lt;/termination&gt;</code></pre><pre><code class="language-xml">  &lt;termination&gt;
+    &lt;minutesSpentLimit&gt;5&lt;/minutesSpentLimit&gt;
+  &lt;/termination&gt;</code></pre><pre><code class="language-xml">  &lt;termination&gt;
+    &lt;hoursSpentLimit&gt;1&lt;/hoursSpentLimit&gt;
+  &lt;/termination&gt;</code></pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2><p>This <code class="literal">Termination</code> will most likely sacrifice perfect reproducibility (even with
+        <code class="literal">environmentMode</code> <code class="literal">REPRODUCIBLE</code>) because the available CPU time differs
+        frequently between runs:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>The available CPU time influences the number of steps that can be taken, which might be a few more or
+            less.</p></li><li class="listitem"><p>The <code class="literal">Termination</code> might produce slightly different time gradient values, which will
+            send time gradient based algorithms (such as Simulated Annealing) on a radically different path.</p></li></ul></div></div></div><div class="section" title="6.8.2. UnimprovedTimeMillisSpentTermination"><div class="titlepage"><div><div><h3 class="title"><a id="unimprovedTimeMillisSpentTermination"/>6.8.2. UnimprovedTimeMillisSpentTermination</h3></div></div></div><p>Terminates when the best score hasn't improved in an amount of time:</p><pre><code class="language-xml">  &lt;localSearch&gt;
+    &lt;termination&gt;
+      &lt;unimprovedMillisecondsSpentLimit&gt;500&lt;/unimprovedMillisecondsSpentLimit&gt;
+    &lt;/termination&gt;
+  &lt;/localSearch&gt;</code></pre><pre><code class="language-xml">  &lt;localSearch&gt;
+    &lt;termination&gt;
+      &lt;unimprovedSecondsSpentLimit&gt;10&lt;/unimprovedSecondsSpentLimit&gt;
+    &lt;/termination&gt;
+  &lt;/localSearch&gt;</code></pre><pre><code class="language-xml">  &lt;localSearch&gt;
+    &lt;termination&gt;
+      &lt;unimprovedMinutesSpentLimit&gt;5&lt;/unimprovedMinutesSpentLimit&gt;
+    &lt;/termination&gt;
+  &lt;/localSearch&gt;</code></pre><pre><code class="language-xml">  &lt;localSearch&gt;
+    &lt;termination&gt;
+      &lt;unimprovedHoursSpentLimit&gt;1&lt;/unimprovedHoursSpentLimit&gt;
+    &lt;/termination&gt;
+  &lt;/localSearch&gt;</code></pre><p>This termination should not be applied to Construction Heuristics, because they only update the best
+      solution at the end. Therefore it might be better to configure it on a specific <code class="literal">Phase</code> (such as
+      <code class="literal">&lt;localSearch&gt;</code>), instead of on the <code class="literal">Solver</code> itself.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2><p>This <code class="literal">Termination</code> will most likely sacrifice perfect reproducibility (even with
+        <code class="literal">environmentMode</code> <code class="literal">REPRODUCIBLE</code>) because the available CPU time differs
+        frequently between runs:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>The available CPU time influences the number of steps that can be taken, which might be a few more or
+            less.</p></li><li class="listitem"><p>The <code class="literal">Termination</code> might produce slightly different time gradient values, which will
+            send time gradient based algorithms (such as Simulated Annealing) on a radically different path.</p></li></ul></div></div></div><div class="section" title="6.8.3. BestScoreTermination"><div class="titlepage"><div><div><h3 class="title"><a id="bestScoreTermination"/>6.8.3. BestScoreTermination</h3></div></div></div><p>Terminates when a certain score has been reached. You can use this <code class="literal">Termination</code> if you
+      know the perfect score, for example for 4 queens (which uses a <a class="link" href="ch05.html#simpleScore" title="5.2.1. SimpleScore">SimpleScore</a>):</p><pre><code class="language-xml">  &lt;termination&gt;
+    &lt;bestScoreLimit&gt;0&lt;/bestScoreLimit&gt;
+  &lt;/termination&gt;</code></pre><p>For a planning problem with a <a class="link" href="ch05.html#hardSoftScore" title="5.2.2. HardSoftScore (recommended)">HardSoftScore</a>, it could look like
+      this:</p><pre><code class="language-xml">  &lt;termination&gt;
+    &lt;bestScoreLimit&gt;0hard/-5000soft&lt;/bestScoreLimit&gt;
+  &lt;/termination&gt;</code></pre><p>For a planning problem with a <a class="link" href="ch05.html#bendableScore" title="5.2.4. BendableScore">BendableScore</a> with 3 hard levels and 1
+      soft level, it could look like this:</p><pre><code class="language-xml">  &lt;termination&gt;
+    &lt;bestScoreLimit&gt;0/0/0/-5000&lt;/bestScoreLimit&gt;
+  &lt;/termination&gt;</code></pre><p>To terminate once a feasible solution has been reached, this <code class="literal">Termination</code> isn't practical
+      because it requires a <code class="literal">bestScoreLimit</code> such as <code class="literal">0hard/-2147483648soft</code>. Instead,
+      use the next termination.</p></div><div class="section" title="6.8.4. BestScoreFeasibleTermination"><div class="titlepage"><div><div><h3 class="title"><a id="bestScoreFeasibleTermination"/>6.8.4. BestScoreFeasibleTermination</h3></div></div></div><p>Terminates when a certain score is feasible. Requires that the <code class="literal">Score</code> implementation
+      implements <code class="literal">FeasibilityScore</code>.</p><pre><code class="language-xml">  &lt;termination&gt;
+    &lt;bestScoreFeasible&gt;true&lt;/bestScoreFeasible&gt;
+  &lt;/termination&gt;</code></pre><p>This <code class="literal">Termination</code> is usually combined with other terminations.</p></div><div class="section" title="6.8.5. StepCountTermination"><div class="titlepage"><div><div><h3 class="title"><a id="stepCountTermination"/>6.8.5. StepCountTermination</h3></div></div></div><p>Terminates when an amount of steps has been reached:</p><pre><code class="language-xml">  &lt;localSearch&gt;
+    &lt;termination&gt;
+      &lt;stepCountLimit&gt;100&lt;/stepCountLimit&gt;
+    &lt;/termination&gt;
+  &lt;/localSearch&gt;</code></pre><p>This <code class="literal">Termination</code> can only be used for a <code class="literal">Phase</code> (such as
+      <code class="literal">&lt;localSearch&gt;</code>), not for the <code class="literal">Solver</code> itself.</p></div><div class="section" title="6.8.6. UnimprovedStepCountTermination"><div class="titlepage"><div><div><h3 class="title"><a id="unimprovedStepCountTermination"/>6.8.6. UnimprovedStepCountTermination</h3></div></div></div><p>Terminates when the best score hasn't improved in a number of steps:</p><pre><code class="language-xml">  &lt;localSearch&gt;
+    &lt;termination&gt;
+      &lt;unimprovedStepCountLimit&gt;100&lt;/unimprovedStepCountLimit&gt;
+    &lt;/termination&gt;
+  &lt;/localSearch&gt;</code></pre><p>If the score hasn't improved recently, it's probably not going to improve soon anyway and it's not worth the
+      effort to continue. We have observed that once a new best solution is found (even after a long time of no
+      improvement on the best solution), the next few steps tend to improve the best solution too.</p><p>This <code class="literal">Termination</code> can only be used for a <code class="literal">Phase</code> (such as
+      <code class="literal">&lt;localSearch&gt;</code>), not for the <code class="literal">Solver</code> itself.</p></div><div class="section" title="6.8.7. Combining multiple Terminations"><div class="titlepage"><div><div><h3 class="title"><a id="combiningMultipleTerminations"/>6.8.7. Combining multiple Terminations</h3></div></div></div><p>Terminations can be combined, for example: terminate after <code class="literal">100</code> steps or if a score of
+      <code class="literal">0</code> has been reached:</p><pre><code class="language-xml">  &lt;termination&gt;
+    &lt;terminationCompositionStyle&gt;OR&lt;/terminationCompositionStyle&gt;
+    &lt;stepCountLimit&gt;100&lt;/stepCountLimit&gt;
+    &lt;bestScoreLimit&gt;0&lt;/bestScoreLimit&gt;
+  &lt;/termination&gt;</code></pre><p>Alternatively you can use AND, for example: terminate after reaching a feasible score of at least
+      <code class="literal">-100</code> and no improvements in <code class="literal">5</code> steps:</p><pre><code class="language-xml">  &lt;termination&gt;
+    &lt;terminationCompositionStyle&gt;AND&lt;/terminationCompositionStyle&gt;
+    &lt;unimprovedStepCountLimit&gt;5&lt;/unimprovedStepCountLimit&gt;
+    &lt;bestScoreLimit&gt;-100&lt;/bestScoreLimit&gt;
+  &lt;/termination&gt;</code></pre><p>This example ensures it doesn't just terminate after finding a feasible solution, but also completes any
+      obvious improvements on that solution before terminating.</p></div><div class="section" title="6.8.8. Asynchronous termination from another thread"><div class="titlepage"><div><div><h3 class="title"><a id="asynchronousTermination"/>6.8.8. Asynchronous termination from another thread</h3></div></div></div><p>Sometimes you'll want to terminate a Solver early from another thread, for example because a user action or
+      a server restart. This cannot be configured by a <code class="literal">Termination</code> as it's impossible to predict when
+      and if it will occur. Therefore the <code class="literal">Solver</code> interface has these 2 thread-safe methods:</p><pre><code class="language-java">public interface Solver {
+
+    // ...
+
+    boolean terminateEarly();
+    boolean isTerminateEarly();
+
+}</code></pre><p>If you call the <code class="literal">terminateEarly()</code> method from another thread, the
+      <code class="literal">Solver</code> will terminate at its earliest convenience and the <code class="literal">solve(Solution)</code>
+      method will return in the original <code class="literal">Solver</code> thread.</p></div></div><div class="section" title="6.9. SolverEventListener"><div class="titlepage"><div><div><h2 class="title"><a id="SolverEventListener"/>6.9. SolverEventListener</h2></div></div></div><p>Each time a new best solution is found, the <code class="literal">Solver</code> fires a
+    <code class="literal">BestSolutionChangedEvent</code>, in the solver's thread.</p><p>To listen to such events, add a <code class="literal">SolverEventListener</code> to the
+    <code class="literal">Solver</code>:</p><pre><code class="language-java">public interface Solver {
+
+    // ...
+
+    void addEventListener(SolverEventListener&lt;? extends Solution&gt; eventListener);
+    void removeEventListener(SolverEventListener&lt;? extends Solution&gt; eventListener);
+
+}</code></pre><p>The <code class="literal">BestSolutionChangedEvent</code>'s <code class="literal">newBestSolution</code> might not be initialized
+    or feasible. Use the methods on <code class="literal">BestSolutionChangedEvent</code> to detect such cases:</p><pre><code class="language-java">    solver.addEventListener(new SolverEventListener&lt;CloudBalance&gt;() {
+        public void bestSolutionChanged(BestSolutionChangedEvent&lt;CloudBalance&gt; event) {
+            // Ignore invalid solutions
+            if (event.isNewBestSolutionInitialized()
+                    &amp;&amp; event.getNewBestSolution().getScore().isFeasible()) {
+                ...
+            }
+        }
+    });</code></pre><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2><p>The <code class="literal">bestSolutionChanged()</code> method is called in the solver's thread, as part of
+      <code class="literal">Solver.solve()</code>. So it should return quickly to avoid slowing down the solving.</p></div></div><div class="section" title="6.10. Custom solver phase"><div class="titlepage"><div><div><h2 class="title"><a id="customSolverPhase"/>6.10. Custom solver phase</h2></div></div></div><p>Between phases or before the first phase, you might want to execute a custom action on the
+    <code class="literal">Solution</code> to get a better score. Yet you'll still want to reuse the score calculation. For
+    example, to implement a custom construction heuristic without implementing an entire
+    <code class="literal">Phase</code>.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2><p>Most of the time, a custom construction heuristic is not worth the hassle. The supported constructions
+      heuristics are configurable (use the <a class="link" href="ch14.html" title="Chapter 14. Benchmarking and tweaking">Benchmarker</a> to tweak them),
+      <code class="literal">Termination</code> aware and support partially initialized solutions too.</p></div><p>Implement the <code class="literal">CustomPhaseCommand</code> interface:</p><pre><code class="language-java">public interface CustomPhaseCommand {
+
+    void changeWorkingSolution(ScoreDirector scoreDirector);
+
+}</code></pre><p>For example:</p><pre><code class="language-java">public class ToOriginalMachineSolutionInitializer implements CustomPhaseCommand {
+
+    public void changeWorkingSolution(ScoreDirector scoreDirector) {
+        MachineReassignment machineReassignment = (MachineReassignment) scoreDirector.getWorkingSolution();
+        for (MrProcessAssignment processAssignment : machineReassignment.getProcessAssignmentList()) {
+            scoreDirector.beforeVariableChanged(processAssignment, "machine");
+            processAssignment.setMachine(processAssignment.getOriginalMachine());
+            scoreDirector.afterVariableChanged(processAssignment, "machine");
+        }
+    }
+
+}</code></pre><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2><p>Any change on the planning entities in a <code class="literal">CustomPhaseCommand</code> must be notified to the
+      <code class="literal">ScoreDirector</code>.</p></div><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2><p>Do not change any of the planning facts in a <code class="literal">CustomPhaseCommand</code>. That will corrupt the
+      <code class="literal">Solver</code> because any previous score or solution was for a different problem. To do that, read
+      about <a class="link" href="ch15.html" title="Chapter 15. Repeated planning">repeated planning</a> and do it with a <a class="link" href="ch15.html#problemFactChange" title="15.4.1. ProblemFactChange">ProblemFactChange</a> instead.</p></div><p>Configure your <code class="literal">CustomPhaseCommand</code> like this:</p><pre><code class="language-xml">&lt;solver&gt;
+  ...
+  &lt;customPhase&gt;
+    &lt;customPhaseCommandClass&gt;org.optaplanner.examples.machinereassignment.solver.solution.initializer.ToOriginalMachineSolutionInitializer&lt;/customPhaseCommandClass&gt;
+  &lt;/customPhase&gt;
+  ... &lt;!-- Other phases --&gt;
+&lt;/solver&gt;</code></pre><p>Configure multiple <code class="literal">customPhaseCommandClass</code> instances to run them in sequence.</p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Important</h2><p>If the changes of a <code class="literal">CustomPhaseCommand</code> don't result in a better score, the best solution
+      won't be changed (so effectively nothing will have changed for the next <code class="literal">Phase</code> or
+      <code class="literal">CustomPhaseCommand</code>). To force such changes anyway, use
+      <code class="literal">forceUpdateBestSolution</code>:</p><pre><code class="language-xml">  &lt;customPhase&gt;
+    &lt;customPhaseCommandClass&gt;...MyUninitializer&lt;/customPhaseCommandClass&gt;
+    &lt;forceUpdateBestSolution&gt;true&lt;/forceUpdateBestSolution&gt;
+  &lt;/customPhase&gt;</code></pre></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2><p>If the <code class="literal">Solver</code> or a <code class="literal">Phase</code> wants to terminate while a
+      <code class="literal">CustomPhaseCommand</code> is still running, it will wait to terminate until the
+      <code class="literal">CustomPhaseCommand</code> is done, however long that takes.</p></div></div></div><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-39485370-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();</script><ul class="docnav"><li class="previous"><a accesskey="p" href="ch05.html"><strong>Prev</strong>Chapter 5. Score calculation</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch07.html"><strong>Next</strong>Chapter 7. Move and neighborhood selection</a></li></ul></body></html>

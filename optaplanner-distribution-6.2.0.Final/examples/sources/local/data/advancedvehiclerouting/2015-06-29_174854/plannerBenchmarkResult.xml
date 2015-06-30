@@ -1,0 +1,4243 @@
+<plannerBenchmarkResult xStreamId="1">
+  <name>2015-06-29_174854</name>
+  <aggregation>false</aggregation>
+  <availableProcessors>4</availableProcessors>
+  <maxMemory>1834483712</maxMemory>
+  <optaPlannerVersion>6.2.0.Final</optaPlannerVersion>
+  <javaVersion>Java 1.7.0_79 (Oracle Corporation)</javaVersion>
+  <javaVM>Java OpenJDK 64-Bit Server VM 24.79-b02 (Oracle Corporation)</javaVM>
+  <operatingSystem>Linux amd64 3.13.0-32-generic</operatingSystem>
+  <parallelBenchmarkCount>2</parallelBenchmarkCount>
+  <warmUpTimeMillisSpentLimit>30000</warmUpTimeMillisSpentLimit>
+  <solverBenchmarkResult xStreamId="2">
+    <name>First Fit</name>
+    <solverConfig xStreamId="3">
+      <solutionClass>org.optaplanner.examples.advancedvehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.advancedvehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.advancedvehiclerouting.domain.Customer</entityClass>
+      <entityClass>org.optaplanner.examples.advancedvehiclerouting.domain.timewindowed.TimeWindowedCustomer</entityClass>
+      <scoreDirectorFactory xStreamId="4">
+        <scoreDefinitionType>HARD_SOFT</scoreDefinitionType>
+        <incrementalScoreCalculatorClass>org.optaplanner.examples.advancedvehiclerouting.solver.score.VehicleRoutingIncrementalScoreCalculator</incrementalScoreCalculatorClass>
+        <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
+      </scoreDirectorFactory>
+      <termination xStreamId="5">
+        <minutesSpentLimit>5</minutesSpentLimit>
+      </termination>
+      <constructionHeuristic xStreamId="6">
+        <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+      </constructionHeuristic>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="7">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="8">
+        <hardScore>0</hardScore>
+        <softScore>-1275468</softScore>
+      </score>
+      <timeMillisSpent>17</timeMillisSpent>
+      <calculateCount>622</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="9">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="10">
+        <hardScore>0</hardScore>
+        <softScore>-1197042</softScore>
+      </score>
+      <timeMillisSpent>11</timeMillisSpent>
+      <calculateCount>658</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="11">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="12">
+        <hardScore>0</hardScore>
+        <softScore>-1221872</softScore>
+      </score>
+      <timeMillisSpent>12</timeMillisSpent>
+      <calculateCount>686</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="13">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="14">
+        <hardScore>0</hardScore>
+        <softScore>-1262279</softScore>
+      </score>
+      <timeMillisSpent>11</timeMillisSpent>
+      <calculateCount>695</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="15">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="16">
+        <hardScore>0</hardScore>
+        <softScore>-1248343</softScore>
+      </score>
+      <timeMillisSpent>5</timeMillisSpent>
+      <calculateCount>772</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="17">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="18">
+        <hardScore>0</hardScore>
+        <softScore>-1035857</softScore>
+      </score>
+      <timeMillisSpent>6</timeMillisSpent>
+      <calculateCount>812</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="19">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="20">
+        <hardScore>0</hardScore>
+        <softScore>-1284296</softScore>
+      </score>
+      <timeMillisSpent>7</timeMillisSpent>
+      <calculateCount>848</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="21">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="22">
+        <hardScore>0</hardScore>
+        <softScore>-1237366</softScore>
+      </score>
+      <timeMillisSpent>3</timeMillisSpent>
+      <calculateCount>853</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="23">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="24">
+        <hardScore>0</hardScore>
+        <softScore>-1168463</softScore>
+      </score>
+      <timeMillisSpent>5</timeMillisSpent>
+      <calculateCount>888</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="25">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="26">
+        <hardScore>0</hardScore>
+        <softScore>-1469978</softScore>
+      </score>
+      <timeMillisSpent>3</timeMillisSpent>
+      <calculateCount>933</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="27">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="28">
+        <hardScore>0</hardScore>
+        <softScore>-1613919</softScore>
+      </score>
+      <timeMillisSpent>7</timeMillisSpent>
+      <calculateCount>1206</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="29">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="30">
+        <hardScore>-7</hardScore>
+        <softScore>-1756388</softScore>
+      </score>
+      <timeMillisSpent>7</timeMillisSpent>
+      <calculateCount>1212</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="31">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="32">
+        <hardScore>0</hardScore>
+        <softScore>-1757892</softScore>
+      </score>
+      <timeMillisSpent>10</timeMillisSpent>
+      <calculateCount>1217</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="33">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="34">
+        <hardScore>0</hardScore>
+        <softScore>-1671365</softScore>
+      </score>
+      <timeMillisSpent>4</timeMillisSpent>
+      <calculateCount>1307</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="35">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="36">
+        <hardScore>0</hardScore>
+        <softScore>-1787292</softScore>
+      </score>
+      <timeMillisSpent>4</timeMillisSpent>
+      <calculateCount>1410</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="37">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="38">
+        <hardScore>0</hardScore>
+        <softScore>-1856691</softScore>
+      </score>
+      <timeMillisSpent>5</timeMillisSpent>
+      <calculateCount>1692</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="39">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="40">
+        <hardScore>0</hardScore>
+        <softScore>-1907720</softScore>
+      </score>
+      <timeMillisSpent>7</timeMillisSpent>
+      <calculateCount>1751</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="41">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="42">
+        <hardScore>0</hardScore>
+        <softScore>-2047228</softScore>
+      </score>
+      <timeMillisSpent>10</timeMillisSpent>
+      <calculateCount>1919</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="43">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="44">
+        <hardScore>0</hardScore>
+        <softScore>-2255347</softScore>
+      </score>
+      <timeMillisSpent>9</timeMillisSpent>
+      <calculateCount>2244</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="45">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="46">
+        <hardScore>0</hardScore>
+        <softScore>-1963515</softScore>
+      </score>
+      <timeMillisSpent>6</timeMillisSpent>
+      <calculateCount>2312</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="47">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="48">
+        <hardScore>0</hardScore>
+        <softScore>-2134674</softScore>
+      </score>
+      <timeMillisSpent>8</timeMillisSpent>
+      <calculateCount>2318</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="49">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="50">
+        <hardScore>0</hardScore>
+        <softScore>-2292941</softScore>
+      </score>
+      <timeMillisSpent>10</timeMillisSpent>
+      <calculateCount>2513</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="51">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="52">
+        <hardScore>0</hardScore>
+        <softScore>-2554080</softScore>
+      </score>
+      <timeMillisSpent>5</timeMillisSpent>
+      <calculateCount>2451</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="53">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="54">
+        <hardScore>0</hardScore>
+        <softScore>-2327127</softScore>
+      </score>
+      <timeMillisSpent>11</timeMillisSpent>
+      <calculateCount>2519</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="55">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="56">
+        <hardScore>0</hardScore>
+        <softScore>-2299695</softScore>
+      </score>
+      <timeMillisSpent>8</timeMillisSpent>
+      <calculateCount>2592</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="57">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="58">
+        <hardScore>0</hardScore>
+        <softScore>-2371324</softScore>
+      </score>
+      <timeMillisSpent>16</timeMillisSpent>
+      <calculateCount>2892</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="59">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="60">
+        <hardScore>0</hardScore>
+        <softScore>-3153539</softScore>
+      </score>
+      <timeMillisSpent>13</timeMillisSpent>
+      <calculateCount>3806</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="61">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="62">
+        <hardScore>0</hardScore>
+        <softScore>-1674435</softScore>
+      </score>
+      <timeMillisSpent>33</timeMillisSpent>
+      <calculateCount>9760</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="63">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="64">
+        <hardScore>0</hardScore>
+        <softScore>-934078</softScore>
+      </score>
+      <timeMillisSpent>9</timeMillisSpent>
+      <calculateCount>1124</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="65">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="66">
+        <hardScore>0</hardScore>
+        <softScore>-366224</softScore>
+      </score>
+      <timeMillisSpent>12</timeMillisSpent>
+      <calculateCount>2741</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="67">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="68">
+        <hardScore>0</hardScore>
+        <softScore>-37858</softScore>
+      </score>
+      <timeMillisSpent>8</timeMillisSpent>
+      <calculateCount>1632</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="69">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="70">
+        <hardScore>0</hardScore>
+        <softScore>-49506</softScore>
+      </score>
+      <timeMillisSpent>13</timeMillisSpent>
+      <calculateCount>5832</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="71">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="72">
+        <hardScore>0</hardScore>
+        <softScore>-143624</softScore>
+      </score>
+      <timeMillisSpent>215</timeMillisSpent>
+      <calculateCount>134091</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="73">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="74">
+        <hardScore>0</hardScore>
+        <softScore>-195294</softScore>
+      </score>
+      <timeMillisSpent>969</timeMillisSpent>
+      <calculateCount>517404</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="75">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="76">
+        <hardScore>0</hardScore>
+        <softScore>-529067</softScore>
+      </score>
+      <timeMillisSpent>7463</timeMillisSpent>
+      <calculateCount>3909130</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="77">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="78">
+        <hardScore>0</hardScore>
+        <softScore>-3499759</softScore>
+      </score>
+      <timeMillisSpent>9</timeMillisSpent>
+      <calculateCount>1668</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="79">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="80">
+        <hardScore>0</hardScore>
+        <softScore>-4716815</softScore>
+      </score>
+      <timeMillisSpent>24</timeMillisSpent>
+      <calculateCount>5798</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="81">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="82">
+        <hardScore>0</hardScore>
+        <softScore>-180648515</softScore>
+      </score>
+      <timeMillisSpent>7</timeMillisSpent>
+      <calculateCount>1668</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="83">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="84">
+        <hardScore>0</hardScore>
+        <softScore>-253273834</softScore>
+      </score>
+      <timeMillisSpent>11</timeMillisSpent>
+      <calculateCount>5843</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="85">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="86">
+        <hardScore>0</hardScore>
+        <softScore>-191815</softScore>
+      </score>
+      <timeMillisSpent>53</timeMillisSpent>
+      <calculateCount>927</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="87">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="88">
+        <hardScore>0</hardScore>
+        <softScore>-215542</softScore>
+      </score>
+      <timeMillisSpent>9</timeMillisSpent>
+      <calculateCount>927</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="89">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="90">
+        <hardScore>0</hardScore>
+        <softScore>-780025</softScore>
+      </score>
+      <timeMillisSpent>3</timeMillisSpent>
+      <calculateCount>927</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="91">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="92">
+        <hardScore>0</hardScore>
+        <softScore>-646884</softScore>
+      </score>
+      <timeMillisSpent>4</timeMillisSpent>
+      <calculateCount>927</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="93">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="94">
+        <hardScore>0</hardScore>
+        <softScore>-501325</softScore>
+      </score>
+      <timeMillisSpent>5</timeMillisSpent>
+      <calculateCount>927</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="95">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="96">
+        <hardScore>0</hardScore>
+        <softScore>-445018</softScore>
+      </score>
+      <timeMillisSpent>3</timeMillisSpent>
+      <calculateCount>927</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="97">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="98">
+        <hardScore>0</hardScore>
+        <softScore>-1025533</softScore>
+      </score>
+      <timeMillisSpent>41</timeMillisSpent>
+      <calculateCount>7452</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="99">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="100">
+        <hardScore>0</hardScore>
+        <softScore>-773775</softScore>
+      </score>
+      <timeMillisSpent>31</timeMillisSpent>
+      <calculateCount>7452</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="101">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="102">
+        <hardScore>0</hardScore>
+        <softScore>-2327460</softScore>
+      </score>
+      <timeMillisSpent>19</timeMillisSpent>
+      <calculateCount>7452</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="103">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="104">
+        <hardScore>0</hardScore>
+        <softScore>-1849012</softScore>
+      </score>
+      <timeMillisSpent>53</timeMillisSpent>
+      <calculateCount>7452</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="105">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="106">
+        <hardScore>0</hardScore>
+        <softScore>-2170883</softScore>
+      </score>
+      <timeMillisSpent>19</timeMillisSpent>
+      <calculateCount>7452</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="107">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="108">
+        <hardScore>0</hardScore>
+        <softScore>-2036384</softScore>
+      </score>
+      <timeMillisSpent>30</timeMillisSpent>
+      <calculateCount>7423</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="109">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="110">
+        <hardScore>0</hardScore>
+        <softScore>-8936308</softScore>
+      </score>
+      <timeMillisSpent>95</timeMillisSpent>
+      <calculateCount>29866</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="111">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="112">
+        <hardScore>0</hardScore>
+        <softScore>-5756436</softScore>
+      </score>
+      <timeMillisSpent>203</timeMillisSpent>
+      <calculateCount>29848</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="113">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="114">
+        <hardScore>0</hardScore>
+        <softScore>-7083073</softScore>
+      </score>
+      <timeMillisSpent>78</timeMillisSpent>
+      <calculateCount>29902</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="115">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="116">
+        <hardScore>0</hardScore>
+        <softScore>-5386733</softScore>
+      </score>
+      <timeMillisSpent>104</timeMillisSpent>
+      <calculateCount>29811</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="117">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="118">
+        <hardScore>0</hardScore>
+        <softScore>-5874752</softScore>
+      </score>
+      <timeMillisSpent>141</timeMillisSpent>
+      <calculateCount>29829</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="119">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="120">
+        <hardScore>0</hardScore>
+        <softScore>-4883054</softScore>
+      </score>
+      <timeMillisSpent>99</timeMillisSpent>
+      <calculateCount>29902</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="121">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="122">
+        <hardScore>0</hardScore>
+        <softScore>-22377904</softScore>
+      </score>
+      <timeMillisSpent>271</timeMillisSpent>
+      <calculateCount>119380</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="123">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="124">
+        <hardScore>0</hardScore>
+        <softScore>-15604333</softScore>
+      </score>
+      <timeMillisSpent>399</timeMillisSpent>
+      <calculateCount>119744</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="125">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="126">
+        <hardScore>0</hardScore>
+        <softScore>-18892683</softScore>
+      </score>
+      <timeMillisSpent>281</timeMillisSpent>
+      <calculateCount>119243</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="127">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="128">
+        <hardScore>0</hardScore>
+        <softScore>-13931153</softScore>
+      </score>
+      <timeMillisSpent>679</timeMillisSpent>
+      <calculateCount>119802</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="129">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="130">
+        <hardScore>0</hardScore>
+        <softScore>-14378598</softScore>
+      </score>
+      <timeMillisSpent>292</timeMillisSpent>
+      <calculateCount>119736</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="131">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="132">
+        <hardScore>0</hardScore>
+        <softScore>-12844961</softScore>
+      </score>
+      <timeMillisSpent>551</timeMillisSpent>
+      <calculateCount>119504</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="133">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="134">
+        <hardScore>0</hardScore>
+        <softScore>-41507638</softScore>
+      </score>
+      <timeMillisSpent>920</timeMillisSpent>
+      <calculateCount>268946</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="135">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="136">
+        <hardScore>0</hardScore>
+        <softScore>-33044012</softScore>
+      </score>
+      <timeMillisSpent>882</timeMillisSpent>
+      <calculateCount>269702</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="137">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="138">
+        <hardScore>0</hardScore>
+        <softScore>-40975166</softScore>
+      </score>
+      <timeMillisSpent>982</timeMillisSpent>
+      <calculateCount>269406</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="139">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="140">
+        <hardScore>0</hardScore>
+        <softScore>-32516010</softScore>
+      </score>
+      <timeMillisSpent>1579</timeMillisSpent>
+      <calculateCount>268996</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="141">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="142">
+        <hardScore>0</hardScore>
+        <softScore>-26217177</softScore>
+      </score>
+      <timeMillisSpent>1025</timeMillisSpent>
+      <calculateCount>269012</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="143">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="144">
+        <hardScore>0</hardScore>
+        <softScore>-28443845</softScore>
+      </score>
+      <timeMillisSpent>739</timeMillisSpent>
+      <calculateCount>268764</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="145">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="146">
+        <hardScore>0</hardScore>
+        <softScore>-68897229</softScore>
+      </score>
+      <timeMillisSpent>1460</timeMillisSpent>
+      <calculateCount>478332</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="147">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="148">
+        <hardScore>0</hardScore>
+        <softScore>-53134684</softScore>
+      </score>
+      <timeMillisSpent>2077</timeMillisSpent>
+      <calculateCount>479602</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="149">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="150">
+        <hardScore>0</hardScore>
+        <softScore>-68551341</softScore>
+      </score>
+      <timeMillisSpent>1645</timeMillisSpent>
+      <calculateCount>478496</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="151">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="152">
+        <hardScore>0</hardScore>
+        <softScore>-49735255</softScore>
+      </score>
+      <timeMillisSpent>3783</timeMillisSpent>
+      <calculateCount>478778</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="153">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="154">
+        <hardScore>0</hardScore>
+        <softScore>-50408753</softScore>
+      </score>
+      <timeMillisSpent>2119</timeMillisSpent>
+      <calculateCount>477453</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="155">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="156">
+        <hardScore>0</hardScore>
+        <softScore>-37896207</softScore>
+      </score>
+      <timeMillisSpent>2201</timeMillisSpent>
+      <calculateCount>478164</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="157">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="158">
+        <hardScore>0</hardScore>
+        <softScore>-110283121</softScore>
+      </score>
+      <timeMillisSpent>1690</timeMillisSpent>
+      <calculateCount>746165</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="159">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="160">
+        <hardScore>0</hardScore>
+        <softScore>-71374749</softScore>
+      </score>
+      <timeMillisSpent>3317</timeMillisSpent>
+      <calculateCount>749498</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="161">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="162">
+        <hardScore>0</hardScore>
+        <softScore>-105081669</softScore>
+      </score>
+      <timeMillisSpent>2307</timeMillisSpent>
+      <calculateCount>747154</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="163">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="164">
+        <hardScore>0</hardScore>
+        <softScore>-79727716</softScore>
+      </score>
+      <timeMillisSpent>4147</timeMillisSpent>
+      <calculateCount>748718</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="165">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="166">
+        <hardScore>0</hardScore>
+        <softScore>-79081858</softScore>
+      </score>
+      <timeMillisSpent>2523</timeMillisSpent>
+      <calculateCount>745411</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="167">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="168">
+        <hardScore>0</hardScore>
+        <softScore>-58306203</softScore>
+      </score>
+      <timeMillisSpent>3556</timeMillisSpent>
+      <calculateCount>746981</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult xStreamId="169">
+    <name>First Fit Decreasing</name>
+    <solverConfig xStreamId="170">
+      <solutionClass>org.optaplanner.examples.advancedvehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.advancedvehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.advancedvehiclerouting.domain.Customer</entityClass>
+      <entityClass>org.optaplanner.examples.advancedvehiclerouting.domain.timewindowed.TimeWindowedCustomer</entityClass>
+      <scoreDirectorFactory xStreamRef="4"/>
+      <termination xStreamRef="5"/>
+      <constructionHeuristic xStreamId="171">
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="172">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="173">
+        <hardScore>0</hardScore>
+        <softScore>-913228</softScore>
+      </score>
+      <timeMillisSpent>17</timeMillisSpent>
+      <calculateCount>622</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="174">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="175">
+        <hardScore>0</hardScore>
+        <softScore>-819123</softScore>
+      </score>
+      <timeMillisSpent>12</timeMillisSpent>
+      <calculateCount>658</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="176">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="177">
+        <hardScore>0</hardScore>
+        <softScore>-959155</softScore>
+      </score>
+      <timeMillisSpent>12</timeMillisSpent>
+      <calculateCount>690</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="178">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="179">
+        <hardScore>0</hardScore>
+        <softScore>-824698</softScore>
+      </score>
+      <timeMillisSpent>55</timeMillisSpent>
+      <calculateCount>695</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="180">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="181">
+        <hardScore>0</hardScore>
+        <softScore>-1100280</softScore>
+      </score>
+      <timeMillisSpent>5</timeMillisSpent>
+      <calculateCount>767</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="182">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="183">
+        <hardScore>0</hardScore>
+        <softScore>-805104</softScore>
+      </score>
+      <timeMillisSpent>6</timeMillisSpent>
+      <calculateCount>799</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="184">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="185">
+        <hardScore>0</hardScore>
+        <softScore>-1154120</softScore>
+      </score>
+      <timeMillisSpent>13</timeMillisSpent>
+      <calculateCount>848</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="186">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="187">
+        <hardScore>0</hardScore>
+        <softScore>-914865</softScore>
+      </score>
+      <timeMillisSpent>13</timeMillisSpent>
+      <calculateCount>853</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="188">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="189">
+        <hardScore>0</hardScore>
+        <softScore>-1030496</softScore>
+      </score>
+      <timeMillisSpent>6</timeMillisSpent>
+      <calculateCount>856</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="190">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="191">
+        <hardScore>0</hardScore>
+        <softScore>-926160</softScore>
+      </score>
+      <timeMillisSpent>7</timeMillisSpent>
+      <calculateCount>933</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="192">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="193">
+        <hardScore>0</hardScore>
+        <softScore>-1132380</softScore>
+      </score>
+      <timeMillisSpent>8</timeMillisSpent>
+      <calculateCount>1206</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="194">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="195">
+        <hardScore>-7</hardScore>
+        <softScore>-1084068</softScore>
+      </score>
+      <timeMillisSpent>8</timeMillisSpent>
+      <calculateCount>1212</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="196">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="197">
+        <hardScore>0</hardScore>
+        <softScore>-1329992</softScore>
+      </score>
+      <timeMillisSpent>19</timeMillisSpent>
+      <calculateCount>1179</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="198">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="199">
+        <hardScore>0</hardScore>
+        <softScore>-1002725</softScore>
+      </score>
+      <timeMillisSpent>5</timeMillisSpent>
+      <calculateCount>1307</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="200">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="201">
+        <hardScore>0</hardScore>
+        <softScore>-1417662</softScore>
+      </score>
+      <timeMillisSpent>4</timeMillisSpent>
+      <calculateCount>1391</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="202">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="203">
+        <hardScore>0</hardScore>
+        <softScore>-1198455</softScore>
+      </score>
+      <timeMillisSpent>14</timeMillisSpent>
+      <calculateCount>1671</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="204">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="205">
+        <hardScore>0</hardScore>
+        <softScore>-1387028</softScore>
+      </score>
+      <timeMillisSpent>8</timeMillisSpent>
+      <calculateCount>1751</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="206">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="207">
+        <hardScore>0</hardScore>
+        <softScore>-1400687</softScore>
+      </score>
+      <timeMillisSpent>17</timeMillisSpent>
+      <calculateCount>1896</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="208">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="209">
+        <hardScore>0</hardScore>
+        <softScore>-1564538</softScore>
+      </score>
+      <timeMillisSpent>28</timeMillisSpent>
+      <calculateCount>2135</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="210">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="211">
+        <hardScore>-6</hardScore>
+        <softScore>-1262466</softScore>
+      </score>
+      <timeMillisSpent>6</timeMillisSpent>
+      <calculateCount>2170</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="212">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="213">
+        <hardScore>0</hardScore>
+        <softScore>-1612708</softScore>
+      </score>
+      <timeMillisSpent>7</timeMillisSpent>
+      <calculateCount>2224</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="214">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="215">
+        <hardScore>0</hardScore>
+        <softScore>-1586714</softScore>
+      </score>
+      <timeMillisSpent>12</timeMillisSpent>
+      <calculateCount>2513</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="216">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="217">
+        <hardScore>-1</hardScore>
+        <softScore>-1866815</softScore>
+      </score>
+      <timeMillisSpent>6</timeMillisSpent>
+      <calculateCount>2451</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="218">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="219">
+        <hardScore>0</hardScore>
+        <softScore>-1650847</softScore>
+      </score>
+      <timeMillisSpent>12</timeMillisSpent>
+      <calculateCount>2368</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="220">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="221">
+        <hardScore>0</hardScore>
+        <softScore>-1385050</softScore>
+      </score>
+      <timeMillisSpent>12</timeMillisSpent>
+      <calculateCount>2508</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="222">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="223">
+        <hardScore>0</hardScore>
+        <softScore>-1311064</softScore>
+      </score>
+      <timeMillisSpent>17</timeMillisSpent>
+      <calculateCount>2853</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="224">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="225">
+        <hardScore>0</hardScore>
+        <softScore>-2255697</softScore>
+      </score>
+      <timeMillisSpent>18</timeMillisSpent>
+      <calculateCount>3789</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="226">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="227">
+        <hardScore>0</hardScore>
+        <softScore>-1420843</softScore>
+      </score>
+      <timeMillisSpent>22</timeMillisSpent>
+      <calculateCount>9587</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="228">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="229">
+        <hardScore>0</hardScore>
+        <softScore>-787802</softScore>
+      </score>
+      <timeMillisSpent>13</timeMillisSpent>
+      <calculateCount>1124</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="230">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="231">
+        <hardScore>0</hardScore>
+        <softScore>-314383</softScore>
+      </score>
+      <timeMillisSpent>8</timeMillisSpent>
+      <calculateCount>2626</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="232">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="233">
+        <hardScore>0</hardScore>
+        <softScore>-22838</softScore>
+      </score>
+      <timeMillisSpent>9</timeMillisSpent>
+      <calculateCount>1668</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="234">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="235">
+        <hardScore>0</hardScore>
+        <softScore>-30857</softScore>
+      </score>
+      <timeMillisSpent>24</timeMillisSpent>
+      <calculateCount>5530</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="236">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="237">
+        <hardScore>0</hardScore>
+        <softScore>-59547</softScore>
+      </score>
+      <timeMillisSpent>227</timeMillisSpent>
+      <calculateCount>125112</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="238">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="239">
+        <hardScore>0</hardScore>
+        <softScore>-78347</softScore>
+      </score>
+      <timeMillisSpent>916</timeMillisSpent>
+      <calculateCount>478723</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="240">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="241">
+        <hardScore>0</hardScore>
+        <softScore>-150312</softScore>
+      </score>
+      <timeMillisSpent>6715</timeMillisSpent>
+      <calculateCount>3455502</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="242">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="243">
+        <hardScore>0</hardScore>
+        <softScore>-2294758</softScore>
+      </score>
+      <timeMillisSpent>5</timeMillisSpent>
+      <calculateCount>1668</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="244">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="245">
+        <hardScore>0</hardScore>
+        <softScore>-2952491</softScore>
+      </score>
+      <timeMillisSpent>23</timeMillisSpent>
+      <calculateCount>5843</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="246">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="247">
+        <hardScore>0</hardScore>
+        <softScore>-126362465</softScore>
+      </score>
+      <timeMillisSpent>8</timeMillisSpent>
+      <calculateCount>1668</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="248">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="249">
+        <hardScore>0</hardScore>
+        <softScore>-172900732</softScore>
+      </score>
+      <timeMillisSpent>12</timeMillisSpent>
+      <calculateCount>5843</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="250">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="251">
+        <hardScore>0</hardScore>
+        <softScore>-233906</softScore>
+      </score>
+      <timeMillisSpent>34</timeMillisSpent>
+      <calculateCount>861</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="252">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="253">
+        <hardScore>0</hardScore>
+        <softScore>-215542</softScore>
+      </score>
+      <timeMillisSpent>9</timeMillisSpent>
+      <calculateCount>927</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="254">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="255">
+        <hardScore>0</hardScore>
+        <softScore>-679067</softScore>
+      </score>
+      <timeMillisSpent>2</timeMillisSpent>
+      <calculateCount>927</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="256">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="257">
+        <hardScore>0</hardScore>
+        <softScore>-602383</softScore>
+      </score>
+      <timeMillisSpent>3</timeMillisSpent>
+      <calculateCount>888</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="258">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="259">
+        <hardScore>0</hardScore>
+        <softScore>-598958</softScore>
+      </score>
+      <timeMillisSpent>5</timeMillisSpent>
+      <calculateCount>927</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="260">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="261">
+        <hardScore>0</hardScore>
+        <softScore>-615175</softScore>
+      </score>
+      <timeMillisSpent>3</timeMillisSpent>
+      <calculateCount>927</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="262">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="263">
+        <hardScore>0</hardScore>
+        <softScore>-914341</softScore>
+      </score>
+      <timeMillisSpent>41</timeMillisSpent>
+      <calculateCount>7311</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="264">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="265">
+        <hardScore>0</hardScore>
+        <softScore>-591555</softScore>
+      </score>
+      <timeMillisSpent>35</timeMillisSpent>
+      <calculateCount>7452</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="266">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="267">
+        <hardScore>0</hardScore>
+        <softScore>-1898931</softScore>
+      </score>
+      <timeMillisSpent>21</timeMillisSpent>
+      <calculateCount>7301</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="268">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="269">
+        <hardScore>0</hardScore>
+        <softScore>-1423883</softScore>
+      </score>
+      <timeMillisSpent>44</timeMillisSpent>
+      <calculateCount>7212</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="270">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="271">
+        <hardScore>0</hardScore>
+        <softScore>-2068254</softScore>
+      </score>
+      <timeMillisSpent>18</timeMillisSpent>
+      <calculateCount>7452</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="272">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="273">
+        <hardScore>0</hardScore>
+        <softScore>-1707950</softScore>
+      </score>
+      <timeMillisSpent>25</timeMillisSpent>
+      <calculateCount>7452</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="274">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="275">
+        <hardScore>0</hardScore>
+        <softScore>-3662813</softScore>
+      </score>
+      <timeMillisSpent>80</timeMillisSpent>
+      <calculateCount>29502</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="276">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="277">
+        <hardScore>0</hardScore>
+        <softScore>-2749623</softScore>
+      </score>
+      <timeMillisSpent>228</timeMillisSpent>
+      <calculateCount>29671</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="278">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="279">
+        <hardScore>0</hardScore>
+        <softScore>-5901177</softScore>
+      </score>
+      <timeMillisSpent>72</timeMillisSpent>
+      <calculateCount>29681</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="280">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="281">
+        <hardScore>0</hardScore>
+        <softScore>-4839677</softScore>
+      </score>
+      <timeMillisSpent>103</timeMillisSpent>
+      <calculateCount>29728</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="282">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="283">
+        <hardScore>0</hardScore>
+        <softScore>-4550946</softScore>
+      </score>
+      <timeMillisSpent>148</timeMillisSpent>
+      <calculateCount>29437</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="284">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="285">
+        <hardScore>0</hardScore>
+        <softScore>-3910722</softScore>
+      </score>
+      <timeMillisSpent>110</timeMillisSpent>
+      <calculateCount>29902</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="286">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="287">
+        <hardScore>0</hardScore>
+        <softScore>-10685848</softScore>
+      </score>
+      <timeMillisSpent>304</timeMillisSpent>
+      <calculateCount>118129</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="288">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="289">
+        <hardScore>0</hardScore>
+        <softScore>-7307559</softScore>
+      </score>
+      <timeMillisSpent>479</timeMillisSpent>
+      <calculateCount>119610</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="290">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="291">
+        <hardScore>0</hardScore>
+        <softScore>-13677532</softScore>
+      </score>
+      <timeMillisSpent>297</timeMillisSpent>
+      <calculateCount>119390</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="292">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="293">
+        <hardScore>0</hardScore>
+        <softScore>-11594109</softScore>
+      </score>
+      <timeMillisSpent>618</timeMillisSpent>
+      <calculateCount>118832</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="294">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="295">
+        <hardScore>0</hardScore>
+        <softScore>-11705995</softScore>
+      </score>
+      <timeMillisSpent>324</timeMillisSpent>
+      <calculateCount>118218</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="296">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="297">
+        <hardScore>0</hardScore>
+        <softScore>-8541956</softScore>
+      </score>
+      <timeMillisSpent>617</timeMillisSpent>
+      <calculateCount>119443</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="298">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="299">
+        <hardScore>0</hardScore>
+        <softScore>-21781455</softScore>
+      </score>
+      <timeMillisSpent>878</timeMillisSpent>
+      <calculateCount>267021</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="300">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="301">
+        <hardScore>0</hardScore>
+        <softScore>-13645203</softScore>
+      </score>
+      <timeMillisSpent>1198</timeMillisSpent>
+      <calculateCount>269295</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="302">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="303">
+        <hardScore>0</hardScore>
+        <softScore>-30594328</softScore>
+      </score>
+      <timeMillisSpent>757</timeMillisSpent>
+      <calculateCount>266953</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="304">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="305">
+        <hardScore>0</hardScore>
+        <softScore>-23825307</softScore>
+      </score>
+      <timeMillisSpent>1470</timeMillisSpent>
+      <calculateCount>267468</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="306">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="307">
+        <hardScore>0</hardScore>
+        <softScore>-17005430</softScore>
+      </score>
+      <timeMillisSpent>1278</timeMillisSpent>
+      <calculateCount>268930</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="308">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="309">
+        <hardScore>0</hardScore>
+        <softScore>-23462984</softScore>
+      </score>
+      <timeMillisSpent>1114</timeMillisSpent>
+      <calculateCount>267709</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="310">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="311">
+        <hardScore>0</hardScore>
+        <softScore>-40665454</softScore>
+      </score>
+      <timeMillisSpent>1213</timeMillisSpent>
+      <calculateCount>474218</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="312">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="313">
+        <hardScore>0</hardScore>
+        <softScore>-22148240</softScore>
+      </score>
+      <timeMillisSpent>2474</timeMillisSpent>
+      <calculateCount>477790</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="314">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="315">
+        <hardScore>0</hardScore>
+        <softScore>-50180756</softScore>
+      </score>
+      <timeMillisSpent>1264</timeMillisSpent>
+      <calculateCount>476009</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="316">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="317">
+        <hardScore>0</hardScore>
+        <softScore>-39116167</softScore>
+      </score>
+      <timeMillisSpent>3612</timeMillisSpent>
+      <calculateCount>478040</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="318">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="319">
+        <hardScore>0</hardScore>
+        <softScore>-40726267</softScore>
+      </score>
+      <timeMillisSpent>2077</timeMillisSpent>
+      <calculateCount>475002</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="320">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="321">
+        <hardScore>0</hardScore>
+        <softScore>-28353279</softScore>
+      </score>
+      <timeMillisSpent>2286</timeMillisSpent>
+      <calculateCount>474242</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="322">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="323">
+        <hardScore>0</hardScore>
+        <softScore>-65619298</softScore>
+      </score>
+      <timeMillisSpent>2124</timeMillisSpent>
+      <calculateCount>740663</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="324">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="325">
+        <hardScore>0</hardScore>
+        <softScore>-34960241</softScore>
+      </score>
+      <timeMillisSpent>4960</timeMillisSpent>
+      <calculateCount>747776</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="326">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="327">
+        <hardScore>0</hardScore>
+        <softScore>-77554122</softScore>
+      </score>
+      <timeMillisSpent>2039</timeMillisSpent>
+      <calculateCount>742710</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="328">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="329">
+        <hardScore>0</hardScore>
+        <softScore>-58422837</softScore>
+      </score>
+      <timeMillisSpent>3827</timeMillisSpent>
+      <calculateCount>747487</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="330">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="331">
+        <hardScore>0</hardScore>
+        <softScore>-61013057</softScore>
+      </score>
+      <timeMillisSpent>2107</timeMillisSpent>
+      <calculateCount>742283</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="332">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="333">
+        <hardScore>0</hardScore>
+        <softScore>-40889470</softScore>
+      </score>
+      <timeMillisSpent>3608</timeMillisSpent>
+      <calculateCount>743864</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult xStreamId="334">
+    <name>Tabu Search</name>
+    <solverConfig xStreamId="335">
+      <solutionClass>org.optaplanner.examples.advancedvehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.advancedvehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.advancedvehiclerouting.domain.Customer</entityClass>
+      <entityClass>org.optaplanner.examples.advancedvehiclerouting.domain.timewindowed.TimeWindowedCustomer</entityClass>
+      <scoreDirectorFactory xStreamRef="4"/>
+      <termination xStreamRef="5"/>
+      <constructionHeuristic xStreamId="336">
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch xStreamId="337">
+        <unionMoveSelector xStreamId="338">
+          <changeMoveSelector xStreamId="339"/>
+          <swapMoveSelector xStreamId="340"/>
+          <subChainChangeMoveSelector xStreamId="341">
+            <selectReversingMoveToo>true</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="342">
+            <selectReversingMoveToo>true</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="343">
+          <entityTabuSize>9</entityTabuSize>
+        </acceptor>
+        <forager xStreamId="344">
+          <acceptedCountLimit>2000</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="345">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="346">
+        <hardScore>0</hardScore>
+        <softScore>-830947</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>41799606</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="347">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="348">
+        <hardScore>0</hardScore>
+        <softScore>-662262</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>48880955</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="349">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="350">
+        <hardScore>0</hardScore>
+        <softScore>-771302</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>48667459</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="351">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="352">
+        <hardScore>0</hardScore>
+        <softScore>-780936</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>48971208</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="353">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="354">
+        <hardScore>0</hardScore>
+        <softScore>-815567</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>46989545</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="355">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="356">
+        <hardScore>0</hardScore>
+        <softScore>-699358</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>43126758</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="357">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="358">
+        <hardScore>0</hardScore>
+        <softScore>-950853</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>47964083</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="359">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="360">
+        <hardScore>0</hardScore>
+        <softScore>-735053</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>45046966</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="361">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="362">
+        <hardScore>0</hardScore>
+        <softScore>-849193</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>46698100</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="363">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="364">
+        <hardScore>0</hardScore>
+        <softScore>-835250</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>47010816</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="365">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="366">
+        <hardScore>0</hardScore>
+        <softScore>-938837</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>46888918</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="367">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="368">
+        <hardScore>0</hardScore>
+        <softScore>-1027869</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>45423096</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="369">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="370">
+        <hardScore>0</hardScore>
+        <softScore>-1178241</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>46025003</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="371">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="372">
+        <hardScore>0</hardScore>
+        <softScore>-930356</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>45895047</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="373">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="374">
+        <hardScore>0</hardScore>
+        <softScore>-1105455</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>46599452</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="375">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="376">
+        <hardScore>0</hardScore>
+        <softScore>-1055633</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>45953435</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="377">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="378">
+        <hardScore>0</hardScore>
+        <softScore>-1190217</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>44232153</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="379">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="380">
+        <hardScore>0</hardScore>
+        <softScore>-1111399</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>45920639</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="381">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="382">
+        <hardScore>0</hardScore>
+        <softScore>-1406752</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>47730235</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="383">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="384">
+        <hardScore>0</hardScore>
+        <softScore>-1090719</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>47062639</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="385">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="386">
+        <hardScore>0</hardScore>
+        <softScore>-1328880</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>45296317</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="387">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="388">
+        <hardScore>0</hardScore>
+        <softScore>-1361732</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>48144354</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="389">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="390">
+        <hardScore>0</hardScore>
+        <softScore>-1665012</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>44175224</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="391">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="392">
+        <hardScore>0</hardScore>
+        <softScore>-1488954</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>45920184</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="393">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="394">
+        <hardScore>0</hardScore>
+        <softScore>-1258368</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>45696673</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="395">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="396">
+        <hardScore>0</hardScore>
+        <softScore>-1191867</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>44566516</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="397">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="398">
+        <hardScore>0</hardScore>
+        <softScore>-1813671</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>43223860</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="399">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="400">
+        <hardScore>0</hardScore>
+        <softScore>-1192643</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>32920797</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="401">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="402">
+        <hardScore>0</hardScore>
+        <softScore>-759143</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>41384757</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="403">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="404">
+        <hardScore>0</hardScore>
+        <softScore>-249289</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>34571989</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="405">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="406">
+        <hardScore>0</hardScore>
+        <softScore>-21435</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>45850349</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="407">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="408">
+        <hardScore>0</hardScore>
+        <softScore>-23063</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>39975583</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="409">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="410">
+        <hardScore>0</hardScore>
+        <softScore>-51076</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>24409029</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="411">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="412">
+        <hardScore>0</hardScore>
+        <softScore>-68712</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>15699555</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="413">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="414">
+        <hardScore>0</hardScore>
+        <softScore>-150312</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>17335407</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="415">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="416">
+        <hardScore>0</hardScore>
+        <softScore>-2083244</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>43856037</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="417">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="418">
+        <hardScore>0</hardScore>
+        <softScore>-2394942</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>35348810</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="419">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="420">
+        <hardScore>0</hardScore>
+        <softScore>-115816056</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>45571909</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="421">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="422">
+        <hardScore>0</hardScore>
+        <softScore>-142806410</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>35008599</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="423">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="424">
+        <hardScore>0</hardScore>
+        <softScore>-191815</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>32577499</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="425">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="426">
+        <hardScore>0</hardScore>
+        <softScore>-215542</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>25233764</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="427">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="428">
+        <hardScore>0</hardScore>
+        <softScore>-618328</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>43360012</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="429">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="430">
+        <hardScore>0</hardScore>
+        <softScore>-464373</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>34981074</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="431">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="432">
+        <hardScore>0</hardScore>
+        <softScore>-462153</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>34874944</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="433">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="434">
+        <hardScore>0</hardScore>
+        <softScore>-361239</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>31268357</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="435">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="436">
+        <hardScore>0</hardScore>
+        <softScore>-828937</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>25891068</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="437">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="438">
+        <hardScore>0</hardScore>
+        <softScore>-591555</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>14337776</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="439">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="440">
+        <hardScore>0</hardScore>
+        <softScore>-1654643</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>33920033</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="441">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="442">
+        <hardScore>0</hardScore>
+        <softScore>-1182077</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>21214008</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="443">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="444">
+        <hardScore>0</hardScore>
+        <softScore>-1661600</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>27916255</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="445">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="446">
+        <hardScore>0</hardScore>
+        <softScore>-1295483</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>23178599</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="447">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="448">
+        <hardScore>0</hardScore>
+        <softScore>-2795850</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>23856846</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="449">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="450">
+        <hardScore>0</hardScore>
+        <softScore>-2001309</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>16146574</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="451">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="452">
+        <hardScore>0</hardScore>
+        <softScore>-4821147</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>26374856</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="453">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="454">
+        <hardScore>0</hardScore>
+        <softScore>-3654200</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>18945194</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="455">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="456">
+        <hardScore>0</hardScore>
+        <softScore>-3685292</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>24637070</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="457">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="458">
+        <hardScore>0</hardScore>
+        <softScore>-2908931</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>17081159</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="459">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="460">
+        <hardScore>0</hardScore>
+        <softScore>-7413175</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>24513604</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="461">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="462">
+        <hardScore>0</hardScore>
+        <softScore>-4961024</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>15768249</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="463">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="464">
+        <hardScore>0</hardScore>
+        <softScore>-11101379</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>26117174</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="465">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="466">
+        <hardScore>0</hardScore>
+        <softScore>-8375625</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>17024429</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="467">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="468">
+        <hardScore>0</hardScore>
+        <softScore>-9281860</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>25141821</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="469">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="470">
+        <hardScore>0</hardScore>
+        <softScore>-6774501</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>15530142</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="471">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="472">
+        <hardScore>0</hardScore>
+        <softScore>-16770227</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>23929973</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="473">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="474">
+        <hardScore>0</hardScore>
+        <softScore>-10604423</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>15316236</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="475">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="476">
+        <hardScore>0</hardScore>
+        <softScore>-23605439</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>25971322</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="477">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="478">
+        <hardScore>0</hardScore>
+        <softScore>-17802534</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>15052874</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="479">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="480">
+        <hardScore>0</hardScore>
+        <softScore>-13568639</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>16186721</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="481">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="482">
+        <hardScore>0</hardScore>
+        <softScore>-19250424</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>22866711</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="483">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="484">
+        <hardScore>0</hardScore>
+        <softScore>-31512561</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>25670179</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="485">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="486">
+        <hardScore>0</hardScore>
+        <softScore>-16280268</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>15032103</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="487">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="488">
+        <hardScore>0</hardScore>
+        <softScore>-40375822</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>26082960</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="489">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="490">
+        <hardScore>0</hardScore>
+        <softScore>-29791052</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>13291781</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="491">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="492">
+        <hardScore>0</hardScore>
+        <softScore>-34923687</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>24382718</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="493">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="494">
+        <hardScore>0</hardScore>
+        <softScore>-23074307</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>14960782</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="495">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="496">
+        <hardScore>0</hardScore>
+        <softScore>-52282594</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>26181316</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="497">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="498">
+        <hardScore>0</hardScore>
+        <softScore>-26614483</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>16371095</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="499">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="500">
+        <hardScore>0</hardScore>
+        <softScore>-62924084</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>26013477</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="501">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="502">
+        <hardScore>0</hardScore>
+        <softScore>-46973438</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>12789355</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="503">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="504">
+        <hardScore>0</hardScore>
+        <softScore>-53962611</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>24436439</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="505">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="506">
+        <hardScore>0</hardScore>
+        <softScore>-34718445</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>13845450</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult xStreamId="507">
+    <name>Late Acceptance</name>
+    <solverConfig xStreamId="508">
+      <solutionClass>org.optaplanner.examples.advancedvehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.advancedvehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.advancedvehiclerouting.domain.Customer</entityClass>
+      <entityClass>org.optaplanner.examples.advancedvehiclerouting.domain.timewindowed.TimeWindowedCustomer</entityClass>
+      <scoreDirectorFactory xStreamRef="4"/>
+      <termination xStreamRef="5"/>
+      <constructionHeuristic xStreamId="509">
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch xStreamId="510">
+        <unionMoveSelector xStreamId="511">
+          <changeMoveSelector xStreamId="512"/>
+          <swapMoveSelector xStreamId="513"/>
+          <subChainChangeMoveSelector xStreamId="514">
+            <selectReversingMoveToo>true</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="515">
+            <selectReversingMoveToo>true</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="516">
+          <lateAcceptanceSize>200</lateAcceptanceSize>
+        </acceptor>
+        <forager xStreamId="517">
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="518">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="519">
+        <hardScore>0</hardScore>
+        <softScore>-787082</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>42756416</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="520">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="521">
+        <hardScore>0</hardScore>
+        <softScore>-662107</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>49412482</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="522">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="523">
+        <hardScore>0</hardScore>
+        <softScore>-742693</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>48472528</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="524">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="525">
+        <hardScore>0</hardScore>
+        <softScore>-780936</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>48010478</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="526">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="527">
+        <hardScore>0</hardScore>
+        <softScore>-809714</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>47768945</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="528">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="529">
+        <hardScore>0</hardScore>
+        <softScore>-672465</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>44094082</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="530">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="531">
+        <hardScore>0</hardScore>
+        <softScore>-971670</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>47713195</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="532">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="533">
+        <hardScore>0</hardScore>
+        <softScore>-735053</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>46608679</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="534">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="535">
+        <hardScore>0</hardScore>
+        <softScore>-839630</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>47626595</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="536">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="537">
+        <hardScore>0</hardScore>
+        <softScore>-835281</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>47544563</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="538">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="539">
+        <hardScore>0</hardScore>
+        <softScore>-943477</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>47846942</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="540">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="541">
+        <hardScore>0</hardScore>
+        <softScore>-951792</softScore>
+      </score>
+      <timeMillisSpent>300001</timeMillisSpent>
+      <calculateCount>46070043</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="542">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="543">
+        <hardScore>0</hardScore>
+        <softScore>-1156091</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>46398052</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="544">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="545">
+        <hardScore>0</hardScore>
+        <softScore>-958576</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>47266505</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="546">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="547">
+        <hardScore>0</hardScore>
+        <softScore>-1087478</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>47487641</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="548">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="549">
+        <hardScore>0</hardScore>
+        <softScore>-1057317</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>47082191</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="550">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="551">
+        <hardScore>0</hardScore>
+        <softScore>-1188776</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>45220262</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="552">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="553">
+        <hardScore>0</hardScore>
+        <softScore>-1074463</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>47171388</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="554">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="555">
+        <hardScore>0</hardScore>
+        <softScore>-1377176</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>48787759</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="556">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="557">
+        <hardScore>0</hardScore>
+        <softScore>-1041775</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>46865839</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="558">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="559">
+        <hardScore>0</hardScore>
+        <softScore>-1319954</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>46456231</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="560">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="561">
+        <hardScore>0</hardScore>
+        <softScore>-1322444</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>49401681</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="562">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="563">
+        <hardScore>0</hardScore>
+        <softScore>-1641343</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>46168397</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="564">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="565">
+        <hardScore>0</hardScore>
+        <softScore>-1423981</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>46584799</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="566">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="567">
+        <hardScore>0</hardScore>
+        <softScore>-1186964</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>45985082</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="568">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="569">
+        <hardScore>0</hardScore>
+        <softScore>-1176834</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>45089549</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="570">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="571">
+        <hardScore>0</hardScore>
+        <softScore>-1797627</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>45003315</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="572">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="573">
+        <hardScore>0</hardScore>
+        <softScore>-1220614</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>34008368</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="574">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="575">
+        <hardScore>0</hardScore>
+        <softScore>-730853</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>42360357</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="576">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="577">
+        <hardScore>0</hardScore>
+        <softScore>-272295</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>35702600</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="578">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="579">
+        <hardScore>0</hardScore>
+        <softScore>-20991</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>46828383</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="580">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="581">
+        <hardScore>0</hardScore>
+        <softScore>-23594</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>40745298</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="582">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="583">
+        <hardScore>0</hardScore>
+        <softScore>-54077</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>24924395</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="584">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="585">
+        <hardScore>0</hardScore>
+        <softScore>-76054</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>15911158</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="586">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="587">
+        <hardScore>0</hardScore>
+        <softScore>-149957</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>17910466</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="588">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="589">
+        <hardScore>0</hardScore>
+        <softScore>-2069124</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>44208563</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="590">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="591">
+        <hardScore>0</hardScore>
+        <softScore>-2298514</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>37153106</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="592">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="593">
+        <hardScore>0</hardScore>
+        <softScore>-115206413</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>47350121</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="594">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="595">
+        <hardScore>0</hardScore>
+        <softScore>-141356784</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>35607827</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="596">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="597">
+        <hardScore>0</hardScore>
+        <softScore>-191815</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>28842576</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="598">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="599">
+        <hardScore>0</hardScore>
+        <softScore>-215542</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>25735928</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="600">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="601">
+        <hardScore>0</hardScore>
+        <softScore>-618328</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>39189175</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="602">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="603">
+        <hardScore>0</hardScore>
+        <softScore>-464373</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>35142447</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="604">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="605">
+        <hardScore>0</hardScore>
+        <softScore>-464572</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>34347957</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="606">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="607">
+        <hardScore>0</hardScore>
+        <softScore>-361239</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>31798655</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="608">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="609">
+        <hardScore>0</hardScore>
+        <softScore>-828937</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>24117731</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="610">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="611">
+        <hardScore>0</hardScore>
+        <softScore>-591555</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>11135914</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="612">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="613">
+        <hardScore>0</hardScore>
+        <softScore>-1670608</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>34611956</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="614">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="615">
+        <hardScore>0</hardScore>
+        <softScore>-1164583</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>23674330</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="616">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="617">
+        <hardScore>0</hardScore>
+        <softScore>-1660910</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>28400435</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="618">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="619">
+        <hardScore>0</hardScore>
+        <softScore>-1292407</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>22983417</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="620">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="621">
+        <hardScore>0</hardScore>
+        <softScore>-2704559</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>23215767</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="622">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="623">
+        <hardScore>0</hardScore>
+        <softScore>-1944701</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>14262525</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="624">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="625">
+        <hardScore>0</hardScore>
+        <softScore>-4755495</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>27447088</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="626">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="627">
+        <hardScore>0</hardScore>
+        <softScore>-3550958</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>23375186</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="628">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="629">
+        <hardScore>0</hardScore>
+        <softScore>-3606213</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>25143194</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="630">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="631">
+        <hardScore>0</hardScore>
+        <softScore>-2851474</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>21154391</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="632">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="633">
+        <hardScore>0</hardScore>
+        <softScore>-8083069</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>25257508</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="634">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="635">
+        <hardScore>0</hardScore>
+        <softScore>-5263492</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>18163413</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="636">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="637">
+        <hardScore>0</hardScore>
+        <softScore>-11255297</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>26769548</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="638">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="639">
+        <hardScore>0</hardScore>
+        <softScore>-8602628</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>21154463</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="640">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="641">
+        <hardScore>0</hardScore>
+        <softScore>-9500830</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>25300018</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="642">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="643">
+        <hardScore>0</hardScore>
+        <softScore>-6717135</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>17688084</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="644">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="645">
+        <hardScore>0</hardScore>
+        <softScore>-17415017</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>23986334</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="646">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="647">
+        <hardScore>0</hardScore>
+        <softScore>-10803680</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>15443782</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="648">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="649">
+        <hardScore>0</hardScore>
+        <softScore>-25095721</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>25957750</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="650">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="651">
+        <hardScore>0</hardScore>
+        <softScore>-19072156</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>20068345</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="652">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="653">
+        <hardScore>0</hardScore>
+        <softScore>-14177904</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>17207382</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="654">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="655">
+        <hardScore>0</hardScore>
+        <softScore>-20033089</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>22821743</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="656">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="657">
+        <hardScore>0</hardScore>
+        <softScore>-35799151</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>26527474</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="658">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="659">
+        <hardScore>0</hardScore>
+        <softScore>-17661709</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>16557723</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="660">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="661">
+        <hardScore>0</hardScore>
+        <softScore>-44341665</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>25521278</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="662">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="663">
+        <hardScore>0</hardScore>
+        <softScore>-32335715</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>17017351</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="664">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="665">
+        <hardScore>0</hardScore>
+        <softScore>-37452425</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>24536012</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="666">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="667">
+        <hardScore>0</hardScore>
+        <softScore>-25107522</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>15700241</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="668">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="669">
+        <hardScore>0</hardScore>
+        <softScore>-57503120</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>25503085</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="670">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="671">
+        <hardScore>0</hardScore>
+        <softScore>-29311767</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>17035449</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="672">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="673">
+        <hardScore>0</hardScore>
+        <softScore>-69666948</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>25205978</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="674">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="675">
+        <hardScore>0</hardScore>
+        <softScore>-51271019</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>16197354</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="676">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="677">
+        <hardScore>0</hardScore>
+        <softScore>-55067384</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>23132199</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="678">
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore" xStreamId="679">
+        <hardScore>0</hardScore>
+        <softScore>-36666162</softScore>
+      </score>
+      <timeMillisSpent>300000</timeMillisSpent>
+      <calculateCount>13600655</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="680">
+    <name>A-n32-k5</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n32-k5.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="681">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="7"/>
+    <singleBenchmarkResult xStreamRef="172"/>
+    <singleBenchmarkResult xStreamRef="345"/>
+    <singleBenchmarkResult xStreamRef="518"/>
+    <entityCount>36</entityCount>
+    <variableCount>31</variableCount>
+    <problemScale>1121</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="682">
+    <name>A-n33-k5</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n33-k5.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="683">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="9"/>
+    <singleBenchmarkResult xStreamRef="174"/>
+    <singleBenchmarkResult xStreamRef="347"/>
+    <singleBenchmarkResult xStreamRef="520"/>
+    <entityCount>37</entityCount>
+    <variableCount>32</variableCount>
+    <problemScale>1189</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="684">
+    <name>A-n33-k6</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n33-k6.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="685">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="11"/>
+    <singleBenchmarkResult xStreamRef="176"/>
+    <singleBenchmarkResult xStreamRef="349"/>
+    <singleBenchmarkResult xStreamRef="522"/>
+    <entityCount>38</entityCount>
+    <variableCount>32</variableCount>
+    <problemScale>1222</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="686">
+    <name>A-n34-k5</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n34-k5.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="687">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="13"/>
+    <singleBenchmarkResult xStreamRef="178"/>
+    <singleBenchmarkResult xStreamRef="351"/>
+    <singleBenchmarkResult xStreamRef="524"/>
+    <entityCount>38</entityCount>
+    <variableCount>33</variableCount>
+    <problemScale>1259</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="688">
+    <name>A-n36-k5</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n36-k5.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="689">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="15"/>
+    <singleBenchmarkResult xStreamRef="180"/>
+    <singleBenchmarkResult xStreamRef="353"/>
+    <singleBenchmarkResult xStreamRef="526"/>
+    <entityCount>40</entityCount>
+    <variableCount>35</variableCount>
+    <problemScale>1405</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="690">
+    <name>A-n37-k5</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n37-k5.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="691">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="17"/>
+    <singleBenchmarkResult xStreamRef="182"/>
+    <singleBenchmarkResult xStreamRef="355"/>
+    <singleBenchmarkResult xStreamRef="528"/>
+    <entityCount>41</entityCount>
+    <variableCount>36</variableCount>
+    <problemScale>1481</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="692">
+    <name>A-n37-k6</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n37-k6.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="693">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="19"/>
+    <singleBenchmarkResult xStreamRef="184"/>
+    <singleBenchmarkResult xStreamRef="357"/>
+    <singleBenchmarkResult xStreamRef="530"/>
+    <entityCount>42</entityCount>
+    <variableCount>36</variableCount>
+    <problemScale>1518</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="694">
+    <name>A-n38-k5</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n38-k5.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="695">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="21"/>
+    <singleBenchmarkResult xStreamRef="186"/>
+    <singleBenchmarkResult xStreamRef="359"/>
+    <singleBenchmarkResult xStreamRef="532"/>
+    <entityCount>42</entityCount>
+    <variableCount>37</variableCount>
+    <problemScale>1559</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="696">
+    <name>A-n39-k5</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n39-k5.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="697">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="23"/>
+    <singleBenchmarkResult xStreamRef="188"/>
+    <singleBenchmarkResult xStreamRef="361"/>
+    <singleBenchmarkResult xStreamRef="534"/>
+    <entityCount>43</entityCount>
+    <variableCount>38</variableCount>
+    <problemScale>1639</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="698">
+    <name>A-n39-k6</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n39-k6.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="699">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="25"/>
+    <singleBenchmarkResult xStreamRef="190"/>
+    <singleBenchmarkResult xStreamRef="363"/>
+    <singleBenchmarkResult xStreamRef="536"/>
+    <entityCount>44</entityCount>
+    <variableCount>38</variableCount>
+    <problemScale>1678</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="700">
+    <name>A-n44-k7</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n44-k7.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="701">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="27"/>
+    <singleBenchmarkResult xStreamRef="192"/>
+    <singleBenchmarkResult xStreamRef="365"/>
+    <singleBenchmarkResult xStreamRef="538"/>
+    <entityCount>50</entityCount>
+    <variableCount>43</variableCount>
+    <problemScale>2157</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="702">
+    <name>A-n45-k6</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n45-k6.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="703">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="29"/>
+    <singleBenchmarkResult xStreamRef="194"/>
+    <singleBenchmarkResult xStreamRef="367"/>
+    <singleBenchmarkResult xStreamRef="540"/>
+    <entityCount>50</entityCount>
+    <variableCount>44</variableCount>
+    <problemScale>2206</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="704">
+    <name>A-n45-k7</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n45-k7.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="705">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="31"/>
+    <singleBenchmarkResult xStreamRef="196"/>
+    <singleBenchmarkResult xStreamRef="369"/>
+    <singleBenchmarkResult xStreamRef="542"/>
+    <entityCount>51</entityCount>
+    <variableCount>44</variableCount>
+    <problemScale>2251</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="706">
+    <name>A-n46-k7</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n46-k7.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="707">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="33"/>
+    <singleBenchmarkResult xStreamRef="198"/>
+    <singleBenchmarkResult xStreamRef="371"/>
+    <singleBenchmarkResult xStreamRef="544"/>
+    <entityCount>52</entityCount>
+    <variableCount>45</variableCount>
+    <problemScale>2347</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="708">
+    <name>A-n48-k7</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n48-k7.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="709">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="35"/>
+    <singleBenchmarkResult xStreamRef="200"/>
+    <singleBenchmarkResult xStreamRef="373"/>
+    <singleBenchmarkResult xStreamRef="546"/>
+    <entityCount>54</entityCount>
+    <variableCount>47</variableCount>
+    <problemScale>2545</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="710">
+    <name>A-n53-k7</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n53-k7.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="711">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="37"/>
+    <singleBenchmarkResult xStreamRef="202"/>
+    <singleBenchmarkResult xStreamRef="375"/>
+    <singleBenchmarkResult xStreamRef="548"/>
+    <entityCount>59</entityCount>
+    <variableCount>52</variableCount>
+    <problemScale>3075</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="712">
+    <name>A-n54-k7</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n54-k7.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="713">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="39"/>
+    <singleBenchmarkResult xStreamRef="204"/>
+    <singleBenchmarkResult xStreamRef="377"/>
+    <singleBenchmarkResult xStreamRef="550"/>
+    <entityCount>60</entityCount>
+    <variableCount>53</variableCount>
+    <problemScale>3187</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="714">
+    <name>A-n55-k9</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n55-k9.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="715">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="41"/>
+    <singleBenchmarkResult xStreamRef="206"/>
+    <singleBenchmarkResult xStreamRef="379"/>
+    <singleBenchmarkResult xStreamRef="552"/>
+    <entityCount>63</entityCount>
+    <variableCount>54</variableCount>
+    <problemScale>3411</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="716">
+    <name>A-n60-k9</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n60-k9.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="717">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="43"/>
+    <singleBenchmarkResult xStreamRef="208"/>
+    <singleBenchmarkResult xStreamRef="381"/>
+    <singleBenchmarkResult xStreamRef="554"/>
+    <entityCount>68</entityCount>
+    <variableCount>59</variableCount>
+    <problemScale>4021</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="718">
+    <name>A-n61-k9</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n61-k9.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="719">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="45"/>
+    <singleBenchmarkResult xStreamRef="210"/>
+    <singleBenchmarkResult xStreamRef="383"/>
+    <singleBenchmarkResult xStreamRef="556"/>
+    <entityCount>69</entityCount>
+    <variableCount>60</variableCount>
+    <problemScale>4149</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="720">
+    <name>A-n62-k8</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n62-k8.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="721">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="47"/>
+    <singleBenchmarkResult xStreamRef="212"/>
+    <singleBenchmarkResult xStreamRef="385"/>
+    <singleBenchmarkResult xStreamRef="558"/>
+    <entityCount>69</entityCount>
+    <variableCount>61</variableCount>
+    <problemScale>4217</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="722">
+    <name>A-n63-k10</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n63-k10.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="723">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="49"/>
+    <singleBenchmarkResult xStreamRef="214"/>
+    <singleBenchmarkResult xStreamRef="387"/>
+    <singleBenchmarkResult xStreamRef="560"/>
+    <entityCount>72</entityCount>
+    <variableCount>62</variableCount>
+    <problemScale>4474</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="724">
+    <name>A-n63-k9</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n63-k9.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="725">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="51"/>
+    <singleBenchmarkResult xStreamRef="216"/>
+    <singleBenchmarkResult xStreamRef="389"/>
+    <singleBenchmarkResult xStreamRef="562"/>
+    <entityCount>71</entityCount>
+    <variableCount>62</variableCount>
+    <problemScale>4411</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="726">
+    <name>A-n64-k9</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n64-k9.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="727">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="53"/>
+    <singleBenchmarkResult xStreamRef="218"/>
+    <singleBenchmarkResult xStreamRef="391"/>
+    <singleBenchmarkResult xStreamRef="564"/>
+    <entityCount>72</entityCount>
+    <variableCount>63</variableCount>
+    <problemScale>4545</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="728">
+    <name>A-n65-k9</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n65-k9.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="729">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="55"/>
+    <singleBenchmarkResult xStreamRef="220"/>
+    <singleBenchmarkResult xStreamRef="393"/>
+    <singleBenchmarkResult xStreamRef="566"/>
+    <entityCount>73</entityCount>
+    <variableCount>64</variableCount>
+    <problemScale>4681</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="730">
+    <name>A-n69-k9</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n69-k9.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="731">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="57"/>
+    <singleBenchmarkResult xStreamRef="222"/>
+    <singleBenchmarkResult xStreamRef="395"/>
+    <singleBenchmarkResult xStreamRef="568"/>
+    <entityCount>77</entityCount>
+    <variableCount>68</variableCount>
+    <problemScale>5245</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="732">
+    <name>A-n80-k10</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/A-n80-k10.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="733">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="59"/>
+    <singleBenchmarkResult xStreamRef="224"/>
+    <singleBenchmarkResult xStreamRef="397"/>
+    <singleBenchmarkResult xStreamRef="570"/>
+    <entityCount>89</entityCount>
+    <variableCount>79</variableCount>
+    <problemScale>7041</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="734">
+    <name>F-n135-k7</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/F-n135-k7.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="735">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="61"/>
+    <singleBenchmarkResult xStreamRef="226"/>
+    <singleBenchmarkResult xStreamRef="399"/>
+    <singleBenchmarkResult xStreamRef="572"/>
+    <entityCount>141</entityCount>
+    <variableCount>134</variableCount>
+    <problemScale>18901</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="736">
+    <name>F-n45-k4</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/F-n45-k4.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="737">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="63"/>
+    <singleBenchmarkResult xStreamRef="228"/>
+    <singleBenchmarkResult xStreamRef="401"/>
+    <singleBenchmarkResult xStreamRef="574"/>
+    <entityCount>48</entityCount>
+    <variableCount>44</variableCount>
+    <problemScale>2116</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="738">
+    <name>F-n72-k4</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/vrpweb/F-n72-k4.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="739">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="65"/>
+    <singleBenchmarkResult xStreamRef="230"/>
+    <singleBenchmarkResult xStreamRef="403"/>
+    <singleBenchmarkResult xStreamRef="576"/>
+    <entityCount>75</entityCount>
+    <variableCount>71</variableCount>
+    <problemScale>5329</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="740">
+    <name>belgium-n50-k10</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/belgium-n50-k10.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="741">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="67"/>
+    <singleBenchmarkResult xStreamRef="232"/>
+    <singleBenchmarkResult xStreamRef="405"/>
+    <singleBenchmarkResult xStreamRef="578"/>
+    <entityCount>59</entityCount>
+    <variableCount>49</variableCount>
+    <problemScale>2901</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="742">
+    <name>belgium-n100-k10</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/belgium-n100-k10.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="743">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="69"/>
+    <singleBenchmarkResult xStreamRef="234"/>
+    <singleBenchmarkResult xStreamRef="407"/>
+    <singleBenchmarkResult xStreamRef="580"/>
+    <entityCount>109</entityCount>
+    <variableCount>99</variableCount>
+    <problemScale>10801</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="744">
+    <name>belgium-n500-k20</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/belgium-n500-k20.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="745">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="71"/>
+    <singleBenchmarkResult xStreamRef="236"/>
+    <singleBenchmarkResult xStreamRef="409"/>
+    <singleBenchmarkResult xStreamRef="582"/>
+    <entityCount>519</entityCount>
+    <variableCount>499</variableCount>
+    <problemScale>259001</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="746">
+    <name>belgium-n1000-k20</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/belgium-n1000-k20.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="747">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="73"/>
+    <singleBenchmarkResult xStreamRef="238"/>
+    <singleBenchmarkResult xStreamRef="411"/>
+    <singleBenchmarkResult xStreamRef="584"/>
+    <entityCount>1019</entityCount>
+    <variableCount>999</variableCount>
+    <problemScale>1018001</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="748">
+    <name>belgium-n2750-k55</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/capacitated/belgium-n2750-k55.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="749">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="75"/>
+    <singleBenchmarkResult xStreamRef="240"/>
+    <singleBenchmarkResult xStreamRef="413"/>
+    <singleBenchmarkResult xStreamRef="586"/>
+    <entityCount>2804</entityCount>
+    <variableCount>2749</variableCount>
+    <problemScale>7708251</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="750">
+    <name>belgium-road-km-n50-k10</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/roaddistance/capacitated/belgium-road-km-n50-k10.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="751">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="77"/>
+    <singleBenchmarkResult xStreamRef="242"/>
+    <singleBenchmarkResult xStreamRef="415"/>
+    <singleBenchmarkResult xStreamRef="588"/>
+    <entityCount>59</entityCount>
+    <variableCount>49</variableCount>
+    <problemScale>2901</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="752">
+    <name>belgium-road-km-n100-k10</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/roaddistance/capacitated/belgium-road-km-n100-k10.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="753">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="79"/>
+    <singleBenchmarkResult xStreamRef="244"/>
+    <singleBenchmarkResult xStreamRef="417"/>
+    <singleBenchmarkResult xStreamRef="590"/>
+    <entityCount>109</entityCount>
+    <variableCount>99</variableCount>
+    <problemScale>10801</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="754">
+    <name>belgium-road-time-n50-k10</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/roaddistance/capacitated/belgium-road-time-n50-k10.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="755">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="81"/>
+    <singleBenchmarkResult xStreamRef="246"/>
+    <singleBenchmarkResult xStreamRef="419"/>
+    <singleBenchmarkResult xStreamRef="592"/>
+    <entityCount>59</entityCount>
+    <variableCount>49</variableCount>
+    <problemScale>2901</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="756">
+    <name>belgium-road-time-n100-k10</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/roaddistance/capacitated/belgium-road-time-n100-k10.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="757">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="83"/>
+    <singleBenchmarkResult xStreamRef="248"/>
+    <singleBenchmarkResult xStreamRef="421"/>
+    <singleBenchmarkResult xStreamRef="594"/>
+    <entityCount>109</entityCount>
+    <variableCount>99</variableCount>
+    <problemScale>10801</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="758">
+    <name>Solomon_025_C101</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Solomon_025_C101.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="759">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="85"/>
+    <singleBenchmarkResult xStreamRef="250"/>
+    <singleBenchmarkResult xStreamRef="423"/>
+    <singleBenchmarkResult xStreamRef="596"/>
+    <entityCount>50</entityCount>
+    <variableCount>25</variableCount>
+    <problemScale>1275</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="760">
+    <name>Solomon_025_C201</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Solomon_025_C201.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="761">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="87"/>
+    <singleBenchmarkResult xStreamRef="252"/>
+    <singleBenchmarkResult xStreamRef="425"/>
+    <singleBenchmarkResult xStreamRef="598"/>
+    <entityCount>50</entityCount>
+    <variableCount>25</variableCount>
+    <problemScale>1275</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="762">
+    <name>Solomon_025_R101</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Solomon_025_R101.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="763">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="89"/>
+    <singleBenchmarkResult xStreamRef="254"/>
+    <singleBenchmarkResult xStreamRef="427"/>
+    <singleBenchmarkResult xStreamRef="600"/>
+    <entityCount>50</entityCount>
+    <variableCount>25</variableCount>
+    <problemScale>1275</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="764">
+    <name>Solomon_025_R201</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Solomon_025_R201.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="765">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="91"/>
+    <singleBenchmarkResult xStreamRef="256"/>
+    <singleBenchmarkResult xStreamRef="429"/>
+    <singleBenchmarkResult xStreamRef="602"/>
+    <entityCount>50</entityCount>
+    <variableCount>25</variableCount>
+    <problemScale>1275</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="766">
+    <name>Solomon_025_RC101</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Solomon_025_RC101.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="767">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="93"/>
+    <singleBenchmarkResult xStreamRef="258"/>
+    <singleBenchmarkResult xStreamRef="431"/>
+    <singleBenchmarkResult xStreamRef="604"/>
+    <entityCount>50</entityCount>
+    <variableCount>25</variableCount>
+    <problemScale>1275</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="768">
+    <name>Solomon_025_RC201</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Solomon_025_RC201.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="769">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="95"/>
+    <singleBenchmarkResult xStreamRef="260"/>
+    <singleBenchmarkResult xStreamRef="433"/>
+    <singleBenchmarkResult xStreamRef="606"/>
+    <entityCount>50</entityCount>
+    <variableCount>25</variableCount>
+    <problemScale>1275</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="770">
+    <name>Solomon_100_C101</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Solomon_100_C101.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="771">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="97"/>
+    <singleBenchmarkResult xStreamRef="262"/>
+    <singleBenchmarkResult xStreamRef="435"/>
+    <singleBenchmarkResult xStreamRef="608"/>
+    <entityCount>125</entityCount>
+    <variableCount>100</variableCount>
+    <problemScale>12525</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="772">
+    <name>Solomon_100_C201</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Solomon_100_C201.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="773">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="99"/>
+    <singleBenchmarkResult xStreamRef="264"/>
+    <singleBenchmarkResult xStreamRef="437"/>
+    <singleBenchmarkResult xStreamRef="610"/>
+    <entityCount>125</entityCount>
+    <variableCount>100</variableCount>
+    <problemScale>12525</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="774">
+    <name>Solomon_100_R101</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Solomon_100_R101.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="775">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="101"/>
+    <singleBenchmarkResult xStreamRef="266"/>
+    <singleBenchmarkResult xStreamRef="439"/>
+    <singleBenchmarkResult xStreamRef="612"/>
+    <entityCount>125</entityCount>
+    <variableCount>100</variableCount>
+    <problemScale>12525</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="776">
+    <name>Solomon_100_R201</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Solomon_100_R201.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="777">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="103"/>
+    <singleBenchmarkResult xStreamRef="268"/>
+    <singleBenchmarkResult xStreamRef="441"/>
+    <singleBenchmarkResult xStreamRef="614"/>
+    <entityCount>125</entityCount>
+    <variableCount>100</variableCount>
+    <problemScale>12525</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="778">
+    <name>Solomon_100_RC101</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Solomon_100_RC101.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="779">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="105"/>
+    <singleBenchmarkResult xStreamRef="270"/>
+    <singleBenchmarkResult xStreamRef="443"/>
+    <singleBenchmarkResult xStreamRef="616"/>
+    <entityCount>125</entityCount>
+    <variableCount>100</variableCount>
+    <problemScale>12525</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="780">
+    <name>Solomon_100_RC201</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Solomon_100_RC201.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="781">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="107"/>
+    <singleBenchmarkResult xStreamRef="272"/>
+    <singleBenchmarkResult xStreamRef="445"/>
+    <singleBenchmarkResult xStreamRef="618"/>
+    <entityCount>125</entityCount>
+    <variableCount>100</variableCount>
+    <problemScale>12525</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="782">
+    <name>Homberger_0200_C1_2_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0200_C1_2_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="783">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="109"/>
+    <singleBenchmarkResult xStreamRef="274"/>
+    <singleBenchmarkResult xStreamRef="447"/>
+    <singleBenchmarkResult xStreamRef="620"/>
+    <entityCount>250</entityCount>
+    <variableCount>200</variableCount>
+    <problemScale>50050</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="784">
+    <name>Homberger_0200_C2_2_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0200_C2_2_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="785">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="111"/>
+    <singleBenchmarkResult xStreamRef="276"/>
+    <singleBenchmarkResult xStreamRef="449"/>
+    <singleBenchmarkResult xStreamRef="622"/>
+    <entityCount>250</entityCount>
+    <variableCount>200</variableCount>
+    <problemScale>50050</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="786">
+    <name>Homberger_0200_R1_2_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0200_R1_2_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="787">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="113"/>
+    <singleBenchmarkResult xStreamRef="278"/>
+    <singleBenchmarkResult xStreamRef="451"/>
+    <singleBenchmarkResult xStreamRef="624"/>
+    <entityCount>250</entityCount>
+    <variableCount>200</variableCount>
+    <problemScale>50050</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="788">
+    <name>Homberger_0200_R2_2_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0200_R2_2_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="789">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="115"/>
+    <singleBenchmarkResult xStreamRef="280"/>
+    <singleBenchmarkResult xStreamRef="453"/>
+    <singleBenchmarkResult xStreamRef="626"/>
+    <entityCount>250</entityCount>
+    <variableCount>200</variableCount>
+    <problemScale>50050</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="790">
+    <name>Homberger_0200_RC1_2_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0200_RC1_2_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="791">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="117"/>
+    <singleBenchmarkResult xStreamRef="282"/>
+    <singleBenchmarkResult xStreamRef="455"/>
+    <singleBenchmarkResult xStreamRef="628"/>
+    <entityCount>250</entityCount>
+    <variableCount>200</variableCount>
+    <problemScale>50050</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="792">
+    <name>Homberger_0200_RC2_2_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0200_RC2_2_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="793">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="119"/>
+    <singleBenchmarkResult xStreamRef="284"/>
+    <singleBenchmarkResult xStreamRef="457"/>
+    <singleBenchmarkResult xStreamRef="630"/>
+    <entityCount>250</entityCount>
+    <variableCount>200</variableCount>
+    <problemScale>50050</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="794">
+    <name>Homberger_0400_C1_4_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0400_C1_4_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="795">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="121"/>
+    <singleBenchmarkResult xStreamRef="286"/>
+    <singleBenchmarkResult xStreamRef="459"/>
+    <singleBenchmarkResult xStreamRef="632"/>
+    <entityCount>500</entityCount>
+    <variableCount>400</variableCount>
+    <problemScale>200100</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="796">
+    <name>Homberger_0400_C2_4_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0400_C2_4_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="797">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="123"/>
+    <singleBenchmarkResult xStreamRef="288"/>
+    <singleBenchmarkResult xStreamRef="461"/>
+    <singleBenchmarkResult xStreamRef="634"/>
+    <entityCount>500</entityCount>
+    <variableCount>400</variableCount>
+    <problemScale>200100</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="798">
+    <name>Homberger_0400_R1_4_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0400_R1_4_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="799">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="125"/>
+    <singleBenchmarkResult xStreamRef="290"/>
+    <singleBenchmarkResult xStreamRef="463"/>
+    <singleBenchmarkResult xStreamRef="636"/>
+    <entityCount>500</entityCount>
+    <variableCount>400</variableCount>
+    <problemScale>200100</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="800">
+    <name>Homberger_0400_R2_4_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0400_R2_4_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="801">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="127"/>
+    <singleBenchmarkResult xStreamRef="292"/>
+    <singleBenchmarkResult xStreamRef="465"/>
+    <singleBenchmarkResult xStreamRef="638"/>
+    <entityCount>500</entityCount>
+    <variableCount>400</variableCount>
+    <problemScale>200100</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="802">
+    <name>Homberger_0400_RC1_4_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0400_RC1_4_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="803">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="129"/>
+    <singleBenchmarkResult xStreamRef="294"/>
+    <singleBenchmarkResult xStreamRef="467"/>
+    <singleBenchmarkResult xStreamRef="640"/>
+    <entityCount>500</entityCount>
+    <variableCount>400</variableCount>
+    <problemScale>200100</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="804">
+    <name>Homberger_0400_RC2_4_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0400_RC2_4_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="805">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="131"/>
+    <singleBenchmarkResult xStreamRef="296"/>
+    <singleBenchmarkResult xStreamRef="469"/>
+    <singleBenchmarkResult xStreamRef="642"/>
+    <entityCount>500</entityCount>
+    <variableCount>400</variableCount>
+    <problemScale>200100</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="806">
+    <name>Homberger_0600_C1_6_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0600_C1_6_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="807">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="133"/>
+    <singleBenchmarkResult xStreamRef="298"/>
+    <singleBenchmarkResult xStreamRef="471"/>
+    <singleBenchmarkResult xStreamRef="644"/>
+    <entityCount>750</entityCount>
+    <variableCount>600</variableCount>
+    <problemScale>450150</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="808">
+    <name>Homberger_0600_C2_6_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0600_C2_6_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="809">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="135"/>
+    <singleBenchmarkResult xStreamRef="300"/>
+    <singleBenchmarkResult xStreamRef="473"/>
+    <singleBenchmarkResult xStreamRef="646"/>
+    <entityCount>750</entityCount>
+    <variableCount>600</variableCount>
+    <problemScale>450150</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="810">
+    <name>Homberger_0600_R1_6_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0600_R1_6_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="811">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="137"/>
+    <singleBenchmarkResult xStreamRef="302"/>
+    <singleBenchmarkResult xStreamRef="475"/>
+    <singleBenchmarkResult xStreamRef="648"/>
+    <entityCount>750</entityCount>
+    <variableCount>600</variableCount>
+    <problemScale>450150</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="812">
+    <name>Homberger_0600_R2_6_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0600_R2_6_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="813">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="139"/>
+    <singleBenchmarkResult xStreamRef="304"/>
+    <singleBenchmarkResult xStreamRef="477"/>
+    <singleBenchmarkResult xStreamRef="650"/>
+    <entityCount>750</entityCount>
+    <variableCount>600</variableCount>
+    <problemScale>450150</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="814">
+    <name>Homberger_0600_RC2_6_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0600_RC2_6_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="815">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="141"/>
+    <singleBenchmarkResult xStreamRef="306"/>
+    <singleBenchmarkResult xStreamRef="479"/>
+    <singleBenchmarkResult xStreamRef="652"/>
+    <entityCount>750</entityCount>
+    <variableCount>600</variableCount>
+    <problemScale>450150</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="816">
+    <name>Homberger_0600_RC1_6_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0600_RC1_6_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="817">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="143"/>
+    <singleBenchmarkResult xStreamRef="308"/>
+    <singleBenchmarkResult xStreamRef="481"/>
+    <singleBenchmarkResult xStreamRef="654"/>
+    <entityCount>750</entityCount>
+    <variableCount>600</variableCount>
+    <problemScale>450150</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="818">
+    <name>Homberger_0800_C1_8_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0800_C1_8_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="819">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="145"/>
+    <singleBenchmarkResult xStreamRef="310"/>
+    <singleBenchmarkResult xStreamRef="483"/>
+    <singleBenchmarkResult xStreamRef="656"/>
+    <entityCount>1000</entityCount>
+    <variableCount>800</variableCount>
+    <problemScale>800200</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="820">
+    <name>Homberger_0800_C2_8_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0800_C2_8_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="821">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="147"/>
+    <singleBenchmarkResult xStreamRef="312"/>
+    <singleBenchmarkResult xStreamRef="485"/>
+    <singleBenchmarkResult xStreamRef="658"/>
+    <entityCount>1000</entityCount>
+    <variableCount>800</variableCount>
+    <problemScale>800200</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="822">
+    <name>Homberger_0800_R1_8_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0800_R1_8_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="823">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="149"/>
+    <singleBenchmarkResult xStreamRef="314"/>
+    <singleBenchmarkResult xStreamRef="487"/>
+    <singleBenchmarkResult xStreamRef="660"/>
+    <entityCount>1000</entityCount>
+    <variableCount>800</variableCount>
+    <problemScale>800200</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="824">
+    <name>Homberger_0800_R2_8_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0800_R2_8_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="825">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="151"/>
+    <singleBenchmarkResult xStreamRef="316"/>
+    <singleBenchmarkResult xStreamRef="489"/>
+    <singleBenchmarkResult xStreamRef="662"/>
+    <entityCount>1000</entityCount>
+    <variableCount>800</variableCount>
+    <problemScale>800200</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="826">
+    <name>Homberger_0800_RC1_8_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0800_RC1_8_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="827">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="153"/>
+    <singleBenchmarkResult xStreamRef="318"/>
+    <singleBenchmarkResult xStreamRef="491"/>
+    <singleBenchmarkResult xStreamRef="664"/>
+    <entityCount>1000</entityCount>
+    <variableCount>800</variableCount>
+    <problemScale>800200</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="828">
+    <name>Homberger_0800_RC2_8_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_0800_RC2_8_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="829">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="155"/>
+    <singleBenchmarkResult xStreamRef="320"/>
+    <singleBenchmarkResult xStreamRef="493"/>
+    <singleBenchmarkResult xStreamRef="666"/>
+    <entityCount>1000</entityCount>
+    <variableCount>800</variableCount>
+    <problemScale>800200</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="830">
+    <name>Homberger_1000_C110_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_1000_C110_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="831">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="157"/>
+    <singleBenchmarkResult xStreamRef="322"/>
+    <singleBenchmarkResult xStreamRef="495"/>
+    <singleBenchmarkResult xStreamRef="668"/>
+    <entityCount>1250</entityCount>
+    <variableCount>1000</variableCount>
+    <problemScale>1250250</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="832">
+    <name>Homberger_1000_C210_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_1000_C210_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="833">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="159"/>
+    <singleBenchmarkResult xStreamRef="324"/>
+    <singleBenchmarkResult xStreamRef="497"/>
+    <singleBenchmarkResult xStreamRef="670"/>
+    <entityCount>1250</entityCount>
+    <variableCount>1000</variableCount>
+    <problemScale>1250250</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="834">
+    <name>Homberger_1000_R110_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_1000_R110_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="835">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="161"/>
+    <singleBenchmarkResult xStreamRef="326"/>
+    <singleBenchmarkResult xStreamRef="499"/>
+    <singleBenchmarkResult xStreamRef="672"/>
+    <entityCount>1250</entityCount>
+    <variableCount>1000</variableCount>
+    <problemScale>1250250</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="836">
+    <name>Homberger_1000_R210_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_1000_R210_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="837">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="163"/>
+    <singleBenchmarkResult xStreamRef="328"/>
+    <singleBenchmarkResult xStreamRef="501"/>
+    <singleBenchmarkResult xStreamRef="674"/>
+    <entityCount>1250</entityCount>
+    <variableCount>1000</variableCount>
+    <problemScale>1250250</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="838">
+    <name>Homberger_1000_RC110_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_1000_RC110_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="839">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="165"/>
+    <singleBenchmarkResult xStreamRef="330"/>
+    <singleBenchmarkResult xStreamRef="503"/>
+    <singleBenchmarkResult xStreamRef="676"/>
+    <entityCount>1250</entityCount>
+    <variableCount>1000</variableCount>
+    <problemScale>1250250</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="840">
+    <name>Homberger_1000_RC210_1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/advancedvehiclerouting/import/timewindowed/Homberger_1000_RC210_1.vrp</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="841">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult xStreamRef="167"/>
+    <singleBenchmarkResult xStreamRef="332"/>
+    <singleBenchmarkResult xStreamRef="505"/>
+    <singleBenchmarkResult xStreamRef="678"/>
+    <entityCount>1250</entityCount>
+    <variableCount>1000</variableCount>
+    <problemScale>1250250</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <startingTimestamp xStreamId="842">2015-06-29 15:48:54.202 UTC</startingTimestamp>
+  <benchmarkTimeMillisSpent>24381451</benchmarkTimeMillisSpent>
+</plannerBenchmarkResult>

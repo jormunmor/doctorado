@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 2. Quick start</title><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="OptaPlanner User Guide"/><link rel="up" href="index.html" title="OptaPlanner User Guide"/><link rel="prev" href="ch01.html" title="Chapter 1. OptaPlanner introduction"/><link rel="next" href="ch03.html" title="Chapter 3. Use cases and examples"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch01.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch03.html"><strong>Next</strong></a></li></ul><div class="chapter" title="Chapter 2. Quick start"><div class="titlepage"><div><div><h2 class="title"><a id="quickStart"/>Chapter 2. Quick start</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="ch02.html#cloudBalancingTutorial">2.1. Cloud balancing tutorial</a></span></dt><dd><dl><dt><span class="section"><a href="ch02.html#cloudBalancingProblemDescription">2.1.1. Problem description</a></span></dt><dt><span class="section"><a href="ch02.html#cloudBalancingProblemSize">2.1.2. Problem size</a></span></dt><dt><span class="section"><a href="ch02.html#cloudBalancingDomainModelDesign">2.1.3. Domain model design</a></span></dt><dt><span class="section"><a href="ch02.html#cloudBalancingMainMethod">2.1.4. Main method</a></span></dt><dt><span class="section"><a href="ch02.html#cloudBalancingSolverConfiguration">2.1.5. Solver configuration</a></span></dt><dt><span class="section"><a href="ch02.html#cloudBalancingDomainModelImplementation">2.1.6. Domain model implementation</a></span></dt><dt><span class="section"><a href="ch02.html#cloudBalancingScoreConfiguration">2.1.7. Score configuration</a></span></dt><dt><span class="section"><a href="ch02.html#cloudBalancingBeyondThisTutorial">2.1.8. Beyond this tutorial</a></span></dt></dl></dd></dl></div><div class="section" title="2.1. Cloud balancing tutorial"><div class="titlepage"><div><div><h2 class="title"><a id="cloudBalancingTutorial"/>2.1. Cloud balancing tutorial</h2></div></div></div><div class="section" title="2.1.1. Problem description"><div class="titlepage"><div><div><h3 class="title"><a id="cloudBalancingProblemDescription"/>2.1.1. Problem description</h3></div></div></div><p>Suppose your company owns a number of cloud computers and needs to run a number of processes on those
+      computers. Assign each process to a computer under the following 4 constraints.</p><p>Hard constraints which must be fulfilled:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>Every computer must be able to handle the minimum hardware requirements of the sum of its
+          processes:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>The CPU power of a computer must be at least the sum of the CPU power required by the processes
+              assigned to that computer.</p></li><li class="listitem"><p>The RAM memory of a computer must be at least the sum of the RAM memory required by the processes
+              assigned to that computer.</p></li><li class="listitem"><p>The network bandwidth of a computer must be at least the sum of the network bandwidth required by
+              the processes assigned to that computer.</p></li></ul></div></li></ul></div><p>Soft constraints which should be optimized:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>Each computer that has one or more processes assigned, incurs a maintenance cost (which is fixed per
+          computer).</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>Minimize the total maintenance cost.</p></li></ul></div></li></ul></div><p>How would you do that? This problem is a form of <span class="emphasis"><em>bin packing</em></span>. Here's a simplified
+      example where we assign 4 processes to 2 computers with 2 constraints (CPU and RAM) with a simple
+      algorithm:</p><div class="mediaobject"><img src="images/Chapter-Quick_start/cloudBalanceUseCase.png"/></div><p>The simple algorithm used here is the <span class="emphasis"><em>First Fit Decreasing</em></span> algorithm, which assigns the
+      bigger processes first and assigns the smaller processes to the remaining space. As you can see, it's not optimal,
+      because it does not leave enough room to assign the yellow process D.</p><p>Planner does find the more optimal solution fast, by using additional, smarter algorithms. And it scales
+      too: both in data (more processes, more computers) and constraints (more hardware requirements, other
+      constraints). So let's take a look how we can use Planner for this.</p></div><div class="section" title="2.1.2. Problem size"><div class="titlepage"><div><div><h3 class="title"><a id="cloudBalancingProblemSize"/>2.1.2. Problem size</h3></div></div></div><pre><code class="no-highlight">2computers-6processes      has   2 computers and    6 processes with a search space of      64.
+3computers-9processes      has   3 computers and    9 processes with a search space of    10^4.
+4computers-012processes    has   4 computers and   12 processes with a search space of    10^7.
+100computers-300processes  has 100 computers and  300 processes with a search space of  10^600.
+200computers-600processes  has 200 computers and  600 processes with a search space of 10^1380.
+400computers-1200processes has 400 computers and 1200 processes with a search space of 10^3122.
+800computers-2400processes has 800 computers and 2400 processes with a search space of 10^6967.</code></pre></div><div class="section" title="2.1.3. Domain model design"><div class="titlepage"><div><div><h3 class="title"><a id="cloudBalancingDomainModelDesign"/>2.1.3. Domain model design</h3></div></div></div><p>Let's start by taking a look at the domain model. It's pretty simple:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><code class="literal">Computer</code>: represents a computer with certain hardware (CPU power, RAM memory, network
+          bandwidth) and maintenance cost.</p></li><li class="listitem"><p><code class="literal">Process</code>: represents a process with a demand. Needs to be assigned to a
+          <code class="literal">Computer</code> by Planner.</p></li><li class="listitem"><p><code class="literal">CloudBalance</code>: represents a problem. Contains every <code class="literal">Computer</code> and
+          <code class="literal">Process</code> for a certain data set.</p></li></ul></div><div class="mediaobject"><img src="images/Chapter-Quick_start/cloudBalanceClassDiagram.png"/></div><p>In the UML class diagram above, the Planner concepts are already annotated:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>Planning entity: the class (or classes) that changes during planning. In this example that's the class
+          <code class="literal">Process</code>.</p></li><li class="listitem"><p>Planning variable: the property (or properties) of a planning entity class that changes during planning.
+          In this example, that's the property <code class="literal">computer</code> on the class
+          <code class="literal">Process</code>.</p></li><li class="listitem"><p>Solution: the class that represents a data set and contains all planning entities. In this example
+          that's the class <code class="literal">CloudBalance</code>.</p></li></ul></div></div><div class="section" title="2.1.4. Main method"><div class="titlepage"><div><div><h3 class="title"><a id="cloudBalancingMainMethod"/>2.1.4. Main method</h3></div></div></div><p>Try it yourself. <a class="link" href="ch01.html#downloadAndRunTheExamples" title="1.4. Download and run the examples">Download and configure the examples in your
+      favorite IDE.</a> Run <code class="literal">org.optaplanner.examples.cloudbalancing.app.CloudBalancingHelloWorld</code>.
+      By default, it is configured to run for 120 seconds. It will execute this code:</p><div class="example"><a id="d0e722"/><p class="title"><strong>Example 2.1. CloudBalancingHelloWorld.java</strong></p><div class="example-contents"><pre><code class="language-java">public class CloudBalancingHelloWorld {
+
+    public static void main(String[] args) {
+        // Build the Solver
+        SolverFactory solverFactory = SolverFactory.createFromXmlResource(
+                "org/optaplanner/examples/cloudbalancing/solver/cloudBalancingSolverConfig.xml");
+        Solver solver = solverFactory.buildSolver();
+
+        // Load a problem with 400 computers and 1200 processes
+        CloudBalance unsolvedCloudBalance = new CloudBalancingGenerator().createCloudBalance(400, 1200);
+
+        // Solve the problem
+        solver.solve(unsolvedCloudBalance);
+        CloudBalance solvedCloudBalance = (CloudBalance) solver.getBestSolution();
+
+        // Display the result
+        System.out.println("\nSolved cloudBalance with 400 computers and 1200 processes:\n"
+                + toDisplayString(solvedCloudBalance));
+    }
+
+    ...
+
+}</code></pre></div></div><br class="example-break"/><p>The code above does this:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>Build the <code class="literal">Solver</code> based on a solver configuration (in this case an XML file from the
+          classpath).</p><pre><code class="language-java">        SolverFactory solverFactory = SolverFactory.createFromXmlResource(
+                "org/optaplanner/examples/cloudbalancing/solver/cloudBalancingSolverConfig.xml");
+        Solver solver = solverFactory.buildSolver();</code></pre></li><li class="listitem"><p>Load the problem. <code class="literal">CloudBalancingGenerator</code> generates a random problem: you'll replace
+          this with a class that loads a real problem, for example from a database.</p><pre><code class="language-java">        CloudBalance unsolvedCloudBalance = new CloudBalancingGenerator().createCloudBalance(400, 1200);</code></pre></li><li class="listitem"><p>Solve the problem.</p><pre><code class="language-java">        solver.solve(unsolvedCloudBalance);
+        CloudBalance solvedCloudBalance = (CloudBalance) solver.getBestSolution();</code></pre></li><li class="listitem"><p>Display the result.</p><pre><code class="language-java">        System.out.println("\nSolved cloudBalance with 400 computers and 1200 processes:\n"
+                + toDisplayString(solvedCloudBalance));</code></pre></li></ul></div><p>The only non-obvious part is building the <code class="literal">Solver</code>. Let's examine that.</p></div><div class="section" title="2.1.5. Solver configuration"><div class="titlepage"><div><div><h3 class="title"><a id="cloudBalancingSolverConfiguration"/>2.1.5. Solver configuration</h3></div></div></div><p>Take a look at the solver configuration:</p><div class="example"><a id="d0e766"/><p class="title"><strong>Example 2.2. cloudBalancingSolverConfig.xml</strong></p><div class="example-contents"><pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;solver&gt;
+  &lt;!--&lt;environmentMode&gt;FAST_ASSERT&lt;/environmentMode&gt;--&gt;
+
+  &lt;!-- Domain model configuration --&gt;
+  &lt;solutionClass&gt;org.optaplanner.examples.cloudbalancing.domain.CloudBalance&lt;/solutionClass&gt;
+  &lt;entityClass&gt;org.optaplanner.examples.cloudbalancing.domain.CloudProcess&lt;/entityClass&gt;
+
+  &lt;!-- Score configuration --&gt;
+  &lt;scoreDirectorFactory&gt;
+    &lt;scoreDefinitionType&gt;HARD_SOFT&lt;/scoreDefinitionType&gt;
+    &lt;easyScoreCalculatorClass&gt;org.optaplanner.examples.cloudbalancing.solver.score.CloudBalancingEasyScoreCalculator&lt;/easyScoreCalculatorClass&gt;
+    &lt;!--&lt;scoreDrl&gt;org/optaplanner/examples/cloudbalancing/solver/cloudBalancingScoreRules.drl&lt;/scoreDrl&gt;--&gt;
+    &lt;initializingScoreTrend&gt;ONLY_DOWN&lt;/initializingScoreTrend&gt;
+  &lt;/scoreDirectorFactory&gt;
+
+  &lt;!-- Optimization algorithms configuration --&gt;
+  &lt;termination&gt;
+    &lt;secondsSpentLimit&gt;120&lt;/secondsSpentLimit&gt;
+  &lt;/termination&gt;
+  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;FIRST_FIT_DECREASING&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;
+  &lt;localSearch&gt;
+    &lt;acceptor&gt;
+      &lt;entityTabuSize&gt;7&lt;/entityTabuSize&gt;
+    &lt;/acceptor&gt;
+    &lt;forager&gt;
+      &lt;acceptedCountLimit&gt;1000&lt;/acceptedCountLimit&gt;
+    &lt;/forager&gt;
+  &lt;/localSearch&gt;
+&lt;/solver&gt;</code></pre></div></div><br class="example-break"/><p>This solver configuration consists out of 3 parts:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="bold"><strong>Domain model configuration</strong></span>: What can Planner change? We need to make
+          Planner aware of our domain classes:</p><pre><code class="language-xml">  &lt;solutionClass&gt;org.optaplanner.examples.cloudbalancing.domain.CloudBalance&lt;/solutionClass&gt;
+  &lt;entityClass&gt;org.optaplanner.examples.cloudbalancing.domain.CloudProcess&lt;/entityClass&gt;</code></pre></li><li class="listitem"><p><span class="bold"><strong>Score configuration</strong></span>: How should Planner optimize the planning
+          variables? Since we have hard and soft constraints, we use a <code class="literal">HardSoftScore</code>. But we also
+          need to tell Planner how to calculate such the score, depending on our business requirements. Further down, we
+          'll look into 2 alternatives to calculate the score: using a simple Java implementation or using Drools
+          DRL.</p><pre><code class="language-xml">  &lt;scoreDirectorFactory&gt;
+    &lt;scoreDefinitionType&gt;HARD_SOFT&lt;/scoreDefinitionType&gt;
+    &lt;easyScoreCalculatorClass&gt;org.optaplanner.examples.cloudbalancing.solver.score.CloudBalancingEasyScoreCalculator&lt;/easyScoreCalculatorClass&gt;
+    &lt;!--&lt;scoreDrl&gt;org/optaplanner/examples/cloudbalancing/solver/cloudBalancingScoreRules.drl&lt;/scoreDrl&gt;--&gt;
+    &lt;initializingScoreTrend&gt;ONLY_DOWN&lt;/initializingScoreTrend&gt;
+  &lt;/scoreDirectorFactory&gt;</code></pre></li><li class="listitem"><p><span class="bold"><strong>Optimization algorithms configuration</strong></span>: How should Planner optimize it?
+          Don't worry about this for now: this is a good default configuration that works on most planning problems. It
+          will already surpass human planners and most in-house implementations. Using the Planner benchmark toolkit,
+          you can tweak it to get even better results.</p><pre><code class="language-xml">  &lt;termination&gt;
+    &lt;secondsSpentLimit&gt;120&lt;/secondsSpentLimit&gt;
+  &lt;/termination&gt;
+  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;FIRST_FIT_DECREASING&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;
+  &lt;localSearch&gt;
+    &lt;acceptor&gt;
+      &lt;entityTabuSize&gt;7&lt;/entityTabuSize&gt;
+    &lt;/acceptor&gt;
+    &lt;forager&gt;
+      &lt;acceptedCountLimit&gt;1000&lt;/acceptedCountLimit&gt;
+    &lt;/forager&gt;
+  &lt;/localSearch&gt;</code></pre></li></ul></div><p>Let's examine the domain model classes and the score configuration.</p></div><div class="section" title="2.1.6. Domain model implementation"><div class="titlepage"><div><div><h3 class="title"><a id="cloudBalancingDomainModelImplementation"/>2.1.6. Domain model implementation</h3></div></div></div><div class="section" title="2.1.6.1. The Computer class"><div class="titlepage"><div><div><h4 class="title"><a id="cloudBalancingClassComputer"/>2.1.6.1. The <code class="literal">Computer</code> class</h4></div></div></div><p>The <code class="literal">Computer</code> class is a POJO (Plain Old Java Object), nothing special. Usually, you'll
+        have more of this kind of classes.</p><div class="example"><a id="d0e814"/><p class="title"><strong>Example 2.3. CloudComputer.java</strong></p><div class="example-contents"><pre><code class="language-java">public class CloudComputer ... {
+
+    private int cpuPower;
+    private int memory;
+    private int networkBandwidth;
+    private int cost;
+
+    ... // getters
+}</code></pre></div></div><br class="example-break"/></div><div class="section" title="2.1.6.2. The Process class"><div class="titlepage"><div><div><h4 class="title"><a id="cloudBalancingClassProcess"/>2.1.6.2. The <code class="literal">Process</code> class</h4></div></div></div><p>The <code class="literal">Process</code> class is a little bit special. We need to tell Planner that it can change
+        the field <code class="literal">computer</code>, so we annotate the class with <code class="literal">@PlanningEntity</code> and the
+        getter <code class="literal">getComputer</code> with <code class="literal">@PlanningVariable</code>:</p><div class="example"><a id="d0e842"/><p class="title"><strong>Example 2.4. CloudProcess.java</strong></p><div class="example-contents"><pre><code class="language-java">@PlanningEntity(...)
+public class CloudProcess ... {
+
+    private int requiredCpuPower;
+    private int requiredMemory;
+    private int requiredNetworkBandwidth;
+
+    private CloudComputer computer;
+
+    ... // getters
+
+    @PlanningVariable(valueRangeProviderRefs = {"computerRange"})
+    public CloudComputer getComputer() {
+        return computer;
+    }
+
+    public void setComputer(CloudComputer computer) {
+        computer = computer;
+    }
+
+    // ************************************************************************
+    // Complex methods
+    // ************************************************************************
+
+    ...
+
+}</code></pre></div></div><br class="example-break"/><p>The values that Planner can choose from for the field <code class="literal">computer</code>, are retrieved from a
+        method on the <code class="literal">Solution</code> implementation: <code class="literal">CloudBalance.getComputerList()</code>
+        which returns a list of all computers in the current data set. We tell Planner about this by using the
+        <code class="literal">valueRangeProviderRefs</code> property.</p></div><div class="section" title="2.1.6.3. The CloudBalance class"><div class="titlepage"><div><div><h4 class="title"><a id="cloudBalancingClassCloudBalance"/>2.1.6.3. The <code class="literal">CloudBalance</code> class</h4></div></div></div><p>The <code class="literal">CloudBalance</code> class implements the <code class="filename">Solution</code> interface. It holds
+        a list of all computers and processes. We need to tell Planner how to retrieve the collection of processes which
+        it can change, so we need to annotate the getter <code class="literal">getProcessList</code> with
+        <code class="literal">@PlanningEntityCollectionProperty</code>.</p><p>The <code class="literal">CloudBalance</code> class also has a property <code class="literal">score</code> which is the
+        <code class="literal">Score</code> of that <code class="literal">Solution</code> instance in its current state:</p><div class="example"><a id="d0e895"/><p class="title"><strong>Example 2.5. CloudBalance.java</strong></p><div class="example-contents"><pre><code class="language-java">public class CloudBalance ... implements Solution&lt;HardSoftScore&gt; {
+
+    private List&lt;CloudComputer&gt; computerList;
+
+    private List&lt;CloudProcess&gt; processList;
+
+    private HardSoftScore score;
+
+    @ValueRangeProvider(id = "computerRange")
+    public List&lt;CloudComputer&gt; getComputerList() {
+        return computerList;
+    }
+
+    @PlanningEntityCollectionProperty
+    public List&lt;CloudProcess&gt; getProcessList() {
+        return processList;
+    }
+
+    ...
+
+    public HardSoftScore getScore() {
+        return score;
+    }
+
+    public void setScore(HardSoftScore score) {
+        this.score = score;
+    }
+
+    // ************************************************************************
+    // Complex methods
+    // ************************************************************************
+
+    public Collection&lt;? extends Object&gt; getProblemFacts() {
+        List&lt;Object&gt; facts = new ArrayList&lt;Object&gt;();
+        facts.addAll(computerList);
+        // Do not add the planning entity's (processList) because that will be done automatically
+        return facts;
+    }
+
+    ...
+
+}</code></pre></div></div><br class="example-break"/><p>The <code class="literal">getProblemFacts()</code> method is only needed for score calculation with Drools. It's not
+        needed for the other score calculation types.</p></div></div><div class="section" title="2.1.7. Score configuration"><div class="titlepage"><div><div><h3 class="title"><a id="cloudBalancingScoreConfiguration"/>2.1.7. Score configuration</h3></div></div></div><p>Planner will search for the <code class="literal">Solution</code> with the highest <code class="literal">Score</code>. We're
+      using a <code class="literal">HardSoftScore</code>, which means Planner will look for the solution with no hard constraints
+      broken (fulfill hardware requirements) and as little as possible soft constraints broken (minimize maintenance
+      cost).</p><div class="mediaobject"><img src="images/Chapter-Quick_start/cloudBalanceScoreCalculation.png"/></div><p>Of course, Planner needs to be told about these domain-specific score constraints. There are several ways to
+      implement such a score function:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>Easy Java</p></li><li class="listitem"><p>Incremental Java</p></li><li class="listitem"><p>Drools</p></li></ul></div><p>Let's take a look at 2 different implementations:</p><div class="section" title="2.1.7.1. Easy Java score configuration"><div class="titlepage"><div><div><h4 class="title"><a id="cloudBalancingEasyJavaScoreConfiguration"/>2.1.7.1. Easy Java score configuration</h4></div></div></div><p>One way to define a score function is to implement the interface <code class="literal">EasyScoreCalculator</code>
+        in plain Java.</p><pre><code class="language-xml">  &lt;scoreDirectorFactory&gt;
+    &lt;scoreDefinitionType&gt;HARD_SOFT&lt;/scoreDefinitionType&gt;
+    &lt;easyScoreCalculatorClass&gt;org.optaplanner.examples.cloudbalancing.solver.score.CloudBalancingEasyScoreCalculator&lt;/easyScoreCalculatorClass&gt;
+  &lt;/scoreDirectorFactory&gt;</code></pre><p>Just implement the <code class="literal">calculateScore(Solution)</code> method to return a
+        <code class="literal">HardSoftScore</code> instance.</p><div class="example"><a id="d0e954"/><p class="title"><strong>Example 2.6. CloudBalancingEasyScoreCalculator.java</strong></p><div class="example-contents"><pre><code class="language-java">public class CloudBalancingEasyScoreCalculator implements EasyScoreCalculator&lt;CloudBalance&gt; {
+
+    /**
+     * A very simple implementation. The double loop can easily be removed by using Maps as shown in
+     * {@link CloudBalancingMapBasedEasyScoreCalculator#calculateScore(CloudBalance)}.
+     */
+    public HardSoftScore calculateScore(CloudBalance cloudBalance) {
+        int hardScore = 0;
+        int softScore = 0;
+        for (CloudComputer computer : cloudBalance.getComputerList()) {
+            int cpuPowerUsage = 0;
+            int memoryUsage = 0;
+            int networkBandwidthUsage = 0;
+            boolean used = false;
+
+            // Calculate usage
+            for (CloudProcess process : cloudBalance.getProcessList()) {
+                if (computer.equals(process.getComputer())) {
+                    cpuPowerUsage += process.getRequiredCpuPower();
+                    memoryUsage += process.getRequiredMemory();
+                    networkBandwidthUsage += process.getRequiredNetworkBandwidth();
+                    used = true;
+                }
+            }
+            
+            // Hard constraints
+            int cpuPowerAvailable = computer.getCpuPower() - cpuPowerUsage;
+            if (cpuPowerAvailable &lt; 0) {
+                hardScore += cpuPowerAvailable;
+            }
+            int memoryAvailable = computer.getMemory() - memoryUsage;
+            if (memoryAvailable &lt; 0) {
+                hardScore += memoryAvailable;
+            }
+            int networkBandwidthAvailable = computer.getNetworkBandwidth() - networkBandwidthUsage;
+            if (networkBandwidthAvailable &lt; 0) {
+                hardScore += networkBandwidthAvailable;
+            }
+            
+            // Soft constraints
+            if (used) {
+                softScore -= computer.getCost();
+            }
+        }
+        return HardSoftScore.valueOf(hardScore, softScore);
+    }
+
+}</code></pre></div></div><br class="example-break"/><p>Even if we optimize the code above to use <code class="literal">Map</code>s to iterate through the
+        <code class="literal">processList</code> only once, <span class="bold"><strong>it is still slow</strong></span> because it doesn't
+        do incremental score calculation. To fix that, either use an incremental Java score function or a Drools score
+        function. Let's take a look at the latter.</p></div><div class="section" title="2.1.7.2. Drools score configuration"><div class="titlepage"><div><div><h4 class="title"><a id="cloudBalancingDroolsScoreConfiguration"/>2.1.7.2. Drools score configuration</h4></div></div></div><p>To use the Drools rule engine as a score function, simply add a <code class="literal">scoreDrl</code> resource in
+        the classpath:</p><pre><code class="language-xml">  &lt;scoreDirectorFactory&gt;
+    &lt;scoreDefinitionType&gt;HARD_SOFT&lt;/scoreDefinitionType&gt;
+    &lt;scoreDrl&gt;org/optaplanner/examples/cloudbalancing/solver/cloudBalancingScoreRules.drl&lt;/scoreDrl&gt;
+  &lt;/scoreDirectorFactory&gt;</code></pre><p>First, we want to make sure that all computers have enough CPU, RAM and network bandwidth to support all
+        their processes, so we make these hard constraints:</p><div class="example"><a id="d0e982"/><p class="title"><strong>Example 2.7. cloudBalancingScoreRules.drl - hard constraints</strong></p><div class="example-contents"><pre><code class="no-highlight">...
+
+import org.optaplanner.examples.cloudbalancing.domain.CloudBalance;
+import org.optaplanner.examples.cloudbalancing.domain.CloudComputer;
+import org.optaplanner.examples.cloudbalancing.domain.CloudProcess;
+
+global HardSoftScoreHolder scoreHolder;
+
+// ############################################################################
+// Hard constraints
+// ############################################################################
+
+rule "requiredCpuPowerTotal"
+    when
+        $computer : CloudComputer($cpuPower : cpuPower)
+        $requiredCpuPowerTotal : Number(intValue &gt; $cpuPower) from accumulate(
+            CloudProcess(
+                computer == $computer,
+                $requiredCpuPower : requiredCpuPower),
+            sum($requiredCpuPower)
+        )
+    then
+        scoreHolder.addHardConstraintMatch(kcontext, $cpuPower - $requiredCpuPowerTotal.intValue());
+end
+
+rule "requiredMemoryTotal"
+    ...
+end
+
+rule "requiredNetworkBandwidthTotal"
+    ...
+end</code></pre></div></div><br class="example-break"/><p>Next, if those constraints are met, we want to minimize the maintenance cost, so we add that as a soft
+        constraint:</p><div class="example"><a id="d0e989"/><p class="title"><strong>Example 2.8. cloudBalancingScoreRules.drl - soft constraints</strong></p><div class="example-contents"><pre><code class="no-highlight">// ############################################################################
+// Soft constraints
+// ############################################################################
+
+rule "computerCost"
+    when
+        $computer : CloudComputer($cost : cost)
+        exists CloudProcess(computer == $computer)
+    then
+        scoreHolder.addSoftConstraintMatch(kcontext, - $cost);
+end</code></pre></div></div><br class="example-break"/><p>If you use the Drools rule engine for score calculation, you can integrate with other Drools technologies,
+        such as decision tables (XLS or web based), the KIE Workbench rule repository, ...</p></div></div><div class="section" title="2.1.8. Beyond this tutorial"><div class="titlepage"><div><div><h3 class="title"><a id="cloudBalancingBeyondThisTutorial"/>2.1.8. Beyond this tutorial</h3></div></div></div><p>Now that this simple example works, try going further. Enrich the domain model and add extra constraints
+      such as these:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>Each <code class="literal">Process</code> belongs to a <code class="literal">Service</code>. A computer might crash, so
+          processes running the same service should be assigned to different computers.</p></li><li class="listitem"><p>Each <code class="literal">Computer</code> is located in a <code class="literal">Building</code>. A building might burn down,
+          so processes of the same services should be assigned to computers in different buildings.</p></li></ul></div></div></div></div><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-39485370-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();</script><ul class="docnav"><li class="previous"><a accesskey="p" href="ch01.html"><strong>Prev</strong>Chapter 1. OptaPlanner introduction</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch03.html"><strong>Next</strong>Chapter 3. Use cases and examples</a></li></ul></body></html>
