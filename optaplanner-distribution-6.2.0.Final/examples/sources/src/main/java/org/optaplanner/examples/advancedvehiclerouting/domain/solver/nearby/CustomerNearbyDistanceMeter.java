@@ -19,7 +19,7 @@ package org.optaplanner.examples.advancedvehiclerouting.domain.solver.nearby;
 import org.optaplanner.core.impl.heuristic.selector.common.nearby.NearbyDistanceMeter;
 import org.optaplanner.examples.advancedvehiclerouting.domain.Customer;
 import org.optaplanner.examples.advancedvehiclerouting.domain.Standstill;
-import org.optaplanner.examples.advancedvehiclerouting.domain.timewindowed.TimeWindowedCustomer;
+//import org.optaplanner.examples.advancedvehiclerouting.domain.timewindowed.TimeWindowedCustomer;
 
 public class CustomerNearbyDistanceMeter implements NearbyDistanceMeter<Customer, Standstill> {
 

@@ -77,6 +77,15 @@ public class Location extends AbstractPersistable {
         double distance = Math.sqrt((xDifference * xDifference) + (yDifference * yDifference) + (zDifference * zDifference));
         return (int) (distance * 1000.0 + 0.5);
     }
+    
+    public double getEuclideanDistanceTo(Location location) {
+        double xDifference = location.x - x;
+        double yDifference = location.y - y;
+        double zDifference = location.z - z;
+        double distance = Math.sqrt((xDifference * xDifference) + (yDifference * yDifference) + (zDifference * zDifference));
+        
+        return distance;
+    }
 
     @Override
     public String toString() {

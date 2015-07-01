@@ -37,8 +37,4 @@ public class InitialLocation extends AbstractPersistable {
         this.location = location;
     }
 
-    // ************************************************************************
-    // Complex methods
-    // ************************************************************************
-
 }

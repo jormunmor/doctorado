@@ -43,20 +43,6 @@ import org.optaplanner.examples.vehiclerouting.domain.TaskDependency;
 
 public class VehicleRoutingEasyScoreCalculator implements EasyScoreCalculator<VehicleRoutingSolution> {
     
-    /* 
-        This field takes a count of the best solutions found, those which improve
-        the previous.
-    */
-    int solutionCount = 0;
-    
-    /*
-        These fields store the previous best solution found. It is needed to 
-        avoid calling the JSHOP2 process when the current solution does not
-        improve the hard and medium constraints.
-    */
-    int previousHard = -Integer.MAX_VALUE;
-    int previousMedium = -Integer.MAX_VALUE;
-
     @Override
     public HardMediumSoftScore calculateScore(VehicleRoutingSolution schedule) {
         //System.out.println("-----------------------------------------------------");
@@ -514,6 +500,8 @@ public class VehicleRoutingEasyScoreCalculator implements EasyScoreCalculator<Ve
                 
                 // Generate plan file
                 path = "/home/jorge/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/";
+                File file = new File("/home/jorge/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/problem");
+                file.delete();
                 PrintWriter out = new PrintWriter(path + "problem");
                 out.println(jshopPlan);
                 out.close();

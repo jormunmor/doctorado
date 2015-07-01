@@ -20,6 +20,7 @@ d: src/JSHOP2/*.java
 	cd examples/quadrotor_arcas; java JSHOP2.InternalDomain -r problem
 	cd examples/quadrotor_arcas; javac gui.java
 	cd examples/quadrotor_arcas; java -Xmx256M gui
+	cd examples/quadrotor_arcas; rm quadrotor.java; rm quadrotor.txt; rm problem.java; rm *.class
 
 2: bin.build/JSHOP2.jar
 	cd examples/quadrotor_surveillance; java JSHOP2.InternalDomain quadrotor

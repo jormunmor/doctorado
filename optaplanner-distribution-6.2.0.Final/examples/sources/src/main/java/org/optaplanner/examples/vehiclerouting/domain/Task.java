@@ -35,11 +35,11 @@ import org.optaplanner.examples.vehiclerouting.domain.timewindowed.TimeWindowedC
 })
 public class Task extends AbstractPersistable implements Standstill {
 
-    protected Location location;
-    protected Location objectLocation;
+    protected Location location; // Location where the part will be assembled.
+    protected Location objectLocation; // Location of the part to be picked.
     protected int demand;
     protected int priority;
-    protected String objectName;
+    protected String objectName; // Name of the part.
     protected String action;
     protected List<TaskDependency> preconditionList;
     protected String type;
@@ -51,6 +51,10 @@ public class Task extends AbstractPersistable implements Standstill {
     protected Task nextTask;
     protected Vehicle vehicle;
 
+    /*
+        Returns the location where the assembly takes place (where 
+        the part will be placed).
+    */
     @Override
     public Location getLocation() {
         return location;
@@ -72,6 +76,9 @@ public class Task extends AbstractPersistable implements Standstill {
         
     }
     
+    /*
+        Returns the location of the part that must be assembled.
+    */
     public Location getObjectLocation() {
         return objectLocation;
         
@@ -158,13 +165,6 @@ public class Task extends AbstractPersistable implements Standstill {
         
     }
 
-    // ************************************************************************
-    // Complex methods
-    // ************************************************************************
-
-    /**
-     * @return a positive number, the distance multiplied by 1000 to avoid floating point arithmetic rounding errors
-     */
     public int getDistanceToPreviousStandstill() {
         if (previousStandstill == null) {
             return 0;
@@ -172,10 +172,6 @@ public class Task extends AbstractPersistable implements Standstill {
         return getDistanceTo(previousStandstill);
     }
 
-    /**
-     * @param standstill never null
-     * @return a positive number, the distance multiplied by 1000 to avoid floating point arithmetic rounding errors
-     */
     public int getDistanceTo(Standstill standstill) {
         return location.getDistance(standstill.getLocation());
     }
