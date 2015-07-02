@@ -18,11 +18,69 @@
         <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
       </scoreDirectorFactory>
       <termination>
-        <minutesSpentLimit>10</minutesSpentLimit>
+        <minutesSpentLimit>5</minutesSpentLimit>
       </termination>
     </solver>
   </inheritedSolverBenchmark>
   
+  <!--
+  <solverBenchmark>
+    <name>Late Acceptance SubchainChange Filtering</name>
+    <solver>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+  	  <localSearch>
+	    <unionMoveSelector>
+		  <changeMoveSelector/>
+		  <swapMoveSelector/>
+		  <subChainChangeMoveSelector>
+                    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSubChainChangeMoveFilter</filterClass>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
+		  </subChainChangeMoveSelector>
+		  <subChainSwapMoveSelector>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
+		  </subChainSwapMoveSelector>
+		</unionMoveSelector>
+		<acceptor>
+		  <lateAcceptanceSize>200</lateAcceptanceSize>
+		</acceptor>
+		<forager>
+		  <acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+      </localSearch>
+    </solver>
+  </solverBenchmark>
+  
+  <solverBenchmark>
+    <name>Late Acceptance SubchainSwap Filtering</name>
+    <solver>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+  	  <localSearch>
+	    <unionMoveSelector>
+		  <changeMoveSelector/>
+		  <swapMoveSelector/>
+		  <subChainChangeMoveSelector>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
+		  </subChainChangeMoveSelector>
+		  <subChainSwapMoveSelector>
+                    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSubChainSwapMoveFilter</filterClass>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
+		  </subChainSwapMoveSelector>
+		</unionMoveSelector>
+		<acceptor>
+		  <lateAcceptanceSize>200</lateAcceptanceSize>
+		</acceptor>
+		<forager>
+		  <acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+      </localSearch>
+    </solver>
+  </solverBenchmark>
+-->
+
   <solverBenchmark>
     <name>Late Acceptance Nearby Filtering</name>
     <solver>
@@ -52,10 +110,10 @@
                     </secondaryEntitySelector>
                   </swapMoveSelector>
 		  <subChainChangeMoveSelector>
-		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
 		  </subChainChangeMoveSelector>
 		  <subChainSwapMoveSelector>
-		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
 		  </subChainSwapMoveSelector>
 		</unionMoveSelector>
 		<acceptor>
@@ -81,10 +139,10 @@
 		  </changeMoveSelector>
 		  <swapMoveSelector/>
 		  <subChainChangeMoveSelector>
-		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
 		  </subChainChangeMoveSelector>
 		  <subChainSwapMoveSelector>
-		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
 		  </subChainSwapMoveSelector>
 		</unionMoveSelector>
 		<acceptor>
@@ -96,7 +154,7 @@
       </localSearch>
     </solver>
   </solverBenchmark>
-
+  
   <solverBenchmark>
     <name>Late Acceptance Swap Filtering</name>
     <solver>
@@ -110,10 +168,10 @@
 		    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSwapMoveFilter</filterClass>
 		  </swapMoveSelector>
 		  <subChainChangeMoveSelector>
-		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
 		  </subChainChangeMoveSelector>
 		  <subChainSwapMoveSelector>
-		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
 		  </subChainSwapMoveSelector>
 		</unionMoveSelector>
 		<acceptor>
@@ -141,10 +199,10 @@
 		    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSwapMoveFilter</filterClass>
 		  </swapMoveSelector>
 		  <subChainChangeMoveSelector>
-		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
 		  </subChainChangeMoveSelector>
 		  <subChainSwapMoveSelector>
-		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
 		  </subChainSwapMoveSelector>
 		</unionMoveSelector>
 		<acceptor>
@@ -188,10 +246,10 @@
                     </secondaryEntitySelector>
                   </swapMoveSelector>
 		  <subChainChangeMoveSelector>
-		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
 		  </subChainChangeMoveSelector>
 		  <subChainSwapMoveSelector>
-		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
 		  </subChainSwapMoveSelector>
 		</unionMoveSelector>
 		<acceptor>
@@ -215,10 +273,10 @@
 		  <changeMoveSelector/>
 		  <swapMoveSelector/>
 		  <subChainChangeMoveSelector>
-		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
 		  </subChainChangeMoveSelector>
 		  <subChainSwapMoveSelector>
-		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
 		  </subChainSwapMoveSelector>
 		</unionMoveSelector>
 		<acceptor>

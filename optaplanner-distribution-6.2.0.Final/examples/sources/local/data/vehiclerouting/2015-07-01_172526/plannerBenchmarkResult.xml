@@ -1,0 +1,159 @@
+<plannerBenchmarkResult xStreamId="1">
+  <name>2015-07-01_172526</name>
+  <aggregation>false</aggregation>
+  <availableProcessors>1</availableProcessors>
+  <maxMemory>508887040</maxMemory>
+  <optaPlannerVersion>6.2.0.Final</optaPlannerVersion>
+  <javaVersion>Java 1.7.0_79 (Oracle Corporation)</javaVersion>
+  <javaVM>Java OpenJDK Client VM 24.79-b02 (Oracle Corporation)</javaVM>
+  <operatingSystem>Linux i386 3.13.0-55-generic</operatingSystem>
+  <parallelBenchmarkCount>1</parallelBenchmarkCount>
+  <warmUpTimeMillisSpentLimit>30000</warmUpTimeMillisSpentLimit>
+  <solverBenchmarkResult xStreamId="2">
+    <name>Late Acceptance SubchainChange Filtering</name>
+    <solverConfig xStreamId="3">
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory xStreamId="4">
+        <scoreDefinitionType>HARD_MEDIUM_SOFT</scoreDefinitionType>
+        <easyScoreCalculatorClass>org.optaplanner.examples.vehiclerouting.solver.score.VehicleRoutingEasyScoreCalculator</easyScoreCalculatorClass>
+        <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
+      </scoreDirectorFactory>
+      <termination xStreamId="5">
+        <minutesSpentLimit>5</minutesSpentLimit>
+      </termination>
+      <constructionHeuristic xStreamId="6">
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch xStreamId="7">
+        <unionMoveSelector xStreamId="8">
+          <changeMoveSelector xStreamId="9"/>
+          <swapMoveSelector xStreamId="10"/>
+          <subChainChangeMoveSelector xStreamId="11">
+            <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSubChainChangeMoveFilter</filterClass>
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="12">
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="13">
+          <lateAcceptanceSize>200</lateAcceptanceSize>
+        </acceptor>
+        <forager xStreamId="14">
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="15">
+      <usedMemoryAfterInputSolution>2100672</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="16">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-339</softScore>
+      </score>
+      <timeMillisSpent>302902</timeMillisSpent>
+      <calculateCount>1102</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult xStreamId="17">
+    <name>Late Acceptance SubchainSwap Filtering</name>
+    <solverConfig xStreamId="18">
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory xStreamRef="4"/>
+      <termination xStreamRef="5"/>
+      <constructionHeuristic xStreamId="19">
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch xStreamId="20">
+        <unionMoveSelector xStreamId="21">
+          <changeMoveSelector xStreamId="22"/>
+          <swapMoveSelector xStreamId="23"/>
+          <subChainChangeMoveSelector xStreamId="24">
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="25">
+            <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSubChainSwapMoveFilter</filterClass>
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="26">
+          <lateAcceptanceSize>200</lateAcceptanceSize>
+        </acceptor>
+        <forager xStreamId="27">
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="28">
+      <usedMemoryAfterInputSolution>2064736</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="29">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-338</softScore>
+      </score>
+      <timeMillisSpent>300610</timeMillisSpent>
+      <calculateCount>1022</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult xStreamId="30">
+    <name>Late Acceptance Default</name>
+    <solverConfig xStreamId="31">
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory xStreamRef="4"/>
+      <termination xStreamRef="5"/>
+      <constructionHeuristic xStreamId="32">
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch xStreamId="33">
+        <unionMoveSelector xStreamId="34">
+          <changeMoveSelector xStreamId="35"/>
+          <swapMoveSelector xStreamId="36"/>
+          <subChainChangeMoveSelector xStreamId="37">
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="38">
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="39">
+          <lateAcceptanceSize>200</lateAcceptanceSize>
+        </acceptor>
+        <forager xStreamId="40">
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="41">
+      <usedMemoryAfterInputSolution>2100008</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="42">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-337</softScore>
+      </score>
+      <timeMillisSpent>301026</timeMillisSpent>
+      <calculateCount>713</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="43">
+    <name>ArcasAssemblyProblem</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/vehiclerouting/unsolved/ArcasAssemblyProblem.xml</inputSolutionFile>
+    <singleBenchmarkResult xStreamRef="15"/>
+    <singleBenchmarkResult xStreamRef="28"/>
+    <singleBenchmarkResult xStreamRef="41"/>
+    <entityCount>18</entityCount>
+    <variableCount>14</variableCount>
+    <problemScale>256</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <startingTimestamp xStreamId="44">2015-07-01 15:25:26.871 UTC</startingTimestamp>
+  <benchmarkTimeMillisSpent>938094</benchmarkTimeMillisSpent>
+</plannerBenchmarkResult>
