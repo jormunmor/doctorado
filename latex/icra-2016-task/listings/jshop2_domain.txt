@@ -1,0 +1,21 @@
+(:method 
+	(mission ?missionType)
+	;precondition
+	( 
+		(remaining_tasks ?remaining)
+		(call > ?remaining 0)
+		(object ?partName) (not(assembled ?partName)) 
+		(depends ?partName ?dependency_list)
+		(forall (?z)
+			((object ?z)(call Member ?z ?dependency_list)) 
+			(assembled ?z))
+		(quadrotor ?uav) (assigned ?partName ?uav) 
+		(location ?loc) 
+		(assembly_location ?partName ?loc)
+	)
+	;subtasks
+	( 
+		(synchro_mission assemble ?uav ?loc ?partName)
+		(mission ?missionType)
+	)
+)
