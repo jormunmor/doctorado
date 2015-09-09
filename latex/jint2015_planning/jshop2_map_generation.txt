@@ -1,0 +1,21 @@
+(:method (mapGeneration ?a ?x ?percentage)			
+	;precondition (quad not at location)
+	( 
+		(quadrotor ?a) (location ?x) (not (at ?a ?x)) (quadrotor ?b)
+		(not (at ?b ?x)) (idle ?b) (call != ?a ?b) 
+		(assign ?uavList (?a ?b)) (quadrotor ?c) (call Member ?c ?uavList) 
+	)
+
+	;subtasks
+	( (move ?c ?x) (mapGenerationMission ?c ?x ?percentage) )
+
+	;precondition (quad at location)
+	( 
+		(quadrotor ?a) (location ?x) (at ?a ?x) (quadrotor ?b) 
+		(at ?b ?x) (idle ?b)  (call != ?a ?b) (assign ?uavList (?a ?b)) 
+		(quadrotor ?c) (call Member ?c ?uavList)
+	)
+
+	;subtasks
+	( (mapGenerationMission ?c ?x ?percentage) )
+)

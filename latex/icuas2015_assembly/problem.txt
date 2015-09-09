@@ -1,0 +1,63 @@
+	; FACTS
+	(
+		; UAV defs
+		(quadrotor uav1)(quadrotor uav2)
+		(quadrotor uav3)(quadrotor uav4)
+		; location defs
+		(location 1)
+		...
+		(location 26)
+		; object defs
+		(object Box001)
+		...
+		(object Box011)
+		; object state defs
+		(at Box001 1)
+		...
+		(at Box011 21)
+		; ObjectDependencies
+		(depends Box001 ())
+		(depends Box002 ())
+		(depends Box003 (Box008 Box009 Box010 Box011))
+		(depends Box004 (Box011 Box010))
+		(depends Box005 (Box011 Box010))
+		(depends Box006 (Box008 Box009))
+		(depends Box007 (Box008 Box009))
+		(depends Box008 (Box001))
+		(depends Box009 (Box001))
+		(depends Box010 (Box002))
+		(depends Box011 (Box002))
+		; assembly locations
+		(assembly_location Box001 2)
+		...
+		(assembly_location Box011 22)
+		; part assignments
+		(assigned Box003 uav1)
+		(assigned Box004 uav1)
+		(assigned Box001 uav1)
+		(assigned Box008 uav1)
+		(assigned Box002 uav2)
+		(assigned Box007 uav2)
+		(assigned Box011 uav2)
+		(assigned Box006 uav3)
+		(assigned Box009 uav3)
+		(assigned Box003 uav3)
+		(assigned Box002 uav3)
+		(assigned Box010 uav4)
+		(assigned Box005 uav4)
+		(assigned Box001 uav4)
+		; UAS state defs
+		(battery uav1 1200)
+		(at uav1 23)(landed uav1)
+		(battery uav2 1200)
+		(at uav2 24)(landed uav2)
+		(battery uav3 1200)
+		(at uav3 25)(landed uav3)
+		(battery uav4 1200)
+		(at uav4 26)(landed uav4)
+		...
+		; remaining tasks
+		(remaining_tasks 11)
+	)
+	; GOALS
+	((mission assemble))

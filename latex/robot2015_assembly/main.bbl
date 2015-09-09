@@ -1,0 +1,140 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{kondak_ijars13}
+\BIBentryALTinterwordspacing
+K.~Kondak, K.~Krieger, A.~Albu-Schaeffer, M.~Schwarzbach, M.~Laiacker, I.~Maza,
+  A.~Rodriguez-Castano, and A.~Ollero, ``Closed-loop behavior of an autonomous
+  helicopter equipped with a robotic arm for aerial manipulation tasks,''
+  \emph{International Journal of Advanced Robotic Systems}, vol.~10, no. 145,
+  pp. 1--9, February 2013. [Online]. Available:
+  \url{http://dx.doi.org/10.5772/53754}
+\BIBentrySTDinterwordspacing
+
+\bibitem{perez_jint13}
+\BIBentryALTinterwordspacing
+D.~Perez, I.~Maza, F.~Caballero, D.~Scarlatti, E.~Casado, and A.~Ollero, ``A
+  ground control station for a multi-{UAV} surveillance system,'' \emph{Journal
+  of Intelligent and Robotic Systems}, vol.~69, no. 1-4, pp. 119--130, January
+  2013. [Online]. Available: \url{http://dx.doi.org/10.1007/s10846-012-9759-5}
+\BIBentrySTDinterwordspacing
+
+\bibitem{maza_jint10_multimodal}
+\BIBentryALTinterwordspacing
+I.~Maza, F.~Caballero, R.~Molina, N.~P. {n}a, and A.~Ollero, ``Multimodal
+  interface technologies for {UAV} ground control stations. a comparative
+  analysis,'' \emph{Journal of Intelligent and Robotic Systems}, vol.~57, no.
+  1--4, pp. 371--391, 2010. [Online]. Available:
+  \url{http://dx.doi.org/10.1007/s10846-009-9351-9}
+\BIBentrySTDinterwordspacing
+
+\bibitem{maza_icuas14}
+\BIBentryALTinterwordspacing
+I.~Maza, J.~Munoz-Morera, F.~Caballero, E.~Casado, V.~Perez-Villar, and
+  A.~Ollero, ``Architecture and tools for the generation of flight intent from
+  mission intent for a fleet of unmanned aerial systems,'' in \emph{Unmanned
+  Aircraft Systems (ICUAS), 2014 International Conference on}.\hskip 1em plus
+  0.5em minus 0.4em\relax IEEE, May 2014, pp. 9--19. [Online]. Available:
+  \url{http://dx.doi.org/10.1109/ICUAS.2014.6842234}
+\BIBentrySTDinterwordspacing
+
+\bibitem{maza_jfr11_multiuav}
+\BIBentryALTinterwordspacing
+I.~Maza, F.~Caballero, J.~Capitan, J.~M. de~Dios, and A.~Ollero, ``A
+  distributed architecture for a robotic platform with aerial sensor
+  transportation and self-deployment capabilities,'' \emph{Journal of Field
+  Robotics}, vol.~28, no.~3, pp. 303--328, 2011. [Online]. Available:
+  \url{http://dx.doi.org/10.1002/rob.20383}
+\BIBentrySTDinterwordspacing
+
+\bibitem{ingrand_ghallab_2013}
+F.~Ingrand and M.~Ghallab, ``Robotics and {A}rtificial {I}ntelligence: A
+  perspective on deliberation functions,'' \emph{AI Communications}, vol.~27,
+  no.~1, pp. 63--80, 2014.
+
+\bibitem{Bacchus00usingtemporal}
+F.~Bacchus, F.~Kabanza, and U.~D. Sherbrooke, ``Using temporal logics to
+  express search control knowledge for planning,'' \emph{Artificial
+  Intelligence}, vol. 116, p. 2000, 2000.
+
+\bibitem{Kvarnstrom01talplanner}
+J.~Kvarnstr\"{o}m and P.~Doherty, ``{TAL}planner: A temporal logic based
+  forward chaining planner,'' \emph{Annals of mathematics and Artificial
+  Intelligence}, vol.~30, p. 2001, 2001.
+
+\bibitem{Nau03shop2}
+D.~Nau, O.~Ilghami, U.~Kuter, J.~W. Murdock, D.~Wu, and F.~Yaman, ``Shop2: An
+  {HTN} planning system,'' \emph{Journal of Artificial Intelligence Research},
+  vol.~20, pp. 379--404, 2003.
+
+\bibitem{Wilkins}
+D.~E. Wilkins, \emph{Practical Planning: Extending the Classical AI Planning
+  Paradigm}.\hskip 1em plus 0.5em minus 0.4em\relax San Francisco, CA, USA:
+  Morgan Kaufmann Publishers Inc., 1988.
+
+\bibitem{Currie90}
+K.~Currie, A.~Tate, and S.~Bridge, ``O-{P}lan: the open planning
+  architecture,'' 1990.
+
+\bibitem{Chen06}
+Y.~Chen, B.~W. Wah, and C.~wei Hsu, ``Temporal planning using subgoal
+  partitioning and resolution in {SGP}lan,'' \emph{J. of Artificial
+  Intelligence Research}, vol.~26, p. 369, 2006.
+
+\bibitem{Helmert06}
+M.~Helmert, ``The fast downward planning system,'' \emph{Journal of Artifical
+  Intelligence Research}, pp. 191--246, 2006.
+
+\bibitem{Gerevini01}
+A.~Gerevini, A.~Saetti, and I.~Serina, ``Planning through stochastic local
+  search and temporal action graphs,'' \emph{Journal of Artifical Intelligence
+  Research}, vol.~20, pp. 239--290, 2003.
+
+\bibitem{Gerevini02}
+A.~Gerevini, U.~Kuter, D.~Nau, A.~Saetti, and N.~Waisbrot, ``Combining
+  domain-independent planning and {HTN} planning: {T}he {D}uet {P}lanner,''
+  2008.
+
+\bibitem{Shivashankar}
+V.~Shivashankar, R.~Alford, U.~Kuter, and D.~Nau, ``The {G}o{D}el {P}lanning
+  {S}ystem: A more perfect union of domain-independent and hierarchical
+  planning.''
+
+\bibitem{Dantzig_Ramser_VRP}
+\BIBentryALTinterwordspacing
+G.~B. Dantzig and J.~H. Ramser, ``The truck dispatching problem,''
+  \emph{Management Science}, vol.~6, no.~1, pp. 80--91, 1959. [Online].
+  Available: \url{http://dx.doi.org/10.1287/mnsc.6.1.80}
+\BIBentrySTDinterwordspacing
+
+\bibitem{munoz_icuas15}
+J.~Munoz-Morera, I.~Maza, C.~J. Fernandez-Aguera, F.~Caballero, and A.~Ollero,
+  ``Assembly planning for the construction of structures with multiple {UAS}
+  equipped with robotic arms,'' in \emph{Unmanned Aircraft Systems (ICUAS),
+  2015 International Conference on}.\hskip 1em plus 0.5em minus 0.4em\relax
+  IEEE, June 2015, pp. 1049--1058.
+
+\bibitem{optaplanner}
+\BIBentryALTinterwordspacing
+{Red Hat open source community}, \emph{Opta{P}lanner}, 2014 (accessed December
+  12, 2014). [Online]. Available: \url{http://www.optaplanner.org/}
+\BIBentrySTDinterwordspacing
+
+\end{thebibliography}

@@ -1,0 +1,49 @@
+<UavPlanningSolution id="1">
+  <locationList id="2">
+    <Location id="3">
+      <id>0</id>
+      <latitude>37.4122489</latitude>
+      <longitude>-6.0037397</longitude>
+    </Location>
+    <Location id="4">
+      <id>1</id>
+      <latitude>37.4123496</latitude>
+      <longitude>-6.0031697</longitude>
+    </Location>
+		<Location id="5">
+      <id>2</id>
+      <latitude>37.4107963</latitude>
+      <longitude>-6.0041514</longitude>
+    </Location>
+  </locationList>
+  <uavTakeOffPlaceList id="6">
+    <TakeOffPlace id="7">
+      <id>0</id>
+      <location reference="3"/>
+    </TakeOffPlace>
+  </uavTakeOffPlaceList>
+  <uavList id="8">
+    <Uav id="9">
+      <id>0</id>
+      <capacity>100</capacity>
+      <depot reference="7"/>
+    </Uav>
+    <Uav id="10">
+      <id>1</id>
+      <capacity>100</capacity>
+      <depot reference="7"/>
+    </Uav>
+  </uavList>
+  <genericTaskList id="11">
+    <GenericTask id="12">
+      <id>0</id>
+      <location reference="4"/>
+      <demand>80</demand>
+    </GenericTask>
+		<GenericTask id="13">
+      <id>1</id>
+      <location reference="5"/>
+      <demand>70</demand>
+    </GenericTask>
+  </genericTaskList>
+</UavPlanningSolution>

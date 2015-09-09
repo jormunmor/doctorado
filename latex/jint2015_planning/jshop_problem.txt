@@ -1,0 +1,42 @@
+(defproblem problem quadrotor
+
+	; FACTS
+	(
+		; UAV defs
+		(quadrotor uav0)
+		(quadrotor uav1)
+		(quadrotor uav2)
+
+		; location defs
+		(location 0)
+		(location 1)
+		(location 2)
+
+		; UAV0 state defs
+		(battery uav0 2000)
+		(at uav0 0)
+		(landed uav0)
+
+		; UAV1 state defs
+		(battery uav1 2000)
+		(at uav1 2)
+		(landed uav1)
+
+		; UAV2 state defs
+		(battery uav2 2000)
+		(at uav2 0)
+		(landed uav2)
+		(unused uav2)
+
+	)
+
+	; GOALS
+	(
+
+		(surveillance uav0 0 1.0)
+		(mapGeneration uav1 2 1.0)
+		(mapGeneration uav0 1 0.5)
+		(mapGeneration uav1 1 0.5)z
+
+	)
+)

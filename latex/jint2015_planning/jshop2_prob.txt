@@ -1,0 +1,87 @@
+(defproblem problem quadrotor
+
+	; FACTS
+	(
+		; UAV defs
+		(quadrotor uav0)
+		(quadrotor uav1)
+		(quadrotor uav2)
+		(quadrotor uav3)
+		(quadrotor uav4)
+
+		; location defs
+		(location 0)
+		(location 1)
+		(location 2)
+		(location 3)
+		(location 4)
+		(location 5)
+		(location 6)
+		(location 7)
+		(location 8)
+		(location 12)
+		(location 17)
+
+		; subareas defs
+		(subarea 0 0 82 5338)
+		(subarea 0 1 18 1028)
+		(subarea 1 0 100 3401)
+		(subarea 2 0 100 836)
+		(subarea 3 0 100 702)
+		(subarea 5 0 100 1067)
+		(subarea 6 0 100 4173)
+		(subarea 8 0 100 340)
+
+		; subarea assignations defs
+		(unassigned 0 0)
+		(unassigned 0 1)
+		(unassigned 1 0)
+		(unassigned 2 0)
+		(unassigned 3 0)
+		(unassigned 5 0)
+		(unassigned 6 0)
+		(unassigned 8 0)
+
+		; UAV0 state defs
+		(battery uav0 1200)
+		(at uav0 14)
+		(landed uav0)
+
+		; UAV1 state defs
+		(battery uav1 1200)
+		(at uav1 4)
+		(landed uav1)
+
+		; UAV2 state defs
+		(battery uav2 1200)
+		(at uav2 7)
+		(landed uav2)
+
+		; UAV3 state defs
+		(battery uav3 1200)
+		(at uav3 12)
+		(landed uav3)
+		(unused uav3)
+
+		; UAV4 state defs
+		(battery uav4 1200)
+		(at uav4 17)
+		(landed uav4)
+		(unused uav4)
+
+	)
+
+	; GOALS
+	(
+
+		(mapGeneration uav0 8 100)
+		(mapGeneration uav0 0 82)
+		(mapGeneration uav1 3 100)
+		(surveillance uav1 6 100)
+		(surveillance uav1 5 100)
+		(mapGeneration uav2 2 100)
+		(surveillance uav2 1 100)
+		(mapGeneration uav2 0 18)
+
+	)
+)

@@ -1,0 +1,164 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{merino_jint12}
+\BIBentryALTinterwordspacing
+L.~Merino, F.~Caballero, J.~M. de~Dios, I.~Maza, and A.~Ollero, ``An unmanned
+  aircraft system for automatic forest fire monitoring and measurement,''
+  \emph{Journal of Intelligent and Robotic Systems}, vol.~65, no.~1, pp.
+  533--548, 2012. [Online]. Available:
+  \url{http://dx.doi.org/10.1007/s10846-011-9560-x}
+\BIBentrySTDinterwordspacing
+
+\bibitem{acevedo_jint13}
+\BIBentryALTinterwordspacing
+J.~Acevedo, B.~Arrue, I.~Maza, and A.~Ollero, ``Cooperative large area
+  surveillance with a team of aerial mobile robots for long endurance
+  missions,'' \emph{Journal of Intelligent and Robotic Systems}, vol.~70, no.
+  1-4, pp. 329--345, April 2013. [Online]. Available:
+  \url{http://dx.doi.org/10.1007/s10846-012-9716-3}
+\BIBentrySTDinterwordspacing
+
+\bibitem{SISO-DRAFT}
+SISO, ``Standard for: Coalition battle management language ({C-BML}) phase 1,''
+  Orlando, FL 32878-1238, USA, April 2012.
+
+\bibitem{levine_2007}
+\BIBentryALTinterwordspacing
+S.~Levine, J.~M. Pullen, M.~R. Hieb, C.~Blais, C.~Pandolfo, J.~Roberts, and
+  J.~Kearley, ``Joint battle management language (jbml) - phase 1 development
+  and demonstration results,'' in \emph{Fall Simulation Interoperability
+  Workshop 2007}, vol.~1, 2007, pp. 760--794, cited By (since 1996): 1.
+  [Online]. Available: \url{www.scopus.com}
+\BIBentrySTDinterwordspacing
+
+\bibitem{gump_2001}
+\BIBentryALTinterwordspacing
+J.~W. Gump, R.~G. Kurker, and J.~P. Nalepka, ``Jimm: The next step for mission
+  level models,'' in \emph{Proceedings of SPIE - The International Society for
+  Optical Engineering}, vol. 4367, 2001, pp. 305--315. [Online]. Available:
+  \url{www.scopus.com}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Wunder12}
+M.~Wunder, ``Concept for a {SocialC2IS} - bridging the heterogeneity of people
+  and {IT},'' Fraunhofer - {FKIE}, Neuenahrer Str. 20, 53343 Wachtberg,
+  Germany, Tech. Rep. RTO-MP-HFM-201, 2012.
+
+\bibitem{fidl}
+J.~Lopez and E.~Casado, ``Flight intent description language ({FIDL})
+  specification,'' The Boeing Company, Avenida Sur del Aeropuerto de Barajas,
+  38, building 4, floor 4, 28042 - Madrid, Tech. Rep. {ATLANTIDA} D6.3.1–
+  Flight Intent Description Language ({FIDL}) Specification v0.5, 2009.
+
+\bibitem{vilaplana_2005}
+\BIBentryALTinterwordspacing
+M.~A. Vilaplana, E.~Gallo, F.~A. Navarro, and S.~Swierstra, ``Towards a formal
+  language for the common description of aircraft intent,'' in \emph{AIAA/IEEE
+  Digital Avionics Systems Conference - Proceedings}, vol.~1, 2005, cited By
+  (since 1996): 2. [Online]. Available: \url{www.scopus.com}
+\BIBentrySTDinterwordspacing
+
+\bibitem{perez_jint13}
+\BIBentryALTinterwordspacing
+D.~Perez, I.~Maza, F.~Caballero, D.~Scarlatti, E.~Casado, and A.~Ollero, ``A
+  ground control station for a multi-{UAV} surveillance system,'' \emph{Journal
+  of Intelligent and Robotic Systems}, vol.~69, no. 1-4, pp. 119--130, January
+  2013. [Online]. Available: \url{http://dx.doi.org/10.1007/s10846-012-9759-5}
+\BIBentrySTDinterwordspacing
+
+\bibitem{maza_jint10_multimodal}
+\BIBentryALTinterwordspacing
+I.~Maza, F.~Caballero, R.~Molina, N.~P. {n}a, and A.~Ollero, ``Multimodal
+  interface technologies for {UAV} ground control stations. a comparative
+  analysis,'' \emph{Journal of Intelligent and Robotic Systems}, vol.~57, no.
+  1--4, pp. 371--391, 2010. [Online]. Available:
+  \url{http://dx.doi.org/10.1007/s10846-009-9351-9}
+\BIBentrySTDinterwordspacing
+
+\bibitem{antlr}
+\BIBentryALTinterwordspacing
+T.~Parr. (1989) Antlr: Another tool for language recognition. [Online].
+  Available: \url{http://www.antlr.org/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{europa}
+\BIBentryALTinterwordspacing
+T.~Bedrax-Weiss, J.~Frank, A.~Jonsson, and C.~McGann, ``{EUROPA}$_2$: Plan
+  database services for planning and scheduling applications,'' NASA, Ames
+  Research Center, Tech. Rep. 20050157874, November 2004. [Online]. Available:
+  \url{http://hdl.handle.net/2060/20050157874}
+\BIBentrySTDinterwordspacing
+
+\bibitem{muscettola98remote}
+N.~Muscettola, P.~P. Nayak, B.~Pell, and B.~C. Williams, ``Remote agent: To
+  boldly go where no {AI} system has gone before,'' \emph{Artificial
+  Intelligence}, vol. 103, no. 1-2, pp. 5--47, 1998.
+
+\bibitem{Frank02}
+J.~Frank and A.~Jonsson, ``Constraint-based attribute and interval planning,''
+  NASA Ames Research Center, Moffett Field, CA, USA, Tech. Rep. RTO-MP-HFM-201,
+  2002.
+
+\bibitem{Bernardini07}
+S.~Bernardini and D.~E. Smith, ``Developing domain-independent search control
+  for {EUROPA}$_2$,'' in \emph{Proc. of the International Conference on
+  Automated Planning and Scheduling}, Rhode Island, USA, 2007.
+
+\bibitem{Gerevini09}
+\BIBentryALTinterwordspacing
+A.~Gerevini, P.~Haslum, D.~Long, A.~Saetti, and Y.~Dimopoulos, ``Deterministic
+  planning in the fifth international planning competition: {PDDL3} and
+  experimental evaluation of the planners.'' \emph{Artificial Intelligence},
+  vol. 173, no. 5-6, pp. 619--668, 2009. [Online]. Available:
+  \url{http://dx.doi.org/10.1016/j.artint.2008.10.012}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Hoffmann05}
+J.~Hoffmann and S.~Edelkamp, ``The deterministic part of {IPC}-4: an
+  overview,'' \emph{Journal of Artificial Intelligence Research}, vol.~24,
+  no.~1, pp. 519--579, Oct. 2005.
+
+\bibitem{Ghallab94}
+M.~Ghallab and H.~Laruelle, ``Representation and control in {I}x{T}e{T}, a
+  temporal planner.'' in \emph{AIPS}, K.~J. Hammond, Ed.\hskip 1em plus 0.5em
+  minus 0.4em\relax AAAI, 1994, pp. 61--67.
+
+\bibitem{Jonsson98}
+\BIBentryALTinterwordspacing
+P.~Jonsson and C.~B\"{a}ckstr\"{o}m, ``State-variable planning under structural
+  restrictions: algorithms and complexity,'' \emph{Artificial Intelligence},
+  vol. 100, no. 1–2, pp. 125 -- 176, 1998. [Online]. Available:
+  \url{http://www.sciencedirect.com/science/article/pii/S0004370298000034}
+\BIBentrySTDinterwordspacing
+
+\bibitem{maza_jfr11_transportation}
+\BIBentryALTinterwordspacing
+M.~Bernard, K.~Kondak, I.~Maza, and A.~Ollero, ``Autonomous transportation and
+  deployment with aerial robots for search and rescue missions,'' \emph{Journal
+  of Field Robotics}, vol.~28, no.~6, p. 914–931, 2011. [Online]. Available:
+  \url{http://dx.doi.org/10.1002/rob.20401}
+\BIBentrySTDinterwordspacing
+
+\bibitem{allen_1983}
+J.~Allen, ``Maintaining knowledge about temporal intervals,''
+  \emph{Communications of the ACM}, vol.~26, no.~11, pp. 832--843, 1983.
+
+\end{thebibliography}

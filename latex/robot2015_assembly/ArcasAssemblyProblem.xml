@@ -1,0 +1,39 @@
+<Task id="40">
+	<id>0</id>
+	<location reference="4"/>
+	<objectName>Box001</objectName>
+	<objectLocation reference="3"/>
+	<demand>450</demand>
+	<action>base</action>
+	<preconditionList/>
+</Task>
+<Task id="41">
+	<id>0</id>
+	<location reference="4"/>
+	<objectName>Box001</objectName>
+	<objectLocation reference="3"/>
+	<demand>450</demand>
+	<action>base</action>
+	<preconditionList/>
+</Task>
+<Task id="42">
+	<id>1</id>
+	<location reference="6"/>
+	<objectName>Box002</objectName>
+	<objectLocation reference="5"/>
+	<demand>450</demand>
+	<action>base</action>
+	<preconditionList/>
+</Task>
+<Task id="43">
+	<id>1</id>
+	<location reference="6"/>
+	<objectName>Box002</objectName>
+	<objectLocation reference="5"/>
+	<demand>450</demand>
+	<action>base</action>
+	<preconditionList/>
+</Task>
+...
+</Task>
+

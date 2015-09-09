@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CBML>
+	<Order>
+		<Task>
+			<What>
+				<ActionTask xsi:type="OtherActionTask">
+					<OID>3D MAPGENERATION TASK 0008</OID>
+					<NameText>3D MapGeneration Task in defined area</NameText>
+					<ActivityCode>MAP</ActivityCode>
+				</ActionTask>
+			</What>
+			<Where>
+				<SpecificLocation>
+						<Location xsi:type="GeographicPoint">
+							<OID>Task Point 0008</OID>
+							<LatitudeCoordinate>37.410987</LatitudeCoordinate>
+							<LongitudeCoordinate>-6.003027</LongitudeCoordinate>
+						</Location>
+				</SpecificLocation>
+			</Where>
+			<When>
+				<StartWhen>
+					<AbsoluteTime>
+						<UnspecifiedTime>
+							<StartQualifierCode>ASAP</StartQualifierCode>
+						</UnspecifiedTime>
+					</AbsoluteTime>
+				</StartWhen>
+        <EndWhen>
+        	<RelativeTime>
+            <ObjectActionRef xsi:type="OtherActionTaskRef">
+        			<OID>3D MAPGENERATION TASK 0008</OID>
+        		</ObjectActionRef>
+        		<TemporalAssociationCategoryCode>ENDSNL</TemporalAssociationCategoryCode>
+        		<ReferenceDuration>34000</ReferenceDuration>
+        	</RelativeTime>
+        </EndWhen>
+			</When>
+			<TaskerWho>
+				<OrganisationRef xsi:type="OtherOrganisationRef">
+					<OID>Command And Control 0001</OID>
+				</OrganisationRef>
+			</TaskerWho>
+			<TaskeeWho>
+				<OrganisationRef xsi:type="OtherOrganisationRef">
+					<OID>UAV Fleet 0001</OID>
+				</OrganisationRef>
+			</TaskeeWho>
+		</Task>	
+	</Order>
+</CBML>

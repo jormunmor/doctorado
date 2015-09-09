@@ -1,0 +1,51 @@
+<UavPlanningSolution id="1">
+  <locationList id="2">
+    <Location id="3">
+      <id>0</id>
+      <latitude>37.4122489</latitude>
+      <longitude>-6.0037397</longitude>
+    </Location>
+    <Location id="4">
+      <id>1</id>
+      <latitude>37.4123496</latitude>
+      <longitude>-6.0031697</longitude>
+    </Location>
+      <Location id="5">
+      <id>2</id>
+      <latitude>37.4107963</latitude>
+      <longitude>-6.0041514</longitude>
+    </Location>
+  </locationList>
+  <startPointList id="6">
+    <StartPoint id="7">
+      <id>0</id>
+      <location reference="3"/>
+    </StartPoint>
+  </startPointList>
+  <uavList id="8">
+    <Uav id="9">
+      <id>0</id>
+      <flightTime>600</flightTime>
+      <startPoint reference="7"/>
+    </Uav>
+    <Uav id="10">
+      <id>1</id>
+      <flightTime>600</flightTime>
+      <startPoint reference="7"/>
+    </Uav>
+  </uavList>
+  <taskList id="11">
+    <Task id="12">
+      <id>0</id>
+      <location reference="4"/>
+      <cost>60</cost>
+      <type>3DMAPGENERATION</type>
+    </Task>
+    <Task id="13">
+      <id>1</id>
+      <location reference="5"/>
+      <cost>60</cost>
+      <type>SURVEILLANCE</type>
+    </Task>
+  </taskList>
+</UavPlanningSolution>

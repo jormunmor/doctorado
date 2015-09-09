@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: planning_architecture.aux
+The style file: spmpsci.bst
+Database file #1: IEEEabrv.bib
+Database file #2: bibliography.bib
+You've used 21 entries,
+            2946 wiz_defined-function locations,
+            1082 strings with 15247 characters,
+and the built_in function-call counts, 14971 in all, are:
+= -- 1686
+> -- 357
+< -- 5
++ -- 224
+- -- 126
+* -- 684
+:= -- 1522
+add.period$ -- 28
+call.type$ -- 21
+change.case$ -- 126
+chr.to.int$ -- 0
+cite$ -- 21
+duplicate$ -- 1620
+empty$ -- 986
+format.name$ -- 142
+if$ -- 3119
+int.to.chr$ -- 0
+int.to.str$ -- 21
+missing$ -- 206
+newline$ -- 99
+num.names$ -- 42
+pop$ -- 623
+preamble$ -- 1
+purify$ -- 105
+quote$ -- 0
+skip$ -- 840
+stack$ -- 0
+substring$ -- 639
+swap$ -- 1324
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 80
+warning$ -- 0
+while$ -- 72
+width$ -- 23
+write$ -- 224

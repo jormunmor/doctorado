@@ -1,0 +1,29 @@
+<Uav id="42">
+	<id>3</id>
+	<flightTime>600</flightTime>
+	<startingPoint reference="27"/>
+	<nextTask id="43">
+		<id>10</id>
+		<location reference="8"/>
+		<cost>60</cost>
+    <type>3DMAPGENERATION</type>
+		<nextTask id="44">
+		  <id>3</id>
+		  <location reference="5"/>
+		  <cost>60</cost>
+      <type>SURVEILLANCE</type>
+		  <nextTask id="45">
+		    <id>4</id>
+		    <location reference="5"/>
+		    <cost>60</cost>
+        <type>SURVEILLANCE</type>
+		    <nextTask id="46">
+		      <id>11</id>
+		      <location reference="9"/>
+		      <cost>60</cost>
+          <type>SURVEILLANCE</type>
+		    </nextTask>
+		  </nextTask>
+		</nextTask>
+	</nextTask>
+</Uav>

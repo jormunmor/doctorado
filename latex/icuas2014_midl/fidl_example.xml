@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fido:flight_intent>
+<!-- Automatic Flight Intent Generated for Vehicle UAV-4. -->
+ <fido:flight_segments>
+  <fido:flight_segment id="1000">
+   <fido:fs_trigger>
+    <codo:twaypoint id="1000">
+    <spi:point name="GOAL_11000">
+    <gc:latitude units="[deg]" value="37.4101">
+    <gc:longitude units="[deg]" value="-6.00302">
+    <gc:altitude units="[m]" value="20.0">
+    </codo:twaypoint>
+  </fido:flight_segment>
+  <fido:flight_segment id="1001">
+   <fido:fs_trigger>
+    <codo:twaypoint id="1001">
+    <spi:point name="GOAL_11001">
+    <gc:latitude units="[deg]" value="37.4102">
+    <gc:longitude units="[deg]" value="-6.00299">
+    <gc:altitude units="[m]" value="20.0">
+    </codo:twaypoint>
+  </fido:flight_segment>
+  <!-- Several additional flight segments... -->
+ </fido:flight_segments>
+ <fido:constraints>
+  <fido:constraint id="1000" init_fs="1000" final_fs="1017">
+   <fido:inequation magnitude="altitude" type="f .lt. g2">
+    <fido:function_f>
+     <gc:function type="f_lineal" output_unit="[m]" input_var="H" input_unit="[m]" f0="0" f1="1"/>
+    </fido:function_f>
+    <fido:function_g2>
+     <gc:function type="f_constant" output_unit="[m]" f0="20"/>
+    </fido:function_g2>
+   </fido:inequation>
+   <spi:universalDoA logic="exists"/>
+  </fido:constraint>
+ </fido:constraints>
+ <fido:objectives>   
+  <fido:objective id="1000" init_fs="1000" final_fs="1016">
+   <fido:op_target name="MIN" rule="FUEL"/>
+   <fido:op_dofs dofs="000000"/>           
+   <spi:altitudeDoA>
+    <spi:min_Hp value="0.0" units="[m]"/>
+    <spi:max_Hp value="20.0" units="[m]"/>
+   </spi:altitudeDoA>
+  </fido:objective>
+ </fido:objectives>
+</fido:flight_intent>

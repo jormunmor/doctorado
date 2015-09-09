@@ -1,0 +1,8 @@
+Task_1:	command groupUAV_1 to SURVEY() at delta_area start at Z20H35M00S;
+Task_2:	command all to LAND() at home after Task_1;
+Task_Emergency: command fleet to LAND() at emergencyLanding;
+execute Task_1 in-order-to find intruders with-likelihood 75%;
+constraint Task_1 maxHeight 20 [m];
+objective Task_1 at MIN fuel;
+objective Task_2 at MIN time;
+if Task_1 is ABORTED then-trigger Task_Emergency;

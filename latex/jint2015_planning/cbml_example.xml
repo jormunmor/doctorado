@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CBML>
+	<Order>
+		<Task>
+			<What> 
+				<ActionTask xsi:type="OtherActionTask">
+					<OID>6000: Surveillance Task</OID>
+					<ActivityCode>SURVLE</ActivityCode>
+				</ActionTask>
+			</What>			
+			<Where>
+				<SpecificLocation>
+						<Location xsi:type="GeographicPoint">
+							<OID>3001: Geographic Point</OID>
+							<LatitudeCoordinate>
+								37.4131612
+							</LatitudeCoordinate>
+							<LongitudeCoordinate>
+								-6.0031163
+							</LongitudeCoordinate>
+						</Location>
+				</SpecificLocation>
+			</Where>
+			<When>
+				<StartWhen>
+					<AbsoluteTime>
+						<UnspecifiedTime> <!-- As Soon As Possible -->
+							<StartQualifierCode>ASAP</StartQualifierCode>
+						</UnspecifiedTime>
+					</AbsoluteTime>
+				</StartWhen>
+			</When>
+			<TaskerWho>
+				<OrganisationRef xsi:type="OtherOrganisationRef">
+					<OID>0001: Command And Control Centre</OID>
+				</OrganisationRef>
+			</TaskerWho>
+			<TaskeeWho>
+				<OrganisationRef xsi:type="OtherOrganisationRef">
+					<OID>0002: UAV Fleet</OID>
+				</OrganisationRef>
+			</TaskeeWho>
+		</Task>
+	</Order>
+</CBML>

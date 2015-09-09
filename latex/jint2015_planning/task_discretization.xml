@@ -1,0 +1,30 @@
+<GenericTask id="47">
+  <id>11</id>
+  <location reference="4"/> 
+  <cost>60</cost>
+</GenericTask>
+<GenericTask id="48">
+  <id>12</id>
+  <location reference="4"/> 
+  <cost>60</cost>
+</GenericTask>
+<GenericTask id="49">
+  <id>13</id>
+  <location reference="4"/> 
+  <cost>60</cost>
+</GenericTask>
+<GenericTask id="50">
+  <id>14</id>
+  <location reference="4"/> 
+  <cost>60</cost>
+</GenericTask>
+<GenericTask id="51">
+  <id>15</id>
+  <location reference="4"/> 
+  <cost>60</cost>
+</GenericTask>
+<GenericTask id="52">
+  <id>16</id>
+  <location reference="4"/> 
+  <cost>41</cost>
+</GenericTask>

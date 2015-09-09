@@ -1,0 +1,627 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2015.6.15)  9 SEP 2015 16:02
+entering extended mode
+ %&-line parsing enabled.
+**planning_architecture.tex
+(./planning_architecture.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
+ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
+9, ngerman-x-2009-06-19, ibycus, monogreek, greek, ancientgreek, hungarian, san
+skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
+orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
+, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
+rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/fix-cm.sty
+Package: fix-cm 2006/09/13 v1.1m fixes to LaTeX
+
+(/usr/share/texmf-texlive/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)) (./svjour3.cls
+Document Class: svjour3 2007/05/08 v3.2 
+LaTeX document class for Springer journals
+(/usr/share/texmf-texlive/tex/latex/base/fleqn.clo
+File: fleqn.clo 1998/08/17 v1.1c Standard LaTeX option (flush left equations)
+\mathindent=\dimen102
+)
+Class Springer-SVJour3 Info: extra/valid Springer sub-package (-> *.clo) 
+(Springer-SVJour3)           not found in option list of \documentclass
+(Springer-SVJour3)           - autoactivating "global" style.
+ (./svglov3.clo
+File: svglov3.clo 2009/12/18 v3.2 style option for standardised journals
+
+SVJour Class option: svglov3.clo for standardised journals
+)
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 147.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 148.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 149.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 150.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 151.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 152.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 153.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 155.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 156.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 157.
+\logodepth=\dimen103
+\headerboxheight=\dimen104
+\betweenumberspace=\dimen105
+\aftertext=\dimen106
+\headlineindent=\dimen107
+\c@inst=\count79
+\c@auth=\count80
+\instindent=\dimen108
+\authrun=\box26
+\authorrunning=\toks14
+\titrun=\box27
+\titlerunning=\toks15
+\combirun=\box28
+\c@lastpage=\count81
+\rubricwidth=\dimen109
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\spthmsep=\dimen110
+\c@theorem=\count87
+\c@case=\count88
+\c@conjecture=\count89
+\c@corollary=\count90
+\c@definition=\count91
+\c@example=\count92
+\c@exercise=\count93
+\c@lemma=\count94
+\c@note=\count95
+\c@problem=\count96
+\c@property=\count97
+\c@proposition=\count98
+\c@question=\count99
+\c@solution=\count100
+\c@remark=\count101
+\c@figure=\count102
+\c@table=\count103
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\figcapgap=\dimen111
+\tabcapgap=\dimen112
+\figgap=\dimen113
+\bibindent=\dimen114
+\@tempcntc=\count104
+) (/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+\Gread@gobject=\count105
+))
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen115
+))
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen116
+)
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count106
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count107
+\leftroot@=\count108
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count109
+\DOTSCASE@=\count110
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box29
+\strutbox@=\box30
+\big@size=\dimen117
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+
+
+Package amsmath Warning: Unable to redefine math accent \vec.
+
+\macc@depth=\count111
+\c@MaxMatrixCols=\count112
+\dotsspace@=\muskip10
+\c@parentequation=\count113
+\dspbrk@lvl=\count114
+\tag@help=\toks17
+\row@=\count115
+\column@=\count116
+\maxfields@=\count117
+\andhelp@=\toks18
+\eqnshift@=\dimen118
+\alignsep@=\dimen119
+\tagshift@=\dimen120
+\tagwidth@=\dimen121
+\totwidth@=\dimen122
+\lineht@=\dimen123
+\@envbody=\toks19
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+) (/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2009/06/22 v3.00
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks21
+)
+\Gin@req@height=\dimen124
+\Gin@req@width=\dimen125
+)
+(/usr/share/texmf-texlive/tex/latex/listings/listings.sty
+\lst@mode=\count118
+\lst@gtempboxa=\box31
+\lst@token=\toks22
+\lst@length=\count119
+\lst@currlwidth=\dimen126
+\lst@column=\count120
+\lst@pos=\count121
+\lst@lostspace=\dimen127
+\lst@width=\dimen128
+\lst@newlines=\count122
+\lst@lineno=\count123
+\lst@maxwidth=\dimen129
+
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count124
+\lst@skipnumbers=\count125
+\lst@framebox=\box32
+)
+(/usr/share/texmf-texlive/tex/latex/listings/listings.cfg
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/etc/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+(/usr/share/texmf-texlive/tex/latex/subfigure/subfigure.sty
+Package: subfigure 2002/03/15 v2.1.5 subfigure package
+\subfigtopskip=\skip46
+\subfigcapskip=\skip47
+\subfigcaptopadj=\dimen130
+\subfigbottomskip=\skip48
+\subfigcapmargin=\dimen131
+\subfiglabelskip=\skip49
+\c@subfigure=\count126
+\c@lofdepth=\count127
+\c@subtable=\count128
+\c@lotdepth=\count129
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(/usr/share/texmf-texlive/tex/latex/subfigure/subfigure.cfg)
+\subfig@top=\skip50
+\subfig@bottom=\skip51
+)
+(/usr/share/texmf-texlive/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(/usr/share/texmf-texlive/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count130
+\float@exts=\toks23
+\float@box=\box33
+\@float@everytoks=\toks24
+\@floatcapt=\box34
+)
+(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks25
+\c@algorithm=\count131
+)
+(/usr/share/texmf-texlive/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count132
+\c@ALC@line=\count133
+\c@ALC@rem=\count134
+\c@ALC@depth=\count135
+\ALC@tlm=\skip52
+\algorithmicindent=\skip53
+)
+(/usr/share/texmf-texlive/tex/latex/psnfss/courier.sty
+Package: courier 2005/04/12 PSNFSS-v9.2a (WaS) 
+)
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+)
+(/usr/share/texmf-texlive/tex/latex/caption/caption.sty
+Package: caption 2009/10/09 v3.1k Customizing captions (AR)
+
+(/usr/share/texmf-texlive/tex/latex/caption/caption3.sty
+Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
+\captionmargin=\dimen132
+\captionmargin@=\dimen133
+\captionwidth=\dimen134
+\caption@indent=\dimen135
+\caption@parindent=\dimen136
+\caption@hangindent=\dimen137
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used on input line 1068.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2->\captionstyle \ifx \@ca
+ptype \fig@type \vskip \figcapgap \fi \setbox \@tempboxa \hbox {{\floatlegendst
+yle #1\floatcounterend }\capstrut #2}\ifdim \wd \@tempboxa >\hsize {\floatlegen
+dstyle #1\floatcounterend }\capstrut #2\par \else \hbox to\hsize {\leftlegendgl
+ue \unhbox \@tempboxa \hfil }\fi \ifx \@captype \fig@type \else \vskip \tabcapg
+ap \fi .
+\c@ContinuedFloat=\count136
+Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: subfigure package is loaded.
+) (./planning_architecture.aux)
+\openout1 = `planning_architecture.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+
+Unknown journal: specify \journalname{<name of your journal>} in preambel
+
+(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count137
+\scratchdimen=\dimen138
+\scratchbox=\box35
+\nofMPsegments=\count138
+\nofMParguments=\count139
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count140
+\MPscratchDim=\dimen139
+\MPnumerator=\count141
+\everyMPtoPDFconversion=\toks27
+)
+\c@lstlisting=\count142
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+
+SVJour3 warning: Missing \journalname
+LaTeX Font Info:    Try loading font information for U+msa on input line 125.
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 125.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 125.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 125.
+
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Underfull \hbox (badness 2150) in paragraph at lines 125--125
+\OT1/cmr/m/n/8.5 are with Grupo de Robot-ica, Visi^^Son y Con-trol, Uni-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 135--135
+ 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+
+]
+Overfull \hbox (7.31409pt too wide) in paragraph at lines 153--154
+\OT1/cmr/m/n/10 and mo-tion plan-ning have been stud-ied in dif-fer-ent works.
+ []
+
+
+Underfull \vbox (badness 2426) has occurred while \output is active []
+
+
+Overfull \hbox (2.34181pt too wide) in paragraph at lines 172--180
+\OT1/cmr/m/n/10 the last decades dif-fer-ent Bat-tle Man-age-ment Lan-guages
+ []
+
+
+Underfull \vbox (badness 2426) has occurred while \output is active []
+
+ [2]
+Overfull \hbox (3.92516pt too wide) in paragraph at lines 181--193
+[]\OT1/cmr/m/n/10 The Coalition-Battle Man-age-ment Lan-guage is based
+ []
+
+
+Underfull \vbox (badness 2426) has occurred while \output is active []
+
+ [3]
+<./figures/global_arch.png, id=17, 517.2123pt x 716.6775pt>
+File: ./figures/global_arch.png Graphic file (type png)
+
+<use ./figures/global_arch.png> [4 <./figures/global_arch.png (PNG copy)>]
+Overfull \hbox (6.0pt too wide) in paragraph at lines 228--228
+[][][][][][][] 
+ []
+
+(./cbml_example.xml)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (2.06401pt too wide) in paragraph at lines 240--241
+[]\OT1/cmr/m/n/10 The im-plicit com-bi-na-to-rial prob-lem can be ex-pressed
+ []
+
+
+Overfull \hbox (0.16298pt too wide) in paragraph at lines 257--258
+[]\OT1/cmr/m/n/10 The cost of a given route $[]\OMS/cmsy/m/n/10 g$ \OT1/cmr/m/n
+/10 is given
+ []
+
+[5]
+Overfull \hbox (1.67403pt too wide) in paragraph at lines 273--274
+\OT1/cmr/m/n/10 Con-struc-tion Heuris-tics (CH), Meta-heuris-tics (MH) and
+ []
+
+
+Overfull \hbox (6.0pt too wide) in paragraph at lines 283--283
+[][][][][][][] 
+ []
+
+
+Underfull \vbox (badness 1484) has occurred while \output is active []
+
+ [6]
+(./tap_example.xml)
+Overfull \hbox (6.0pt too wide) in paragraph at lines 294--294
+[][][][][][][] 
+ []
+
+(./tap_solution_example.xml)
+Overfull \hbox (0.98068pt too wide) in paragraph at lines 296--297
+[]\OT1/cmr/m/n/10 The al-lo-ca-tion so-lu-tion parser has been im-ple-mented
+ []
+
+[7]
+Overfull \hbox (6.4806pt too wide) in paragraph at lines 311--312
+[]\OT1/cmr/m/n/10 From the pre-vi-ous pred-i-cates, the two that are present
+ []
+
+[8]
+Overfull \hbox (6.0pt too wide) in paragraph at lines 319--319
+[][][][][][][] 
+ []
+
+(./jshop2_map_generation.txt) [9]
+Overfull \hbox (14.98033pt too wide) in paragraph at lines 343--344
+[]\OT1/cmr/m/n/10 At []\OT1/pcr/m/n/10 http://grvc.us.es/jint2015grvc \OT1/cmr/
+m/n/10 the reader
+ []
+
+<./figures/mission.png, id=43, 501.875pt x 490.83376pt>
+File: ./figures/mission.png Graphic file (type png)
+
+<use ./figures/mission.png>
+Overfull \hbox (6.0pt too wide) in paragraph at lines 354--354
+[][][][][][][] 
+ []
+
+(./map_task.xml) [10 <./figures/mission.png>]
+Overfull \hbox (0.53612pt too wide) in paragraph at lines 371--372
+\OT1/cmr/m/n/10 with high-est cost is shared be-tween two UAS. The solver
+ []
+
+
+Overfull \hbox (2.75842pt too wide) in paragraph at lines 371--372
+\OT1/cmr/m/n/10 Heuris-tic and a Meta-heuris-tic. The Con-struc-tion Heuris-
+ []
+
+
+Overfull \hbox (6.0pt too wide) in paragraph at lines 373--373
+[][][][][][][] 
+ []
+
+(./task_discretization.xml) <solucion.png, id=49, 720.6925pt x 493.845pt>
+File: solucion.png Graphic file (type png)
+
+<use solucion.png>
+Overfull \hbox (1.86957pt too wide) in paragraph at lines 382--383
+[]\OT1/cmr/m/n/10 After the ini-tial as-sign-ment prob-lem has been solved,
+ []
+
+
+Overfull \hbox (6.0pt too wide) in paragraph at lines 384--384
+[][][][][][][] 
+ []
+
+(./jshop2_prob.txt [11]
+Underfull \vbox (badness 5374) has occurred while \output is active []
+
+)
+<./figures/sp_gantt_solution.png, id=53, 833.2731pt x 346.4142pt>
+File: ./figures/sp_gantt_solution.png Graphic file (type png)
+
+<use ./figures/sp_gantt_solution.png>
+<./figures/video1.png, id=54, 976.64874pt x 580.1675pt>
+File: ./figures/video1.png Graphic file (type png)
+
+<use ./figures/video1.png>
+<./figures/video2.png, id=55, 976.64874pt x 580.1675pt>
+File: ./figures/video2.png Graphic file (type png)
+
+<use ./figures/video2.png>
+<./figures/video3.png, id=56, 976.64874pt x 580.1675pt>
+File: ./figures/video3.png Graphic file (type png)
+
+<use ./figures/video3.png>
+Overfull \hbox (3.63257pt too wide) in paragraph at lines 401--405
+ [][] 
+ []
+
+
+Overfull \hbox (3.63257pt too wide) in paragraph at lines 401--405
+ [] 
+ []
+
+
+Overfull \hbox (3.63257pt too wide) in paragraph at lines 401--405
+ [] 
+ []
+
+[12 <./solucion.png>] (./planning_architecture.bbl
+Underfull \hbox (badness 1389) in paragraph at lines 15--21
+[]\OT1/cmr/m/n/8.5 Cambon, S., Alami, R., Gravot, F.: A hy-brid ap-
+ []
+
+
+Underfull \hbox (badness 1852) in paragraph at lines 15--21
+\OT1/cmr/m/n/8.5 proach to in-tri-cate mo-tion, ma-nip-u-la-tion and task
+ []
+
+
+Underfull \hbox (badness 2680) in paragraph at lines 15--21
+\OT1/cmr/m/n/8.5 plan-ning.  The In-ter-na-tional Jour-nal of Robotics
+ []
+
+
+Underfull \hbox (badness 4144) in paragraph at lines 15--21
+\OT1/cmr/m/n/8.5 Re-search \OT1/cmr/bx/n/8.5 28\OT1/cmr/m/n/8.5 (1), 104--126 (
+2009).  DOI $10 . 1177 /
+ []
+
+
+Underfull \hbox (badness 2073) in paragraph at lines 28--30
+\OT1/cmr/m/n/8.5 cessed De-cem-ber 12, 2014)).  URL $\OT1/pcr/m/n/8.5 http : / 
+/ www .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--89
+\OT1/cmr/m/n/8.5 URL $\OT1/pcr/m/n/8.5 http : / / www . springerlink . com / co
+ntent /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--89
+\OT1/pcr/m/n/8.5 978-[]4-[]431-[]35869-[]5 # section = 288931&page =
+ []
+
+[13 <./figures/sp_gantt_solution.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 126--133
+[]\OT1/cmr/m/n/8.5 Wolfe, J., Marthi, B., Rus-sell, S.J.: Com-bined
+ []
+
+
+Underfull \hbox (badness 1112) in paragraph at lines 126--133
+\OT1/cmr/m/n/8.5 task and mo-tion plan-ning for mo-bile ma-nip-u-la-tion.
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 126--133
+\OT1/cmr/m/n/8.5 Tech. Rep. UCB/EECS-2010-27, EECS De-part-ment,
+ []
+
+
+Underfull \hbox (badness 4316) in paragraph at lines 126--133
+\OT1/cmr/m/n/8.5 Uni-ver-sity of Cal-i-for-nia, Berke-ley (2010).  URL
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--133
+\OT1/pcr/m/n/8.5 http : / / www . eecs . berkeley . edu / Pubs / TechRpts /
+ []
+
+) [14 <./figures/video1.png (PNG copy)> <./figures/video2.png (PNG copy)> <./fi
+gures/video3.png (PNG copy)>] (./planning_architecture.aux) ) 
+Here is how much of TeX's memory you used:
+ 5313 strings out of 493848
+ 77072 string characters out of 1152823
+ 253974 words of memory out of 3000000
+ 8489 multiletter control sequences out of 15000+50000
+ 15520 words of font info for 59 fonts, out of 3000000 for 9000
+ 714 hyphenation exceptions out of 8191
+ 36i,9n,38p,2358b,1540s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-
+texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/publi
+c/amsfonts/cm/cmbsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.
+pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/sh
+are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-t
+exlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb><
+/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/
+texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texliv
+e/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texmf-texlive/fonts/type
+1/urw/courier/ucrr8a.pfb>
+Output written on planning_architecture.pdf (14 pages, 2541513 bytes).
+PDF statistics:
+ 115 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+

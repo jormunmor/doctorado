@@ -1,0 +1,134 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{DOI~\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem{Bacchus00usingtemporal}
+Bacchus, F., Kabanza, F., Sherbrooke, U.D.: Using temporal logics to express
+  search control knowledge for planning.
+\newblock Artificial Intelligence \textbf{116}, 2000 (2000)
+
+\bibitem{Cambon01012009}
+Cambon, S., Alami, R., Gravot, F.: A hybrid approach to intricate motion,
+  manipulation and task planning.
+\newblock The International Journal of Robotics Research \textbf{28}(1),
+  104--126 (2009).
+\newblock \doi{10.1177/0278364908097884}.
+\newblock \urlprefix\url{http://ijr.sagepub.com/content/28/1/104.abstract}
+
+\bibitem{Chen06}
+Chen, Y., Wah, B.W., wei Hsu, C.: Temporal planning using subgoal partitioning
+  and resolution in {SGP}lan.
+\newblock J. of Artificial Intelligence Research \textbf{26}, 369 (2006)
+
+\bibitem{optaplanner}
+open~source community, R.H.: Opta{P}lanner (2014 (accessed December 12, 2014)).
+\newblock \urlprefix\url{http://www.optaplanner.org/}
+
+\bibitem{Currie90}
+Currie, K., Tate, A., Bridge, S.: O-{P}lan: the open planning architecture
+  (1990)
+
+\bibitem{Gerevini02}
+Gerevini, A., Kuter, U., Nau, D., Saetti, A., Waisbrot, N.: Combining
+  domain-independent planning and {HTN} planning: {T}he {D}uet {P}lanner (2008)
+
+\bibitem{Gerevini01}
+Gerevini, A., Saetti, A., Serina, I.: Planning through stochastic local search
+  and temporal action graphs.
+\newblock Journal of Artifical Intelligence Research \textbf{20}, 239--290
+  (2003)
+
+\bibitem{Helmert06}
+Helmert, M.: The fast downward planning system.
+\newblock Journal of Artifical Intelligence Research pp. 191--246 (2006)
+
+\bibitem{ingrand_ghallab_2013}
+Ingrand, F., Ghallab, M.: Robotics and {A}rtificial {I}ntelligence: A
+  perspective on deliberation functions.
+\newblock AI Communications \textbf{27}(1), 63--80 (2014)
+
+\bibitem{Kvarnstrom01talplanner}
+Kvarnstr\"{o}m, J., Doherty, P.: {TAL}planner: A temporal logic based forward
+  chaining planner.
+\newblock Annals of mathematics and Artificial Intelligence \textbf{30}, 2001
+  (2001)
+
+\bibitem{Lagriffoul01122014}
+Lagriffoul, F., Dimitrov, D., Bidot, J., Saffiotti, A., Karlsson, L.:
+  Efficiently combining task and motion planning using geometric constraints.
+\newblock The International Journal of Robotics Research \textbf{33}(14),
+  1726--1747 (2014).
+\newblock \doi{10.1177/0278364914545811}.
+\newblock \urlprefix\url{http://ijr.sagepub.com/content/33/14/1726.abstract}
+
+\bibitem{LaValle04}
+LaValle, S.M.: Planning algorithms (2006).
+\newblock Available at http://planning.cs.uiuc.edu/
+
+\bibitem{maza_jint10_multimodal}
+Maza, I., Caballero, F., Molina, R., {n}a, N.P., Ollero, A.: Multimodal
+  interface technologies for {UAV} ground control stations. a comparative
+  analysis.
+\newblock Journal of Intelligent and Robotic Systems \textbf{57}(1--4),
+  371--391 (2010).
+\newblock \doi{10.1007/s10846-009-9351-9}.
+\newblock \urlprefix\url{http://dx.doi.org/10.1007/s10846-009-9351-9}
+
+\bibitem{maza_dars07}
+Maza, I., Ollero, A.: Multiple {UAV} cooperative searching operation using
+  polygon area decomposition and efficient coverage algorithms,
+  \emph{Distributed Autonomous Robotic Systems}, vol.~6, pp. 221--230.
+\newblock Springer Verlag (2007).
+\newblock
+  \urlprefix\url{http://www.springerlink.com/content/978-4-431-35869-5#section%
+=288931&page=1&locus=0}
+
+\bibitem{Nau03shop2}
+Nau, D., Ilghami, O., Kuter, U., Murdock, J.W., Wu, D., Yaman, F.: Shop2: An
+  {HTN} planning system.
+\newblock Journal of Artificial Intelligence Research \textbf{20}, 379--404
+  (2003)
+
+\bibitem{perez_jint13}
+Perez, D., Maza, I., Caballero, F., Scarlatti, D., Casado, E., Ollero, A.: A
+  ground control station for a multi-{UAV} surveillance system.
+\newblock Journal of Intelligent and Robotic Systems \textbf{69}(1-4), 119--130
+  (2013).
+\newblock \doi{10.1007/s10846-012-9759-5}.
+\newblock \urlprefix\url{http://dx.doi.org/10.1007/s10846-012-9759-5}
+
+\bibitem{vrep_iros13}
+Rohmer, E., Singh, S., Freese, M.: V-rep: A versatile and scalable robot
+  simulation framework.
+\newblock In: Intelligent Robots and Systems (IROS), 2013 IEEE/RSJ
+  International Conference on, pp. 1321--1326 (2013).
+\newblock \doi{10.1109/IROS.2013.6696520}
+
+\bibitem{Shivashankar}
+Shivashankar, V., Alford, R., Kuter, U., Nau, D.: The {G}o{D}el {P}lanning
+  {S}ystem: A more perfect union of domain-independent and hierarchical
+  planning
+
+\bibitem{SISO-DRAFT}
+SISO: Standard for: Coalition battle management language ({C-BML}) phase 1
+  (2012)
+
+\bibitem{Wilkins}
+Wilkins, D.E.: Practical Planning: Extending the Classical AI Planning
+  Paradigm.
+\newblock Morgan Kaufmann Publishers Inc., San Francisco, CA, USA (1988)
+
+\bibitem{Wolfe}
+Wolfe, J., Marthi, B., Russell, S.J.: Combined task and motion planning for
+  mobile manipulation.
+\newblock Tech. Rep. UCB/EECS-2010-27, EECS Department, University of
+  California, Berkeley (2010).
+\newblock
+  \urlprefix\url{http://www.eecs.berkeley.edu/Pubs/TechRpts/2010/EECS-2010-27.%
+html}
+
+\end{thebibliography}

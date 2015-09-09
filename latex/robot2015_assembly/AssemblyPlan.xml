@@ -1,0 +1,31 @@
+<plans>
+	<assemblyPlan>
+		<assemblyOperation action="base">
+			<effect>
+				<at part="Box002"/>
+			</effect>
+		</assemblyOperation>
+		<assemblyOperation action="connection">
+			<precondition>
+				<at part="Box002"/>
+			</precondition>
+			<effect>
+				<at part="Box011"/>
+			</effect>
+		</assemblyOperation>
+		<assemblyOperation action="connection">
+			<precondition>
+				<at part="Box002"/>
+			</precondition>
+			<effect>
+				<at part="Box010"/>
+			</effect>
+		</assemblyOperation>
+		<assemblyOperation action="base">
+			<effect>
+				<at part="Box001"/>
+			</effect>
+		</assemblyOperation>
+		...
+	</assemblyPlan>
+</plans>
