@@ -1,0 +1,14 @@
+		; object state defs
+		(at Box001-lib 1)
+		(at Box002-lib 3)
+		(at Box003-lib 5)
+		(at Box004-lib 7)
+		(at Box005-lib 9)
+		(at Box006-lib 11)
+		(at Box007-lib 13)
+		(at Box008-lib 15)
+		(at Box009-lib 17)
+		(at Box010-lib 19)
+		(at Box011-lib 21)
+
+

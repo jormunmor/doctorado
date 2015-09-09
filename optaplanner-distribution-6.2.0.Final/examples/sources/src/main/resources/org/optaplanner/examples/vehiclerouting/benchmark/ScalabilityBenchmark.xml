@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plannerBenchmark>
+  <benchmarkDirectory>local/data/vehiclerouting</benchmarkDirectory>
+  <warmUpSecondsSpentLimit>30</warmUpSecondsSpentLimit>
+
+  <inheritedSolverBenchmark>
+    <problemBenchmarks>
+	<xStreamAnnotatedClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</xStreamAnnotatedClass>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MultipleAgents.xml</inputSolutionFile>
+        <problemStatisticType>BEST_SCORE</problemStatisticType>
+        <problemStatisticType>STEP_SCORE</problemStatisticType>
+        <problemStatisticType>CALCULATE_COUNT_PER_SECOND</problemStatisticType>
+        <problemStatisticType>BEST_SOLUTION_MUTATION</problemStatisticType>
+        <problemStatisticType>MOVE_COUNT_PER_STEP</problemStatisticType>
+        <problemStatisticType>MEMORY_USE</problemStatisticType>
+    </problemBenchmarks>
+    <solver>
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory>
+        <scoreDefinitionType>HARD_MEDIUM_SOFT</scoreDefinitionType>
+        <easyScoreCalculatorClass>org.optaplanner.examples.vehiclerouting.solver.score.VehicleRoutingEasyScoreCalculator</easyScoreCalculatorClass>
+        <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
+      </scoreDirectorFactory>
+      <termination>
+        <minutesSpentLimit>10</minutesSpentLimit>
+      </termination>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+      </constructionHeuristic>
+    </solver>
+  </inheritedSolverBenchmark>    
+  <solverBenchmark>
+    <name>Late Acceptance</name>
+    <solver>
+      <localSearch>
+      <unionMoveSelector>
+        <changeMoveSelector/>
+        <swapMoveSelector/>
+        <subChainChangeMoveSelector>
+          <selectReversingMoveToo>true</selectReversingMoveToo>
+        </subChainChangeMoveSelector>
+        <subChainSwapMoveSelector>
+          <selectReversingMoveToo>true</selectReversingMoveToo>
+        </subChainSwapMoveSelector>
+      </unionMoveSelector>
+      <acceptor>
+        <lateAcceptanceSize>200</lateAcceptanceSize>
+      </acceptor>
+      <forager>
+        <acceptedCountLimit>1</acceptedCountLimit>
+      </forager>
+      </localSearch>	  
+    </solver>
+  </solverBenchmark>
+</plannerBenchmark>

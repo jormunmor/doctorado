@@ -50,7 +50,7 @@ public class VehicleRoutingSolution extends AbstractPersistable implements Solut
 
     @XStreamConverter(value = XStreamScoreConverter.class, types = {HardMediumSoftScoreDefinition.class})
     protected HardMediumSoftScore score;
-
+   
     public String getName() {
         return name;
     }

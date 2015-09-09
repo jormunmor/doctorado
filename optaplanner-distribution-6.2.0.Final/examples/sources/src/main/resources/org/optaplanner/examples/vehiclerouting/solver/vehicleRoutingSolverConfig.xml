@@ -20,14 +20,58 @@
   <termination>
     <minutesSpentLimit>10</minutesSpentLimit>
   </termination>
+
 <!--
-  <exhaustiveSearch>
-    <exhaustiveSearchType>BRUTE_FORCE</exhaustiveSearchType>
-  </exhaustiveSearch>
+  <constructionHeuristic>
+    <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+  </constructionHeuristic>
+  <localSearch>
+    <unionMoveSelector>
+      <changeMoveSelector/>
+      <swapMoveSelector/>
+      <subChainChangeMoveSelector>
+        <selectReversingMoveToo>true</selectReversingMoveToo>
+      </subChainChangeMoveSelector>
+      <subChainSwapMoveSelector>
+        <selectReversingMoveToo>true</selectReversingMoveToo>
+      </subChainSwapMoveSelector>
+    </unionMoveSelector>
+    <acceptor>
+      <acceptorType>HILL_CLIMBING</acceptorType>
+    </acceptor>
+    <forager>
+      <acceptedCountLimit>1000</acceptedCountLimit>
+    </forager>
+  </localSearch>
 -->
 
+<!--
   <constructionHeuristic>
-    <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+    <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+  </constructionHeuristic>
+  <localSearch>
+	  <unionMoveSelector>
+		<changeMoveSelector/>
+		<swapMoveSelector/>
+		<subChainChangeMoveSelector>
+		  <selectReversingMoveToo>true</selectReversingMoveToo>
+		</subChainChangeMoveSelector>
+		<subChainSwapMoveSelector>
+		  <selectReversingMoveToo>true</selectReversingMoveToo>
+		</subChainSwapMoveSelector>
+	  </unionMoveSelector>
+	  <acceptor>
+		<entityTabuSize>7</entityTabuSize>
+	  </acceptor>
+	  <forager>
+		<acceptedCountLimit>1000</acceptedCountLimit>
+	  </forager>
+  </localSearch>
+-->
+
+
+  <constructionHeuristic>
+    <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
   </constructionHeuristic>
   <localSearch>
     <unionMoveSelector>
@@ -47,5 +91,6 @@
       <acceptedCountLimit>1</acceptedCountLimit>
     </forager>
   </localSearch>
+
 
 </solver>

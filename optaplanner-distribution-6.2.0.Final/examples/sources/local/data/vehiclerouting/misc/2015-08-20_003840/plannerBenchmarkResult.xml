@@ -1,0 +1,1027 @@
+<plannerBenchmarkResult xStreamId="1">
+  <name>2015-08-20_003840</name>
+  <aggregation>false</aggregation>
+  <availableProcessors>4</availableProcessors>
+  <maxMemory>1834483712</maxMemory>
+  <optaPlannerVersion>6.2.0.Final</optaPlannerVersion>
+  <javaVersion>Java 1.7.0_79 (Oracle Corporation)</javaVersion>
+  <javaVM>Java OpenJDK 64-Bit Server VM 24.79-b02 (Oracle Corporation)</javaVM>
+  <operatingSystem>Linux amd64 3.13.0-32-generic</operatingSystem>
+  <parallelBenchmarkCount>1</parallelBenchmarkCount>
+  <warmUpTimeMillisSpentLimit>30000</warmUpTimeMillisSpentLimit>
+  <solverBenchmarkResult xStreamId="2">
+    <name>Hill Climbing</name>
+    <solverConfig xStreamId="3">
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory xStreamId="4">
+        <scoreDefinitionType>HARD_MEDIUM_SOFT</scoreDefinitionType>
+        <easyScoreCalculatorClass>org.optaplanner.examples.vehiclerouting.solver.score.VehicleRoutingEasyScoreCalculator</easyScoreCalculatorClass>
+        <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
+      </scoreDirectorFactory>
+      <termination xStreamId="5">
+        <minutesSpentLimit>1</minutesSpentLimit>
+      </termination>
+      <constructionHeuristic xStreamId="6">
+        <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch xStreamId="7">
+        <unionMoveSelector xStreamId="8">
+          <changeMoveSelector xStreamId="9"/>
+          <swapMoveSelector xStreamId="10"/>
+          <subChainChangeMoveSelector xStreamId="11">
+            <selectReversingMoveToo>true</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="12">
+            <selectReversingMoveToo>true</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="13">
+          <acceptorType>HILL_CLIMBING</acceptorType>
+        </acceptor>
+        <forager xStreamId="14">
+          <acceptedCountLimit>1000</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="15">
+      <usedMemoryAfterInputSolution>3743424</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="16">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-435</softScore>
+      </score>
+      <timeMillisSpent>60961</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="17">
+      <usedMemoryAfterInputSolution>2951056</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="18">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-411</softScore>
+      </score>
+      <timeMillisSpent>61120</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="19">
+      <usedMemoryAfterInputSolution>3153784</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="20">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-441</softScore>
+      </score>
+      <timeMillisSpent>61210</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="21">
+      <usedMemoryAfterInputSolution>3368736</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="22">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-459</softScore>
+      </score>
+      <timeMillisSpent>60704</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="23">
+      <usedMemoryAfterInputSolution>3573048</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="24">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-392</softScore>
+      </score>
+      <timeMillisSpent>61187</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="25">
+      <usedMemoryAfterInputSolution>3779944</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="26">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-356</softScore>
+      </score>
+      <timeMillisSpent>61371</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="27">
+      <usedMemoryAfterInputSolution>3983312</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="28">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-409</softScore>
+      </score>
+      <timeMillisSpent>61034</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="29">
+      <usedMemoryAfterInputSolution>3659456</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="30">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-433</softScore>
+      </score>
+      <timeMillisSpent>60623</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="31">
+      <usedMemoryAfterInputSolution>3861792</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="32">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-389</softScore>
+      </score>
+      <timeMillisSpent>60407</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="33">
+      <usedMemoryAfterInputSolution>4062176</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="34">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-433</softScore>
+      </score>
+      <timeMillisSpent>60929</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult xStreamId="35">
+    <name>Tabu Search</name>
+    <solverConfig xStreamId="36">
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory xStreamRef="4"/>
+      <termination xStreamRef="5"/>
+      <constructionHeuristic xStreamRef="6"/>
+      <localSearch xStreamId="37">
+        <unionMoveSelector xStreamId="38">
+          <changeMoveSelector xStreamId="39"/>
+          <swapMoveSelector xStreamId="40"/>
+          <subChainChangeMoveSelector xStreamId="41">
+            <selectReversingMoveToo>true</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="42">
+            <selectReversingMoveToo>true</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="43">
+          <entityTabuSize>7</entityTabuSize>
+        </acceptor>
+        <forager xStreamId="44">
+          <acceptedCountLimit>1000</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="45">
+      <usedMemoryAfterInputSolution>2740520</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="46">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-435</softScore>
+      </score>
+      <timeMillisSpent>60783</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="47">
+      <usedMemoryAfterInputSolution>2962568</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="48">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-411</softScore>
+      </score>
+      <timeMillisSpent>60473</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="49">
+      <usedMemoryAfterInputSolution>3171200</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="50">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-441</softScore>
+      </score>
+      <timeMillisSpent>60515</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="51">
+      <usedMemoryAfterInputSolution>3385568</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="52">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-459</softScore>
+      </score>
+      <timeMillisSpent>61271</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="53">
+      <usedMemoryAfterInputSolution>3589880</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="54">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-392</softScore>
+      </score>
+      <timeMillisSpent>61065</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="55">
+      <usedMemoryAfterInputSolution>3797008</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="56">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-356</softScore>
+      </score>
+      <timeMillisSpent>60762</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="57">
+      <usedMemoryAfterInputSolution>4000144</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="58">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-409</softScore>
+      </score>
+      <timeMillisSpent>61051</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="59">
+      <usedMemoryAfterInputSolution>3676288</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="60">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-433</softScore>
+      </score>
+      <timeMillisSpent>60545</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="61">
+      <usedMemoryAfterInputSolution>3878624</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="62">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-389</softScore>
+      </score>
+      <timeMillisSpent>61592</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="63">
+      <usedMemoryAfterInputSolution>4078720</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="64">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-433</softScore>
+      </score>
+      <timeMillisSpent>61096</timeMillisSpent>
+      <calculateCount>292</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult xStreamId="65">
+    <name>Simulated Annealing</name>
+    <solverConfig xStreamId="66">
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory xStreamRef="4"/>
+      <termination xStreamRef="5"/>
+      <constructionHeuristic xStreamRef="6"/>
+      <localSearch xStreamId="67">
+        <unionMoveSelector xStreamId="68">
+          <changeMoveSelector xStreamId="69"/>
+          <swapMoveSelector xStreamId="70"/>
+          <subChainChangeMoveSelector xStreamId="71">
+            <selectReversingMoveToo>true</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="72">
+            <selectReversingMoveToo>true</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="73">
+          <simulatedAnnealingStartingTemperature>5hard/5medium/500soft</simulatedAnnealingStartingTemperature>
+        </acceptor>
+        <forager xStreamId="74">
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="75">
+      <usedMemoryAfterInputSolution>2766072</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="76">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-500</softScore>
+      </score>
+      <timeMillisSpent>61524</timeMillisSpent>
+      <calculateCount>1144</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="77">
+      <usedMemoryAfterInputSolution>2980136</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="78">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-525</softScore>
+      </score>
+      <timeMillisSpent>60632</timeMillisSpent>
+      <calculateCount>1132</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="79">
+      <usedMemoryAfterInputSolution>3189368</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="80">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-483</softScore>
+      </score>
+      <timeMillisSpent>61016</timeMillisSpent>
+      <calculateCount>1138</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="81">
+      <usedMemoryAfterInputSolution>3402504</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="82">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-524</softScore>
+      </score>
+      <timeMillisSpent>60992</timeMillisSpent>
+      <calculateCount>1144</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="83">
+      <usedMemoryAfterInputSolution>3607304</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="84">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-476</softScore>
+      </score>
+      <timeMillisSpent>61841</timeMillisSpent>
+      <calculateCount>1137</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="85">
+      <usedMemoryAfterInputSolution>3813944</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="86">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-410</softScore>
+      </score>
+      <timeMillisSpent>60866</timeMillisSpent>
+      <calculateCount>1139</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="87">
+      <usedMemoryAfterInputSolution>3512512</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="88">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-448</softScore>
+      </score>
+      <timeMillisSpent>61051</timeMillisSpent>
+      <calculateCount>1141</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="89">
+      <usedMemoryAfterInputSolution>3693408</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="90">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-468</softScore>
+      </score>
+      <timeMillisSpent>60787</timeMillisSpent>
+      <calculateCount>1138</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="91">
+      <usedMemoryAfterInputSolution>3895560</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="92">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-510</softScore>
+      </score>
+      <timeMillisSpent>61040</timeMillisSpent>
+      <calculateCount>1138</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="93">
+      <usedMemoryAfterInputSolution>4096296</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="94">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-452</softScore>
+      </score>
+      <timeMillisSpent>60876</timeMillisSpent>
+      <calculateCount>1143</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult xStreamId="95">
+    <name>Late Acceptance</name>
+    <solverConfig xStreamId="96">
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory xStreamRef="4"/>
+      <termination xStreamRef="5"/>
+      <constructionHeuristic xStreamRef="6"/>
+      <localSearch xStreamId="97">
+        <unionMoveSelector xStreamId="98">
+          <changeMoveSelector xStreamId="99"/>
+          <swapMoveSelector xStreamId="100"/>
+          <subChainChangeMoveSelector xStreamId="101">
+            <selectReversingMoveToo>true</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="102">
+            <selectReversingMoveToo>true</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="103">
+          <lateAcceptanceSize>200</lateAcceptanceSize>
+        </acceptor>
+        <forager xStreamId="104">
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="105">
+      <usedMemoryAfterInputSolution>2868328</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="106">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-430</softScore>
+      </score>
+      <timeMillisSpent>61373</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="107">
+      <usedMemoryAfterInputSolution>3068792</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="108">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-411</softScore>
+      </score>
+      <timeMillisSpent>61379</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="109">
+      <usedMemoryAfterInputSolution>3274056</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="110">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-447</softScore>
+      </score>
+      <timeMillisSpent>60716</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="111">
+      <usedMemoryAfterInputSolution>3481120</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="112">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-501</softScore>
+      </score>
+      <timeMillisSpent>60829</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="113">
+      <usedMemoryAfterInputSolution>3689216</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="114">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-430</softScore>
+      </score>
+      <timeMillisSpent>61024</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="115">
+      <usedMemoryAfterInputSolution>3908984</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="116">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-407</softScore>
+      </score>
+      <timeMillisSpent>60636</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="117">
+      <usedMemoryAfterInputSolution>3581752</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="118">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-417</softScore>
+      </score>
+      <timeMillisSpent>60719</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="119">
+      <usedMemoryAfterInputSolution>3792304</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="120">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-448</softScore>
+      </score>
+      <timeMillisSpent>60644</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="121">
+      <usedMemoryAfterInputSolution>4002472</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="122">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-422</softScore>
+      </score>
+      <timeMillisSpent>60877</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="123">
+      <usedMemoryAfterInputSolution>4206976</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="124">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-439</softScore>
+      </score>
+      <timeMillisSpent>60712</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult xStreamId="125">
+    <name>Step Counting Hill Climbing</name>
+    <solverConfig xStreamId="126">
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory xStreamRef="4"/>
+      <termination xStreamRef="5"/>
+      <constructionHeuristic xStreamRef="6"/>
+      <localSearch xStreamId="127">
+        <unionMoveSelector xStreamId="128">
+          <changeMoveSelector xStreamId="129"/>
+          <swapMoveSelector xStreamId="130"/>
+          <subChainChangeMoveSelector xStreamId="131">
+            <selectReversingMoveToo>true</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="132">
+            <selectReversingMoveToo>true</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="133">
+          <stepCountingHillClimbingSize>400</stepCountingHillClimbingSize>
+        </acceptor>
+        <forager xStreamId="134">
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="135">
+      <usedMemoryAfterInputSolution>2924720</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="136">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-430</softScore>
+      </score>
+      <timeMillisSpent>60625</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="137">
+      <usedMemoryAfterInputSolution>3134016</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="138">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-411</softScore>
+      </score>
+      <timeMillisSpent>60499</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="139">
+      <usedMemoryAfterInputSolution>3345328</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="140">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-447</softScore>
+      </score>
+      <timeMillisSpent>60992</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="141">
+      <usedMemoryAfterInputSolution>3552120</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="142">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-501</softScore>
+      </score>
+      <timeMillisSpent>61172</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="143">
+      <usedMemoryAfterInputSolution>3757472</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="144">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-430</softScore>
+      </score>
+      <timeMillisSpent>61096</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="145">
+      <usedMemoryAfterInputSolution>3963496</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="146">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-407</softScore>
+      </score>
+      <timeMillisSpent>60379</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="147">
+      <usedMemoryAfterInputSolution>3639544</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="148">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-417</softScore>
+      </score>
+      <timeMillisSpent>60535</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="149">
+      <usedMemoryAfterInputSolution>3842024</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="150">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-448</softScore>
+      </score>
+      <timeMillisSpent>61454</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="151">
+      <usedMemoryAfterInputSolution>4044768</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="152">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-422</softScore>
+      </score>
+      <timeMillisSpent>60948</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+    <singleBenchmarkResult xStreamId="153">
+      <usedMemoryAfterInputSolution>4246000</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="154">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-439</softScore>
+      </score>
+      <timeMillisSpent>60778</timeMillisSpent>
+      <calculateCount>76</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="155">
+    <name>ArcasBigScenario1</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/vehiclerouting/unsolved/ArcasBigScenario1.xml</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="156">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <stepScoreProblemStatistic xStreamId="157">
+      <problemStatisticType>STEP_SCORE</problemStatisticType>
+    </stepScoreProblemStatistic>
+    <calculateCountProblemStatistic xStreamId="158">
+      <problemStatisticType>CALCULATE_COUNT_PER_SECOND</problemStatisticType>
+    </calculateCountProblemStatistic>
+    <bestSolutionMutationProblemStatistic xStreamId="159">
+      <problemStatisticType>BEST_SOLUTION_MUTATION</problemStatisticType>
+    </bestSolutionMutationProblemStatistic>
+    <moveCountPerStepProblemStatistic xStreamId="160">
+      <problemStatisticType>MOVE_COUNT_PER_STEP</problemStatisticType>
+    </moveCountPerStepProblemStatistic>
+    <memoryUseProblemStatistic xStreamId="161">
+      <problemStatisticType>MEMORY_USE</problemStatisticType>
+    </memoryUseProblemStatistic>
+    <singleBenchmarkResult xStreamRef="15"/>
+    <singleBenchmarkResult xStreamRef="45"/>
+    <singleBenchmarkResult xStreamRef="75"/>
+    <singleBenchmarkResult xStreamRef="105"/>
+    <singleBenchmarkResult xStreamRef="135"/>
+    <entityCount>18</entityCount>
+    <variableCount>14</variableCount>
+    <problemScale>256</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="162">
+    <name>ArcasBigScenario2</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/vehiclerouting/unsolved/ArcasBigScenario2.xml</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="163">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <stepScoreProblemStatistic xStreamId="164">
+      <problemStatisticType>STEP_SCORE</problemStatisticType>
+    </stepScoreProblemStatistic>
+    <calculateCountProblemStatistic xStreamId="165">
+      <problemStatisticType>CALCULATE_COUNT_PER_SECOND</problemStatisticType>
+    </calculateCountProblemStatistic>
+    <bestSolutionMutationProblemStatistic xStreamId="166">
+      <problemStatisticType>BEST_SOLUTION_MUTATION</problemStatisticType>
+    </bestSolutionMutationProblemStatistic>
+    <moveCountPerStepProblemStatistic xStreamId="167">
+      <problemStatisticType>MOVE_COUNT_PER_STEP</problemStatisticType>
+    </moveCountPerStepProblemStatistic>
+    <memoryUseProblemStatistic xStreamId="168">
+      <problemStatisticType>MEMORY_USE</problemStatisticType>
+    </memoryUseProblemStatistic>
+    <singleBenchmarkResult xStreamRef="17"/>
+    <singleBenchmarkResult xStreamRef="47"/>
+    <singleBenchmarkResult xStreamRef="77"/>
+    <singleBenchmarkResult xStreamRef="107"/>
+    <singleBenchmarkResult xStreamRef="137"/>
+    <entityCount>18</entityCount>
+    <variableCount>14</variableCount>
+    <problemScale>256</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="169">
+    <name>ArcasBigScenario3</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/vehiclerouting/unsolved/ArcasBigScenario3.xml</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="170">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <stepScoreProblemStatistic xStreamId="171">
+      <problemStatisticType>STEP_SCORE</problemStatisticType>
+    </stepScoreProblemStatistic>
+    <calculateCountProblemStatistic xStreamId="172">
+      <problemStatisticType>CALCULATE_COUNT_PER_SECOND</problemStatisticType>
+    </calculateCountProblemStatistic>
+    <bestSolutionMutationProblemStatistic xStreamId="173">
+      <problemStatisticType>BEST_SOLUTION_MUTATION</problemStatisticType>
+    </bestSolutionMutationProblemStatistic>
+    <moveCountPerStepProblemStatistic xStreamId="174">
+      <problemStatisticType>MOVE_COUNT_PER_STEP</problemStatisticType>
+    </moveCountPerStepProblemStatistic>
+    <memoryUseProblemStatistic xStreamId="175">
+      <problemStatisticType>MEMORY_USE</problemStatisticType>
+    </memoryUseProblemStatistic>
+    <singleBenchmarkResult xStreamRef="19"/>
+    <singleBenchmarkResult xStreamRef="49"/>
+    <singleBenchmarkResult xStreamRef="79"/>
+    <singleBenchmarkResult xStreamRef="109"/>
+    <singleBenchmarkResult xStreamRef="139"/>
+    <entityCount>18</entityCount>
+    <variableCount>14</variableCount>
+    <problemScale>256</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="176">
+    <name>ArcasBigScenario4</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/vehiclerouting/unsolved/ArcasBigScenario4.xml</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="177">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <stepScoreProblemStatistic xStreamId="178">
+      <problemStatisticType>STEP_SCORE</problemStatisticType>
+    </stepScoreProblemStatistic>
+    <calculateCountProblemStatistic xStreamId="179">
+      <problemStatisticType>CALCULATE_COUNT_PER_SECOND</problemStatisticType>
+    </calculateCountProblemStatistic>
+    <bestSolutionMutationProblemStatistic xStreamId="180">
+      <problemStatisticType>BEST_SOLUTION_MUTATION</problemStatisticType>
+    </bestSolutionMutationProblemStatistic>
+    <moveCountPerStepProblemStatistic xStreamId="181">
+      <problemStatisticType>MOVE_COUNT_PER_STEP</problemStatisticType>
+    </moveCountPerStepProblemStatistic>
+    <memoryUseProblemStatistic xStreamId="182">
+      <problemStatisticType>MEMORY_USE</problemStatisticType>
+    </memoryUseProblemStatistic>
+    <singleBenchmarkResult xStreamRef="21"/>
+    <singleBenchmarkResult xStreamRef="51"/>
+    <singleBenchmarkResult xStreamRef="81"/>
+    <singleBenchmarkResult xStreamRef="111"/>
+    <singleBenchmarkResult xStreamRef="141"/>
+    <entityCount>18</entityCount>
+    <variableCount>14</variableCount>
+    <problemScale>256</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="183">
+    <name>ArcasBigScenario5</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/vehiclerouting/unsolved/ArcasBigScenario5.xml</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="184">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <stepScoreProblemStatistic xStreamId="185">
+      <problemStatisticType>STEP_SCORE</problemStatisticType>
+    </stepScoreProblemStatistic>
+    <calculateCountProblemStatistic xStreamId="186">
+      <problemStatisticType>CALCULATE_COUNT_PER_SECOND</problemStatisticType>
+    </calculateCountProblemStatistic>
+    <bestSolutionMutationProblemStatistic xStreamId="187">
+      <problemStatisticType>BEST_SOLUTION_MUTATION</problemStatisticType>
+    </bestSolutionMutationProblemStatistic>
+    <moveCountPerStepProblemStatistic xStreamId="188">
+      <problemStatisticType>MOVE_COUNT_PER_STEP</problemStatisticType>
+    </moveCountPerStepProblemStatistic>
+    <memoryUseProblemStatistic xStreamId="189">
+      <problemStatisticType>MEMORY_USE</problemStatisticType>
+    </memoryUseProblemStatistic>
+    <singleBenchmarkResult xStreamRef="23"/>
+    <singleBenchmarkResult xStreamRef="53"/>
+    <singleBenchmarkResult xStreamRef="83"/>
+    <singleBenchmarkResult xStreamRef="113"/>
+    <singleBenchmarkResult xStreamRef="143"/>
+    <entityCount>18</entityCount>
+    <variableCount>14</variableCount>
+    <problemScale>256</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="190">
+    <name>ArcasBigScenario6</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/vehiclerouting/unsolved/ArcasBigScenario6.xml</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="191">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <stepScoreProblemStatistic xStreamId="192">
+      <problemStatisticType>STEP_SCORE</problemStatisticType>
+    </stepScoreProblemStatistic>
+    <calculateCountProblemStatistic xStreamId="193">
+      <problemStatisticType>CALCULATE_COUNT_PER_SECOND</problemStatisticType>
+    </calculateCountProblemStatistic>
+    <bestSolutionMutationProblemStatistic xStreamId="194">
+      <problemStatisticType>BEST_SOLUTION_MUTATION</problemStatisticType>
+    </bestSolutionMutationProblemStatistic>
+    <moveCountPerStepProblemStatistic xStreamId="195">
+      <problemStatisticType>MOVE_COUNT_PER_STEP</problemStatisticType>
+    </moveCountPerStepProblemStatistic>
+    <memoryUseProblemStatistic xStreamId="196">
+      <problemStatisticType>MEMORY_USE</problemStatisticType>
+    </memoryUseProblemStatistic>
+    <singleBenchmarkResult xStreamRef="25"/>
+    <singleBenchmarkResult xStreamRef="55"/>
+    <singleBenchmarkResult xStreamRef="85"/>
+    <singleBenchmarkResult xStreamRef="115"/>
+    <singleBenchmarkResult xStreamRef="145"/>
+    <entityCount>18</entityCount>
+    <variableCount>14</variableCount>
+    <problemScale>256</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="197">
+    <name>ArcasBigScenario7</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/vehiclerouting/unsolved/ArcasBigScenario7.xml</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="198">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <stepScoreProblemStatistic xStreamId="199">
+      <problemStatisticType>STEP_SCORE</problemStatisticType>
+    </stepScoreProblemStatistic>
+    <calculateCountProblemStatistic xStreamId="200">
+      <problemStatisticType>CALCULATE_COUNT_PER_SECOND</problemStatisticType>
+    </calculateCountProblemStatistic>
+    <bestSolutionMutationProblemStatistic xStreamId="201">
+      <problemStatisticType>BEST_SOLUTION_MUTATION</problemStatisticType>
+    </bestSolutionMutationProblemStatistic>
+    <moveCountPerStepProblemStatistic xStreamId="202">
+      <problemStatisticType>MOVE_COUNT_PER_STEP</problemStatisticType>
+    </moveCountPerStepProblemStatistic>
+    <memoryUseProblemStatistic xStreamId="203">
+      <problemStatisticType>MEMORY_USE</problemStatisticType>
+    </memoryUseProblemStatistic>
+    <singleBenchmarkResult xStreamRef="27"/>
+    <singleBenchmarkResult xStreamRef="57"/>
+    <singleBenchmarkResult xStreamRef="87"/>
+    <singleBenchmarkResult xStreamRef="117"/>
+    <singleBenchmarkResult xStreamRef="147"/>
+    <entityCount>18</entityCount>
+    <variableCount>14</variableCount>
+    <problemScale>256</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="204">
+    <name>ArcasBigScenario8</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/vehiclerouting/unsolved/ArcasBigScenario8.xml</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="205">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <stepScoreProblemStatistic xStreamId="206">
+      <problemStatisticType>STEP_SCORE</problemStatisticType>
+    </stepScoreProblemStatistic>
+    <calculateCountProblemStatistic xStreamId="207">
+      <problemStatisticType>CALCULATE_COUNT_PER_SECOND</problemStatisticType>
+    </calculateCountProblemStatistic>
+    <bestSolutionMutationProblemStatistic xStreamId="208">
+      <problemStatisticType>BEST_SOLUTION_MUTATION</problemStatisticType>
+    </bestSolutionMutationProblemStatistic>
+    <moveCountPerStepProblemStatistic xStreamId="209">
+      <problemStatisticType>MOVE_COUNT_PER_STEP</problemStatisticType>
+    </moveCountPerStepProblemStatistic>
+    <memoryUseProblemStatistic xStreamId="210">
+      <problemStatisticType>MEMORY_USE</problemStatisticType>
+    </memoryUseProblemStatistic>
+    <singleBenchmarkResult xStreamRef="29"/>
+    <singleBenchmarkResult xStreamRef="59"/>
+    <singleBenchmarkResult xStreamRef="89"/>
+    <singleBenchmarkResult xStreamRef="119"/>
+    <singleBenchmarkResult xStreamRef="149"/>
+    <entityCount>18</entityCount>
+    <variableCount>14</variableCount>
+    <problemScale>256</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="211">
+    <name>ArcasBigScenario9</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/vehiclerouting/unsolved/ArcasBigScenario9.xml</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="212">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <stepScoreProblemStatistic xStreamId="213">
+      <problemStatisticType>STEP_SCORE</problemStatisticType>
+    </stepScoreProblemStatistic>
+    <calculateCountProblemStatistic xStreamId="214">
+      <problemStatisticType>CALCULATE_COUNT_PER_SECOND</problemStatisticType>
+    </calculateCountProblemStatistic>
+    <bestSolutionMutationProblemStatistic xStreamId="215">
+      <problemStatisticType>BEST_SOLUTION_MUTATION</problemStatisticType>
+    </bestSolutionMutationProblemStatistic>
+    <moveCountPerStepProblemStatistic xStreamId="216">
+      <problemStatisticType>MOVE_COUNT_PER_STEP</problemStatisticType>
+    </moveCountPerStepProblemStatistic>
+    <memoryUseProblemStatistic xStreamId="217">
+      <problemStatisticType>MEMORY_USE</problemStatisticType>
+    </memoryUseProblemStatistic>
+    <singleBenchmarkResult xStreamRef="31"/>
+    <singleBenchmarkResult xStreamRef="61"/>
+    <singleBenchmarkResult xStreamRef="91"/>
+    <singleBenchmarkResult xStreamRef="121"/>
+    <singleBenchmarkResult xStreamRef="151"/>
+    <entityCount>18</entityCount>
+    <variableCount>14</variableCount>
+    <problemScale>256</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="218">
+    <name>ArcasBigScenario10</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/vehiclerouting/unsolved/ArcasBigScenario10.xml</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="219">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <stepScoreProblemStatistic xStreamId="220">
+      <problemStatisticType>STEP_SCORE</problemStatisticType>
+    </stepScoreProblemStatistic>
+    <calculateCountProblemStatistic xStreamId="221">
+      <problemStatisticType>CALCULATE_COUNT_PER_SECOND</problemStatisticType>
+    </calculateCountProblemStatistic>
+    <bestSolutionMutationProblemStatistic xStreamId="222">
+      <problemStatisticType>BEST_SOLUTION_MUTATION</problemStatisticType>
+    </bestSolutionMutationProblemStatistic>
+    <moveCountPerStepProblemStatistic xStreamId="223">
+      <problemStatisticType>MOVE_COUNT_PER_STEP</problemStatisticType>
+    </moveCountPerStepProblemStatistic>
+    <memoryUseProblemStatistic xStreamId="224">
+      <problemStatisticType>MEMORY_USE</problemStatisticType>
+    </memoryUseProblemStatistic>
+    <singleBenchmarkResult xStreamRef="33"/>
+    <singleBenchmarkResult xStreamRef="63"/>
+    <singleBenchmarkResult xStreamRef="93"/>
+    <singleBenchmarkResult xStreamRef="123"/>
+    <singleBenchmarkResult xStreamRef="153"/>
+    <entityCount>18</entityCount>
+    <variableCount>14</variableCount>
+    <problemScale>256</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <startingTimestamp xStreamId="225">2015-08-19 22:38:40.702 UTC</startingTimestamp>
+  <benchmarkTimeMillisSpent>3079433</benchmarkTimeMillisSpent>
+</plannerBenchmarkResult>

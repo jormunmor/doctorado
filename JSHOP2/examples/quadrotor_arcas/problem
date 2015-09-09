@@ -2,212 +2,964 @@
 
 	; FACTS
 	(
+
 		; UAV defs
 		(quadrotor uav1)
 		(quadrotor uav2)
 		(quadrotor uav3)
 		(quadrotor uav4)
+		(quadrotor uav5)
+		(quadrotor uav6)
+		(quadrotor uav7)
+		(quadrotor uav8)
+		(quadrotor uav9)
+		(quadrotor uav10)
+		(quadrotor uav11)
+		(quadrotor uav12)
+		(quadrotor uav13)
+		(quadrotor uav14)
+		(quadrotor uav15)
+		(quadrotor uav16)
+		(quadrotor uav17)
+		(quadrotor uav18)
+		(quadrotor uav19)
+		(quadrotor uav20)
+		(quadrotor uav21)
+		(quadrotor uav22)
+		(quadrotor uav23)
+		(quadrotor uav24)
+		(quadrotor uav25)
+		(quadrotor uav26)
+		(quadrotor uav27)
+		(quadrotor uav28)
+		(quadrotor uav29)
+		(quadrotor uav30)
+		(quadrotor uav31)
+		(quadrotor uav32)
+		(quadrotor uav33)
+		(quadrotor uav34)
+		(quadrotor uav35)
+		(quadrotor uav36)
+		(quadrotor uav37)
+		(quadrotor uav38)
+		(quadrotor uav39)
+		(quadrotor uav40)
+		(quadrotor uav41)
+		(quadrotor uav42)
+		(quadrotor uav43)
+		(quadrotor uav44)
+		(quadrotor uav45)
+		(quadrotor uav46)
+		(quadrotor uav47)
+		(quadrotor uav48)
+		(quadrotor uav49)
+		(quadrotor uav50)
+
 
 		; object defs
-		(object Box001-lib)
-		(object Box002-lib)
-		(object Box003-lib)
-		(object Box004-lib)
-		(object Box005-lib)
-		(object Box006-lib)
-		(object Box007-lib)
-		(object Box008-lib)
-		(object Box009-lib)
-		(object Box010-lib)
-		(object Box011-lib)
+		(object Box001)
+		(object Box002)
+		(object Box003)
+		(object Box004)
+		(object Box005)
+		(object Box006)
+		(object Box007)
+		(object Box008)
+		(object Box009)
+		(object Box010)
+		(object Box011)
+		(object Box012)
+		(object Box013)
+		(object Box014)
+		(object Box015)
+		(object Box016)
+		(object Box017)
+		(object Box018)
+		(object Box019)
+		(object Box020)
+		(object Box021)
+		(object Box022)
+		(object Box023)
+		(object Box024)
+		(object Box025)
+
 
 		; location defs
-		(location 1)
-		(location 2)
-		(location 3)
-		(location 4)
-		(location 5)
-		(location 6)
-		(location 7)
-		(location 8)
-		(location 9)
-		(location 10)
-		(location 11)
-		(location 12)
-		(location 13)
-		(location 14)
-		(location 15)
-		(location 16)
-		(location 17)
-		(location 18)
-		(location 19)
-		(location 20)
-		(location 21)
-		(location 22)
-		(location 23)
-		(location 24)
-		(location 25)
-		(location 26)
+		(location 1 -9.14 -1.768 1.663)
+		(location 2 5.479 -6.52 0.172)
+		(location 3 17.253 16.572 1.663)
+		(location 4 5.83 -6.52 0.172)
+		(location 5 -20.866 -25.78 1.663)
+		(location 6 6.169 -6.52 0.172)
+		(location 7 1.375 -24.151 1.663)
+		(location 8 6.52 -6.52 0.172)
+		(location 9 14.575 6.94 1.663)
+		(location 10 5.479 -6.169 0.172)
+		(location 11 20.28 27.34 1.663)
+		(location 12 5.83 -6.169 0.172)
+		(location 13 -20.958 -19.209 1.663)
+		(location 14 6.169 -6.169 0.172)
+		(location 15 -0.893 20.699 1.663)
+		(location 16 6.52 -6.169 0.172)
+		(location 17 8.904 13.122 1.663)
+		(location 18 5.479 -5.83 0.172)
+		(location 19 -7.893 22.125 1.663)
+		(location 20 5.83 -5.83 0.172)
+		(location 21 -20.702 -17.442 1.663)
+		(location 22 6.169 -5.83 0.172)
+		(location 23 -10.909 -4.603 1.663)
+		(location 24 6.52 -5.83 0.172)
+		(location 25 27.893 12.905 1.663)
+		(location 26 5.479 -5.479 0.172)
+		(location 27 -10.514 18.75 1.663)
+		(location 28 5.83 -5.479 0.172)
+		(location 29 1.615 -16.981 1.663)
+		(location 30 6.169 -5.479 0.172)
+		(location 31 19.404 17.04 1.663)
+		(location 32 6.52 -5.479 0.172)
+		(location 33 27.286 -21.485 1.663)
+		(location 34 5.654 -6.345 0.523)
+		(location 35 9.301 -13.718 1.663)
+		(location 36 6.345 -6.345 0.523)
+		(location 37 -11.0 -14.043 1.663)
+		(location 38 5.654 -5.654 0.523)
+		(location 39 -13.627 -25.33 1.663)
+		(location 40 6.345 -5.654 0.523)
+		(location 41 1.249 -25.571 1.663)
+		(location 42 5.824 -6.175 0.862)
+		(location 43 6.706 20.563 1.663)
+		(location 44 6.175 -6.175 0.862)
+		(location 45 17.459 12.919 1.663)
+		(location 46 5.824 -5.824 0.862)
+		(location 47 17.533 -6.31 1.663)
+		(location 48 6.175 -5.824 0.862)
+		(location 49 -11.436 -5.088 1.663)
+		(location 50 6.0 -6.0 1.213)
+		(location 51 -7.2 -1.5 0.5)
+		(location 52 7.2 -1.5 0.5)
+		(location 53 0.0 7.0 0.5)
+		(location 54 0.0 -7.0 0.5)
+		(location 55 -7.2 -1.5 0.5)
+		(location 56 7.2 -1.5 0.5)
+		(location 57 0.0 7.0 0.5)
+		(location 58 0.0 -7.0 0.5)
+		(location 59 -7.2 -1.5 0.5)
+		(location 60 7.2 -1.5 0.5)
+		(location 61 -7.2 -1.5 0.5)
+		(location 62 7.2 -1.5 0.5)
+		(location 63 0.0 7.0 0.5)
+		(location 64 0.0 -7.0 0.5)
+		(location 65 -7.2 -1.5 0.5)
+		(location 66 7.2 -1.5 0.5)
+		(location 67 0.0 7.0 0.5)
+		(location 68 0.0 -7.0 0.5)
+		(location 69 -7.2 -1.5 0.5)
+		(location 70 7.2 -1.5 0.5)
+		(location 71 -7.2 -1.5 0.5)
+		(location 72 7.2 -1.5 0.5)
+		(location 73 0.0 7.0 0.5)
+		(location 74 0.0 -7.0 0.5)
+		(location 75 -7.2 -1.5 0.5)
+		(location 76 7.2 -1.5 0.5)
+		(location 77 0.0 7.0 0.5)
+		(location 78 0.0 -7.0 0.5)
+		(location 79 -7.2 -1.5 0.5)
+		(location 80 7.2 -1.5 0.5)
+		(location 81 -7.2 -1.5 0.5)
+		(location 82 7.2 -1.5 0.5)
+		(location 83 0.0 7.0 0.5)
+		(location 84 0.0 -7.0 0.5)
+		(location 85 -7.2 -1.5 0.5)
+		(location 86 7.2 -1.5 0.5)
+		(location 87 0.0 7.0 0.5)
+		(location 88 0.0 -7.0 0.5)
+		(location 89 -7.2 -1.5 0.5)
+		(location 90 7.2 -1.5 0.5)
+		(location 91 -7.2 -1.5 0.5)
+		(location 92 7.2 -1.5 0.5)
+		(location 93 0.0 7.0 0.5)
+		(location 94 0.0 -7.0 0.5)
+		(location 95 -7.2 -1.5 0.5)
+		(location 96 7.2 -1.5 0.5)
+		(location 97 0.0 7.0 0.5)
+		(location 98 0.0 -7.0 0.5)
+		(location 99 -7.2 -1.5 0.5)
+		(location 100 7.2 -1.5 0.5)
+
 
 		; assembly location defs
-		(assembly_location Box001-lib 2)
-		(assembly_location Box002-lib 4)
-		(assembly_location Box003-lib 6)
-		(assembly_location Box004-lib 8)
-		(assembly_location Box005-lib 10)
-		(assembly_location Box006-lib 12)
-		(assembly_location Box007-lib 14)
-		(assembly_location Box008-lib 16)
-		(assembly_location Box009-lib 18)
-		(assembly_location Box010-lib 20)
-		(assembly_location Box011-lib 22)
+		(assembly_location Box001 2)
+		(assembly_location Box002 4)
+		(assembly_location Box003 6)
+		(assembly_location Box004 8)
+		(assembly_location Box005 10)
+		(assembly_location Box006 12)
+		(assembly_location Box007 14)
+		(assembly_location Box008 16)
+		(assembly_location Box009 18)
+		(assembly_location Box010 20)
+		(assembly_location Box011 22)
+		(assembly_location Box012 24)
+		(assembly_location Box013 26)
+		(assembly_location Box014 28)
+		(assembly_location Box015 30)
+		(assembly_location Box016 32)
+		(assembly_location Box017 34)
+		(assembly_location Box018 36)
+		(assembly_location Box019 38)
+		(assembly_location Box020 40)
+		(assembly_location Box021 42)
+		(assembly_location Box022 44)
+		(assembly_location Box023 46)
+		(assembly_location Box024 48)
+		(assembly_location Box025 50)
+
 
 		; object state defs
-		(at Box001-lib 1)
-		(at Box002-lib 3)
-		(at Box003-lib 5)
-		(at Box004-lib 7)
-		(at Box005-lib 9)
-		(at Box006-lib 11)
-		(at Box007-lib 13)
-		(at Box008-lib 15)
-		(at Box009-lib 17)
-		(at Box010-lib 19)
-		(at Box011-lib 21)
+		(at Box001 1)
+		(at Box002 3)
+		(at Box003 5)
+		(at Box004 7)
+		(at Box005 9)
+		(at Box006 11)
+		(at Box007 13)
+		(at Box008 15)
+		(at Box009 17)
+		(at Box010 19)
+		(at Box011 21)
+		(at Box012 23)
+		(at Box013 25)
+		(at Box014 27)
+		(at Box015 29)
+		(at Box016 31)
+		(at Box017 33)
+		(at Box018 35)
+		(at Box019 37)
+		(at Box020 39)
+		(at Box021 41)
+		(at Box022 43)
+		(at Box023 45)
+		(at Box024 47)
+		(at Box025 49)
+
 
 		; ObjectDependencies
-		(depends Box001-lib ())
-		(depends Box002-lib ())
-		(depends Box003-lib (Box008-lib Box009-lib Box010-lib Box011-lib))
-		(depends Box004-lib (Box011-lib Box010-lib))
-		(depends Box005-lib (Box011-lib Box010-lib))
-		(depends Box006-lib (Box008-lib Box009-lib))
-		(depends Box007-lib (Box008-lib Box009-lib))
-		(depends Box008-lib (Box001-lib))
-		(depends Box009-lib (Box001-lib))
-		(depends Box010-lib (Box002-lib))
-		(depends Box011-lib (Box002-lib))
+		(depends Box001 ())
+		(depends Box002 ())
+		(depends Box003 ())
+		(depends Box004 ())
+		(depends Box005 ())
+		(depends Box006 ())
+		(depends Box007 ())
+		(depends Box008 ())
+		(depends Box009 ())
+		(depends Box010 ())
+		(depends Box011 ())
+		(depends Box012 ())
+		(depends Box013 ())
+		(depends Box014 ())
+		(depends Box015 ())
+		(depends Box016 ())
+		(depends Box017 (Box001 Box002 Box005 Box006))
+		(depends Box018 (Box003 Box004 Box007 Box008))
+		(depends Box019 (Box009 Box010 Box013 Box014))
+		(depends Box020 (Box011 Box012 Box015 Box016))
+		(depends Box021 (Box017))
+		(depends Box022 (Box018))
+		(depends Box023 (Box019))
+		(depends Box024 (Box020))
+		(depends Box025 (Box021 Box022 Box023 Box024))
+
 
 		; part assignments
-		(assigned Box002-lib uav1)
-		(assigned Box004-lib uav1)
-		(assigned Box009-lib uav1)
-		(assigned Box002-lib uav2)
-		(assigned Box003-lib uav2)
-		(assigned Box005-lib uav2)
-		(assigned Box010-lib uav2)
-		(assigned Box001-lib uav3)
-		(assigned Box006-lib uav3)
-		(assigned Box001-lib uav4)
-		(assigned Box003-lib uav4)
-		(assigned Box007-lib uav4)
-		(assigned Box008-lib uav4)
-		(assigned Box011-lib uav4)
-
+		(assigned Box025 uav2)
+		(assigned Box007 uav3)
+		(assigned Box017 uav3)
+		(assigned Box004 uav4)
+		(assigned Box018 uav4)
+		(assigned Box024 uav4)
+		(assigned Box012 uav5)
+		(assigned Box003 uav8)
+		(assigned Box020 uav8)
+		(assigned Box013 uav9)
+		(assigned Box010 uav15)
+		(assigned Box018 uav15)
+		(assigned Box006 uav16)
+		(assigned Box021 uav17)
+		(assigned Box008 uav18)
+		(assigned Box014 uav19)
+		(assigned Box016 uav21)
+		(assigned Box005 uav22)
+		(assigned Box023 uav24)
+		(assigned Box025 uav24)
+		(assigned Box011 uav27)
+		(assigned Box019 uav27)
+		(assigned Box022 uav27)
+		(assigned Box002 uav31)
+		(assigned Box001 uav36)
+		(assigned Box017 uav36)
+		(assigned Box020 uav36)
+		(assigned Box015 uav38)
+		(assigned Box019 uav41)
+		(assigned Box009 uav42)
 		; UAV1 state defs
 		(battery uav1 1200)
-		(at uav1 23)
+		(at uav1 51)
 		(landed uav1)
 
 		; UAV2 state defs
 		(battery uav2 1200)
-		(at uav2 24)
+		(at uav2 52)
 		(landed uav2)
 
 		; UAV3 state defs
 		(battery uav3 1200)
-		(at uav3 25)
+		(at uav3 53)
 		(landed uav3)
 
 		; UAV4 state defs
 		(battery uav4 1200)
-		(at uav4 26)
+		(at uav4 54)
 		(landed uav4)
 
-		; read/write times UAV1 
+		; UAV5 state defs
+		(battery uav5 1200)
+		(at uav5 55)
+		(landed uav5)
+
+		; UAV6 state defs
+		(battery uav6 1200)
+		(at uav6 56)
+		(landed uav6)
+
+		; UAV7 state defs
+		(battery uav7 1200)
+		(at uav7 57)
+		(landed uav7)
+
+		; UAV8 state defs
+		(battery uav8 1200)
+		(at uav8 58)
+		(landed uav8)
+
+		; UAV9 state defs
+		(battery uav9 1200)
+		(at uav9 59)
+		(landed uav9)
+
+		; UAV10 state defs
+		(battery uav10 1200)
+		(at uav10 60)
+		(landed uav10)
+
+		; UAV11 state defs
+		(battery uav11 1200)
+		(at uav11 61)
+		(landed uav11)
+
+		; UAV12 state defs
+		(battery uav12 1200)
+		(at uav12 62)
+		(landed uav12)
+
+		; UAV13 state defs
+		(battery uav13 1200)
+		(at uav13 63)
+		(landed uav13)
+
+		; UAV14 state defs
+		(battery uav14 1200)
+		(at uav14 64)
+		(landed uav14)
+
+		; UAV15 state defs
+		(battery uav15 1200)
+		(at uav15 65)
+		(landed uav15)
+
+		; UAV16 state defs
+		(battery uav16 1200)
+		(at uav16 66)
+		(landed uav16)
+
+		; UAV17 state defs
+		(battery uav17 1200)
+		(at uav17 67)
+		(landed uav17)
+
+		; UAV18 state defs
+		(battery uav18 1200)
+		(at uav18 68)
+		(landed uav18)
+
+		; UAV19 state defs
+		(battery uav19 1200)
+		(at uav19 69)
+		(landed uav19)
+
+		; UAV20 state defs
+		(battery uav20 1200)
+		(at uav20 70)
+		(landed uav20)
+
+		; UAV21 state defs
+		(battery uav21 1200)
+		(at uav21 71)
+		(landed uav21)
+
+		; UAV22 state defs
+		(battery uav22 1200)
+		(at uav22 72)
+		(landed uav22)
+
+		; UAV23 state defs
+		(battery uav23 1200)
+		(at uav23 73)
+		(landed uav23)
+
+		; UAV24 state defs
+		(battery uav24 1200)
+		(at uav24 74)
+		(landed uav24)
+
+		; UAV25 state defs
+		(battery uav25 1200)
+		(at uav25 75)
+		(landed uav25)
+
+		; UAV26 state defs
+		(battery uav26 1200)
+		(at uav26 76)
+		(landed uav26)
+
+		; UAV27 state defs
+		(battery uav27 1200)
+		(at uav27 77)
+		(landed uav27)
+
+		; UAV28 state defs
+		(battery uav28 1200)
+		(at uav28 78)
+		(landed uav28)
+
+		; UAV29 state defs
+		(battery uav29 1200)
+		(at uav29 79)
+		(landed uav29)
+
+		; UAV30 state defs
+		(battery uav30 1200)
+		(at uav30 80)
+		(landed uav30)
+
+		; UAV31 state defs
+		(battery uav31 1200)
+		(at uav31 81)
+		(landed uav31)
+
+		; UAV32 state defs
+		(battery uav32 1200)
+		(at uav32 82)
+		(landed uav32)
+
+		; UAV33 state defs
+		(battery uav33 1200)
+		(at uav33 83)
+		(landed uav33)
+
+		; UAV34 state defs
+		(battery uav34 1200)
+		(at uav34 84)
+		(landed uav34)
+
+		; UAV35 state defs
+		(battery uav35 1200)
+		(at uav35 85)
+		(landed uav35)
+
+		; UAV36 state defs
+		(battery uav36 1200)
+		(at uav36 86)
+		(landed uav36)
+
+		; UAV37 state defs
+		(battery uav37 1200)
+		(at uav37 87)
+		(landed uav37)
+
+		; UAV38 state defs
+		(battery uav38 1200)
+		(at uav38 88)
+		(landed uav38)
+
+		; UAV39 state defs
+		(battery uav39 1200)
+		(at uav39 89)
+		(landed uav39)
+
+		; UAV40 state defs
+		(battery uav40 1200)
+		(at uav40 90)
+		(landed uav40)
+
+		; UAV41 state defs
+		(battery uav41 1200)
+		(at uav41 91)
+		(landed uav41)
+
+		; UAV42 state defs
+		(battery uav42 1200)
+		(at uav42 92)
+		(landed uav42)
+
+		; UAV43 state defs
+		(battery uav43 1200)
+		(at uav43 93)
+		(landed uav43)
+
+		; UAV44 state defs
+		(battery uav44 1200)
+		(at uav44 94)
+		(landed uav44)
+
+		; UAV45 state defs
+		(battery uav45 1200)
+		(at uav45 95)
+		(landed uav45)
+
+		; UAV46 state defs
+		(battery uav46 1200)
+		(at uav46 96)
+		(landed uav46)
+
+		; UAV47 state defs
+		(battery uav47 1200)
+		(at uav47 97)
+		(landed uav47)
+
+		; UAV48 state defs
+		(battery uav48 1200)
+		(at uav48 98)
+		(landed uav48)
+
+		; UAV49 state defs
+		(battery uav49 1200)
+		(at uav49 99)
+		(landed uav49)
+
+		; UAV50 state defs
+		(battery uav50 1200)
+		(at uav50 100)
+		(landed uav50)
+
+		; read/write times UAV1
 		(write-time at uav1 0)
 		(read-time at uav1 0)
-
 		(write-time battery uav1 0)
 		(read-time battery uav1 0)
 
-		; read/write times UAV2 
+		; read/write times UAV2
 		(write-time at uav2 0)
 		(read-time at uav2 0)
-
 		(write-time battery uav2 0)
 		(read-time battery uav2 0)
 
-		; read/write times UAV3 
+		; read/write times UAV3
 		(write-time at uav3 0)
 		(read-time at uav3 0)
-
 		(write-time battery uav3 0)
 		(read-time battery uav3 0)
 
-		; read/write times UAV4 
+		; read/write times UAV4
 		(write-time at uav4 0)
 		(read-time at uav4 0)
-
 		(write-time battery uav4 0)
 		(read-time battery uav4 0)
 
+		; read/write times UAV5
+		(write-time at uav5 0)
+		(read-time at uav5 0)
+		(write-time battery uav5 0)
+		(read-time battery uav5 0)
 
-		; read/write times Box001-lib
-		(write-time at Box001-lib 0)
-		(read-time at Box001-lib 0)
+		; read/write times UAV6
+		(write-time at uav6 0)
+		(read-time at uav6 0)
+		(write-time battery uav6 0)
+		(read-time battery uav6 0)
 
-		; read/write times Box002-lib
-		(write-time at Box002-lib 0)
-		(read-time at Box002-lib 0)
+		; read/write times UAV7
+		(write-time at uav7 0)
+		(read-time at uav7 0)
+		(write-time battery uav7 0)
+		(read-time battery uav7 0)
 
-		; read/write times Box003-lib
-		(write-time at Box003-lib 0)
-		(read-time at Box003-lib 0)
+		; read/write times UAV8
+		(write-time at uav8 0)
+		(read-time at uav8 0)
+		(write-time battery uav8 0)
+		(read-time battery uav8 0)
 
-		; read/write times Box004-lib
-		(write-time at Box004-lib 0)
-		(read-time at Box004-lib 0)
+		; read/write times UAV9
+		(write-time at uav9 0)
+		(read-time at uav9 0)
+		(write-time battery uav9 0)
+		(read-time battery uav9 0)
 
-		; read/write times Box005-lib
-		(write-time at Box005-lib 0)
-		(read-time at Box005-lib 0)
+		; read/write times UAV10
+		(write-time at uav10 0)
+		(read-time at uav10 0)
+		(write-time battery uav10 0)
+		(read-time battery uav10 0)
 
-		; read/write times Box006-lib
-		(write-time at Box006-lib 0)
-		(read-time at Box006-lib 0)
+		; read/write times UAV11
+		(write-time at uav11 0)
+		(read-time at uav11 0)
+		(write-time battery uav11 0)
+		(read-time battery uav11 0)
 
-		; read/write times Box007-lib
-		(write-time at Box007-lib 0)
-		(read-time at Box007-lib 0)
+		; read/write times UAV12
+		(write-time at uav12 0)
+		(read-time at uav12 0)
+		(write-time battery uav12 0)
+		(read-time battery uav12 0)
 
-		; read/write times Box008-lib
-		(write-time at Box008-lib 0)
-		(read-time at Box008-lib 0)
+		; read/write times UAV13
+		(write-time at uav13 0)
+		(read-time at uav13 0)
+		(write-time battery uav13 0)
+		(read-time battery uav13 0)
 
-		; read/write times Box009-lib
-		(write-time at Box009-lib 0)
-		(read-time at Box009-lib 0)
+		; read/write times UAV14
+		(write-time at uav14 0)
+		(read-time at uav14 0)
+		(write-time battery uav14 0)
+		(read-time battery uav14 0)
 
-		; read/write times Box010-lib
-		(write-time at Box010-lib 0)
-		(read-time at Box010-lib 0)
+		; read/write times UAV15
+		(write-time at uav15 0)
+		(read-time at uav15 0)
+		(write-time battery uav15 0)
+		(read-time battery uav15 0)
 
-		; read/write times Box011-lib
-		(write-time at Box011-lib 0)
-		(read-time at Box011-lib 0)
+		; read/write times UAV16
+		(write-time at uav16 0)
+		(read-time at uav16 0)
+		(write-time battery uav16 0)
+		(read-time battery uav16 0)
 
+		; read/write times UAV17
+		(write-time at uav17 0)
+		(read-time at uav17 0)
+		(write-time battery uav17 0)
+		(read-time battery uav17 0)
+
+		; read/write times UAV18
+		(write-time at uav18 0)
+		(read-time at uav18 0)
+		(write-time battery uav18 0)
+		(read-time battery uav18 0)
+
+		; read/write times UAV19
+		(write-time at uav19 0)
+		(read-time at uav19 0)
+		(write-time battery uav19 0)
+		(read-time battery uav19 0)
+
+		; read/write times UAV20
+		(write-time at uav20 0)
+		(read-time at uav20 0)
+		(write-time battery uav20 0)
+		(read-time battery uav20 0)
+
+		; read/write times UAV21
+		(write-time at uav21 0)
+		(read-time at uav21 0)
+		(write-time battery uav21 0)
+		(read-time battery uav21 0)
+
+		; read/write times UAV22
+		(write-time at uav22 0)
+		(read-time at uav22 0)
+		(write-time battery uav22 0)
+		(read-time battery uav22 0)
+
+		; read/write times UAV23
+		(write-time at uav23 0)
+		(read-time at uav23 0)
+		(write-time battery uav23 0)
+		(read-time battery uav23 0)
+
+		; read/write times UAV24
+		(write-time at uav24 0)
+		(read-time at uav24 0)
+		(write-time battery uav24 0)
+		(read-time battery uav24 0)
+
+		; read/write times UAV25
+		(write-time at uav25 0)
+		(read-time at uav25 0)
+		(write-time battery uav25 0)
+		(read-time battery uav25 0)
+
+		; read/write times UAV26
+		(write-time at uav26 0)
+		(read-time at uav26 0)
+		(write-time battery uav26 0)
+		(read-time battery uav26 0)
+
+		; read/write times UAV27
+		(write-time at uav27 0)
+		(read-time at uav27 0)
+		(write-time battery uav27 0)
+		(read-time battery uav27 0)
+
+		; read/write times UAV28
+		(write-time at uav28 0)
+		(read-time at uav28 0)
+		(write-time battery uav28 0)
+		(read-time battery uav28 0)
+
+		; read/write times UAV29
+		(write-time at uav29 0)
+		(read-time at uav29 0)
+		(write-time battery uav29 0)
+		(read-time battery uav29 0)
+
+		; read/write times UAV30
+		(write-time at uav30 0)
+		(read-time at uav30 0)
+		(write-time battery uav30 0)
+		(read-time battery uav30 0)
+
+		; read/write times UAV31
+		(write-time at uav31 0)
+		(read-time at uav31 0)
+		(write-time battery uav31 0)
+		(read-time battery uav31 0)
+
+		; read/write times UAV32
+		(write-time at uav32 0)
+		(read-time at uav32 0)
+		(write-time battery uav32 0)
+		(read-time battery uav32 0)
+
+		; read/write times UAV33
+		(write-time at uav33 0)
+		(read-time at uav33 0)
+		(write-time battery uav33 0)
+		(read-time battery uav33 0)
+
+		; read/write times UAV34
+		(write-time at uav34 0)
+		(read-time at uav34 0)
+		(write-time battery uav34 0)
+		(read-time battery uav34 0)
+
+		; read/write times UAV35
+		(write-time at uav35 0)
+		(read-time at uav35 0)
+		(write-time battery uav35 0)
+		(read-time battery uav35 0)
+
+		; read/write times UAV36
+		(write-time at uav36 0)
+		(read-time at uav36 0)
+		(write-time battery uav36 0)
+		(read-time battery uav36 0)
+
+		; read/write times UAV37
+		(write-time at uav37 0)
+		(read-time at uav37 0)
+		(write-time battery uav37 0)
+		(read-time battery uav37 0)
+
+		; read/write times UAV38
+		(write-time at uav38 0)
+		(read-time at uav38 0)
+		(write-time battery uav38 0)
+		(read-time battery uav38 0)
+
+		; read/write times UAV39
+		(write-time at uav39 0)
+		(read-time at uav39 0)
+		(write-time battery uav39 0)
+		(read-time battery uav39 0)
+
+		; read/write times UAV40
+		(write-time at uav40 0)
+		(read-time at uav40 0)
+		(write-time battery uav40 0)
+		(read-time battery uav40 0)
+
+		; read/write times UAV41
+		(write-time at uav41 0)
+		(read-time at uav41 0)
+		(write-time battery uav41 0)
+		(read-time battery uav41 0)
+
+		; read/write times UAV42
+		(write-time at uav42 0)
+		(read-time at uav42 0)
+		(write-time battery uav42 0)
+		(read-time battery uav42 0)
+
+		; read/write times UAV43
+		(write-time at uav43 0)
+		(read-time at uav43 0)
+		(write-time battery uav43 0)
+		(read-time battery uav43 0)
+
+		; read/write times UAV44
+		(write-time at uav44 0)
+		(read-time at uav44 0)
+		(write-time battery uav44 0)
+		(read-time battery uav44 0)
+
+		; read/write times UAV45
+		(write-time at uav45 0)
+		(read-time at uav45 0)
+		(write-time battery uav45 0)
+		(read-time battery uav45 0)
+
+		; read/write times UAV46
+		(write-time at uav46 0)
+		(read-time at uav46 0)
+		(write-time battery uav46 0)
+		(read-time battery uav46 0)
+
+		; read/write times UAV47
+		(write-time at uav47 0)
+		(read-time at uav47 0)
+		(write-time battery uav47 0)
+		(read-time battery uav47 0)
+
+		; read/write times UAV48
+		(write-time at uav48 0)
+		(read-time at uav48 0)
+		(write-time battery uav48 0)
+		(read-time battery uav48 0)
+
+		; read/write times UAV49
+		(write-time at uav49 0)
+		(read-time at uav49 0)
+		(write-time battery uav49 0)
+		(read-time battery uav49 0)
+
+		; read/write times UAV50
+		(write-time at uav50 0)
+		(read-time at uav50 0)
+		(write-time battery uav50 0)
+		(read-time battery uav50 0)
+
+
+		; read/write times Box001
+		(write-time at Box001 0)
+		(read-time at Box001 0)
+
+		; read/write times Box002
+		(write-time at Box002 0)
+		(read-time at Box002 0)
+
+		; read/write times Box003
+		(write-time at Box003 0)
+		(read-time at Box003 0)
+
+		; read/write times Box004
+		(write-time at Box004 0)
+		(read-time at Box004 0)
+
+		; read/write times Box005
+		(write-time at Box005 0)
+		(read-time at Box005 0)
+
+		; read/write times Box006
+		(write-time at Box006 0)
+		(read-time at Box006 0)
+
+		; read/write times Box007
+		(write-time at Box007 0)
+		(read-time at Box007 0)
+
+		; read/write times Box008
+		(write-time at Box008 0)
+		(read-time at Box008 0)
+
+		; read/write times Box009
+		(write-time at Box009 0)
+		(read-time at Box009 0)
+
+		; read/write times Box010
+		(write-time at Box010 0)
+		(read-time at Box010 0)
+
+		; read/write times Box011
+		(write-time at Box011 0)
+		(read-time at Box011 0)
+
+		; read/write times Box012
+		(write-time at Box012 0)
+		(read-time at Box012 0)
+
+		; read/write times Box013
+		(write-time at Box013 0)
+		(read-time at Box013 0)
+
+		; read/write times Box014
+		(write-time at Box014 0)
+		(read-time at Box014 0)
+
+		; read/write times Box015
+		(write-time at Box015 0)
+		(read-time at Box015 0)
+
+		; read/write times Box016
+		(write-time at Box016 0)
+		(read-time at Box016 0)
+
+		; read/write times Box017
+		(write-time at Box017 0)
+		(read-time at Box017 0)
+
+		; read/write times Box018
+		(write-time at Box018 0)
+		(read-time at Box018 0)
+
+		; read/write times Box019
+		(write-time at Box019 0)
+		(read-time at Box019 0)
+
+		; read/write times Box020
+		(write-time at Box020 0)
+		(read-time at Box020 0)
+
+		; read/write times Box021
+		(write-time at Box021 0)
+		(read-time at Box021 0)
+
+		; read/write times Box022
+		(write-time at Box022 0)
+		(read-time at Box022 0)
+
+		; read/write times Box023
+		(write-time at Box023 0)
+		(read-time at Box023 0)
+
+		; read/write times Box024
+		(write-time at Box024 0)
+		(read-time at Box024 0)
+
+		; read/write times Box025
+		(write-time at Box025 0)
+		(read-time at Box025 0)
 
 		; remaining tasks
-		(remaining_tasks 11)
-
+		(remaining_tasks 25)
 	)
 
 	; GOALS
 	(
-
 		(mission assemble)
-
 	)
 )
 

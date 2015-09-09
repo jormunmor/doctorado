@@ -1,0 +1,14 @@
+		; assembly location defs
+		(assembly_location Box001-lib 2)
+		(assembly_location Box002-lib 4)
+		(assembly_location Box003-lib 6)
+		(assembly_location Box004-lib 8)
+		(assembly_location Box005-lib 10)
+		(assembly_location Box006-lib 12)
+		(assembly_location Box007-lib 14)
+		(assembly_location Box008-lib 16)
+		(assembly_location Box009-lib 18)
+		(assembly_location Box010-lib 20)
+		(assembly_location Box011-lib 22)
+
+

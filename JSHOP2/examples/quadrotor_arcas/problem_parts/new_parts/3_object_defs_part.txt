@@ -1,0 +1,14 @@
+		; object defs
+		(object Box001-lib)
+		(object Box002-lib)
+		(object Box003-lib)
+		(object Box004-lib)
+		(object Box005-lib)
+		(object Box006-lib)
+		(object Box007-lib)
+		(object Box008-lib)
+		(object Box009-lib)
+		(object Box010-lib)
+		(object Box011-lib)
+
+

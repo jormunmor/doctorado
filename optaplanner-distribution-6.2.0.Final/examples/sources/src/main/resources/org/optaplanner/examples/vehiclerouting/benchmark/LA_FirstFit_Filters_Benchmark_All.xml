@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plannerBenchmark>
+  <benchmarkDirectory>local/data/vehiclerouting</benchmarkDirectory>
+  <warmUpSecondsSpentLimit>30</warmUpSecondsSpentLimit>
+
+  <inheritedSolverBenchmark>
+    <problemBenchmarks>
+	<xStreamAnnotatedClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</xStreamAnnotatedClass>
+        
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure1.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure2.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure3.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure4.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure5.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure6.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure7.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure8.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure9.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure10.xml</inputSolutionFile>
+        
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure1.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure2.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure3.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure4.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure5.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure6.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure7.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure8.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure9.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure10.xml</inputSolutionFile>
+        
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure1.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure2.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure3.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure4.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure5.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure6.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure7.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure8.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure9.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure10.xml</inputSolutionFile>
+       
+        <problemStatisticType>BEST_SCORE</problemStatisticType>
+        <problemStatisticType>STEP_SCORE</problemStatisticType>
+        <problemStatisticType>CALCULATE_COUNT_PER_SECOND</problemStatisticType>
+        <problemStatisticType>BEST_SOLUTION_MUTATION</problemStatisticType>
+        <problemStatisticType>MOVE_COUNT_PER_STEP</problemStatisticType>
+        <problemStatisticType>MEMORY_USE</problemStatisticType>
+    </problemBenchmarks>
+    <solver>
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory>
+        <scoreDefinitionType>HARD_MEDIUM_SOFT</scoreDefinitionType>
+        <easyScoreCalculatorClass>org.optaplanner.examples.vehiclerouting.solver.score.VehicleRoutingEasyScoreCalculator</easyScoreCalculatorClass>
+        <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
+      </scoreDirectorFactory>
+      <termination>
+        <minutesSpentLimit>10</minutesSpentLimit>
+      </termination>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+      </constructionHeuristic>
+    </solver>
+  </inheritedSolverBenchmark>
+  
+    <solverBenchmark>
+    <name>Default</name>
+    <solver>
+  	  <localSearch>
+	    <unionMoveSelector>
+		  <changeMoveSelector/>
+		  <swapMoveSelector/>
+		  <subChainChangeMoveSelector>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainChangeMoveSelector>
+		  <subChainSwapMoveSelector>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainSwapMoveSelector>
+		</unionMoveSelector>
+		<acceptor>
+		  <lateAcceptanceSize>200</lateAcceptanceSize>
+		</acceptor>
+		<forager>
+		  <acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+      </localSearch>
+    </solver>
+  </solverBenchmark>
+  
+  <solverBenchmark>
+    <name>Change Filter</name>
+    <solver>
+  	  <localSearch>
+	    <unionMoveSelector>
+		  <changeMoveSelector>
+		    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleChangeMoveFilter</filterClass>
+		  </changeMoveSelector>
+		  <swapMoveSelector/>
+		  <subChainChangeMoveSelector>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainChangeMoveSelector>
+		  <subChainSwapMoveSelector>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainSwapMoveSelector>
+		</unionMoveSelector>
+		<acceptor>
+		  <lateAcceptanceSize>200</lateAcceptanceSize>
+		</acceptor>
+		<forager>
+		  <acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+      </localSearch>
+    </solver>
+  </solverBenchmark>
+  
+  <solverBenchmark>
+    <name>Swap Filter</name>
+    <solver>
+  	  <localSearch>
+	    <unionMoveSelector>
+		  <changeMoveSelector/>
+		  <swapMoveSelector>
+		    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSwapMoveFilter</filterClass>
+		  </swapMoveSelector>
+		  <subChainChangeMoveSelector>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainChangeMoveSelector>
+		  <subChainSwapMoveSelector>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainSwapMoveSelector>
+		</unionMoveSelector>
+		<acceptor>
+		  <lateAcceptanceSize>200</lateAcceptanceSize>
+		</acceptor>
+		<forager>
+		  <acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+      </localSearch>
+    </solver>
+  </solverBenchmark>
+  
+  <solverBenchmark>
+    <name>ChangeSwap Filter</name>
+    <solver>
+  	  <localSearch>
+	    <unionMoveSelector>
+		  <changeMoveSelector>
+		    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleChangeMoveFilter</filterClass>
+		  </changeMoveSelector>
+		  <swapMoveSelector>
+		    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSwapMoveFilter</filterClass>
+		  </swapMoveSelector>
+		  <subChainChangeMoveSelector>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainChangeMoveSelector>
+		  <subChainSwapMoveSelector>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainSwapMoveSelector>
+		</unionMoveSelector>
+		<acceptor>
+		  <lateAcceptanceSize>200</lateAcceptanceSize>
+		</acceptor>
+		<forager>
+		  <acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+      </localSearch>
+    </solver>
+  </solverBenchmark>
+  
+  <solverBenchmark>
+    <name>SubChainChange Filter</name>
+    <solver>
+  	  <localSearch>
+	    <unionMoveSelector>
+		  <changeMoveSelector/>
+		  <swapMoveSelector/>
+		  <subChainChangeMoveSelector>
+                    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSubChainChangeMoveFilter</filterClass>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainChangeMoveSelector>
+		  <subChainSwapMoveSelector>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainSwapMoveSelector>
+		</unionMoveSelector>
+		<acceptor>
+		  <lateAcceptanceSize>200</lateAcceptanceSize>
+		</acceptor>
+		<forager>
+		  <acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+      </localSearch>
+    </solver>
+  </solverBenchmark>
+  
+  <solverBenchmark>
+    <name>SubChainSwap Filter</name>
+    <solver>
+  	  <localSearch>
+	    <unionMoveSelector>
+		  <changeMoveSelector/>
+		  <swapMoveSelector/>
+		  <subChainChangeMoveSelector>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainChangeMoveSelector>
+		  <subChainSwapMoveSelector>
+                    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSubChainSwapMoveFilter</filterClass>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainSwapMoveSelector>
+		</unionMoveSelector>
+		<acceptor>
+		  <lateAcceptanceSize>200</lateAcceptanceSize>
+		</acceptor>
+		<forager>
+		  <acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+      </localSearch>
+    </solver>
+  </solverBenchmark>
+
+  <solverBenchmark>
+    <name>Nearby Filter</name>
+    <solver>
+  	  <localSearch>
+	    <unionMoveSelector>
+		  <changeMoveSelector>
+                    <entitySelector id="entitySelector1"/>
+                    <valueSelector>
+                      <nearbySelection>
+                        <originEntitySelector mimicSelectorRef="entitySelector1"/>
+                        <nearbyDistanceMeterClass>org.optaplanner.examples.vehiclerouting.domain.solver.nearby.TaskNearbyDistanceMeter</nearbyDistanceMeterClass>
+                        <parabolicDistributionSizeMaximum>4</parabolicDistributionSizeMaximum>
+                      </nearbySelection>
+                    </valueSelector>
+                  </changeMoveSelector>
+		  <swapMoveSelector>
+                    <entitySelector id="entitySelector2"/>
+                    <secondaryEntitySelector>
+                      <nearbySelection>
+                        <originEntitySelector mimicSelectorRef="entitySelector2"/>
+                        <nearbyDistanceMeterClass>org.optaplanner.examples.vehiclerouting.domain.solver.nearby.TaskNearbyDistanceMeter</nearbyDistanceMeterClass>
+                        <parabolicDistributionSizeMaximum>4</parabolicDistributionSizeMaximum>
+                      </nearbySelection>
+                    </secondaryEntitySelector>
+                  </swapMoveSelector>
+		  <subChainChangeMoveSelector>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainChangeMoveSelector>
+		  <subChainSwapMoveSelector>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainSwapMoveSelector>
+		</unionMoveSelector>
+		<acceptor>
+		  <lateAcceptanceSize>200</lateAcceptanceSize>
+		</acceptor>
+		<forager>
+		  <acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+      </localSearch>
+    </solver>
+  </solverBenchmark>
+    
+  <solverBenchmark>
+    <name>NearbyCS Filter</name>
+    <solver>
+  	  <localSearch>
+	    <unionMoveSelector>
+		  <changeMoveSelector>
+                    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleChangeMoveFilter</filterClass>
+                    <entitySelector id="entitySelector1"/>
+                    <valueSelector>
+                      <nearbySelection>
+                        <originEntitySelector mimicSelectorRef="entitySelector1"/>
+                        <nearbyDistanceMeterClass>org.optaplanner.examples.vehiclerouting.domain.solver.nearby.TaskNearbyDistanceMeter</nearbyDistanceMeterClass>
+                        <parabolicDistributionSizeMaximum>4</parabolicDistributionSizeMaximum>
+                      </nearbySelection>
+                    </valueSelector>
+                  </changeMoveSelector>
+		  <swapMoveSelector>
+                    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSwapMoveFilter</filterClass>
+                    <entitySelector id="entitySelector2"/>
+                    <secondaryEntitySelector>
+                      <nearbySelection>
+                        <originEntitySelector mimicSelectorRef="entitySelector2"/>
+                        <nearbyDistanceMeterClass>org.optaplanner.examples.vehiclerouting.domain.solver.nearby.TaskNearbyDistanceMeter</nearbyDistanceMeterClass>
+                        <parabolicDistributionSizeMaximum>4</parabolicDistributionSizeMaximum>
+                      </nearbySelection>
+                    </secondaryEntitySelector>
+                  </swapMoveSelector>
+		  <subChainChangeMoveSelector>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainChangeMoveSelector>
+		  <subChainSwapMoveSelector>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainSwapMoveSelector>
+		</unionMoveSelector>
+		<acceptor>
+		  <lateAcceptanceSize>200</lateAcceptanceSize>
+		</acceptor>
+		<forager>
+		  <acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+      </localSearch>
+    </solver>
+  </solverBenchmark>
+
+</plannerBenchmark>

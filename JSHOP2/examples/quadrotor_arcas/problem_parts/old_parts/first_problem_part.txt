@@ -1,0 +1,77 @@
+(defproblem problem quadrotor
+
+	; FACTS
+	(
+		; UAV defs
+		(quadrotor uav1)
+		(quadrotor uav2)
+		(quadrotor uav3)
+		(quadrotor uav4)
+
+		; object defs
+		(object Box001-lib)
+		(object Box002-lib)
+		(object Box003-lib)
+		(object Box004-lib)
+		(object Box005-lib)
+		(object Box006-lib)
+		(object Box007-lib)
+		(object Box008-lib)
+		(object Box009-lib)
+		(object Box010-lib)
+		(object Box011-lib)
+
+		; location defs
+		(location 1)
+		(location 2)
+		(location 3)
+		(location 4)
+		(location 5)
+		(location 6)
+		(location 7)
+		(location 8)
+		(location 9)
+		(location 10)
+		(location 11)
+		(location 12)
+		(location 13)
+		(location 14)
+		(location 15)
+		(location 16)
+		(location 17)
+		(location 18)
+		(location 19)
+		(location 20)
+		(location 21)
+		(location 22)
+		(location 23)
+		(location 24)
+		(location 25)
+		(location 26)
+
+		; assembly location defs
+		(assembly_location Box001-lib 2)
+		(assembly_location Box002-lib 4)
+		(assembly_location Box003-lib 6)
+		(assembly_location Box004-lib 8)
+		(assembly_location Box005-lib 10)
+		(assembly_location Box006-lib 12)
+		(assembly_location Box007-lib 14)
+		(assembly_location Box008-lib 16)
+		(assembly_location Box009-lib 18)
+		(assembly_location Box010-lib 20)
+		(assembly_location Box011-lib 22)
+
+		; object state defs
+		(at Box001-lib 1)
+		(at Box002-lib 3)
+		(at Box003-lib 5)
+		(at Box004-lib 7)
+		(at Box005-lib 9)
+		(at Box006-lib 11)
+		(at Box007-lib 13)
+		(at Box008-lib 15)
+		(at Box009-lib 17)
+		(at Box010-lib 19)
+		(at Box011-lib 21)
+

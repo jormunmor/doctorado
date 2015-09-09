@@ -1,0 +1,435 @@
+<plannerBenchmarkResult xStreamId="1">
+  <name>2015-07-06_133436</name>
+  <aggregation>false</aggregation>
+  <availableProcessors>4</availableProcessors>
+  <maxMemory>1834483712</maxMemory>
+  <optaPlannerVersion>6.2.0.Final</optaPlannerVersion>
+  <javaVersion>Java 1.7.0_79 (Oracle Corporation)</javaVersion>
+  <javaVM>Java OpenJDK 64-Bit Server VM 24.79-b02 (Oracle Corporation)</javaVM>
+  <operatingSystem>Linux amd64 3.13.0-32-generic</operatingSystem>
+  <parallelBenchmarkCount>1</parallelBenchmarkCount>
+  <warmUpTimeMillisSpentLimit>30000</warmUpTimeMillisSpentLimit>
+  <solverBenchmarkResult xStreamId="2">
+    <name>LA Default</name>
+    <solverConfig xStreamId="3">
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory xStreamId="4">
+        <scoreDefinitionType>HARD_MEDIUM_SOFT</scoreDefinitionType>
+        <easyScoreCalculatorClass>org.optaplanner.examples.vehiclerouting.solver.score.VehicleRoutingEasyScoreCalculator</easyScoreCalculatorClass>
+        <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
+      </scoreDirectorFactory>
+      <termination xStreamId="5">
+        <minutesSpentLimit>10</minutesSpentLimit>
+      </termination>
+      <constructionHeuristic xStreamId="6">
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch xStreamId="7">
+        <unionMoveSelector xStreamId="8">
+          <changeMoveSelector xStreamId="9"/>
+          <swapMoveSelector xStreamId="10"/>
+          <subChainChangeMoveSelector xStreamId="11">
+            <selectReversingMoveToo>true</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="12">
+            <selectReversingMoveToo>true</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="13">
+          <lateAcceptanceSize>200</lateAcceptanceSize>
+        </acceptor>
+        <forager xStreamId="14">
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="15">
+      <usedMemoryAfterInputSolution>3780624</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="16">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-339</softScore>
+      </score>
+      <timeMillisSpent>601865</timeMillisSpent>
+      <calculateCount>2136</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult xStreamId="17">
+    <name>LA Change Filter</name>
+    <solverConfig xStreamId="18">
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory xStreamRef="4"/>
+      <termination xStreamRef="5"/>
+      <constructionHeuristic xStreamId="19">
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch xStreamId="20">
+        <unionMoveSelector xStreamId="21">
+          <changeMoveSelector xStreamId="22">
+            <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleChangeMoveFilter</filterClass>
+          </changeMoveSelector>
+          <swapMoveSelector xStreamId="23"/>
+          <subChainChangeMoveSelector xStreamId="24">
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="25">
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="26">
+          <lateAcceptanceSize>200</lateAcceptanceSize>
+        </acceptor>
+        <forager xStreamId="27">
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="28">
+      <usedMemoryAfterInputSolution>2953560</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="29">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-338</softScore>
+      </score>
+      <timeMillisSpent>604455</timeMillisSpent>
+      <calculateCount>3249</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult xStreamId="30">
+    <name>LA Swap Filter</name>
+    <solverConfig xStreamId="31">
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory xStreamRef="4"/>
+      <termination xStreamRef="5"/>
+      <constructionHeuristic xStreamId="32">
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch xStreamId="33">
+        <unionMoveSelector xStreamId="34">
+          <changeMoveSelector xStreamId="35"/>
+          <swapMoveSelector xStreamId="36">
+            <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSwapMoveFilter</filterClass>
+          </swapMoveSelector>
+          <subChainChangeMoveSelector xStreamId="37">
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="38">
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="39">
+          <lateAcceptanceSize>200</lateAcceptanceSize>
+        </acceptor>
+        <forager xStreamId="40">
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="41">
+      <usedMemoryAfterInputSolution>2975760</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="42">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-329</softScore>
+      </score>
+      <timeMillisSpent>602007</timeMillisSpent>
+      <calculateCount>1655</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult xStreamId="43">
+    <name>LA ChangeSwap Filter</name>
+    <solverConfig xStreamId="44">
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory xStreamRef="4"/>
+      <termination xStreamRef="5"/>
+      <constructionHeuristic xStreamId="45">
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch xStreamId="46">
+        <unionMoveSelector xStreamId="47">
+          <changeMoveSelector xStreamId="48">
+            <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleChangeMoveFilter</filterClass>
+          </changeMoveSelector>
+          <swapMoveSelector xStreamId="49">
+            <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSwapMoveFilter</filterClass>
+          </swapMoveSelector>
+          <subChainChangeMoveSelector xStreamId="50">
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="51">
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="52">
+          <lateAcceptanceSize>200</lateAcceptanceSize>
+        </acceptor>
+        <forager xStreamId="53">
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="54">
+      <usedMemoryAfterInputSolution>3129160</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="55">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-320</softScore>
+      </score>
+      <timeMillisSpent>602305</timeMillisSpent>
+      <calculateCount>3727</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult xStreamId="56">
+    <name>LA SubChainChange Filter</name>
+    <solverConfig xStreamId="57">
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory xStreamRef="4"/>
+      <termination xStreamRef="5"/>
+      <constructionHeuristic xStreamId="58">
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch xStreamId="59">
+        <unionMoveSelector xStreamId="60">
+          <changeMoveSelector xStreamId="61"/>
+          <swapMoveSelector xStreamId="62"/>
+          <subChainChangeMoveSelector xStreamId="63">
+            <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSubChainChangeMoveFilter</filterClass>
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="64">
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="65">
+          <lateAcceptanceSize>200</lateAcceptanceSize>
+        </acceptor>
+        <forager xStreamId="66">
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="67">
+      <usedMemoryAfterInputSolution>2705992</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="68">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-330</softScore>
+      </score>
+      <timeMillisSpent>601438</timeMillisSpent>
+      <calculateCount>1349</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult xStreamId="69">
+    <name>LA SubChainSwap Filter</name>
+    <solverConfig xStreamId="70">
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory xStreamRef="4"/>
+      <termination xStreamRef="5"/>
+      <constructionHeuristic xStreamId="71">
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch xStreamId="72">
+        <unionMoveSelector xStreamId="73">
+          <changeMoveSelector xStreamId="74"/>
+          <swapMoveSelector xStreamId="75"/>
+          <subChainChangeMoveSelector xStreamId="76">
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="77">
+            <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSubChainSwapMoveFilter</filterClass>
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="78">
+          <lateAcceptanceSize>200</lateAcceptanceSize>
+        </acceptor>
+        <forager xStreamId="79">
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="80">
+      <usedMemoryAfterInputSolution>2768800</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="81">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-338</softScore>
+      </score>
+      <timeMillisSpent>602246</timeMillisSpent>
+      <calculateCount>1449</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult xStreamId="82">
+    <name>LA Nearby Filter</name>
+    <solverConfig xStreamId="83">
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory xStreamRef="4"/>
+      <termination xStreamRef="5"/>
+      <constructionHeuristic xStreamId="84">
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch xStreamId="85">
+        <unionMoveSelector xStreamId="86">
+          <changeMoveSelector xStreamId="87">
+            <entitySelector xStreamId="88" id="entitySelector1"/>
+            <valueSelector xStreamId="89">
+              <nearbySelection xStreamId="90">
+                <originEntitySelector xStreamId="91" mimicSelectorRef="entitySelector1"/>
+                <nearbyDistanceMeterClass>org.optaplanner.examples.vehiclerouting.domain.solver.nearby.TaskNearbyDistanceMeter</nearbyDistanceMeterClass>
+                <parabolicDistributionSizeMaximum>4</parabolicDistributionSizeMaximum>
+              </nearbySelection>
+            </valueSelector>
+          </changeMoveSelector>
+          <swapMoveSelector xStreamId="92">
+            <entitySelector xStreamId="93" id="entitySelector2"/>
+            <secondaryEntitySelector xStreamId="94">
+              <nearbySelection xStreamId="95">
+                <originEntitySelector xStreamId="96" mimicSelectorRef="entitySelector2"/>
+                <nearbyDistanceMeterClass>org.optaplanner.examples.vehiclerouting.domain.solver.nearby.TaskNearbyDistanceMeter</nearbyDistanceMeterClass>
+                <parabolicDistributionSizeMaximum>4</parabolicDistributionSizeMaximum>
+              </nearbySelection>
+            </secondaryEntitySelector>
+          </swapMoveSelector>
+          <subChainChangeMoveSelector xStreamId="97">
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="98">
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="99">
+          <lateAcceptanceSize>200</lateAcceptanceSize>
+        </acceptor>
+        <forager xStreamId="100">
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="101">
+      <usedMemoryAfterInputSolution>2906856</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="102">
+        <hardScore>0</hardScore>
+        <mediumScore>0</mediumScore>
+        <softScore>-339</softScore>
+      </score>
+      <timeMillisSpent>603475</timeMillisSpent>
+      <calculateCount>999</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult xStreamId="103">
+    <name>LA NearbyCS Filter</name>
+    <solverConfig xStreamId="104">
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory xStreamRef="4"/>
+      <termination xStreamRef="5"/>
+      <constructionHeuristic xStreamId="105">
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch xStreamId="106">
+        <unionMoveSelector xStreamId="107">
+          <changeMoveSelector xStreamId="108">
+            <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleChangeMoveFilter</filterClass>
+            <entitySelector xStreamId="109" id="entitySelector1"/>
+            <valueSelector xStreamId="110">
+              <nearbySelection xStreamId="111">
+                <originEntitySelector xStreamId="112" mimicSelectorRef="entitySelector1"/>
+                <nearbyDistanceMeterClass>org.optaplanner.examples.vehiclerouting.domain.solver.nearby.TaskNearbyDistanceMeter</nearbyDistanceMeterClass>
+                <parabolicDistributionSizeMaximum>4</parabolicDistributionSizeMaximum>
+              </nearbySelection>
+            </valueSelector>
+          </changeMoveSelector>
+          <swapMoveSelector xStreamId="113">
+            <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSwapMoveFilter</filterClass>
+            <entitySelector xStreamId="114" id="entitySelector2"/>
+            <secondaryEntitySelector xStreamId="115">
+              <nearbySelection xStreamId="116">
+                <originEntitySelector xStreamId="117" mimicSelectorRef="entitySelector2"/>
+                <nearbyDistanceMeterClass>org.optaplanner.examples.vehiclerouting.domain.solver.nearby.TaskNearbyDistanceMeter</nearbyDistanceMeterClass>
+                <parabolicDistributionSizeMaximum>4</parabolicDistributionSizeMaximum>
+              </nearbySelection>
+            </secondaryEntitySelector>
+          </swapMoveSelector>
+          <subChainChangeMoveSelector xStreamId="118">
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector xStreamId="119">
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor xStreamId="120">
+          <lateAcceptanceSize>200</lateAcceptanceSize>
+        </acceptor>
+        <forager xStreamId="121">
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult xStreamId="122">
+      <usedMemoryAfterInputSolution>2930832</usedMemoryAfterInputSolution>
+      <succeeded>true</succeeded>
+      <score class="org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore" xStreamId="123">
+        <hardScore>0</hardScore>
+        <mediumScore>-1</mediumScore>
+        <softScore>-358</softScore>
+      </score>
+      <timeMillisSpent>602482</timeMillisSpent>
+      <calculateCount>1009</calculateCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <unifiedProblemBenchmarkResult xStreamId="124">
+    <name>ArcasAssemblyProblem</name>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <inputSolutionFile>data/vehiclerouting/unsolved/ArcasAssemblyProblem.xml</inputSolutionFile>
+    <bestScoreProblemStatistic xStreamId="125">
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <stepScoreProblemStatistic xStreamId="126">
+      <problemStatisticType>STEP_SCORE</problemStatisticType>
+    </stepScoreProblemStatistic>
+    <calculateCountProblemStatistic xStreamId="127">
+      <problemStatisticType>CALCULATE_COUNT_PER_SECOND</problemStatisticType>
+    </calculateCountProblemStatistic>
+    <moveCountPerStepProblemStatistic xStreamId="128">
+      <problemStatisticType>MOVE_COUNT_PER_STEP</problemStatisticType>
+    </moveCountPerStepProblemStatistic>
+    <memoryUseProblemStatistic xStreamId="129">
+      <problemStatisticType>MEMORY_USE</problemStatisticType>
+    </memoryUseProblemStatistic>
+    <singleBenchmarkResult xStreamRef="15"/>
+    <singleBenchmarkResult xStreamRef="28"/>
+    <singleBenchmarkResult xStreamRef="41"/>
+    <singleBenchmarkResult xStreamRef="54"/>
+    <singleBenchmarkResult xStreamRef="67"/>
+    <singleBenchmarkResult xStreamRef="80"/>
+    <singleBenchmarkResult xStreamRef="101"/>
+    <singleBenchmarkResult xStreamRef="122"/>
+    <entityCount>18</entityCount>
+    <variableCount>14</variableCount>
+    <problemScale>256</problemScale>
+  </unifiedProblemBenchmarkResult>
+  <startingTimestamp xStreamId="130">2015-07-06 11:34:36.661 UTC</startingTimestamp>
+  <benchmarkTimeMillisSpent>4852113</benchmarkTimeMillisSpent>
+</plannerBenchmarkResult>

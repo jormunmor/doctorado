@@ -1,0 +1,7 @@
+		; UAV defs
+		(quadrotor uav1)
+		(quadrotor uav2)
+		(quadrotor uav3)
+		(quadrotor uav4)
+
+

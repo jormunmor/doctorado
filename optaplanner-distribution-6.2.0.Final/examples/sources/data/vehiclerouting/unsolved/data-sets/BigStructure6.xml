@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><OptaplannerProblem id="1">
+  <id>0</id>
+  <name>ArcasAssemblyProblem</name>
+  <locationList id="2">
+    <Location id="3">
+      <id>1</id>
+      <x>-0.307</x>
+      <y>9.927</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="4">
+      <id>2</id>
+      <x>5.479</x>
+      <y>-6.520</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="5">
+      <id>3</id>
+      <x>6.323</x>
+      <y>-28.466</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="6">
+      <id>4</id>
+      <x>5.830</x>
+      <y>-6.520</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="7">
+      <id>5</id>
+      <x>1.102</x>
+      <y>-4.794</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="8">
+      <id>6</id>
+      <x>6.169</x>
+      <y>-6.520</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="9">
+      <id>7</id>
+      <x>1.433</x>
+      <y>9.256</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="10">
+      <id>8</id>
+      <x>6.520</x>
+      <y>-6.520</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="11">
+      <id>9</id>
+      <x>20.565</x>
+      <y>-27.347</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="12">
+      <id>10</id>
+      <x>5.479</x>
+      <y>-6.169</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="13">
+      <id>11</id>
+      <x>-9.892</x>
+      <y>-13.716</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="14">
+      <id>12</id>
+      <x>5.830</x>
+      <y>-6.169</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="15">
+      <id>13</id>
+      <x>-13.889</x>
+      <y>-13.879</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="16">
+      <id>14</id>
+      <x>6.169</x>
+      <y>-6.169</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="17">
+      <id>15</id>
+      <x>18.515</x>
+      <y>-0.358</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="18">
+      <id>16</id>
+      <x>6.520</x>
+      <y>-6.169</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="19">
+      <id>17</id>
+      <x>-29.718</x>
+      <y>-24.592</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="20">
+      <id>18</id>
+      <x>5.479</x>
+      <y>-5.830</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="21">
+      <id>19</id>
+      <x>-14.47</x>
+      <y>22.23</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="22">
+      <id>20</id>
+      <x>5.830</x>
+      <y>-5.830</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="23">
+      <id>21</id>
+      <x>16.242</x>
+      <y>22.186</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="24">
+      <id>22</id>
+      <x>6.169</x>
+      <y>-5.830</y>
+      <z>0.172</z>
+    </Location>
+	<Location id="25">
+      <id>23</id>
+      <x>29.82</x>
+      <y>-23.089</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="26">
+      <id>24</id>
+      <x>6.520</x>
+      <y>-5.830</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="27">
+      <id>25</id>
+      <x>-10.059</x>
+      <y>-28.224</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="28">
+      <id>26</id>
+      <x>5.479</x>
+      <y>-5.479</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="29">
+      <id>27</id>
+      <x>10.459</x>
+      <y>-6.879</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="30">
+      <id>28</id>
+      <x>5.830</x>
+      <y>-5.479</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="31">
+      <id>29</id>
+      <x>-14.123</x>
+      <y>-8.176</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="32">
+      <id>30</id>
+      <x>6.169</x>
+      <y>-5.479</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="33">
+      <id>31</id>
+      <x>16.23</x>
+      <y>-23.253</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="34">
+      <id>32</id>
+      <x>6.520</x>
+      <y>-5.479</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="35">
+      <id>33</id>
+      <x>-7.218</x>
+      <y>-14.357</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="36">
+      <id>34</id>
+      <x>5.654</x>
+      <y>-6.345</y>
+      <z>0.523</z>
+    </Location>
+    <Location id="37">
+      <id>35</id>
+      <x>-17.837</x>
+      <y>-7.093</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="38">
+      <id>36</id>
+      <x>6.345</x>
+      <y>-6.345</y>
+      <z>0.523</z>
+    </Location>
+    <Location id="39">
+      <id>37</id>
+      <x>-11.371</x>
+      <y>-25.936</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="40">
+      <id>38</id>
+      <x>5.654</x>
+      <y>-5.654</y>
+      <z>0.523</z>
+    </Location>
+    <Location id="41">
+      <id>39</id>
+      <x>9.666</x>
+      <y>-0.489</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="42">
+      <id>40</id>
+      <x>6.345</x>
+      <y>-5.654</y>
+      <z>0.523</z>
+    </Location>
+    <Location id="43">
+      <id>41</id>
+      <x>-18.144</x>
+      <y>-4.929</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="44">
+      <id>42</id>
+      <x>5.824</x>
+      <y>-6.175</y>
+      <z>0.862</z>
+    </Location>
+    <Location id="45">
+      <id>43</id>
+      <x>18.764</x>
+      <y>-22.862</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="46">
+      <id>44</id>
+      <x>6.175</x>
+      <y>-6.175</y>
+      <z>0.862</z>
+    </Location>
+    <Location id="47">
+      <id>45</id>
+      <x>-12.461</x>
+      <y>5.342</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="48">
+      <id>46</id>
+      <x>5.824</x>
+      <y>-5.824</y>
+      <z>0.862</z>
+    </Location>
+    <Location id="49">
+      <id>47</id>
+      <x>27.519</x>
+      <y>-2.239</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="50">
+      <id>48</id>
+      <x>6.175</x>
+      <y>-5.824</y>
+      <z>0.862</z>
+    </Location>
+    <Location id="51">
+      <id>49</id>
+      <x>3.507</x>
+      <y>21.999</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="52">
+      <id>50</id>
+      <x>6.000</x>
+      <y>-6.000</y>
+      <z>1.213</z>
+    </Location>
+    <Location id="53"> <!-- UAV location -->
+      <id>51</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="54"> <!-- UAV location -->
+      <id>52</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="55"> <!-- UAV location -->
+      <id>53</id>
+      <x>0</x>
+      <y>7</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="56"> <!-- UAV location -->
+      <id>54</id>
+      <x>0</x>
+      <y>-7</y>
+      <z>0.5</z>
+    </Location>
+  </locationList>
+  <initialLocationList id="57">
+    <InitialLocation id="58">
+      <id>1</id>
+      <location reference="53"/>
+    </InitialLocation>
+    <InitialLocation id="59">
+      <id>2</id>
+      <location reference="54"/>
+    </InitialLocation>
+    <InitialLocation id="60">
+      <id>3</id>
+      <location reference="55"/>
+    </InitialLocation>
+    <InitialLocation id="61">
+      <id>4</id>
+      <location reference="56"/>
+    </InitialLocation>
+  </initialLocationList>
+  <autonomousVehicleList id="62">
+    <AutonomousVehicle id="63">
+      <id>1</id>
+      <capacity>450</capacity>
+      <initialLocation reference="58"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="64">
+      <id>2</id>
+      <capacity>450</capacity>
+      <initialLocation reference="59"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="65">
+      <id>3</id>
+      <capacity>450</capacity>
+      <initialLocation reference="60"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="66">
+      <id>4</id>
+      <capacity>450</capacity>
+      <initialLocation reference="61"/>
+    </AutonomousVehicle>
+  </autonomousVehicleList>
+  <taskList id="67">
+	<Task id="68">
+      <id>0</id>
+      <type>assemble</type>
+      <location reference="4"/>
+      <objectName>Box001</objectName>
+      <objectLocation reference="3"/>
+      <demand>300</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+	<Task id="69">
+      <id>1</id>
+      <type>assemble</type>
+      <location reference="6"/>
+      <objectName>Box002</objectName>
+      <objectLocation reference="5"/>
+      <demand>300</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+	<Task id="70">
+      <id>2</id>
+      <type>assemble</type>
+      <location reference="8"/>
+      <objectName>Box003</objectName>
+      <objectLocation reference="7"/>
+      <demand>300</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+	<Task id="71">
+      <id>3</id>
+      <type>assemble</type>
+      <location reference="10"/>
+      <objectName>Box004</objectName>
+      <objectLocation reference="9"/>
+      <demand>300</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+	<Task id="72">
+      <id>4</id>
+      <type>assemble</type>
+      <location reference="12"/>
+      <objectName>Box005</objectName>
+      <objectLocation reference="11"/>
+      <demand>300</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+	<Task id="73">
+      <id>5</id>
+      <type>assemble</type>
+      <location reference="14"/>
+      <objectName>Box006</objectName>
+      <objectLocation reference="13"/>
+      <demand>300</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+	<Task id="74">
+      <id>6</id>
+      <type>assemble</type>
+      <location reference="16"/>
+      <objectName>Box007</objectName>
+      <objectLocation reference="15"/>
+      <demand>300</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+	<Task id="75">
+      <id>7</id>
+      <type>assemble</type>
+      <location reference="18"/>
+      <objectName>Box008</objectName>
+      <objectLocation reference="17"/>
+      <demand>300</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+	<Task id="76">
+      <id>8</id>
+      <type>assemble</type>
+      <location reference="20"/>
+      <objectName>Box009</objectName>
+      <objectLocation reference="19"/>
+      <demand>300</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+	<Task id="77">
+      <id>9</id>
+      <type>assemble</type>
+      <location reference="22"/>
+      <objectName>Box010</objectName>
+      <objectLocation reference="21"/>
+      <demand>300</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+	<Task id="78">
+      <id>10</id>
+      <type>assemble</type>
+      <location reference="24"/>
+      <objectName>Box011</objectName>
+      <objectLocation reference="23"/>
+      <demand>300</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+	<Task id="79">
+      <id>11</id>
+      <type>assemble</type>
+      <location reference="26"/>
+      <objectName>Box012</objectName>
+      <objectLocation reference="25"/>
+      <demand>300</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+	<Task id="80">
+      <id>12</id>
+      <type>assemble</type>
+      <location reference="28"/>
+      <objectName>Box013</objectName>
+      <objectLocation reference="27"/>
+      <demand>300</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+	<Task id="81">
+      <id>13</id>
+      <type>assemble</type>
+      <location reference="30"/>
+      <objectName>Box014</objectName>
+      <objectLocation reference="29"/>
+      <demand>300</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+	<Task id="82">
+      <id>14</id>
+      <type>assemble</type>
+      <location reference="32"/>
+      <objectName>Box015</objectName>
+      <objectLocation reference="31"/>
+      <demand>300</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+	<Task id="83">
+      <id>15</id>
+      <type>assemble</type>
+      <location reference="34"/>
+      <objectName>Box016</objectName>
+      <objectLocation reference="33"/>
+      <demand>300</demand>
+      <priority>1</priority>
+      <action>base</action>
+      <preconditionList/>
+    </Task>
+	<Task id="84">
+      <id>16</id>
+      <type>assemble</type>
+      <location reference="36"/>
+      <objectName>Box017</objectName>
+      <objectLocation reference="35"/>
+      <demand>450</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="85">
+          <id>0</id>
+        </TaskDependency>
+        <TaskDependency id="86">
+          <id>1</id>
+        </TaskDependency>
+        <TaskDependency id="87">
+          <id>4</id>
+        </TaskDependency>
+        <TaskDependency id="88">
+          <id>5</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+	<Task id="89">
+      <id>16</id>
+      <type>assemble</type>
+      <location reference="36"/>
+      <objectName>Box017</objectName>
+      <objectLocation reference="35"/>
+      <demand>450</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="90">
+          <id>0</id>
+        </TaskDependency>
+        <TaskDependency id="91">
+          <id>1</id>
+        </TaskDependency>
+        <TaskDependency id="92">
+          <id>4</id>
+        </TaskDependency>
+        <TaskDependency id="93">
+          <id>5</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+	<Task id="94">
+      <id>17</id>
+      <type>assemble</type>
+      <location reference="38"/>
+      <objectName>Box018</objectName>
+      <objectLocation reference="37"/>
+      <demand>450</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="95">
+          <id>2</id>
+        </TaskDependency>
+        <TaskDependency id="96">
+          <id>3</id>
+        </TaskDependency>
+        <TaskDependency id="97">
+          <id>6</id>
+        </TaskDependency>
+        <TaskDependency id="98">
+          <id>7</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+	<Task id="99">
+      <id>17</id>
+      <type>assemble</type>
+      <location reference="38"/>
+      <objectName>Box018</objectName>
+      <objectLocation reference="37"/>
+      <demand>450</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="100">
+          <id>2</id>
+        </TaskDependency>
+        <TaskDependency id="101">
+          <id>3</id>
+        </TaskDependency>
+        <TaskDependency id="102">
+          <id>6</id>
+        </TaskDependency>
+        <TaskDependency id="103">
+          <id>7</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+	<Task id="104">
+      <id>18</id>
+      <type>assemble</type>
+      <location reference="40"/>
+      <objectName>Box019</objectName>
+      <objectLocation reference="39"/>
+      <demand>450</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="105">
+          <id>8</id>
+        </TaskDependency>
+        <TaskDependency id="106">
+          <id>9</id>
+        </TaskDependency>
+        <TaskDependency id="107">
+          <id>12</id>
+        </TaskDependency>
+        <TaskDependency id="108">
+          <id>13</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+	<Task id="109">
+      <id>18</id>
+      <type>assemble</type>
+      <location reference="40"/>
+      <objectName>Box019</objectName>
+      <objectLocation reference="39"/>
+      <demand>450</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="110">
+          <id>8</id>
+        </TaskDependency>
+        <TaskDependency id="111">
+          <id>9</id>
+        </TaskDependency>
+        <TaskDependency id="112">
+          <id>12</id>
+        </TaskDependency>
+        <TaskDependency id="113">
+          <id>13</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+	<Task id="114">
+      <id>19</id>
+      <type>assemble</type>
+      <location reference="42"/>
+      <objectName>Box020</objectName>
+      <objectLocation reference="41"/>
+      <demand>450</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="115">
+          <id>10</id>
+        </TaskDependency>
+        <TaskDependency id="116">
+          <id>11</id>
+        </TaskDependency>
+        <TaskDependency id="117">
+          <id>14</id>
+        </TaskDependency>
+        <TaskDependency id="118">
+          <id>15</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+	<Task id="119">
+      <id>19</id>
+      <type>assemble</type>
+      <location reference="42"/>
+      <objectName>Box020</objectName>
+      <objectLocation reference="41"/>
+      <demand>450</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="120">
+          <id>10</id>
+        </TaskDependency>
+        <TaskDependency id="121">
+          <id>11</id>
+        </TaskDependency>
+        <TaskDependency id="122">
+          <id>14</id>
+        </TaskDependency>
+        <TaskDependency id="123">
+          <id>15</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+	<Task id="124">
+      <id>20</id>
+      <type>assemble</type>
+      <location reference="44"/>
+      <objectName>Box021</objectName>
+      <objectLocation reference="43"/>
+      <demand>300</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="125">
+          <id>16</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+	<Task id="126">
+      <id>21</id>
+      <type>assemble</type>
+      <location reference="46"/>
+      <objectName>Box022</objectName>
+      <objectLocation reference="45"/>
+      <demand>300</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="127">
+          <id>17</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+	<Task id="128">
+      <id>22</id>
+      <type>assemble</type>
+      <location reference="48"/>
+      <objectName>Box023</objectName>
+      <objectLocation reference="47"/>
+      <demand>300</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="129">
+          <id>18</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+	<Task id="130">
+      <id>23</id>
+      <type>assemble</type>
+      <location reference="50"/>
+      <objectName>Box024</objectName>
+      <objectLocation reference="49"/>
+      <demand>300</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="131">
+          <id>19</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+	<Task id="132">
+      <id>24</id>
+      <type>assemble</type>
+      <location reference="52"/>
+      <objectName>Box025</objectName>
+      <objectLocation reference="51"/>
+      <demand>450</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="133">
+          <id>20</id>
+        </TaskDependency>
+        <TaskDependency id="134">
+          <id>21</id>
+        </TaskDependency>
+        <TaskDependency id="135">
+          <id>22</id>
+        </TaskDependency>
+        <TaskDependency id="136">
+          <id>23</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+	<Task id="137">
+      <id>24</id>
+      <type>assemble</type>
+      <location reference="52"/>
+      <objectName>Box025</objectName>
+      <objectLocation reference="51"/>
+      <demand>450</demand>
+      <priority>2</priority>
+      <action>connection</action>
+      <preconditionList>
+        <TaskDependency id="138">
+          <id>20</id>
+        </TaskDependency>
+        <TaskDependency id="139">
+          <id>21</id>
+        </TaskDependency>
+        <TaskDependency id="140">
+          <id>22</id>
+        </TaskDependency>
+        <TaskDependency id="141">
+          <id>23</id>
+        </TaskDependency>
+      </preconditionList>
+    </Task>
+  </taskList>
+</OptaplannerProblem>

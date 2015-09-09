@@ -27,11 +27,29 @@ public class VrpCustomerDifficultyComparator implements Comparator<Task>, Serial
     public int compare(Task a, Task b) {
         return new CompareToBuilder()
                 // TODO experiment with (aLatitude - bLatitude) % 10
+                /*
                 .append(a.getLocation().getX(), b.getLocation().getX())
                 .append(a.getLocation().getY(), b.getLocation().getY())
                 .append(a.getDemand(), b.getDemand())
                 .append(a.getId(), b.getId())
                 .toComparison();
-    }
+                */
+                
+                .append(a.getLocation().getX(), b.getLocation().getX())
+                .append(a.getLocation().getY(), b.getLocation().getY())
+                .append(a.getDemand(), b.getDemand())
+                .append(a.getPreconditionList().size(), b.getPreconditionList().size())
+                .toComparison();
+                
+                // Sort by weight and number of preconditions.
+                // Parts with higher weights and number of preconditions
+                // are more difficult to plan.
+                
+                /*
+                .append(a.getDemand(), b.getDemand())
+                .append(a.getPreconditionList().size(), b.getPreconditionList().size())
+                .toComparison();
+                */
+    }           
 
 }

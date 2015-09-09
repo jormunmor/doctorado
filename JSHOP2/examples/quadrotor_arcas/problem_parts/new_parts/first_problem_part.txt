@@ -1,0 +1,77 @@
+(defproblem problem quadrotor
+
+	; FACTS
+	(
+		; UAV defs
+		(quadrotor uav1)
+		(quadrotor uav2)
+		(quadrotor uav3)
+		(quadrotor uav4)
+
+		; object defs
+		(object Box001-lib)
+		(object Box002-lib)
+		(object Box003-lib)
+		(object Box004-lib)
+		(object Box005-lib)
+		(object Box006-lib)
+		(object Box007-lib)
+		(object Box008-lib)
+		(object Box009-lib)
+		(object Box010-lib)
+		(object Box011-lib)
+
+		; location defs
+		(location 1 6.7 6.93 1.663)
+		(location 2 5.317 -6.906 0.165)
+		(location 3 7.3 6.93 1.663)
+		(location 4 7.132 -5.091 0.165)
+		(location 5 -7.4 7.0 1.663)
+		(location 6 6.225 -5.998 0.819)
+		(location 7 5.75 6.93 1.663)
+		(location 8 7.04 -4.999 0.819)
+		(location 9 6.17 6.93 1.663)
+		(location 10 7.224 -5.183 0.819)
+		(location 11 -6.7 6.93 1.663)
+		(location 12 5.409 -6.998 0.819)
+		(location 13 -8.2 6.93 1.663)
+		(location 14 5.225 -6.814 0.819)
+		(location 15 -8.0 -5.8 1.663)
+		(location 16 5.015 -7.208 0.492)
+		(location 17 -6.7 -5.8 1.663)
+		(location 18 5.62 -6.603 0.492)
+		(location 19 -8.0 -7.3 1.663)
+		(location 20 6.83 -5.393 0.492)
+		(location 21 -6.7 -7.3 1.663)
+		(location 22 7.435 -4.789 0.492)
+		(location 23 -7.2 -1.5 0.5)
+		(location 24 7.2 -1.5 0.5)
+		(location 25 0.0 7.0 0.5)
+		(location 26 0.0 -7.0 0.5)
+
+		; assembly location defs
+		(assembly_location Box001-lib 2)
+		(assembly_location Box002-lib 4)
+		(assembly_location Box003-lib 6)
+		(assembly_location Box004-lib 8)
+		(assembly_location Box005-lib 10)
+		(assembly_location Box006-lib 12)
+		(assembly_location Box007-lib 14)
+		(assembly_location Box008-lib 16)
+		(assembly_location Box009-lib 18)
+		(assembly_location Box010-lib 20)
+		(assembly_location Box011-lib 22)
+
+		; object state defs
+		(at Box001-lib 1)
+		(at Box002-lib 3)
+		(at Box003-lib 5)
+		(at Box004-lib 7)
+		(at Box005-lib 9)
+		(at Box006-lib 11)
+		(at Box007-lib 13)
+		(at Box008-lib 15)
+		(at Box009-lib 17)
+		(at Box010-lib 19)
+		(at Box011-lib 21)
+

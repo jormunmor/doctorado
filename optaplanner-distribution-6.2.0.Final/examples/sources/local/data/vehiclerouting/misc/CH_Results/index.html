@@ -1,0 +1,2333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>2015-08-20_013959 Planner benchmark report</title>
+    <link href="twitterbootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="twitterbootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
+    <link href="twitterbootstrap/css/prettify.css" rel="stylesheet"/>
+    <link href="website/css/benchmarkReport.css" rel="stylesheet"/>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body onload="prettyPrint()">
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="benchmark-report-nav">
+                <div style="margin-top: 10px;">
+                    <a href="http://www.optaplanner.org">
+                        <img src="website/img/optaPlannerLogo.png" alt="OptaPlanner"/>
+                    </a>
+                </div>
+                <div style="margin-top: 10px; margin-bottom: 10px;">
+                    <ul class="nav nav-list">
+                        <li><a href="#summary">Summary</a></li>
+                        <li>
+                            <ul class="nav nav-list">
+                                <li><a href="#summary_result">Result</a></li>
+                                <li><a href="#summary_performance">Performance</a></li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#problemBenchmarkResult">Problem benchmarks</a></li>
+                        <li>
+                            <ul class="nav nav-list">
+                                <li><a href="#problemBenchmark_ArcasBigScenario1">ArcasBigScenario1</a></li>
+                                <li><a href="#problemBenchmark_ArcasBigScenario2">ArcasBigScenario2</a></li>
+                                <li><a href="#problemBenchmark_ArcasBigScenario3">ArcasBigScenario3</a></li>
+                                <li><a href="#problemBenchmark_ArcasBigScenario4">ArcasBigScenario4</a></li>
+                                <li><a href="#problemBenchmark_ArcasBigScenario5">ArcasBigScenario5</a></li>
+                                <li><a href="#problemBenchmark_ArcasBigScenario6">ArcasBigScenario6</a></li>
+                                <li><a href="#problemBenchmark_ArcasBigScenario7">ArcasBigScenario7</a></li>
+                                <li><a href="#problemBenchmark_ArcasBigScenario8">ArcasBigScenario8</a></li>
+                                <li><a href="#problemBenchmark_ArcasBigScenario9">ArcasBigScenario9</a></li>
+                                <li><a href="#problemBenchmark_ArcasBigScenario10">ArcasBigScenario10</a></li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#solverBenchmarkResult">Solver benchmarks</a></li>
+                        <li>
+                            <ul class="nav nav-list">
+                                <li><a href="#solverBenchmark_First-002D0020Fit">First Fit&nbsp;    <span class="badge badge-success">0</span>
+</a></li>
+                                <li><a href="#solverBenchmark_First-002D0020Fit-002D0020Decreasing">First Fit Decreasing&nbsp;    <span class="badge">1</span>
+</a></li>
+                                <li><a href="#solverBenchmark_Cheapest-002D0020Insertion">Cheapest Insertion&nbsp;    <span class="badge">1</span>
+</a></li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#benchmarkInformation">Benchmark information</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="span10">
+            <header class="main-page-header">
+                <h1>Benchmark report</h1>
+            </header>
+            <section id="summary">
+                <div class="page-header">
+                    <h1>Summary</h1>
+                </div>
+
+                <section id="summary_result">
+                    <h2>Result summary</h2>
+                    <div class="tabbable">
+                        <ul class="nav nav-pills">
+                            <li class="active">
+                                <a href="#summary_bestScore" data-toggle="tab">Best score</a>
+                            </li>
+                            <li>
+                                <a href="#summary_bestScoreScalability" data-toggle="tab">Best score scalability</a>
+                            </li>
+                            <li>
+                                <a href="#summary_winningScoreDifference" data-toggle="tab">Winning score difference</a>
+                            </li>
+                            <li>
+                                <a href="#summary_worstScoreDifferencePercentage" data-toggle="tab">Worst score difference percentage (ROI)</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="summary_bestScore">
+                                <h3>Best score summary</h3>
+                                <p>Useful for visualizing the best solver configuration.</p>
+    <div class="tabbable tabs-right">
+        <ul class="nav nav-tabs">
+            <li>
+                <a href="#summary_bestScore_chart_0" data-toggle="tab">Score level 0</a>
+            </li>
+            <li class="active">
+                <a href="#summary_bestScore_chart_1" data-toggle="tab">Score level 1</a>
+            </li>
+            <li>
+                <a href="#summary_bestScore_chart_2" data-toggle="tab">Score level 2</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane" id="summary_bestScore_chart_0">
+                <div class="benchmark-chart">
+                    <img src="summary/bestScoreSummaryLevel0.png"/>
+                </div>
+            </div>
+            <div class="tab-pane active" id="summary_bestScore_chart_1">
+                <div class="benchmark-chart">
+                    <img src="summary/bestScoreSummaryLevel1.png"/>
+                </div>
+            </div>
+            <div class="tab-pane" id="summary_bestScore_chart_2">
+                <div class="benchmark-chart">
+                    <img src="summary/bestScoreSummaryLevel2.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+                                <table class="benchmark-table table table-striped table-bordered">
+                                    <tr>
+                                        <th rowspan="2">Solver</th>
+                                        <th rowspan="2">Total</th>
+                                        <th rowspan="2">Average</th>
+                                        <th rowspan="2">Standard Deviation</th>
+                                        <th colspan="10">Problem</th>
+                                    </tr>
+                                    <tr>
+                                        <th>ArcasBigScenario1</th>
+                                        <th>ArcasBigScenario2</th>
+                                        <th>ArcasBigScenario3</th>
+                                        <th>ArcasBigScenario4</th>
+                                        <th>ArcasBigScenario5</th>
+                                        <th>ArcasBigScenario6</th>
+                                        <th>ArcasBigScenario7</th>
+                                        <th>ArcasBigScenario8</th>
+                                        <th>ArcasBigScenario9</th>
+                                        <th>ArcasBigScenario10</th>
+                                    </tr>
+                                    <tr class="favoriteSolverBenchmark">
+                                        <th>First Fit&nbsp;    <span class="badge badge-success">0</span>
+</th>
+                                        <td>-10hard/0medium/10soft</td>
+                                        <td>-1hard/0medium/1soft</td>
+                                        <td>0.0/0.0/2.14</td>
+                                                    <td>-1hard/0medium/-2147483647soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/0medium/-2147483647soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/0medium/-2147483647soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/0medium/-2147483647soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/0medium/-2147483647soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/0medium/-2147483647soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/0medium/-2147483647soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/0medium/-2147483647soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/0medium/-2147483647soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/0medium/-2147483647soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>First Fit Decreasing&nbsp;    <span class="badge">1</span>
+</th>
+                                        <td>-10hard/-10medium/10soft</td>
+                                        <td>-1hard/-1medium/1soft</td>
+                                        <td>0.0/0.0/2.14</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Cheapest Insertion&nbsp;    <span class="badge">1</span>
+</th>
+                                        <td>-10hard/-10medium/10soft</td>
+                                        <td>-1hard/-1medium/1soft</td>
+                                        <td>0.0/0.0/2.14</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>-1hard/-1medium/-2147483647soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="summary_bestScoreScalability">
+                                <h3>Best score scalability summary</h3>
+                                <p>Useful for visualizing the scalability of each solver configuration.</p>
+    <div class="tabbable tabs-right">
+        <ul class="nav nav-tabs">
+            <li>
+                <a href="#summary_bestScoreScalability_chart_0" data-toggle="tab">Score level 0</a>
+            </li>
+            <li class="active">
+                <a href="#summary_bestScoreScalability_chart_1" data-toggle="tab">Score level 1</a>
+            </li>
+            <li>
+                <a href="#summary_bestScoreScalability_chart_2" data-toggle="tab">Score level 2</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane" id="summary_bestScoreScalability_chart_0">
+                <div class="benchmark-chart">
+                    <img src="summary/bestScoreScalabilitySummaryLevel0.png"/>
+                </div>
+            </div>
+            <div class="tab-pane active" id="summary_bestScoreScalability_chart_1">
+                <div class="benchmark-chart">
+                    <img src="summary/bestScoreScalabilitySummaryLevel1.png"/>
+                </div>
+            </div>
+            <div class="tab-pane" id="summary_bestScoreScalability_chart_2">
+                <div class="benchmark-chart">
+                    <img src="summary/bestScoreScalabilitySummaryLevel2.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+                            </div>
+                            <div class="tab-pane" id="summary_winningScoreDifference">
+                                <h3>Winning score difference summary</h3>
+                                <p>Useful for zooming in on the results of the best score summary.</p>
+    <div class="tabbable tabs-right">
+        <ul class="nav nav-tabs">
+            <li>
+                <a href="#summary_winningScoreDifference_chart_0" data-toggle="tab">Score level 0</a>
+            </li>
+            <li class="active">
+                <a href="#summary_winningScoreDifference_chart_1" data-toggle="tab">Score level 1</a>
+            </li>
+            <li>
+                <a href="#summary_winningScoreDifference_chart_2" data-toggle="tab">Score level 2</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane" id="summary_winningScoreDifference_chart_0">
+                <div class="benchmark-chart">
+                    <img src="summary/winningScoreDifferenceSummaryLevel0.png"/>
+                </div>
+            </div>
+            <div class="tab-pane active" id="summary_winningScoreDifference_chart_1">
+                <div class="benchmark-chart">
+                    <img src="summary/winningScoreDifferenceSummaryLevel1.png"/>
+                </div>
+            </div>
+            <div class="tab-pane" id="summary_winningScoreDifference_chart_2">
+                <div class="benchmark-chart">
+                    <img src="summary/winningScoreDifferenceSummaryLevel2.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+                                <table class="benchmark-table table table-striped table-bordered">
+                                    <tr>
+                                        <th rowspan="2">Solver</th>
+                                        <th rowspan="2">Total</th>
+                                        <th rowspan="2">Average</th>
+                                        <th colspan="10">Problem</th>
+                                    </tr>
+                                    <tr>
+                                        <th>ArcasBigScenario1</th>
+                                        <th>ArcasBigScenario2</th>
+                                        <th>ArcasBigScenario3</th>
+                                        <th>ArcasBigScenario4</th>
+                                        <th>ArcasBigScenario5</th>
+                                        <th>ArcasBigScenario6</th>
+                                        <th>ArcasBigScenario7</th>
+                                        <th>ArcasBigScenario8</th>
+                                        <th>ArcasBigScenario9</th>
+                                        <th>ArcasBigScenario10</th>
+                                    </tr>
+                                    <tr class="favoriteSolverBenchmark">
+                                        <th>First Fit&nbsp;    <span class="badge badge-success">0</span>
+</th>
+                                        <td>0hard/0medium/0soft</td>
+                                        <td>0hard/0medium/0soft</td>
+                                                    <td>0hard/0medium/0soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/0medium/0soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/0medium/0soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/0medium/0soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/0medium/0soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/0medium/0soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/0medium/0soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/0medium/0soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/0medium/0soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/0medium/0soft&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>First Fit Decreasing&nbsp;    <span class="badge">1</span>
+</th>
+                                        <td>0hard/-10medium/0soft</td>
+                                        <td>0hard/-1medium/0soft</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Cheapest Insertion&nbsp;    <span class="badge">1</span>
+</th>
+                                        <td>0hard/-10medium/0soft</td>
+                                        <td>0hard/-1medium/0soft</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0hard/-1medium/0soft&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="summary_worstScoreDifferencePercentage">
+                                <h3>Worst score difference percentage summary (ROI)</h3>
+                                <p>Useful for visualizing the return on investment (ROI) to decision makers.</p>
+    <div class="tabbable tabs-right">
+        <ul class="nav nav-tabs">
+            <li>
+                <a href="#summary_worstScoreDifferencePercentage_chart_0" data-toggle="tab">Score level 0</a>
+            </li>
+            <li class="active">
+                <a href="#summary_worstScoreDifferencePercentage_chart_1" data-toggle="tab">Score level 1</a>
+            </li>
+            <li>
+                <a href="#summary_worstScoreDifferencePercentage_chart_2" data-toggle="tab">Score level 2</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane" id="summary_worstScoreDifferencePercentage_chart_0">
+                <div class="benchmark-chart">
+                    <img src="summary/worstScoreDifferencePercentageSummaryLevel0.png"/>
+                </div>
+            </div>
+            <div class="tab-pane active" id="summary_worstScoreDifferencePercentage_chart_1">
+                <div class="benchmark-chart">
+                    <img src="summary/worstScoreDifferencePercentageSummaryLevel1.png"/>
+                </div>
+            </div>
+            <div class="tab-pane" id="summary_worstScoreDifferencePercentage_chart_2">
+                <div class="benchmark-chart">
+                    <img src="summary/worstScoreDifferencePercentageSummaryLevel2.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+                                <table class="benchmark-table table table-striped table-bordered">
+                                    <tr>
+                                        <th rowspan="2">Solver</th>
+                                        <th rowspan="2">Average</th>
+                                        <th colspan="10">Problem</th>
+                                    </tr>
+                                    <tr>
+                                        <th>ArcasBigScenario1</th>
+                                        <th>ArcasBigScenario2</th>
+                                        <th>ArcasBigScenario3</th>
+                                        <th>ArcasBigScenario4</th>
+                                        <th>ArcasBigScenario5</th>
+                                        <th>ArcasBigScenario6</th>
+                                        <th>ArcasBigScenario7</th>
+                                        <th>ArcasBigScenario8</th>
+                                        <th>ArcasBigScenario9</th>
+                                        <th>ArcasBigScenario10</th>
+                                    </tr>
+                                    <tr class="favoriteSolverBenchmark">
+                                        <th>First Fit&nbsp;    <span class="badge badge-success">0</span>
+</th>
+                                            <td>0,00%/100,00%/0,00%</td>
+                                                    <td>0,00%/100,00%/0,00%&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/100,00%/0,00%&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/100,00%/0,00%&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/100,00%/0,00%&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/100,00%/0,00%&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/100,00%/0,00%&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/100,00%/0,00%&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/100,00%/0,00%&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/100,00%/0,00%&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/100,00%/0,00%&nbsp;        <span class="badge badge-success">0</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>First Fit Decreasing&nbsp;    <span class="badge">1</span>
+</th>
+                                            <td>0,00%/0,00%/0,00%</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Cheapest Insertion&nbsp;    <span class="badge">1</span>
+</th>
+                                            <td>0,00%/0,00%/0,00%</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                                    <td>0,00%/0,00%/0,00%&nbsp;        <span class="badge">1</span>
+        <span class="badge badge-warning">!</span>
+</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- HACK Duplication to show the navigation tabs in the same viewport as the tables -->
+                        <ul class="nav nav-pills">
+                            <li class="active">
+                                <a href="#summary_bestScore" data-toggle="tab">Best score</a>
+                            </li>
+                            <li>
+                                <a href="#summary_bestScoreScalability" data-toggle="tab">Best score scalability</a>
+                            </li>
+                            <li>
+                                <a href="#summary_winningScoreDifference" data-toggle="tab">Winning score difference</a>
+                            </li>
+                            <li>
+                                <a href="#summary_worstScoreDifferencePercentage" data-toggle="tab">Worst score difference percentage (ROI)</a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="summary_performance">
+                    <h2>Performance summary</h2>
+                    <div class="tabbable">
+                        <ul class="nav nav-pills">
+                            <li class="active">
+                                <a href="#summary_averageCalculateCount" data-toggle="tab">Average calculation count</a>
+                            </li>
+                            <li>
+                                <a href="#summary_timeSpent" data-toggle="tab">Time spent</a>
+                            </li>
+                            <li>
+                                <a href="#summary_timeSpentScalability" data-toggle="tab">Time spent scalability</a>
+                            </li>
+                            <li>
+                                <a href="#summary_bestScorePerTimeSpent" data-toggle="tab">Best score per time spent</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="summary_averageCalculateCount">
+                                <h3>Average calculate count summary</h3>
+                                <p>
+                                    Useful for comparing different score calculators and/or score rule implementations
+                                    (presuming that the solver configurations do not differ otherwise).
+                                    Also useful to measure the scalability cost of an extra constraint.
+                                </p>
+                                <div class="benchmark-chart">
+                                    <img src="summary/averageCalculateCountSummary.png"/>
+                                </div>
+                                <table class="benchmark-table table table-striped table-bordered">
+                                    <tr>
+                                        <th rowspan="2">Solver</th>
+                                        <th rowspan="2">Average</th>
+                                        <th colspan="10">Problem</th>
+                                    </tr>
+                                    <tr>
+                                        <th>ArcasBigScenario1</th>
+                                        <th>ArcasBigScenario2</th>
+                                        <th>ArcasBigScenario3</th>
+                                        <th>ArcasBigScenario4</th>
+                                        <th>ArcasBigScenario5</th>
+                                        <th>ArcasBigScenario6</th>
+                                        <th>ArcasBigScenario7</th>
+                                        <th>ArcasBigScenario8</th>
+                                        <th>ArcasBigScenario9</th>
+                                        <th>ArcasBigScenario10</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="problemScale">Problem scale</th>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                    </tr>
+                                    <tr class="favoriteSolverBenchmark">
+                                        <th>First Fit&nbsp;    <span class="badge badge-success">0</span>
+</th>
+                                        <td>23.108/s</td>
+                                                    <td>15.666/s</td>
+                                                    <td>23.500/s</td>
+                                                    <td>11.750/s</td>
+                                                    <td>23.500/s</td>
+                                                    <td>23.500/s</td>
+                                                    <td>23.500/s</td>
+                                                    <td>47.000/s</td>
+                                                    <td>23.500/s</td>
+                                                    <td>23.500/s</td>
+                                                    <td>15.666/s</td>
+                                    </tr>
+                                    <tr>
+                                        <th>First Fit Decreasing&nbsp;    <span class="badge">1</span>
+</th>
+                                        <td>33.833/s</td>
+                                                    <td>29.000/s</td>
+                                                    <td>29.000/s</td>
+                                                    <td>29.000/s</td>
+                                                    <td>29.000/s</td>
+                                                    <td>29.000/s</td>
+                                                    <td>58.000/s</td>
+                                                    <td>29.000/s</td>
+                                                    <td>29.000/s</td>
+                                                    <td>58.000/s</td>
+                                                    <td>19.333/s</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Cheapest Insertion&nbsp;    <span class="badge">1</span>
+</th>
+                                        <td>39.000/s</td>
+                                                    <td>45.000/s</td>
+                                                    <td>30.000/s</td>
+                                                    <td>30.000/s</td>
+                                                    <td>45.000/s</td>
+                                                    <td>30.000/s</td>
+                                                    <td>45.000/s</td>
+                                                    <td>45.000/s</td>
+                                                    <td>45.000/s</td>
+                                                    <td>45.000/s</td>
+                                                    <td>30.000/s</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="summary_timeSpent">
+                                <h3>Time spent summary</h3>
+                                <p>Useful for visualizing the performance of construction heuristics (presuming that no other solver phases are configured).</p>
+                                <div class="benchmark-chart">
+                                    <img src="summary/timeSpentSummary.png"/>
+                                </div>
+                                <table class="benchmark-table table table-striped table-bordered">
+                                    <tr>
+                                        <th rowspan="2">Solver</th>
+                                        <th rowspan="2">Average</th>
+                                        <th colspan="10">Problem</th>
+                                    </tr>
+                                    <tr>
+                                        <th>ArcasBigScenario1</th>
+                                        <th>ArcasBigScenario2</th>
+                                        <th>ArcasBigScenario3</th>
+                                        <th>ArcasBigScenario4</th>
+                                        <th>ArcasBigScenario5</th>
+                                        <th>ArcasBigScenario6</th>
+                                        <th>ArcasBigScenario7</th>
+                                        <th>ArcasBigScenario8</th>
+                                        <th>ArcasBigScenario9</th>
+                                        <th>ArcasBigScenario10</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="problemScale">Problem scale</th>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                        <td class="problemScale">256</td>
+                                    </tr>
+                                    <tr class="favoriteSolverBenchmark">
+                                        <th>First Fit&nbsp;    <span class="badge badge-success">0</span>
+</th>
+                                        <td>2</td>
+                                                    <td>3</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td>2</td>
+                                                    <td>2</td>
+                                                    <td>2</td>
+                                                    <td>1</td>
+                                                    <td>2</td>
+                                                    <td>2</td>
+                                                    <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <th>First Fit Decreasing&nbsp;    <span class="badge">1</span>
+</th>
+                                        <td>1</td>
+                                                    <td>2</td>
+                                                    <td>2</td>
+                                                    <td>2</td>
+                                                    <td>2</td>
+                                                    <td>2</td>
+                                                    <td>1</td>
+                                                    <td>2</td>
+                                                    <td>2</td>
+                                                    <td>1</td>
+                                                    <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Cheapest Insertion&nbsp;    <span class="badge">1</span>
+</th>
+                                        <td>2</td>
+                                                    <td>2</td>
+                                                    <td>3</td>
+                                                    <td>3</td>
+                                                    <td>2</td>
+                                                    <td>3</td>
+                                                    <td>2</td>
+                                                    <td>2</td>
+                                                    <td>2</td>
+                                                    <td>2</td>
+                                                    <td>3</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="summary_timeSpentScalability">
+                                <h3>Time spent scalability summary</h3>
+                                <p>Useful for extrapolating the scalability of construction heuristics (presuming that no other solver phases are configured).</p>
+                                <div class="benchmark-chart">
+                                    <img src="summary/timeSpentScalabilitySummary.png"/>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="summary_bestScorePerTimeSpent">
+                                <h3>Best score per time spent summary</h3>
+                                <p>Useful for visualizing trade-off between the best score versus the time spent for construction heuristics (presuming that no other solver phases are configured).</p>
+    <div class="tabbable tabs-right">
+        <ul class="nav nav-tabs">
+            <li>
+                <a href="#summary_bestScorePerTimeSpent_chart_0" data-toggle="tab">Score level 0</a>
+            </li>
+            <li class="active">
+                <a href="#summary_bestScorePerTimeSpent_chart_1" data-toggle="tab">Score level 1</a>
+            </li>
+            <li>
+                <a href="#summary_bestScorePerTimeSpent_chart_2" data-toggle="tab">Score level 2</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane" id="summary_bestScorePerTimeSpent_chart_0">
+                <div class="benchmark-chart">
+                    <img src="summary/bestScorePerTimeSpentSummaryLevel0.png"/>
+                </div>
+            </div>
+            <div class="tab-pane active" id="summary_bestScorePerTimeSpent_chart_1">
+                <div class="benchmark-chart">
+                    <img src="summary/bestScorePerTimeSpentSummaryLevel1.png"/>
+                </div>
+            </div>
+            <div class="tab-pane" id="summary_bestScorePerTimeSpent_chart_2">
+                <div class="benchmark-chart">
+                    <img src="summary/bestScorePerTimeSpentSummaryLevel2.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+                            </div>
+                        </div>
+                        <!-- HACK Duplication to show the navigation tabs in the same viewport as the tables -->
+                        <ul class="nav nav-pills">
+                            <li class="active">
+                                <a href="#summary_averageCalculateCount" data-toggle="tab">Average calculation count</a>
+                            </li>
+                            <li>
+                                <a href="#summary_timeSpent" data-toggle="tab">Time spent</a>
+                            </li>
+                            <li>
+                                <a href="#summary_timeSpentScalability" data-toggle="tab">Time spent scalability</a>
+                            </li>
+                            <li>
+                                <a href="#summary_bestScorePerTimeSpent" data-toggle="tab">Best score per time spent</a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+
+            <section id="problemBenchmarkResult">
+                <div class="page-header">
+                    <h1>Problem benchmarks</h1>
+                </div>
+                <section id="problemBenchmark_ArcasBigScenario1">
+                    <h2>ArcasBigScenario1</h2>
+                    <p>
+                        Entity count: 18<br/>
+                        Variable count: 14<br/>
+                        Problem scale: 256
+                            <br/>Memory usage after loading the inputSolution (before creating the Solver): 2.667.200 bytes on average.
+                    </p>
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#problemStatistic_ArcasBigScenario1_BEST_SCORE" data-toggle="tab">BEST_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario1_STEP_SCORE" data-toggle="tab">STEP_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario1_CALCULATE_COUNT_PER_SECOND" data-toggle="tab">CALCULATE_COUNT_PER_SECOND</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario1_BEST_SOLUTION_MUTATION" data-toggle="tab">BEST_SOLUTION_MUTATION</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario1_MOVE_COUNT_PER_STEP" data-toggle="tab">MOVE_COUNT_PER_STEP</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario1_MEMORY_USE" data-toggle="tab">MEMORY_USE</a>
+                                    </li>
+                            </ul>
+                            <div class="tab-content">
+                                    <div class="tab-pane active" id="problemStatistic_ArcasBigScenario1_BEST_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario1_BEST_SCORE_0" data-toggle="tab">Score level 0</a>
+                                                        </li>
+                                                        <li class="active">
+                                                            <a href="#problemStatistic_ArcasBigScenario1_BEST_SCORE_1" data-toggle="tab">Score level 1</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario1_BEST_SCORE_2" data-toggle="tab">Score level 2</a>
+                                                        </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario1_BEST_SCORE_0">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario1/ArcasBigScenario1BestScoreStatisticLevel0.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane active" id="problemStatistic_ArcasBigScenario1_BEST_SCORE_1">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario1/ArcasBigScenario1BestScoreStatisticLevel1.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario1_BEST_SCORE_2">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario1/ArcasBigScenario1BestScoreStatisticLevel2.png"/>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/First Fit/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/First Fit Decreasing/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/Cheapest Insertion/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario1_STEP_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                </ul>
+                                                <div class="tab-content">
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/First Fit/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/First Fit Decreasing/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/Cheapest Insertion/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario1_CALCULATE_COUNT_PER_SECOND">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario1/ArcasBigScenario1CalculateCountStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/First Fit/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/First Fit Decreasing/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/Cheapest Insertion/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario1_BEST_SOLUTION_MUTATION">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario1/ArcasBigScenario1BestSolutionMutationStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/First Fit/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/First Fit Decreasing/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/Cheapest Insertion/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario1_MOVE_COUNT_PER_STEP">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario1/ArcasBigScenario1MoveCountPerStepStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/First Fit/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/First Fit Decreasing/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/Cheapest Insertion/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario1_MEMORY_USE">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario1/ArcasBigScenario1MemoryUseStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/First Fit/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/First Fit Decreasing/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario1/Cheapest Insertion/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                            </div>
+                        </div>
+                </section>
+                <section id="problemBenchmark_ArcasBigScenario2">
+                    <h2>ArcasBigScenario2</h2>
+                    <p>
+                        Entity count: 18<br/>
+                        Variable count: 14<br/>
+                        Problem scale: 256
+                            <br/>Memory usage after loading the inputSolution (before creating the Solver): 2.665.213 bytes on average.
+                    </p>
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#problemStatistic_ArcasBigScenario2_BEST_SCORE" data-toggle="tab">BEST_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario2_STEP_SCORE" data-toggle="tab">STEP_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario2_CALCULATE_COUNT_PER_SECOND" data-toggle="tab">CALCULATE_COUNT_PER_SECOND</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario2_BEST_SOLUTION_MUTATION" data-toggle="tab">BEST_SOLUTION_MUTATION</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario2_MOVE_COUNT_PER_STEP" data-toggle="tab">MOVE_COUNT_PER_STEP</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario2_MEMORY_USE" data-toggle="tab">MEMORY_USE</a>
+                                    </li>
+                            </ul>
+                            <div class="tab-content">
+                                    <div class="tab-pane active" id="problemStatistic_ArcasBigScenario2_BEST_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario2_BEST_SCORE_0" data-toggle="tab">Score level 0</a>
+                                                        </li>
+                                                        <li class="active">
+                                                            <a href="#problemStatistic_ArcasBigScenario2_BEST_SCORE_1" data-toggle="tab">Score level 1</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario2_BEST_SCORE_2" data-toggle="tab">Score level 2</a>
+                                                        </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario2_BEST_SCORE_0">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario2/ArcasBigScenario2BestScoreStatisticLevel0.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane active" id="problemStatistic_ArcasBigScenario2_BEST_SCORE_1">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario2/ArcasBigScenario2BestScoreStatisticLevel1.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario2_BEST_SCORE_2">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario2/ArcasBigScenario2BestScoreStatisticLevel2.png"/>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/First Fit/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/First Fit Decreasing/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/Cheapest Insertion/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario2_STEP_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                </ul>
+                                                <div class="tab-content">
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/First Fit/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/First Fit Decreasing/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/Cheapest Insertion/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario2_CALCULATE_COUNT_PER_SECOND">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario2/ArcasBigScenario2CalculateCountStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/First Fit/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/First Fit Decreasing/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/Cheapest Insertion/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario2_BEST_SOLUTION_MUTATION">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario2/ArcasBigScenario2BestSolutionMutationStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/First Fit/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/First Fit Decreasing/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/Cheapest Insertion/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario2_MOVE_COUNT_PER_STEP">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario2/ArcasBigScenario2MoveCountPerStepStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/First Fit/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/First Fit Decreasing/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/Cheapest Insertion/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario2_MEMORY_USE">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario2/ArcasBigScenario2MemoryUseStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/First Fit/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/First Fit Decreasing/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario2/Cheapest Insertion/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                            </div>
+                        </div>
+                </section>
+                <section id="problemBenchmark_ArcasBigScenario3">
+                    <h2>ArcasBigScenario3</h2>
+                    <p>
+                        Entity count: 18<br/>
+                        Variable count: 14<br/>
+                        Problem scale: 256
+                            <br/>Memory usage after loading the inputSolution (before creating the Solver): 2.714.725 bytes on average.
+                    </p>
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#problemStatistic_ArcasBigScenario3_BEST_SCORE" data-toggle="tab">BEST_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario3_STEP_SCORE" data-toggle="tab">STEP_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario3_CALCULATE_COUNT_PER_SECOND" data-toggle="tab">CALCULATE_COUNT_PER_SECOND</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario3_BEST_SOLUTION_MUTATION" data-toggle="tab">BEST_SOLUTION_MUTATION</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario3_MOVE_COUNT_PER_STEP" data-toggle="tab">MOVE_COUNT_PER_STEP</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario3_MEMORY_USE" data-toggle="tab">MEMORY_USE</a>
+                                    </li>
+                            </ul>
+                            <div class="tab-content">
+                                    <div class="tab-pane active" id="problemStatistic_ArcasBigScenario3_BEST_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario3_BEST_SCORE_0" data-toggle="tab">Score level 0</a>
+                                                        </li>
+                                                        <li class="active">
+                                                            <a href="#problemStatistic_ArcasBigScenario3_BEST_SCORE_1" data-toggle="tab">Score level 1</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario3_BEST_SCORE_2" data-toggle="tab">Score level 2</a>
+                                                        </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario3_BEST_SCORE_0">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario3/ArcasBigScenario3BestScoreStatisticLevel0.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane active" id="problemStatistic_ArcasBigScenario3_BEST_SCORE_1">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario3/ArcasBigScenario3BestScoreStatisticLevel1.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario3_BEST_SCORE_2">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario3/ArcasBigScenario3BestScoreStatisticLevel2.png"/>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/First Fit/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/First Fit Decreasing/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/Cheapest Insertion/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario3_STEP_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                </ul>
+                                                <div class="tab-content">
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/First Fit/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/First Fit Decreasing/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/Cheapest Insertion/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario3_CALCULATE_COUNT_PER_SECOND">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario3/ArcasBigScenario3CalculateCountStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/First Fit/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/First Fit Decreasing/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/Cheapest Insertion/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario3_BEST_SOLUTION_MUTATION">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario3/ArcasBigScenario3BestSolutionMutationStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/First Fit/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/First Fit Decreasing/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/Cheapest Insertion/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario3_MOVE_COUNT_PER_STEP">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario3/ArcasBigScenario3MoveCountPerStepStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/First Fit/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/First Fit Decreasing/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/Cheapest Insertion/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario3_MEMORY_USE">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario3/ArcasBigScenario3MemoryUseStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/First Fit/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/First Fit Decreasing/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario3/Cheapest Insertion/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                            </div>
+                        </div>
+                </section>
+                <section id="problemBenchmark_ArcasBigScenario4">
+                    <h2>ArcasBigScenario4</h2>
+                    <p>
+                        Entity count: 18<br/>
+                        Variable count: 14<br/>
+                        Problem scale: 256
+                            <br/>Memory usage after loading the inputSolution (before creating the Solver): 2.764.237 bytes on average.
+                    </p>
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#problemStatistic_ArcasBigScenario4_BEST_SCORE" data-toggle="tab">BEST_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario4_STEP_SCORE" data-toggle="tab">STEP_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario4_CALCULATE_COUNT_PER_SECOND" data-toggle="tab">CALCULATE_COUNT_PER_SECOND</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario4_BEST_SOLUTION_MUTATION" data-toggle="tab">BEST_SOLUTION_MUTATION</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario4_MOVE_COUNT_PER_STEP" data-toggle="tab">MOVE_COUNT_PER_STEP</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario4_MEMORY_USE" data-toggle="tab">MEMORY_USE</a>
+                                    </li>
+                            </ul>
+                            <div class="tab-content">
+                                    <div class="tab-pane active" id="problemStatistic_ArcasBigScenario4_BEST_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario4_BEST_SCORE_0" data-toggle="tab">Score level 0</a>
+                                                        </li>
+                                                        <li class="active">
+                                                            <a href="#problemStatistic_ArcasBigScenario4_BEST_SCORE_1" data-toggle="tab">Score level 1</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario4_BEST_SCORE_2" data-toggle="tab">Score level 2</a>
+                                                        </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario4_BEST_SCORE_0">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario4/ArcasBigScenario4BestScoreStatisticLevel0.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane active" id="problemStatistic_ArcasBigScenario4_BEST_SCORE_1">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario4/ArcasBigScenario4BestScoreStatisticLevel1.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario4_BEST_SCORE_2">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario4/ArcasBigScenario4BestScoreStatisticLevel2.png"/>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/First Fit/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/First Fit Decreasing/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/Cheapest Insertion/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario4_STEP_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                </ul>
+                                                <div class="tab-content">
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/First Fit/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/First Fit Decreasing/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/Cheapest Insertion/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario4_CALCULATE_COUNT_PER_SECOND">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario4/ArcasBigScenario4CalculateCountStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/First Fit/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/First Fit Decreasing/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/Cheapest Insertion/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario4_BEST_SOLUTION_MUTATION">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario4/ArcasBigScenario4BestSolutionMutationStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/First Fit/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/First Fit Decreasing/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/Cheapest Insertion/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario4_MOVE_COUNT_PER_STEP">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario4/ArcasBigScenario4MoveCountPerStepStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/First Fit/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/First Fit Decreasing/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/Cheapest Insertion/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario4_MEMORY_USE">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario4/ArcasBigScenario4MemoryUseStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/First Fit/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/First Fit Decreasing/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario4/Cheapest Insertion/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                            </div>
+                        </div>
+                </section>
+                <section id="problemBenchmark_ArcasBigScenario5">
+                    <h2>ArcasBigScenario5</h2>
+                    <p>
+                        Entity count: 18<br/>
+                        Variable count: 14<br/>
+                        Problem scale: 256
+                            <br/>Memory usage after loading the inputSolution (before creating the Solver): 2.813.749 bytes on average.
+                    </p>
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#problemStatistic_ArcasBigScenario5_BEST_SCORE" data-toggle="tab">BEST_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario5_STEP_SCORE" data-toggle="tab">STEP_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario5_CALCULATE_COUNT_PER_SECOND" data-toggle="tab">CALCULATE_COUNT_PER_SECOND</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario5_BEST_SOLUTION_MUTATION" data-toggle="tab">BEST_SOLUTION_MUTATION</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario5_MOVE_COUNT_PER_STEP" data-toggle="tab">MOVE_COUNT_PER_STEP</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario5_MEMORY_USE" data-toggle="tab">MEMORY_USE</a>
+                                    </li>
+                            </ul>
+                            <div class="tab-content">
+                                    <div class="tab-pane active" id="problemStatistic_ArcasBigScenario5_BEST_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario5_BEST_SCORE_0" data-toggle="tab">Score level 0</a>
+                                                        </li>
+                                                        <li class="active">
+                                                            <a href="#problemStatistic_ArcasBigScenario5_BEST_SCORE_1" data-toggle="tab">Score level 1</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario5_BEST_SCORE_2" data-toggle="tab">Score level 2</a>
+                                                        </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario5_BEST_SCORE_0">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario5/ArcasBigScenario5BestScoreStatisticLevel0.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane active" id="problemStatistic_ArcasBigScenario5_BEST_SCORE_1">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario5/ArcasBigScenario5BestScoreStatisticLevel1.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario5_BEST_SCORE_2">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario5/ArcasBigScenario5BestScoreStatisticLevel2.png"/>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/First Fit/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/First Fit Decreasing/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/Cheapest Insertion/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario5_STEP_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                </ul>
+                                                <div class="tab-content">
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/First Fit/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/First Fit Decreasing/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/Cheapest Insertion/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario5_CALCULATE_COUNT_PER_SECOND">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario5/ArcasBigScenario5CalculateCountStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/First Fit/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/First Fit Decreasing/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/Cheapest Insertion/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario5_BEST_SOLUTION_MUTATION">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario5/ArcasBigScenario5BestSolutionMutationStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/First Fit/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/First Fit Decreasing/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/Cheapest Insertion/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario5_MOVE_COUNT_PER_STEP">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario5/ArcasBigScenario5MoveCountPerStepStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/First Fit/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/First Fit Decreasing/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/Cheapest Insertion/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario5_MEMORY_USE">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario5/ArcasBigScenario5MemoryUseStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/First Fit/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/First Fit Decreasing/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario5/Cheapest Insertion/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                            </div>
+                        </div>
+                </section>
+                <section id="problemBenchmark_ArcasBigScenario6">
+                    <h2>ArcasBigScenario6</h2>
+                    <p>
+                        Entity count: 18<br/>
+                        Variable count: 14<br/>
+                        Problem scale: 256
+                            <br/>Memory usage after loading the inputSolution (before creating the Solver): 2.864.285 bytes on average.
+                    </p>
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#problemStatistic_ArcasBigScenario6_BEST_SCORE" data-toggle="tab">BEST_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario6_STEP_SCORE" data-toggle="tab">STEP_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario6_CALCULATE_COUNT_PER_SECOND" data-toggle="tab">CALCULATE_COUNT_PER_SECOND</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario6_BEST_SOLUTION_MUTATION" data-toggle="tab">BEST_SOLUTION_MUTATION</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario6_MOVE_COUNT_PER_STEP" data-toggle="tab">MOVE_COUNT_PER_STEP</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario6_MEMORY_USE" data-toggle="tab">MEMORY_USE</a>
+                                    </li>
+                            </ul>
+                            <div class="tab-content">
+                                    <div class="tab-pane active" id="problemStatistic_ArcasBigScenario6_BEST_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario6_BEST_SCORE_0" data-toggle="tab">Score level 0</a>
+                                                        </li>
+                                                        <li class="active">
+                                                            <a href="#problemStatistic_ArcasBigScenario6_BEST_SCORE_1" data-toggle="tab">Score level 1</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario6_BEST_SCORE_2" data-toggle="tab">Score level 2</a>
+                                                        </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario6_BEST_SCORE_0">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario6/ArcasBigScenario6BestScoreStatisticLevel0.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane active" id="problemStatistic_ArcasBigScenario6_BEST_SCORE_1">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario6/ArcasBigScenario6BestScoreStatisticLevel1.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario6_BEST_SCORE_2">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario6/ArcasBigScenario6BestScoreStatisticLevel2.png"/>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/First Fit/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/First Fit Decreasing/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/Cheapest Insertion/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario6_STEP_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                </ul>
+                                                <div class="tab-content">
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/First Fit/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/First Fit Decreasing/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/Cheapest Insertion/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario6_CALCULATE_COUNT_PER_SECOND">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario6/ArcasBigScenario6CalculateCountStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/First Fit/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/First Fit Decreasing/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/Cheapest Insertion/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario6_BEST_SOLUTION_MUTATION">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario6/ArcasBigScenario6BestSolutionMutationStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/First Fit/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/First Fit Decreasing/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/Cheapest Insertion/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario6_MOVE_COUNT_PER_STEP">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario6/ArcasBigScenario6MoveCountPerStepStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/First Fit/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/First Fit Decreasing/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/Cheapest Insertion/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario6_MEMORY_USE">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario6/ArcasBigScenario6MemoryUseStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/First Fit/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/First Fit Decreasing/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario6/Cheapest Insertion/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                            </div>
+                        </div>
+                </section>
+                <section id="problemBenchmark_ArcasBigScenario7">
+                    <h2>ArcasBigScenario7</h2>
+                    <p>
+                        Entity count: 18<br/>
+                        Variable count: 14<br/>
+                        Problem scale: 256
+                            <br/>Memory usage after loading the inputSolution (before creating the Solver): 2.914.309 bytes on average.
+                    </p>
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#problemStatistic_ArcasBigScenario7_BEST_SCORE" data-toggle="tab">BEST_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario7_STEP_SCORE" data-toggle="tab">STEP_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario7_CALCULATE_COUNT_PER_SECOND" data-toggle="tab">CALCULATE_COUNT_PER_SECOND</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario7_BEST_SOLUTION_MUTATION" data-toggle="tab">BEST_SOLUTION_MUTATION</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario7_MOVE_COUNT_PER_STEP" data-toggle="tab">MOVE_COUNT_PER_STEP</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario7_MEMORY_USE" data-toggle="tab">MEMORY_USE</a>
+                                    </li>
+                            </ul>
+                            <div class="tab-content">
+                                    <div class="tab-pane active" id="problemStatistic_ArcasBigScenario7_BEST_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario7_BEST_SCORE_0" data-toggle="tab">Score level 0</a>
+                                                        </li>
+                                                        <li class="active">
+                                                            <a href="#problemStatistic_ArcasBigScenario7_BEST_SCORE_1" data-toggle="tab">Score level 1</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario7_BEST_SCORE_2" data-toggle="tab">Score level 2</a>
+                                                        </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario7_BEST_SCORE_0">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario7/ArcasBigScenario7BestScoreStatisticLevel0.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane active" id="problemStatistic_ArcasBigScenario7_BEST_SCORE_1">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario7/ArcasBigScenario7BestScoreStatisticLevel1.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario7_BEST_SCORE_2">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario7/ArcasBigScenario7BestScoreStatisticLevel2.png"/>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/First Fit/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/First Fit Decreasing/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/Cheapest Insertion/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario7_STEP_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                </ul>
+                                                <div class="tab-content">
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/First Fit/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/First Fit Decreasing/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/Cheapest Insertion/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario7_CALCULATE_COUNT_PER_SECOND">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario7/ArcasBigScenario7CalculateCountStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/First Fit/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/First Fit Decreasing/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/Cheapest Insertion/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario7_BEST_SOLUTION_MUTATION">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario7/ArcasBigScenario7BestSolutionMutationStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/First Fit/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/First Fit Decreasing/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/Cheapest Insertion/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario7_MOVE_COUNT_PER_STEP">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario7/ArcasBigScenario7MoveCountPerStepStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/First Fit/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/First Fit Decreasing/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/Cheapest Insertion/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario7_MEMORY_USE">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario7/ArcasBigScenario7MemoryUseStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/First Fit/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/First Fit Decreasing/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario7/Cheapest Insertion/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                            </div>
+                        </div>
+                </section>
+                <section id="problemBenchmark_ArcasBigScenario8">
+                    <h2>ArcasBigScenario8</h2>
+                    <p>
+                        Entity count: 18<br/>
+                        Variable count: 14<br/>
+                        Problem scale: 256
+                            <br/>Memory usage after loading the inputSolution (before creating the Solver): 2.963.821 bytes on average.
+                    </p>
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#problemStatistic_ArcasBigScenario8_BEST_SCORE" data-toggle="tab">BEST_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario8_STEP_SCORE" data-toggle="tab">STEP_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario8_CALCULATE_COUNT_PER_SECOND" data-toggle="tab">CALCULATE_COUNT_PER_SECOND</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario8_BEST_SOLUTION_MUTATION" data-toggle="tab">BEST_SOLUTION_MUTATION</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario8_MOVE_COUNT_PER_STEP" data-toggle="tab">MOVE_COUNT_PER_STEP</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario8_MEMORY_USE" data-toggle="tab">MEMORY_USE</a>
+                                    </li>
+                            </ul>
+                            <div class="tab-content">
+                                    <div class="tab-pane active" id="problemStatistic_ArcasBigScenario8_BEST_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario8_BEST_SCORE_0" data-toggle="tab">Score level 0</a>
+                                                        </li>
+                                                        <li class="active">
+                                                            <a href="#problemStatistic_ArcasBigScenario8_BEST_SCORE_1" data-toggle="tab">Score level 1</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario8_BEST_SCORE_2" data-toggle="tab">Score level 2</a>
+                                                        </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario8_BEST_SCORE_0">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario8/ArcasBigScenario8BestScoreStatisticLevel0.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane active" id="problemStatistic_ArcasBigScenario8_BEST_SCORE_1">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario8/ArcasBigScenario8BestScoreStatisticLevel1.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario8_BEST_SCORE_2">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario8/ArcasBigScenario8BestScoreStatisticLevel2.png"/>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/First Fit/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/First Fit Decreasing/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/Cheapest Insertion/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario8_STEP_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                </ul>
+                                                <div class="tab-content">
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/First Fit/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/First Fit Decreasing/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/Cheapest Insertion/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario8_CALCULATE_COUNT_PER_SECOND">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario8/ArcasBigScenario8CalculateCountStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/First Fit/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/First Fit Decreasing/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/Cheapest Insertion/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario8_BEST_SOLUTION_MUTATION">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario8/ArcasBigScenario8BestSolutionMutationStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/First Fit/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/First Fit Decreasing/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/Cheapest Insertion/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario8_MOVE_COUNT_PER_STEP">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario8/ArcasBigScenario8MoveCountPerStepStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/First Fit/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/First Fit Decreasing/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/Cheapest Insertion/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario8_MEMORY_USE">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario8/ArcasBigScenario8MemoryUseStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/First Fit/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/First Fit Decreasing/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario8/Cheapest Insertion/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                            </div>
+                        </div>
+                </section>
+                <section id="problemBenchmark_ArcasBigScenario9">
+                    <h2>ArcasBigScenario9</h2>
+                    <p>
+                        Entity count: 18<br/>
+                        Variable count: 14<br/>
+                        Problem scale: 256
+                            <br/>Memory usage after loading the inputSolution (before creating the Solver): 3.013.333 bytes on average.
+                    </p>
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#problemStatistic_ArcasBigScenario9_BEST_SCORE" data-toggle="tab">BEST_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario9_STEP_SCORE" data-toggle="tab">STEP_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario9_CALCULATE_COUNT_PER_SECOND" data-toggle="tab">CALCULATE_COUNT_PER_SECOND</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario9_BEST_SOLUTION_MUTATION" data-toggle="tab">BEST_SOLUTION_MUTATION</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario9_MOVE_COUNT_PER_STEP" data-toggle="tab">MOVE_COUNT_PER_STEP</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario9_MEMORY_USE" data-toggle="tab">MEMORY_USE</a>
+                                    </li>
+                            </ul>
+                            <div class="tab-content">
+                                    <div class="tab-pane active" id="problemStatistic_ArcasBigScenario9_BEST_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario9_BEST_SCORE_0" data-toggle="tab">Score level 0</a>
+                                                        </li>
+                                                        <li class="active">
+                                                            <a href="#problemStatistic_ArcasBigScenario9_BEST_SCORE_1" data-toggle="tab">Score level 1</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario9_BEST_SCORE_2" data-toggle="tab">Score level 2</a>
+                                                        </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario9_BEST_SCORE_0">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario9/ArcasBigScenario9BestScoreStatisticLevel0.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane active" id="problemStatistic_ArcasBigScenario9_BEST_SCORE_1">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario9/ArcasBigScenario9BestScoreStatisticLevel1.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario9_BEST_SCORE_2">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario9/ArcasBigScenario9BestScoreStatisticLevel2.png"/>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/First Fit/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/First Fit Decreasing/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/Cheapest Insertion/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario9_STEP_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                </ul>
+                                                <div class="tab-content">
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/First Fit/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/First Fit Decreasing/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/Cheapest Insertion/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario9_CALCULATE_COUNT_PER_SECOND">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario9/ArcasBigScenario9CalculateCountStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/First Fit/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/First Fit Decreasing/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/Cheapest Insertion/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario9_BEST_SOLUTION_MUTATION">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario9/ArcasBigScenario9BestSolutionMutationStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/First Fit/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/First Fit Decreasing/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/Cheapest Insertion/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario9_MOVE_COUNT_PER_STEP">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario9/ArcasBigScenario9MoveCountPerStepStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/First Fit/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/First Fit Decreasing/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/Cheapest Insertion/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario9_MEMORY_USE">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario9/ArcasBigScenario9MemoryUseStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/First Fit/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/First Fit Decreasing/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario9/Cheapest Insertion/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                            </div>
+                        </div>
+                </section>
+                <section id="problemBenchmark_ArcasBigScenario10">
+                    <h2>ArcasBigScenario10</h2>
+                    <p>
+                        Entity count: 18<br/>
+                        Variable count: 14<br/>
+                        Problem scale: 256
+                            <br/>Memory usage after loading the inputSolution (before creating the Solver): 3.062.848 bytes on average.
+                    </p>
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#problemStatistic_ArcasBigScenario10_BEST_SCORE" data-toggle="tab">BEST_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario10_STEP_SCORE" data-toggle="tab">STEP_SCORE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario10_CALCULATE_COUNT_PER_SECOND" data-toggle="tab">CALCULATE_COUNT_PER_SECOND</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario10_BEST_SOLUTION_MUTATION" data-toggle="tab">BEST_SOLUTION_MUTATION</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario10_MOVE_COUNT_PER_STEP" data-toggle="tab">MOVE_COUNT_PER_STEP</a>
+                                    </li>
+                                    <li>
+                                        <a href="#problemStatistic_ArcasBigScenario10_MEMORY_USE" data-toggle="tab">MEMORY_USE</a>
+                                    </li>
+                            </ul>
+                            <div class="tab-content">
+                                    <div class="tab-pane active" id="problemStatistic_ArcasBigScenario10_BEST_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario10_BEST_SCORE_0" data-toggle="tab">Score level 0</a>
+                                                        </li>
+                                                        <li class="active">
+                                                            <a href="#problemStatistic_ArcasBigScenario10_BEST_SCORE_1" data-toggle="tab">Score level 1</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#problemStatistic_ArcasBigScenario10_BEST_SCORE_2" data-toggle="tab">Score level 2</a>
+                                                        </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario10_BEST_SCORE_0">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario10/ArcasBigScenario10BestScoreStatisticLevel0.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane active" id="problemStatistic_ArcasBigScenario10_BEST_SCORE_1">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario10/ArcasBigScenario10BestScoreStatisticLevel1.png"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="problemStatistic_ArcasBigScenario10_BEST_SCORE_2">
+                                                            <div class="benchmark-chart">
+                                                                <img src="ArcasBigScenario10/ArcasBigScenario10BestScoreStatisticLevel2.png"/>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/First Fit/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/First Fit Decreasing/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/Cheapest Insertion/BEST_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario10_STEP_SCORE">
+                                            <div class="tabbable tabs-right">
+                                                <ul class="nav nav-tabs">
+                                                </ul>
+                                                <div class="tab-content">
+                                                </div>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/First Fit/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/First Fit Decreasing/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/Cheapest Insertion/STEP_SCORE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario10_CALCULATE_COUNT_PER_SECOND">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario10/ArcasBigScenario10CalculateCountStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/First Fit/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/First Fit Decreasing/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/Cheapest Insertion/CALCULATE_COUNT_PER_SECOND.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario10_BEST_SOLUTION_MUTATION">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario10/ArcasBigScenario10BestSolutionMutationStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/First Fit/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/First Fit Decreasing/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/Cheapest Insertion/BEST_SOLUTION_MUTATION.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario10_MOVE_COUNT_PER_STEP">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario10/ArcasBigScenario10MoveCountPerStepStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/First Fit/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/First Fit Decreasing/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/Cheapest Insertion/MOVE_COUNT_PER_STEP.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane" id="problemStatistic_ArcasBigScenario10_MEMORY_USE">
+                                            <div class="benchmark-chart">
+                                                <img src="ArcasBigScenario10/ArcasBigScenario10MemoryUseStatistic.png"/>
+                                            </div>
+                                            <span>CSV files per solver:</span>
+                                            <div class="btn-group download-btn-group">
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/First Fit/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/First Fit Decreasing/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                                <button class="btn" onclick="window.location.href='ArcasBigScenario10/Cheapest Insertion/MEMORY_USE.csv'"><i class="icon-download"></i></button>
+                                            </div>
+                                    </div>
+                            </div>
+                        </div>
+                </section>
+            </section>
+
+            <section id="solverBenchmarkResult">
+                <div class="page-header">
+                    <h1>Solver benchmarks</h1>
+                </div>
+                <section id="solverBenchmark_First-002D0020Fit">
+                    <h2>First Fit&nbsp;    <span class="badge badge-success">0</span>
+</h2>
+                    <button class="btn showSolverConfiguration" data-toggle="collapse" data-target="#solverBenchmark_First-002D0020Fit_config">
+                        Show/hide Solver configuration
+                    </button>
+                    <div id="solverBenchmark_First-002D0020Fit_config" class="collapse in">
+                        <pre class="prettyprint lang-xml">&lt;solver&gt;
+  &lt;solutionClass&gt;org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution&lt;/solutionClass&gt;
+  &lt;entityClass&gt;org.optaplanner.examples.vehiclerouting.domain.Standstill&lt;/entityClass&gt;
+  &lt;entityClass&gt;org.optaplanner.examples.vehiclerouting.domain.Task&lt;/entityClass&gt;
+  &lt;scoreDirectorFactory&gt;
+    &lt;scoreDefinitionType&gt;HARD_MEDIUM_SOFT&lt;/scoreDefinitionType&gt;
+    &lt;easyScoreCalculatorClass&gt;org.optaplanner.examples.vehiclerouting.solver.score.VehicleRoutingEasyScoreCalculator&lt;/easyScoreCalculatorClass&gt;
+    &lt;initializingScoreTrend&gt;ONLY_DOWN&lt;/initializingScoreTrend&gt;
+  &lt;/scoreDirectorFactory&gt;
+  &lt;termination&gt;
+    &lt;minutesSpentLimit&gt;10&lt;/minutesSpentLimit&gt;
+  &lt;/termination&gt;
+  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;FIRST_FIT&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;
+&lt;/solver&gt;</pre>
+                    </div>
+                </section>
+                <section id="solverBenchmark_First-002D0020Fit-002D0020Decreasing">
+                    <h2>First Fit Decreasing&nbsp;    <span class="badge">1</span>
+</h2>
+                    <button class="btn showSolverConfiguration" data-toggle="collapse" data-target="#solverBenchmark_First-002D0020Fit-002D0020Decreasing_config">
+                        Show/hide Solver configuration
+                    </button>
+                    <div id="solverBenchmark_First-002D0020Fit-002D0020Decreasing_config" class="collapse in">
+                        <pre class="prettyprint lang-xml">&lt;solver&gt;
+  &lt;solutionClass&gt;org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution&lt;/solutionClass&gt;
+  &lt;entityClass&gt;org.optaplanner.examples.vehiclerouting.domain.Standstill&lt;/entityClass&gt;
+  &lt;entityClass&gt;org.optaplanner.examples.vehiclerouting.domain.Task&lt;/entityClass&gt;
+  &lt;scoreDirectorFactory&gt;
+    &lt;scoreDefinitionType&gt;HARD_MEDIUM_SOFT&lt;/scoreDefinitionType&gt;
+    &lt;easyScoreCalculatorClass&gt;org.optaplanner.examples.vehiclerouting.solver.score.VehicleRoutingEasyScoreCalculator&lt;/easyScoreCalculatorClass&gt;
+    &lt;initializingScoreTrend&gt;ONLY_DOWN&lt;/initializingScoreTrend&gt;
+  &lt;/scoreDirectorFactory&gt;
+  &lt;termination&gt;
+    &lt;minutesSpentLimit&gt;10&lt;/minutesSpentLimit&gt;
+  &lt;/termination&gt;
+  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;FIRST_FIT_DECREASING&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;
+&lt;/solver&gt;</pre>
+                    </div>
+                </section>
+                <section id="solverBenchmark_Cheapest-002D0020Insertion">
+                    <h2>Cheapest Insertion&nbsp;    <span class="badge">1</span>
+</h2>
+                    <button class="btn showSolverConfiguration" data-toggle="collapse" data-target="#solverBenchmark_Cheapest-002D0020Insertion_config">
+                        Show/hide Solver configuration
+                    </button>
+                    <div id="solverBenchmark_Cheapest-002D0020Insertion_config" class="collapse in">
+                        <pre class="prettyprint lang-xml">&lt;solver&gt;
+  &lt;solutionClass&gt;org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution&lt;/solutionClass&gt;
+  &lt;entityClass&gt;org.optaplanner.examples.vehiclerouting.domain.Standstill&lt;/entityClass&gt;
+  &lt;entityClass&gt;org.optaplanner.examples.vehiclerouting.domain.Task&lt;/entityClass&gt;
+  &lt;scoreDirectorFactory&gt;
+    &lt;scoreDefinitionType&gt;HARD_MEDIUM_SOFT&lt;/scoreDefinitionType&gt;
+    &lt;easyScoreCalculatorClass&gt;org.optaplanner.examples.vehiclerouting.solver.score.VehicleRoutingEasyScoreCalculator&lt;/easyScoreCalculatorClass&gt;
+    &lt;initializingScoreTrend&gt;ONLY_DOWN&lt;/initializingScoreTrend&gt;
+  &lt;/scoreDirectorFactory&gt;
+  &lt;termination&gt;
+    &lt;minutesSpentLimit&gt;10&lt;/minutesSpentLimit&gt;
+  &lt;/termination&gt;
+  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;CHEAPEST_INSERTION&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;
+&lt;/solver&gt;</pre>
+                    </div>
+                </section>
+            </section>
+
+            <section id="benchmarkInformation">
+                <div class="page-header">
+                    <h1>Benchmark information</h1>
+                </div>
+                <table class="benchmark-table table table-striped">
+                    <tr>
+                        <th>Name</th>
+                        <td>2015-08-20_013959</td>
+                    </tr>
+                    <tr>
+                        <th>Aggregation</th>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <th>Failure count</th>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>Starting timestamp</th>
+                        <td>20-ago-2015 1:39:59</td>
+                    </tr>
+                    <tr>
+                        <th>Warm up time spent</th>
+                        <td>30.000 ms</td>
+                    </tr>
+                    <tr>
+                        <th>Parallel benchmark count / available processors</th>
+                        <td>1 / 4</td>
+                    </tr>
+                    <tr>
+                        <th>Benchmark time spent</th>
+                        <td>30.888 ms</td>
+                    </tr>
+                    <tr>
+                        <th>VM max memory (as in -Xmx but lower)</th>
+                        <td>1.834.483.712 bytes</td>
+                    </tr>
+                    <tr>
+                        <th>OptaPlanner version</th>
+                        <td>6.2.0.Final</td>
+                    </tr>
+                    <tr>
+                        <th>Java version</th>
+                        <td>Java 1.7.0_79 (Oracle Corporation)</td>
+                    </tr>
+                    <tr>
+                        <th>Java VM</th>
+                        <td>Java OpenJDK 64-Bit Server VM 24.79-b02 (Oracle Corporation)</td>
+                    </tr>
+                    <tr>
+                        <th>Operating system</th>
+                        <td>Linux amd64 3.13.0-32-generic</td>
+                    </tr>
+                    <tr>
+                        <th>Report locale</th>
+                        <td>es_ES</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+</div>
+
+<script src="twitterbootstrap/js/jquery.js"></script>
+<script src="twitterbootstrap/js/bootstrap.js"></script>
+<script src="twitterbootstrap/js/prettify.js"></script>
+</body>
+</html>

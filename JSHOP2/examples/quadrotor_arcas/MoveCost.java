@@ -9,31 +9,35 @@ import java.io.FileNotFoundException;
 public class MoveCost implements Calculate {
   public Term call(List l)
   {
-	double[] x = {
-		0, 6.700, 5.317, 7.300, 7.132, -7.400, 6.225, 5.750, 7.040, 6.170, 7.224, -6.700, 5.409, -8.200, 5.225, -8.000, 5.015, -6.700, 5.620, -8.000, 6.830, -6.700, 7.435, -7.2, 7.2, 0, 0
-
-		};
-	
-	double[] y = {
-		0, 6.930, -6.906, 6.930, -5.091, 7.000, -5.998, 6.930, -4.999, 6.930, -5.183, 6.930, -6.998, 6.930, -6.814, -5.800, -7.208, -5.800, -6.603, -7.300, -5.393, -7.300, -4.789, -1.5, -1.5, 7, -7 
-
-		};
-
-	double[] z = {
-		0, 1.663, 0.165, 1.663, 0.165, 1.663, 0.819, 1.663, 0.819, 1.663, 0.819, 1.663, 0.819, 1.663, 0.819, 1.663, 0.492, 1.663, 0.492, 1.663, 0.492, 1.663, 0.492, 0.5, 0.5, 0.5, 0.5
-
-		};
-
-	TermNumber fromLoc = (TermNumber) l.getHead();
+	TermNumber x1N = (TermNumber) l.getHead();
 	l = l.getRest();
-	TermNumber toLoc = (TermNumber) l.getHead();
-	int fromLocation = (int) fromLoc.getNumber();
-	int toLocation = (int) toLoc.getNumber();
-	int result = fromLocation - toLocation;
-	double xDifference = x[fromLocation] - x[toLocation];
-  double yDifference = y[fromLocation] - y[toLocation];
-  double zDifference = z[fromLocation] - z[toLocation];
-  double distance = Math.sqrt((xDifference * xDifference) + (yDifference * yDifference) + (zDifference * zDifference));
+	TermNumber y1N = (TermNumber) l.getHead();
+	l = l.getRest();
+	TermNumber z1N = (TermNumber) l.getHead();
+	l = l.getRest();
+
+	TermNumber x2N = (TermNumber) l.getHead();
+	l = l.getRest();
+	TermNumber y2N = (TermNumber) l.getHead();
+	l = l.getRest();
+	TermNumber z2N = (TermNumber) l.getHead();
+
+	double x1 = (double) x1N.getNumber();
+	double y1 = (double) y1N.getNumber();
+	double z1 = (double) z1N.getNumber();
+
+	double x2 = (double) x2N.getNumber();
+	double y2 = (double) y2N.getNumber();
+	double z2 = (double) z2N.getNumber();
+
+	//System.out.prdoubleln("From " + x1 + " " + y1 + " " + z1);
+	//System.out.prdoubleln("To " + x2 + " " + y2 + " " + z2);
+
+	double xDifference = x1 - x2;
+	double yDifference = y1 - y2;
+	double zDifference = z1 - z2;
+	double distance = Math.sqrt((xDifference * xDifference) + (yDifference * yDifference) + (zDifference * zDifference));
+	//System.out.prdoubleln("Result " + distance);
 	
 	return new TermNumber(distance);
 

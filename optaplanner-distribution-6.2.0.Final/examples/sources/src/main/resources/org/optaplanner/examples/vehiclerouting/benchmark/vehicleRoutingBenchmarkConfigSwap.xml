@@ -5,8 +5,22 @@
 
   <inheritedSolverBenchmark>
     <problemBenchmarks>
-	  <xStreamAnnotatedClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</xStreamAnnotatedClass>
-      <inputSolutionFile>data/vehiclerouting/unsolved/ArcasAssemblyProblem.xml</inputSolutionFile>
+	<xStreamAnnotatedClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</xStreamAnnotatedClass>
+        <inputSolutionFile>data/vehiclerouting/unsolved/ArcasAssemblyProblemTemplate1.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/ArcasAssemblyProblemTemplate2.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/ArcasAssemblyProblemTemplate3.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/ArcasAssemblyProblemTemplate4.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/ArcasAssemblyProblemTemplate5.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/ArcasAssemblyProblemTemplate6.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/ArcasAssemblyProblemTemplate7.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/ArcasAssemblyProblemTemplate8.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/ArcasAssemblyProblemTemplate9.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/ArcasAssemblyProblemTemplate10.xml</inputSolutionFile>
+        <problemStatisticType>BEST_SCORE</problemStatisticType>
+        <problemStatisticType>STEP_SCORE</problemStatisticType>
+        <problemStatisticType>CALCULATE_COUNT_PER_SECOND</problemStatisticType>
+        <problemStatisticType>MOVE_COUNT_PER_STEP</problemStatisticType>
+        <problemStatisticType>MEMORY_USE</problemStatisticType>
     </problemBenchmarks>
     <solver>
       <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
@@ -18,14 +32,129 @@
         <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
       </scoreDirectorFactory>
       <termination>
-        <minutesSpentLimit>5</minutesSpentLimit>
+        <minutesSpentLimit>10</minutesSpentLimit>
       </termination>
     </solver>
   </inheritedSolverBenchmark>
   
-  <!--
+    <solverBenchmark>
+    <name>LA Default</name>
+    <solver>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+  	  <localSearch>
+	    <unionMoveSelector>
+		  <changeMoveSelector/>
+		  <swapMoveSelector/>
+		  <subChainChangeMoveSelector>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainChangeMoveSelector>
+		  <subChainSwapMoveSelector>
+		    <selectReversingMoveToo>true</selectReversingMoveToo>
+		  </subChainSwapMoveSelector>
+		</unionMoveSelector>
+		<acceptor>
+		  <lateAcceptanceSize>200</lateAcceptanceSize>
+		</acceptor>
+		<forager>
+		  <acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+      </localSearch>
+    </solver>
+  </solverBenchmark>
+  
   <solverBenchmark>
-    <name>Late Acceptance SubchainChange Filtering</name>
+    <name>LA Change Filter</name>
+    <solver>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+  	  <localSearch>
+	    <unionMoveSelector>
+		  <changeMoveSelector>
+		    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleChangeMoveFilter</filterClass>
+		  </changeMoveSelector>
+		  <swapMoveSelector/>
+		  <subChainChangeMoveSelector>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
+		  </subChainChangeMoveSelector>
+		  <subChainSwapMoveSelector>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
+		  </subChainSwapMoveSelector>
+		</unionMoveSelector>
+		<acceptor>
+		  <lateAcceptanceSize>200</lateAcceptanceSize>
+		</acceptor>
+		<forager>
+		  <acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+      </localSearch>
+    </solver>
+  </solverBenchmark>
+  
+  <solverBenchmark>
+    <name>LA Swap Filter</name>
+    <solver>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+  	  <localSearch>
+	    <unionMoveSelector>
+		  <changeMoveSelector/>
+		  <swapMoveSelector>
+		    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSwapMoveFilter</filterClass>
+		  </swapMoveSelector>
+		  <subChainChangeMoveSelector>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
+		  </subChainChangeMoveSelector>
+		  <subChainSwapMoveSelector>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
+		  </subChainSwapMoveSelector>
+		</unionMoveSelector>
+		<acceptor>
+		  <lateAcceptanceSize>200</lateAcceptanceSize>
+		</acceptor>
+		<forager>
+		  <acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+      </localSearch>
+    </solver>
+  </solverBenchmark>
+  
+  <solverBenchmark>
+    <name>LA ChangeSwap Filter</name>
+    <solver>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+  	  <localSearch>
+	    <unionMoveSelector>
+		  <changeMoveSelector>
+		    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleChangeMoveFilter</filterClass>
+		  </changeMoveSelector>
+		  <swapMoveSelector>
+		    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSwapMoveFilter</filterClass>
+		  </swapMoveSelector>
+		  <subChainChangeMoveSelector>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
+		  </subChainChangeMoveSelector>
+		  <subChainSwapMoveSelector>
+		    <selectReversingMoveToo>false</selectReversingMoveToo>
+		  </subChainSwapMoveSelector>
+		</unionMoveSelector>
+		<acceptor>
+		  <lateAcceptanceSize>200</lateAcceptanceSize>
+		</acceptor>
+		<forager>
+		  <acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+      </localSearch>
+    </solver>
+  </solverBenchmark>
+  
+  <solverBenchmark>
+    <name>LA SubChainChange Filter</name>
     <solver>
       <constructionHeuristic>
         <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
@@ -53,7 +182,7 @@
   </solverBenchmark>
   
   <solverBenchmark>
-    <name>Late Acceptance SubchainSwap Filtering</name>
+    <name>LA SubChainSwap Filter</name>
     <solver>
       <constructionHeuristic>
         <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
@@ -79,10 +208,9 @@
       </localSearch>
     </solver>
   </solverBenchmark>
--->
 
   <solverBenchmark>
-    <name>Late Acceptance Nearby Filtering</name>
+    <name>LA Nearby Filter</name>
     <solver>
       <constructionHeuristic>
         <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
@@ -125,98 +253,9 @@
       </localSearch>
     </solver>
   </solverBenchmark>
-
+    
   <solverBenchmark>
-    <name>Late Acceptance Change Filtering</name>
-    <solver>
-      <constructionHeuristic>
-        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
-      </constructionHeuristic>
-  	  <localSearch>
-	    <unionMoveSelector>
-		  <changeMoveSelector>
-		    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleChangeMoveFilter</filterClass>
-		  </changeMoveSelector>
-		  <swapMoveSelector/>
-		  <subChainChangeMoveSelector>
-		    <selectReversingMoveToo>false</selectReversingMoveToo>
-		  </subChainChangeMoveSelector>
-		  <subChainSwapMoveSelector>
-		    <selectReversingMoveToo>false</selectReversingMoveToo>
-		  </subChainSwapMoveSelector>
-		</unionMoveSelector>
-		<acceptor>
-		  <lateAcceptanceSize>200</lateAcceptanceSize>
-		</acceptor>
-		<forager>
-		  <acceptedCountLimit>1</acceptedCountLimit>
-		</forager>
-      </localSearch>
-    </solver>
-  </solverBenchmark>
-  
-  <solverBenchmark>
-    <name>Late Acceptance Swap Filtering</name>
-    <solver>
-      <constructionHeuristic>
-        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
-      </constructionHeuristic>
-  	  <localSearch>
-	    <unionMoveSelector>
-		  <changeMoveSelector/>
-		  <swapMoveSelector>
-		    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSwapMoveFilter</filterClass>
-		  </swapMoveSelector>
-		  <subChainChangeMoveSelector>
-		    <selectReversingMoveToo>false</selectReversingMoveToo>
-		  </subChainChangeMoveSelector>
-		  <subChainSwapMoveSelector>
-		    <selectReversingMoveToo>false</selectReversingMoveToo>
-		  </subChainSwapMoveSelector>
-		</unionMoveSelector>
-		<acceptor>
-		  <lateAcceptanceSize>200</lateAcceptanceSize>
-		</acceptor>
-		<forager>
-		  <acceptedCountLimit>1</acceptedCountLimit>
-		</forager>
-      </localSearch>
-    </solver>
-  </solverBenchmark>
-
-  <solverBenchmark>
-    <name>Late Acceptance ChangeSwap Filtering</name>
-    <solver>
-      <constructionHeuristic>
-        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
-      </constructionHeuristic>
-  	  <localSearch>
-	    <unionMoveSelector>
-		  <changeMoveSelector>
-		    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleChangeMoveFilter</filterClass>
-		  </changeMoveSelector>
-		  <swapMoveSelector>
-		    <filterClass>org.optaplanner.examples.vehiclerouting.solver.move.DifferentVehicleSwapMoveFilter</filterClass>
-		  </swapMoveSelector>
-		  <subChainChangeMoveSelector>
-		    <selectReversingMoveToo>false</selectReversingMoveToo>
-		  </subChainChangeMoveSelector>
-		  <subChainSwapMoveSelector>
-		    <selectReversingMoveToo>false</selectReversingMoveToo>
-		  </subChainSwapMoveSelector>
-		</unionMoveSelector>
-		<acceptor>
-		  <lateAcceptanceSize>200</lateAcceptanceSize>
-		</acceptor>
-		<forager>
-		  <acceptedCountLimit>1</acceptedCountLimit>
-		</forager>
-      </localSearch>
-    </solver>
-  </solverBenchmark>
-
-<solverBenchmark>
-    <name>Late Acceptance NearbyChangeSwap Filtering</name>
+    <name>LA NearbyCS Filter</name>
     <solver>
       <constructionHeuristic>
         <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
@@ -245,33 +284,6 @@
                       </nearbySelection>
                     </secondaryEntitySelector>
                   </swapMoveSelector>
-		  <subChainChangeMoveSelector>
-		    <selectReversingMoveToo>false</selectReversingMoveToo>
-		  </subChainChangeMoveSelector>
-		  <subChainSwapMoveSelector>
-		    <selectReversingMoveToo>false</selectReversingMoveToo>
-		  </subChainSwapMoveSelector>
-		</unionMoveSelector>
-		<acceptor>
-		  <lateAcceptanceSize>200</lateAcceptanceSize>
-		</acceptor>
-		<forager>
-		  <acceptedCountLimit>1</acceptedCountLimit>
-		</forager>
-      </localSearch>
-    </solver>
-  </solverBenchmark>
-
-  <solverBenchmark>
-    <name>Late Acceptance Default</name>
-    <solver>
-      <constructionHeuristic>
-        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
-      </constructionHeuristic>
-  	  <localSearch>
-	    <unionMoveSelector>
-		  <changeMoveSelector/>
-		  <swapMoveSelector/>
 		  <subChainChangeMoveSelector>
 		    <selectReversingMoveToo>false</selectReversingMoveToo>
 		  </subChainChangeMoveSelector>

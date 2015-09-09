@@ -25,7 +25,7 @@ import org.optaplanner.benchmark.api.PlannerBenchmarkFactory;
 public class VehicleRoutingBenchmarkBlueprintApp {
     public static void main(String[] args) {
         PlannerBenchmarkFactory plannerBenchmarkFactory = PlannerBenchmarkFactory.createFromXmlResource(
-                "org/optaplanner/examples/vehiclerouting/benchmark/vehicleRoutingBenchmarkConfigSwap.xml");
+                "org/optaplanner/examples/vehiclerouting/benchmark/ScalabilityBenchmark.xml");
         PlannerBenchmark plannerBenchmark = plannerBenchmarkFactory.buildPlannerBenchmark();
         plannerBenchmark.benchmark();
         

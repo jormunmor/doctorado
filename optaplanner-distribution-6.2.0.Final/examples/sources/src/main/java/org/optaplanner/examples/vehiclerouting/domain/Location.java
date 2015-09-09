@@ -22,18 +22,10 @@ import org.optaplanner.examples.common.domain.AbstractPersistable;
 @XStreamAlias("Location")
 public class Location extends AbstractPersistable {
 
-    private String name = null;
     private double x;
     private double y;
     private double z;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private String name; // unused, delete
 
     public double getX() {
         return x;
@@ -57,6 +49,10 @@ public class Location extends AbstractPersistable {
 
     public void setZ(double z) {
         this.z = z;
+    }
+    
+    public void setName(String name){
+        this.name = name;
     }
 
     // ************************************************************************
@@ -89,17 +85,17 @@ public class Location extends AbstractPersistable {
 
     @Override
     public String toString() {
-        if (name == null) {
+        if (id == null) {
             return id.toString();
         }
-        return id.toString() + "-" + name;
+        return id.toString() + "-" + id;
     }
 
     public String getSafeName() {
-        if (name == null) {
+        if (id == null) {
             return id.toString();
         }
-        return name;
+        return id + "";
     }
 
 }

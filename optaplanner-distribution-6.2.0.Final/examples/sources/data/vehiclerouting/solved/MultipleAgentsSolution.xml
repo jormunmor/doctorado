@@ -1,0 +1,1629 @@
+<OptaplannerProblem id="1">
+  <id>0</id>
+  <name>ArcasAssemblyProblem</name>
+  <locationList id="2">
+    <Location id="3">
+      <id>1</id>
+      <x>-9.14</x>
+      <y>-1.768</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="4">
+      <id>2</id>
+      <x>5.479</x>
+      <y>-6.52</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="5">
+      <id>3</id>
+      <x>17.253</x>
+      <y>16.572</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="6">
+      <id>4</id>
+      <x>5.83</x>
+      <y>-6.52</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="7">
+      <id>5</id>
+      <x>-20.866</x>
+      <y>-25.78</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="8">
+      <id>6</id>
+      <x>6.169</x>
+      <y>-6.52</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="9">
+      <id>7</id>
+      <x>1.375</x>
+      <y>-24.151</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="10">
+      <id>8</id>
+      <x>6.52</x>
+      <y>-6.52</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="11">
+      <id>9</id>
+      <x>14.575</x>
+      <y>6.94</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="12">
+      <id>10</id>
+      <x>5.479</x>
+      <y>-6.169</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="13">
+      <id>11</id>
+      <x>20.28</x>
+      <y>27.34</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="14">
+      <id>12</id>
+      <x>5.83</x>
+      <y>-6.169</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="15">
+      <id>13</id>
+      <x>-20.958</x>
+      <y>-19.209</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="16">
+      <id>14</id>
+      <x>6.169</x>
+      <y>-6.169</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="17">
+      <id>15</id>
+      <x>-0.893</x>
+      <y>20.699</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="18">
+      <id>16</id>
+      <x>6.52</x>
+      <y>-6.169</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="19">
+      <id>17</id>
+      <x>8.904</x>
+      <y>13.122</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="20">
+      <id>18</id>
+      <x>5.479</x>
+      <y>-5.83</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="21">
+      <id>19</id>
+      <x>-7.893</x>
+      <y>22.125</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="22">
+      <id>20</id>
+      <x>5.83</x>
+      <y>-5.83</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="23">
+      <id>21</id>
+      <x>-20.702</x>
+      <y>-17.442</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="24">
+      <id>22</id>
+      <x>6.169</x>
+      <y>-5.83</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="25">
+      <id>23</id>
+      <x>-10.909</x>
+      <y>-4.603</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="26">
+      <id>24</id>
+      <x>6.52</x>
+      <y>-5.83</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="27">
+      <id>25</id>
+      <x>27.893</x>
+      <y>12.905</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="28">
+      <id>26</id>
+      <x>5.479</x>
+      <y>-5.479</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="29">
+      <id>27</id>
+      <x>-10.514</x>
+      <y>18.75</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="30">
+      <id>28</id>
+      <x>5.83</x>
+      <y>-5.479</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="31">
+      <id>29</id>
+      <x>1.615</x>
+      <y>-16.981</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="32">
+      <id>30</id>
+      <x>6.169</x>
+      <y>-5.479</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="33">
+      <id>31</id>
+      <x>19.404</x>
+      <y>17.04</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="34">
+      <id>32</id>
+      <x>6.52</x>
+      <y>-5.479</y>
+      <z>0.172</z>
+    </Location>
+    <Location id="35">
+      <id>33</id>
+      <x>27.286</x>
+      <y>-21.485</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="36">
+      <id>34</id>
+      <x>5.654</x>
+      <y>-6.345</y>
+      <z>0.523</z>
+    </Location>
+    <Location id="37">
+      <id>35</id>
+      <x>9.301</x>
+      <y>-13.718</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="38">
+      <id>36</id>
+      <x>6.345</x>
+      <y>-6.345</y>
+      <z>0.523</z>
+    </Location>
+    <Location id="39">
+      <id>37</id>
+      <x>-11.0</x>
+      <y>-14.043</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="40">
+      <id>38</id>
+      <x>5.654</x>
+      <y>-5.654</y>
+      <z>0.523</z>
+    </Location>
+    <Location id="41">
+      <id>39</id>
+      <x>-13.627</x>
+      <y>-25.33</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="42">
+      <id>40</id>
+      <x>6.345</x>
+      <y>-5.654</y>
+      <z>0.523</z>
+    </Location>
+    <Location id="43">
+      <id>41</id>
+      <x>1.249</x>
+      <y>-25.571</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="44">
+      <id>42</id>
+      <x>5.824</x>
+      <y>-6.175</y>
+      <z>0.862</z>
+    </Location>
+    <Location id="45">
+      <id>43</id>
+      <x>6.706</x>
+      <y>20.563</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="46">
+      <id>44</id>
+      <x>6.175</x>
+      <y>-6.175</y>
+      <z>0.862</z>
+    </Location>
+    <Location id="47">
+      <id>45</id>
+      <x>17.459</x>
+      <y>12.919</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="48">
+      <id>46</id>
+      <x>5.824</x>
+      <y>-5.824</y>
+      <z>0.862</z>
+    </Location>
+    <Location id="49">
+      <id>47</id>
+      <x>17.533</x>
+      <y>-6.31</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="50">
+      <id>48</id>
+      <x>6.175</x>
+      <y>-5.824</y>
+      <z>0.862</z>
+    </Location>
+    <Location id="51">
+      <id>49</id>
+      <x>-11.436</x>
+      <y>-5.088</y>
+      <z>1.663</z>
+    </Location>
+    <Location id="52">
+      <id>50</id>
+      <x>6.0</x>
+      <y>-6.0</y>
+      <z>1.213</z>
+    </Location>
+    <Location id="53">
+      <id>51</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="54">
+      <id>52</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="55">
+      <id>53</id>
+      <x>0.0</x>
+      <y>7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="56">
+      <id>54</id>
+      <x>0.0</x>
+      <y>-7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="57">
+      <id>55</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="58">
+      <id>56</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="59">
+      <id>57</id>
+      <x>0.0</x>
+      <y>7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="60">
+      <id>58</id>
+      <x>0.0</x>
+      <y>-7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="61">
+      <id>59</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="62">
+      <id>60</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="63">
+      <id>61</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="64">
+      <id>62</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="65">
+      <id>63</id>
+      <x>0.0</x>
+      <y>7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="66">
+      <id>64</id>
+      <x>0.0</x>
+      <y>-7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="67">
+      <id>65</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="68">
+      <id>66</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="69">
+      <id>67</id>
+      <x>0.0</x>
+      <y>7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="70">
+      <id>68</id>
+      <x>0.0</x>
+      <y>-7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="71">
+      <id>69</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="72">
+      <id>70</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="73">
+      <id>71</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="74">
+      <id>72</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="75">
+      <id>73</id>
+      <x>0.0</x>
+      <y>7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="76">
+      <id>74</id>
+      <x>0.0</x>
+      <y>-7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="77">
+      <id>75</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="78">
+      <id>76</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="79">
+      <id>77</id>
+      <x>0.0</x>
+      <y>7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="80">
+      <id>78</id>
+      <x>0.0</x>
+      <y>-7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="81">
+      <id>79</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="82">
+      <id>80</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="83">
+      <id>81</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="84">
+      <id>82</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="85">
+      <id>83</id>
+      <x>0.0</x>
+      <y>7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="86">
+      <id>84</id>
+      <x>0.0</x>
+      <y>-7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="87">
+      <id>85</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="88">
+      <id>86</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="89">
+      <id>87</id>
+      <x>0.0</x>
+      <y>7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="90">
+      <id>88</id>
+      <x>0.0</x>
+      <y>-7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="91">
+      <id>89</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="92">
+      <id>90</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="93">
+      <id>91</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="94">
+      <id>92</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="95">
+      <id>93</id>
+      <x>0.0</x>
+      <y>7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="96">
+      <id>94</id>
+      <x>0.0</x>
+      <y>-7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="97">
+      <id>95</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="98">
+      <id>96</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="99">
+      <id>97</id>
+      <x>0.0</x>
+      <y>7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="100">
+      <id>98</id>
+      <x>0.0</x>
+      <y>-7.0</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="101">
+      <id>99</id>
+      <x>-7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+    <Location id="102">
+      <id>100</id>
+      <x>7.2</x>
+      <y>-1.5</y>
+      <z>0.5</z>
+    </Location>
+  </locationList>
+  <initialLocationList id="103">
+    <InitialLocation id="104">
+      <id>1</id>
+      <location reference="53"/>
+    </InitialLocation>
+    <InitialLocation id="105">
+      <id>2</id>
+      <location reference="54"/>
+    </InitialLocation>
+    <InitialLocation id="106">
+      <id>3</id>
+      <location reference="55"/>
+    </InitialLocation>
+    <InitialLocation id="107">
+      <id>4</id>
+      <location reference="56"/>
+    </InitialLocation>
+    <InitialLocation id="108">
+      <id>5</id>
+      <location reference="57"/>
+    </InitialLocation>
+    <InitialLocation id="109">
+      <id>6</id>
+      <location reference="58"/>
+    </InitialLocation>
+    <InitialLocation id="110">
+      <id>7</id>
+      <location reference="59"/>
+    </InitialLocation>
+    <InitialLocation id="111">
+      <id>8</id>
+      <location reference="60"/>
+    </InitialLocation>
+    <InitialLocation id="112">
+      <id>9</id>
+      <location reference="61"/>
+    </InitialLocation>
+    <InitialLocation id="113">
+      <id>10</id>
+      <location reference="62"/>
+    </InitialLocation>
+    <InitialLocation id="114">
+      <id>11</id>
+      <location reference="63"/>
+    </InitialLocation>
+    <InitialLocation id="115">
+      <id>12</id>
+      <location reference="64"/>
+    </InitialLocation>
+    <InitialLocation id="116">
+      <id>13</id>
+      <location reference="65"/>
+    </InitialLocation>
+    <InitialLocation id="117">
+      <id>14</id>
+      <location reference="66"/>
+    </InitialLocation>
+    <InitialLocation id="118">
+      <id>15</id>
+      <location reference="67"/>
+    </InitialLocation>
+    <InitialLocation id="119">
+      <id>16</id>
+      <location reference="68"/>
+    </InitialLocation>
+    <InitialLocation id="120">
+      <id>17</id>
+      <location reference="69"/>
+    </InitialLocation>
+    <InitialLocation id="121">
+      <id>18</id>
+      <location reference="70"/>
+    </InitialLocation>
+    <InitialLocation id="122">
+      <id>19</id>
+      <location reference="71"/>
+    </InitialLocation>
+    <InitialLocation id="123">
+      <id>20</id>
+      <location reference="72"/>
+    </InitialLocation>
+    <InitialLocation id="124">
+      <id>21</id>
+      <location reference="73"/>
+    </InitialLocation>
+    <InitialLocation id="125">
+      <id>22</id>
+      <location reference="74"/>
+    </InitialLocation>
+    <InitialLocation id="126">
+      <id>23</id>
+      <location reference="75"/>
+    </InitialLocation>
+    <InitialLocation id="127">
+      <id>24</id>
+      <location reference="76"/>
+    </InitialLocation>
+    <InitialLocation id="128">
+      <id>25</id>
+      <location reference="77"/>
+    </InitialLocation>
+    <InitialLocation id="129">
+      <id>26</id>
+      <location reference="78"/>
+    </InitialLocation>
+    <InitialLocation id="130">
+      <id>27</id>
+      <location reference="79"/>
+    </InitialLocation>
+    <InitialLocation id="131">
+      <id>28</id>
+      <location reference="80"/>
+    </InitialLocation>
+    <InitialLocation id="132">
+      <id>29</id>
+      <location reference="81"/>
+    </InitialLocation>
+    <InitialLocation id="133">
+      <id>30</id>
+      <location reference="82"/>
+    </InitialLocation>
+    <InitialLocation id="134">
+      <id>31</id>
+      <location reference="83"/>
+    </InitialLocation>
+    <InitialLocation id="135">
+      <id>32</id>
+      <location reference="84"/>
+    </InitialLocation>
+    <InitialLocation id="136">
+      <id>33</id>
+      <location reference="85"/>
+    </InitialLocation>
+    <InitialLocation id="137">
+      <id>34</id>
+      <location reference="86"/>
+    </InitialLocation>
+    <InitialLocation id="138">
+      <id>35</id>
+      <location reference="87"/>
+    </InitialLocation>
+    <InitialLocation id="139">
+      <id>36</id>
+      <location reference="88"/>
+    </InitialLocation>
+    <InitialLocation id="140">
+      <id>37</id>
+      <location reference="89"/>
+    </InitialLocation>
+    <InitialLocation id="141">
+      <id>38</id>
+      <location reference="90"/>
+    </InitialLocation>
+    <InitialLocation id="142">
+      <id>39</id>
+      <location reference="91"/>
+    </InitialLocation>
+    <InitialLocation id="143">
+      <id>40</id>
+      <location reference="92"/>
+    </InitialLocation>
+    <InitialLocation id="144">
+      <id>41</id>
+      <location reference="93"/>
+    </InitialLocation>
+    <InitialLocation id="145">
+      <id>42</id>
+      <location reference="94"/>
+    </InitialLocation>
+    <InitialLocation id="146">
+      <id>43</id>
+      <location reference="95"/>
+    </InitialLocation>
+    <InitialLocation id="147">
+      <id>44</id>
+      <location reference="96"/>
+    </InitialLocation>
+    <InitialLocation id="148">
+      <id>45</id>
+      <location reference="97"/>
+    </InitialLocation>
+    <InitialLocation id="149">
+      <id>46</id>
+      <location reference="98"/>
+    </InitialLocation>
+    <InitialLocation id="150">
+      <id>47</id>
+      <location reference="99"/>
+    </InitialLocation>
+    <InitialLocation id="151">
+      <id>48</id>
+      <location reference="100"/>
+    </InitialLocation>
+    <InitialLocation id="152">
+      <id>49</id>
+      <location reference="101"/>
+    </InitialLocation>
+    <InitialLocation id="153">
+      <id>50</id>
+      <location reference="102"/>
+    </InitialLocation>
+  </initialLocationList>
+  <autonomousVehicleList id="154">
+    <AutonomousVehicle id="155">
+      <id>1</id>
+      <capacity>450</capacity>
+      <initialLocation reference="104"/>
+      <nextTask id="156">
+        <id>17</id>
+        <location reference="38"/>
+        <objectLocation reference="37"/>
+        <demand>450</demand>
+        <priority>2</priority>
+        <objectName>Box018</objectName>
+        <action>connection</action>
+        <preconditionList id="157">
+          <TaskDependency id="158">
+            <id>2</id>
+          </TaskDependency>
+          <TaskDependency id="159">
+            <id>3</id>
+          </TaskDependency>
+          <TaskDependency id="160">
+            <id>6</id>
+          </TaskDependency>
+          <TaskDependency id="161">
+            <id>7</id>
+          </TaskDependency>
+        </preconditionList>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="155"/>
+        <nextTask id="162">
+          <id>24</id>
+          <location reference="52"/>
+          <objectLocation reference="51"/>
+          <demand>450</demand>
+          <priority>2</priority>
+          <objectName>Box025</objectName>
+          <action>connection</action>
+          <preconditionList id="163">
+            <TaskDependency id="164">
+              <id>20</id>
+            </TaskDependency>
+            <TaskDependency id="165">
+              <id>21</id>
+            </TaskDependency>
+            <TaskDependency id="166">
+              <id>22</id>
+            </TaskDependency>
+            <TaskDependency id="167">
+              <id>23</id>
+            </TaskDependency>
+          </preconditionList>
+          <type>assemble</type>
+          <previousStandstill class="Task" reference="156"/>
+          <nextTask id="168">
+            <id>19</id>
+            <location reference="42"/>
+            <objectLocation reference="41"/>
+            <demand>450</demand>
+            <priority>2</priority>
+            <objectName>Box020</objectName>
+            <action>connection</action>
+            <preconditionList id="169">
+              <TaskDependency id="170">
+                <id>10</id>
+              </TaskDependency>
+              <TaskDependency id="171">
+                <id>11</id>
+              </TaskDependency>
+              <TaskDependency id="172">
+                <id>14</id>
+              </TaskDependency>
+              <TaskDependency id="173">
+                <id>15</id>
+              </TaskDependency>
+            </preconditionList>
+            <type>assemble</type>
+            <previousStandstill class="Task" reference="162"/>
+            <vehicle reference="155"/>
+          </nextTask>
+          <vehicle reference="155"/>
+        </nextTask>
+        <vehicle reference="155"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="174">
+      <id>2</id>
+      <capacity>450</capacity>
+      <initialLocation reference="105"/>
+      <nextTask id="175">
+        <id>16</id>
+        <location reference="36"/>
+        <objectLocation reference="35"/>
+        <demand>450</demand>
+        <priority>2</priority>
+        <objectName>Box017</objectName>
+        <action>connection</action>
+        <preconditionList id="176">
+          <TaskDependency id="177">
+            <id>0</id>
+          </TaskDependency>
+          <TaskDependency id="178">
+            <id>1</id>
+          </TaskDependency>
+          <TaskDependency id="179">
+            <id>4</id>
+          </TaskDependency>
+          <TaskDependency id="180">
+            <id>5</id>
+          </TaskDependency>
+        </preconditionList>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="174"/>
+        <nextTask id="181">
+          <id>18</id>
+          <location reference="40"/>
+          <objectLocation reference="39"/>
+          <demand>450</demand>
+          <priority>2</priority>
+          <objectName>Box019</objectName>
+          <action>connection</action>
+          <preconditionList id="182">
+            <TaskDependency id="183">
+              <id>8</id>
+            </TaskDependency>
+            <TaskDependency id="184">
+              <id>9</id>
+            </TaskDependency>
+            <TaskDependency id="185">
+              <id>12</id>
+            </TaskDependency>
+            <TaskDependency id="186">
+              <id>13</id>
+            </TaskDependency>
+          </preconditionList>
+          <type>assemble</type>
+          <previousStandstill class="Task" reference="175"/>
+          <nextTask id="187">
+            <id>24</id>
+            <location reference="52"/>
+            <objectLocation reference="51"/>
+            <demand>450</demand>
+            <priority>2</priority>
+            <objectName>Box025</objectName>
+            <action>connection</action>
+            <preconditionList id="188">
+              <TaskDependency id="189">
+                <id>20</id>
+              </TaskDependency>
+              <TaskDependency id="190">
+                <id>21</id>
+              </TaskDependency>
+              <TaskDependency id="191">
+                <id>22</id>
+              </TaskDependency>
+              <TaskDependency id="192">
+                <id>23</id>
+              </TaskDependency>
+            </preconditionList>
+            <type>assemble</type>
+            <previousStandstill class="Task" reference="181"/>
+            <nextTask id="193">
+              <id>21</id>
+              <location reference="46"/>
+              <objectLocation reference="45"/>
+              <demand>300</demand>
+              <priority>2</priority>
+              <objectName>Box022</objectName>
+              <action>connection</action>
+              <preconditionList id="194">
+                <TaskDependency id="195">
+                  <id>17</id>
+                </TaskDependency>
+              </preconditionList>
+              <type>assemble</type>
+              <previousStandstill class="Task" reference="187"/>
+              <nextTask id="196">
+                <id>11</id>
+                <location reference="26"/>
+                <objectLocation reference="25"/>
+                <demand>300</demand>
+                <priority>1</priority>
+                <objectName>Box012</objectName>
+                <action>base</action>
+                <preconditionList id="197"/>
+                <type>assemble</type>
+                <previousStandstill class="Task" reference="193"/>
+                <vehicle reference="174"/>
+              </nextTask>
+              <vehicle reference="174"/>
+            </nextTask>
+            <vehicle reference="174"/>
+          </nextTask>
+          <vehicle reference="174"/>
+        </nextTask>
+        <vehicle reference="174"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="198">
+      <id>3</id>
+      <capacity>450</capacity>
+      <initialLocation reference="106"/>
+      <nextTask id="199">
+        <id>19</id>
+        <location reference="42"/>
+        <objectLocation reference="41"/>
+        <demand>450</demand>
+        <priority>2</priority>
+        <objectName>Box020</objectName>
+        <action>connection</action>
+        <preconditionList id="200">
+          <TaskDependency id="201">
+            <id>10</id>
+          </TaskDependency>
+          <TaskDependency id="202">
+            <id>11</id>
+          </TaskDependency>
+          <TaskDependency id="203">
+            <id>14</id>
+          </TaskDependency>
+          <TaskDependency id="204">
+            <id>15</id>
+          </TaskDependency>
+        </preconditionList>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="198"/>
+        <nextTask id="205">
+          <id>9</id>
+          <location reference="22"/>
+          <objectLocation reference="21"/>
+          <demand>300</demand>
+          <priority>1</priority>
+          <objectName>Box010</objectName>
+          <action>base</action>
+          <preconditionList id="206"/>
+          <type>assemble</type>
+          <previousStandstill class="Task" reference="199"/>
+          <vehicle reference="198"/>
+        </nextTask>
+        <vehicle reference="198"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="207">
+      <id>4</id>
+      <capacity>450</capacity>
+      <initialLocation reference="107"/>
+      <nextTask id="208">
+        <id>20</id>
+        <location reference="44"/>
+        <objectLocation reference="43"/>
+        <demand>300</demand>
+        <priority>2</priority>
+        <objectName>Box021</objectName>
+        <action>connection</action>
+        <preconditionList id="209">
+          <TaskDependency id="210">
+            <id>16</id>
+          </TaskDependency>
+        </preconditionList>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="207"/>
+        <vehicle reference="207"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="211">
+      <id>5</id>
+      <capacity>450</capacity>
+      <initialLocation reference="108"/>
+      <nextTask id="212">
+        <id>2</id>
+        <location reference="8"/>
+        <objectLocation reference="7"/>
+        <demand>300</demand>
+        <priority>1</priority>
+        <objectName>Box003</objectName>
+        <action>base</action>
+        <preconditionList id="213"/>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="211"/>
+        <vehicle reference="211"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="214">
+      <id>6</id>
+      <capacity>450</capacity>
+      <initialLocation reference="109"/>
+      <nextTask id="215">
+        <id>6</id>
+        <location reference="16"/>
+        <objectLocation reference="15"/>
+        <demand>300</demand>
+        <priority>1</priority>
+        <objectName>Box007</objectName>
+        <action>base</action>
+        <preconditionList id="216"/>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="214"/>
+        <vehicle reference="214"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="217">
+      <id>7</id>
+      <capacity>450</capacity>
+      <initialLocation reference="110"/>
+      <nextTask id="218">
+        <id>3</id>
+        <location reference="10"/>
+        <objectLocation reference="9"/>
+        <demand>300</demand>
+        <priority>1</priority>
+        <objectName>Box004</objectName>
+        <action>base</action>
+        <preconditionList id="219"/>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="217"/>
+        <vehicle reference="217"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="220">
+      <id>8</id>
+      <capacity>450</capacity>
+      <initialLocation reference="111"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="221">
+      <id>9</id>
+      <capacity>450</capacity>
+      <initialLocation reference="112"/>
+      <nextTask id="222">
+        <id>13</id>
+        <location reference="30"/>
+        <objectLocation reference="29"/>
+        <demand>300</demand>
+        <priority>1</priority>
+        <objectName>Box014</objectName>
+        <action>base</action>
+        <preconditionList id="223"/>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="221"/>
+        <vehicle reference="221"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="224">
+      <id>10</id>
+      <capacity>450</capacity>
+      <initialLocation reference="113"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="225">
+      <id>11</id>
+      <capacity>450</capacity>
+      <initialLocation reference="114"/>
+      <nextTask id="226">
+        <id>10</id>
+        <location reference="24"/>
+        <objectLocation reference="23"/>
+        <demand>300</demand>
+        <priority>1</priority>
+        <objectName>Box011</objectName>
+        <action>base</action>
+        <preconditionList id="227"/>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="225"/>
+        <vehicle reference="225"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="228">
+      <id>12</id>
+      <capacity>450</capacity>
+      <initialLocation reference="115"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="229">
+      <id>13</id>
+      <capacity>450</capacity>
+      <initialLocation reference="116"/>
+      <nextTask id="230">
+        <id>0</id>
+        <location reference="4"/>
+        <objectLocation reference="3"/>
+        <demand>300</demand>
+        <priority>1</priority>
+        <objectName>Box001</objectName>
+        <action>base</action>
+        <preconditionList id="231"/>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="229"/>
+        <vehicle reference="229"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="232">
+      <id>14</id>
+      <capacity>450</capacity>
+      <initialLocation reference="117"/>
+      <nextTask id="233">
+        <id>8</id>
+        <location reference="20"/>
+        <objectLocation reference="19"/>
+        <demand>300</demand>
+        <priority>1</priority>
+        <objectName>Box009</objectName>
+        <action>base</action>
+        <preconditionList id="234"/>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="232"/>
+        <vehicle reference="232"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="235">
+      <id>15</id>
+      <capacity>450</capacity>
+      <initialLocation reference="118"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="236">
+      <id>16</id>
+      <capacity>450</capacity>
+      <initialLocation reference="119"/>
+      <nextTask id="237">
+        <id>1</id>
+        <location reference="6"/>
+        <objectLocation reference="5"/>
+        <demand>300</demand>
+        <priority>1</priority>
+        <objectName>Box002</objectName>
+        <action>base</action>
+        <preconditionList id="238"/>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="236"/>
+        <vehicle reference="236"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="239">
+      <id>17</id>
+      <capacity>450</capacity>
+      <initialLocation reference="120"/>
+      <nextTask id="240">
+        <id>5</id>
+        <location reference="14"/>
+        <objectLocation reference="13"/>
+        <demand>300</demand>
+        <priority>1</priority>
+        <objectName>Box006</objectName>
+        <action>base</action>
+        <preconditionList id="241"/>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="239"/>
+        <nextTask id="242">
+          <id>18</id>
+          <location reference="40"/>
+          <objectLocation reference="39"/>
+          <demand>450</demand>
+          <priority>2</priority>
+          <objectName>Box019</objectName>
+          <action>connection</action>
+          <preconditionList id="243">
+            <TaskDependency id="244">
+              <id>8</id>
+            </TaskDependency>
+            <TaskDependency id="245">
+              <id>9</id>
+            </TaskDependency>
+            <TaskDependency id="246">
+              <id>12</id>
+            </TaskDependency>
+            <TaskDependency id="247">
+              <id>13</id>
+            </TaskDependency>
+          </preconditionList>
+          <type>assemble</type>
+          <previousStandstill class="Task" reference="240"/>
+          <nextTask id="248">
+            <id>17</id>
+            <location reference="38"/>
+            <objectLocation reference="37"/>
+            <demand>450</demand>
+            <priority>2</priority>
+            <objectName>Box018</objectName>
+            <action>connection</action>
+            <preconditionList id="249">
+              <TaskDependency id="250">
+                <id>2</id>
+              </TaskDependency>
+              <TaskDependency id="251">
+                <id>3</id>
+              </TaskDependency>
+              <TaskDependency id="252">
+                <id>6</id>
+              </TaskDependency>
+              <TaskDependency id="253">
+                <id>7</id>
+              </TaskDependency>
+            </preconditionList>
+            <type>assemble</type>
+            <previousStandstill class="Task" reference="242"/>
+            <vehicle reference="239"/>
+          </nextTask>
+          <vehicle reference="239"/>
+        </nextTask>
+        <vehicle reference="239"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="254">
+      <id>18</id>
+      <capacity>450</capacity>
+      <initialLocation reference="121"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="255">
+      <id>19</id>
+      <capacity>450</capacity>
+      <initialLocation reference="122"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="256">
+      <id>20</id>
+      <capacity>450</capacity>
+      <initialLocation reference="123"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="257">
+      <id>21</id>
+      <capacity>450</capacity>
+      <initialLocation reference="124"/>
+      <nextTask id="258">
+        <id>23</id>
+        <location reference="50"/>
+        <objectLocation reference="49"/>
+        <demand>300</demand>
+        <priority>2</priority>
+        <objectName>Box024</objectName>
+        <action>connection</action>
+        <preconditionList id="259">
+          <TaskDependency id="260">
+            <id>19</id>
+          </TaskDependency>
+        </preconditionList>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="257"/>
+        <vehicle reference="257"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="261">
+      <id>22</id>
+      <capacity>450</capacity>
+      <initialLocation reference="125"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="262">
+      <id>23</id>
+      <capacity>450</capacity>
+      <initialLocation reference="126"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="263">
+      <id>24</id>
+      <capacity>450</capacity>
+      <initialLocation reference="127"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="264">
+      <id>25</id>
+      <capacity>450</capacity>
+      <initialLocation reference="128"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="265">
+      <id>26</id>
+      <capacity>450</capacity>
+      <initialLocation reference="129"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="266">
+      <id>27</id>
+      <capacity>450</capacity>
+      <initialLocation reference="130"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="267">
+      <id>28</id>
+      <capacity>450</capacity>
+      <initialLocation reference="131"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="268">
+      <id>29</id>
+      <capacity>450</capacity>
+      <initialLocation reference="132"/>
+      <nextTask id="269">
+        <id>7</id>
+        <location reference="18"/>
+        <objectLocation reference="17"/>
+        <demand>300</demand>
+        <priority>1</priority>
+        <objectName>Box008</objectName>
+        <action>base</action>
+        <preconditionList id="270"/>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="268"/>
+        <nextTask id="271">
+          <id>22</id>
+          <location reference="48"/>
+          <objectLocation reference="47"/>
+          <demand>300</demand>
+          <priority>2</priority>
+          <objectName>Box023</objectName>
+          <action>connection</action>
+          <preconditionList id="272">
+            <TaskDependency id="273">
+              <id>18</id>
+            </TaskDependency>
+          </preconditionList>
+          <type>assemble</type>
+          <previousStandstill class="Task" reference="269"/>
+          <vehicle reference="268"/>
+        </nextTask>
+        <vehicle reference="268"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="274">
+      <id>30</id>
+      <capacity>450</capacity>
+      <initialLocation reference="133"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="275">
+      <id>31</id>
+      <capacity>450</capacity>
+      <initialLocation reference="134"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="276">
+      <id>32</id>
+      <capacity>450</capacity>
+      <initialLocation reference="135"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="277">
+      <id>33</id>
+      <capacity>450</capacity>
+      <initialLocation reference="136"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="278">
+      <id>34</id>
+      <capacity>450</capacity>
+      <initialLocation reference="137"/>
+      <nextTask id="279">
+        <id>14</id>
+        <location reference="32"/>
+        <objectLocation reference="31"/>
+        <demand>300</demand>
+        <priority>1</priority>
+        <objectName>Box015</objectName>
+        <action>base</action>
+        <preconditionList id="280"/>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="278"/>
+        <vehicle reference="278"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="281">
+      <id>35</id>
+      <capacity>450</capacity>
+      <initialLocation reference="138"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="282">
+      <id>36</id>
+      <capacity>450</capacity>
+      <initialLocation reference="139"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="283">
+      <id>37</id>
+      <capacity>450</capacity>
+      <initialLocation reference="140"/>
+      <nextTask id="284">
+        <id>12</id>
+        <location reference="28"/>
+        <objectLocation reference="27"/>
+        <demand>300</demand>
+        <priority>1</priority>
+        <objectName>Box013</objectName>
+        <action>base</action>
+        <preconditionList id="285"/>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="283"/>
+        <vehicle reference="283"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="286">
+      <id>38</id>
+      <capacity>450</capacity>
+      <initialLocation reference="141"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="287">
+      <id>39</id>
+      <capacity>450</capacity>
+      <initialLocation reference="142"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="288">
+      <id>40</id>
+      <capacity>450</capacity>
+      <initialLocation reference="143"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="289">
+      <id>41</id>
+      <capacity>450</capacity>
+      <initialLocation reference="144"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="290">
+      <id>42</id>
+      <capacity>450</capacity>
+      <initialLocation reference="145"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="291">
+      <id>43</id>
+      <capacity>450</capacity>
+      <initialLocation reference="146"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="292">
+      <id>44</id>
+      <capacity>450</capacity>
+      <initialLocation reference="147"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="293">
+      <id>45</id>
+      <capacity>450</capacity>
+      <initialLocation reference="148"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="294">
+      <id>46</id>
+      <capacity>450</capacity>
+      <initialLocation reference="149"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="295">
+      <id>47</id>
+      <capacity>450</capacity>
+      <initialLocation reference="150"/>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="296">
+      <id>48</id>
+      <capacity>450</capacity>
+      <initialLocation reference="151"/>
+      <nextTask id="297">
+        <id>4</id>
+        <location reference="12"/>
+        <objectLocation reference="11"/>
+        <demand>300</demand>
+        <priority>1</priority>
+        <objectName>Box005</objectName>
+        <action>base</action>
+        <preconditionList id="298"/>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="296"/>
+        <vehicle reference="296"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="299">
+      <id>49</id>
+      <capacity>450</capacity>
+      <initialLocation reference="152"/>
+      <nextTask id="300">
+        <id>16</id>
+        <location reference="36"/>
+        <objectLocation reference="35"/>
+        <demand>450</demand>
+        <priority>2</priority>
+        <objectName>Box017</objectName>
+        <action>connection</action>
+        <preconditionList id="301">
+          <TaskDependency id="302">
+            <id>0</id>
+          </TaskDependency>
+          <TaskDependency id="303">
+            <id>1</id>
+          </TaskDependency>
+          <TaskDependency id="304">
+            <id>4</id>
+          </TaskDependency>
+          <TaskDependency id="305">
+            <id>5</id>
+          </TaskDependency>
+        </preconditionList>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="299"/>
+        <vehicle reference="299"/>
+      </nextTask>
+    </AutonomousVehicle>
+    <AutonomousVehicle id="306">
+      <id>50</id>
+      <capacity>450</capacity>
+      <initialLocation reference="153"/>
+      <nextTask id="307">
+        <id>15</id>
+        <location reference="34"/>
+        <objectLocation reference="33"/>
+        <demand>300</demand>
+        <priority>1</priority>
+        <objectName>Box016</objectName>
+        <action>base</action>
+        <preconditionList id="308"/>
+        <type>assemble</type>
+        <previousStandstill class="AutonomousVehicle" reference="306"/>
+        <vehicle reference="306"/>
+      </nextTask>
+    </AutonomousVehicle>
+  </autonomousVehicleList>
+  <taskList id="309">
+    <Task reference="230"/>
+    <Task reference="237"/>
+    <Task reference="212"/>
+    <Task reference="218"/>
+    <Task reference="297"/>
+    <Task reference="240"/>
+    <Task reference="215"/>
+    <Task reference="269"/>
+    <Task reference="233"/>
+    <Task reference="205"/>
+    <Task reference="226"/>
+    <Task reference="196"/>
+    <Task reference="284"/>
+    <Task reference="222"/>
+    <Task reference="279"/>
+    <Task reference="307"/>
+    <Task reference="300"/>
+    <Task reference="175"/>
+    <Task reference="156"/>
+    <Task reference="248"/>
+    <Task reference="242"/>
+    <Task reference="181"/>
+    <Task reference="168"/>
+    <Task reference="199"/>
+    <Task reference="208"/>
+    <Task reference="193"/>
+    <Task reference="271"/>
+    <Task reference="258"/>
+    <Task reference="162"/>
+    <Task reference="187"/>
+  </taskList>
+  <score id="310">0hard/0medium/-496soft</score>
+</OptaplannerProblem>

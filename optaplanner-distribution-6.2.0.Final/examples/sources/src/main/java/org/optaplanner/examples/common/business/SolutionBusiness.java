@@ -17,10 +17,19 @@
 package org.optaplanner.examples.common.business;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.logging.Level;
 import javax.swing.SwingUtilities;
 
 import org.apache.commons.io.FileUtils;
@@ -47,6 +56,11 @@ import org.optaplanner.examples.common.persistence.AbstractSolutionExporter;
 import org.optaplanner.examples.common.persistence.AbstractSolutionImporter;
 import org.optaplanner.examples.common.persistence.SolutionDao;
 import org.optaplanner.examples.common.swingui.SolverAndPersistenceFrame;
+import org.optaplanner.examples.vehiclerouting.domain.Location;
+import org.optaplanner.examples.vehiclerouting.domain.Task;
+import org.optaplanner.examples.vehiclerouting.domain.TaskDependency;
+import org.optaplanner.examples.vehiclerouting.domain.Vehicle;
+import org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -256,8 +270,251 @@ public class SolutionBusiness {
         Solution solution = solutionDao.readSolution(file);
         solutionFileName = file.getName();
         guiScoreDirector.setWorkingSolution(solution);
-    }
+        /*
+            The following code is to generate the JSOHP2
+            problem parts.
+        */
+        if(!(solution instanceof VehicleRoutingSolution)){
+            return;
+            
+        }
 
+        VehicleRoutingSolution routingSolution = (VehicleRoutingSolution) solution;
+        try {
+            generateStartPart(routingSolution);
+            generateUavsPart(routingSolution);
+            generateObjectPart(routingSolution);
+            generateLocationsPart(routingSolution);
+            generateAssemblyLocationsPart(routingSolution);
+            generateObjectStatePart(routingSolution);
+            generateAssemblyPlannerPart(routingSolution);
+            generateEndPart(routingSolution);
+            
+            
+        } catch (FileNotFoundException ex) {
+            java.util.logging.Logger.getLogger(SolutionBusiness.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+    }
+    
+    private void generateStartPart(VehicleRoutingSolution solution) throws FileNotFoundException {
+        // Generate plan file
+        String path = "/home/jorge/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/problem_parts/";
+        File file = new File(path + "1_start_part.txt");
+        file.delete();
+        PrintWriter out = new PrintWriter(file);
+        out.println("(defproblem problem quadrotor\n\n\t; FACTS\n\t(\n");
+        out.close();
+    }
+    
+    private void generateUavsPart(VehicleRoutingSolution solution) throws FileNotFoundException {
+        // Generate plan file
+        String path = "/home/jorge/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/problem_parts/";
+        File file = new File(path + "2_uav_defs_part.txt");
+        file.delete();
+        PrintWriter out = new PrintWriter(file);
+        out.println("\t\t; UAV defs");
+        List<Vehicle> vehicleList = solution.getVehicleList();
+        for(Vehicle vehicle : vehicleList){
+            out.println("\t\t(quadrotor uav" + vehicle.getId() + ")");
+            
+        }
+        out.println("\n");
+        out.close();
+    }
+    
+    
+    private void generateObjectPart(VehicleRoutingSolution solution) throws FileNotFoundException {
+        // Generate plan file
+        String path = "/home/jorge/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/problem_parts/";
+        File file = new File(path + "3_object_defs_part.txt");
+        file.delete();
+        PrintWriter out = new PrintWriter(file);
+        out.println("\t\t; object defs");
+        List<Task> taskList = solution.getTaskList();
+        Set<String> set = new TreeSet();
+        for(Task task : taskList){
+            String objectName = task.getObjectName();
+            if(!set.contains(objectName)){ // Some objects are repeated because the task was discretized
+                set.add(objectName);
+                out.println("\t\t(object " + objectName + ")");
+                
+            }            
+            
+        }
+        out.println("\n");
+        out.close();
+        
+    }
+    
+    private void generateLocationsPart(VehicleRoutingSolution solution) throws FileNotFoundException {
+        // Generate plan file
+        String path = "/home/jorge/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/problem_parts/";
+        File file = new File(path + "4_location_defs_part.txt");
+        file.delete();
+        PrintWriter out = new PrintWriter(file);
+        out.println("\t\t; location defs");
+        List<Location> locationList = solution.getLocationList();
+        for(Location location : locationList){
+            Long id = location.getId();
+            double x = location.getX();
+            double y = location.getY();
+            double z = location.getZ();
+            out.println("\t\t(location " + id + " " + x + " " + y + " " + z + ")");
+            
+        }
+        out.println("\n");
+        out.close();
+    }
+    
+    private void generateAssemblyLocationsPart(VehicleRoutingSolution solution) throws FileNotFoundException {
+        // Generate plan file
+        String path = "/home/jorge/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/problem_parts/";
+        File file = new File(path + "5_assembly_location_defs_part.txt");
+        file.delete();
+        PrintWriter out = new PrintWriter(file);
+        out.println("\t\t; assembly location defs");
+        List<Task> taskList = solution.getTaskList();
+        Set<String> set = new TreeSet();
+        for(Task task : taskList){
+            String objectName = task.getObjectName();            
+            if(!set.contains(objectName)){ // Some objects are repeated because the task was discretized
+                set.add(objectName);
+                Long assemblyLocationId = task.getLocation().getId();
+                out.println("\t\t(assembly_location " + objectName + " " + assemblyLocationId + ")");
+                
+            }            
+            
+        }
+        out.println("\n");
+        out.close();
+    }
+    
+    private void generateObjectStatePart(VehicleRoutingSolution solution) throws FileNotFoundException {
+        // Generate plan file
+        String path = "/home/jorge/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/problem_parts/";
+        File file = new File(path + "6_object_state_defs_part.txt");
+        file.delete();
+        PrintWriter out = new PrintWriter(file);
+        out.println("\t\t; object state defs");
+        List<Task> taskList = solution.getTaskList();
+        Set<String> set = new TreeSet();
+        for(Task task : taskList){
+            String objectName = task.getObjectName();            
+            if(!set.contains(objectName)){ // Some objects are repeated because the task was discretized
+                set.add(objectName);
+                Long locationId = task.getObjectLocation().getId();
+                out.println("\t\t(at " + objectName + " " + locationId + ")");
+                
+            }            
+            
+        }
+        out.println("\n");
+        out.close();
+    }
+    
+    private void generateAssemblyPlannerPart(VehicleRoutingSolution solution) throws FileNotFoundException {
+        // Generate plan file
+        String path = "/home/jorge/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/problem_parts/";
+        File file = new File(path + "7_assembly_planner_part.txt");
+        file.delete();
+        PrintWriter out = new PrintWriter(file);
+        out.println("\t\t; ObjectDependencies");
+        List<Task> taskList = solution.getTaskList();
+        Set<String> set = new TreeSet();
+        Map<Long, String> taskMap = new TreeMap();
+        for(Task task : taskList){ // fill the map->for efficiency purposes
+            if(!set.contains(task.getObjectName())){
+                set.add(task.getObjectName());
+                taskMap.put(task.getId(), task.getObjectName());
+            }
+            
+        }
+        set.clear();
+        for(Task task : taskList){
+            String objectName = task.getObjectName();            
+            if(!set.contains(objectName)){ // Some objects are repeated because the task was discretized
+                set.add(objectName);
+                List<TaskDependency> list = task.getPreconditionList();
+                if(list == null || list.isEmpty()){
+                    out.println("\t\t(depends " + objectName + " ())");
+                    
+                } else{
+                    String outStr = "\t\t(depends " + objectName + " (";
+                    Iterator it = list.iterator();
+                    while(it.hasNext()){
+                        TaskDependency dep = (TaskDependency) it.next();
+                        String depName = taskMap.get(dep.getId());
+                        if(!it.hasNext()){
+                            outStr += depName + "))";
+                            break;
+                            
+                        } else{
+                            outStr += depName + " ";
+                            
+                        }
+                                                
+                    }
+                    out.println(outStr);
+                    
+                }                
+                
+            }            
+            
+        }
+        out.println("\n");
+        out.close();
+    }
+    
+    private void generateEndPart(VehicleRoutingSolution solution) throws FileNotFoundException {
+        // Generate plan file
+        String path = "/home/jorge/git_projects/doctorado/JSHOP2/examples/quadrotor_arcas/problem_parts/";
+        File file = new File(path + "9_end_part.txt");
+        file.delete();
+        PrintWriter out = new PrintWriter(file);
+        List<Vehicle> vehicleList = solution.getVehicleList();
+        String times = "";
+        for(Vehicle vehicle : vehicleList){
+            Long id = vehicle.getId();
+            Long locId = vehicle.getLocation().getId();
+            out.println("\t\t; UAV" + id + " state defs");
+            out.println("\t\t(battery uav" + id + " 1200)");
+            out.println("\t\t(at uav" + id + " " + locId + ")");
+            out.println("\t\t(landed uav" + id + ")");
+            out.println();
+            times += "\t\t; read/write times UAV" + id + "\n";
+            times += "\t\t(write-time at uav" + id + " 0)\n";
+            times += "\t\t(read-time at uav" + id + " 0)\n";
+            times += "\t\t(write-time battery uav" + id + " 0)\n";
+            times += "\t\t(read-time battery uav" + id + " 0)\n\n";
+            
+        }
+        
+        out.println(times);
+        
+        List<Task> taskList = solution.getTaskList();
+        Set<String> set = new TreeSet();
+        for(Task task : taskList){
+            String objectName = task.getObjectName();            
+            if(!set.contains(objectName)){ // Some objects are repeated because the task was discretized
+                set.add(objectName);
+                out.println("\t\t; read/write times " + objectName);
+                out.println("\t\t(write-time at " + objectName + " 0)");
+                out.println("\t\t(read-time at " + objectName + " 0)\n");
+                
+            }            
+            
+        }
+        out.println("\t\t; remaining tasks");
+        out.println("\t\t(remaining_tasks " + set.size() + ")");
+        
+        String ending = "\t)\n\n\t; GOALS\n\t(\n\t\t(mission assemble)\n\t)\n)";
+        out.println(ending);
+        
+        out.close();
+    }
+    
     public void saveSolution(File file) {
         Solution solution = guiScoreDirector.getWorkingSolution();
         solutionDao.writeSolution(solution, file);

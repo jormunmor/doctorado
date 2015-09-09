@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plannerBenchmark>
+  <benchmarkDirectory>local/data/vehiclerouting</benchmarkDirectory>
+  <warmUpSecondsSpentLimit>30</warmUpSecondsSpentLimit>
+
+  <inheritedSolverBenchmark>
+    <problemBenchmarks>
+	<xStreamAnnotatedClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</xStreamAnnotatedClass>
+        
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure1.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure2.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure3.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure4.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure5.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure6.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure7.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure8.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure9.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/SmallStructure10.xml</inputSolutionFile>
+        
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure1.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure2.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure3.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure4.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure5.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure6.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure7.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure8.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure9.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/MediumStructure10.xml</inputSolutionFile>
+        
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure1.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure2.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure3.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure4.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure5.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure6.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure7.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure8.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure9.xml</inputSolutionFile>
+        <inputSolutionFile>data/vehiclerouting/unsolved/BigStructure10.xml</inputSolutionFile>
+        
+        <problemStatisticType>BEST_SCORE</problemStatisticType>
+        <problemStatisticType>STEP_SCORE</problemStatisticType>
+        <problemStatisticType>CALCULATE_COUNT_PER_SECOND</problemStatisticType>
+        <problemStatisticType>BEST_SOLUTION_MUTATION</problemStatisticType>
+        <problemStatisticType>MOVE_COUNT_PER_STEP</problemStatisticType>
+        <problemStatisticType>MEMORY_USE</problemStatisticType>
+    </problemBenchmarks>
+    <solver>
+      <solutionClass>org.optaplanner.examples.vehiclerouting.domain.VehicleRoutingSolution</solutionClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Standstill</entityClass>
+      <entityClass>org.optaplanner.examples.vehiclerouting.domain.Task</entityClass>
+      <scoreDirectorFactory>
+        <scoreDefinitionType>HARD_MEDIUM_SOFT</scoreDefinitionType>
+        <easyScoreCalculatorClass>org.optaplanner.examples.vehiclerouting.solver.score.VehicleRoutingEasyScoreCalculator</easyScoreCalculatorClass>
+        <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
+      </scoreDirectorFactory>
+      <termination>
+        <minutesSpentLimit>10</minutesSpentLimit>
+      </termination>
+    </solver>
+  </inheritedSolverBenchmark>
+  
+  <solverBenchmark>
+    <name>First Fit</name>
+    <solver>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+      </constructionHeuristic>
+    </solver>
+  </solverBenchmark>
+  
+  <solverBenchmark>
+    <name>First Fit Decreasing</name>
+    <solver>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>  	  
+    </solver>
+  </solverBenchmark>
+  
+  <solverBenchmark>
+    <name>Cheapest Insertion</name>
+    <solver>
+      <constructionHeuristic>
+        <constructionHeuristicType>CHEAPEST_INSERTION</constructionHeuristicType>
+      </constructionHeuristic>  	  
+    </solver>
+  </solverBenchmark>
+</plannerBenchmark>
